@@ -1,0 +1,18 @@
+Introduction
+------------
+
+1.  Overview
+2.  Algebraic and Topological Preliminaries
+3.  Commutative Central Sets Theorem
+4.  Central Sets Theorem
+5.  Open Questions and Problems
+*.  Notes
+
+
+References 
+----------
+
+[De:2008uq]		"A New and Stronger Central Sets Theorem"
+[Hindman:1998fk]	The Book
+[Hindman:2010fk]	"Cartesian Products of Sets Satisfying CST"
+[input in .bib]		"Sets Satisfying the Central Sets Theorem"
