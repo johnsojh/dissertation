@@ -1,0 +1,276 @@
+% Draft of Combinatorial proof of Central Sets Theorem chapter
+
+\documentclass{article}
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{endnotes}
+% \usepackage[doublespacing]{setspace}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{CSTv1}{Original Central Sets Theorem}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{rmk}[thm]{Remark}
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\newcommand{\dom}{\mathrm{dom}}
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\section{Introduction}
+Since the original proof the Central Sets Theorem used topological
+dynamics, and the newer versions uses the algebraic structure of
+$\beta S$, it is natural to wonder if a combinatorial proof of the
+Central Sets Theorem is possible. 
+Using the concept of a set-theoretic tree in this chapter we give an
+easy combinatorial proof of the Central
+Sets Theorem (which is essentially the same proof in \cite{De:2008uq})
+modulo the fact that central sets are C-sets.
+
+\section{Preliminaries}
+A \textsl{tree} is a partially ordered set $(T, \le)$ such
+that for all $y \in T$, the set $\{\, x \in T : x \le y \,\}$ is
+wellordered by $\le$. 
+Given a tree $(T, \le)$ we call $T'$ a \textsl{subtree of $T$} if and
+only if $T' \subseteq T$ and for all $y \in T'$, for every $x \in T$,
+if $x \le y$, then $x \in T'$. 
+
+Given a set $A$, we put ${}^{<\omega}{A} = \bigcup_{n \in
+  \omega}\setfunc{n}{A}$., where $\omega$ is the first infinite
+ordinal and $n = \{0, 1, \ldots, n-1\}$. 
+Then with $\subseteq$ as the partial order, ${}^{<\omega}{A}$ is a
+tree. 
+Moreover, if $f \in {}^{<\omega}{A}$, $x \in A$, and $\dom(f) = n$, we
+write $f^\frown x = f \cup \{(n, x)\}$.
+
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  \begin{itemize}
+    \item[(a)] A \textsl{tree in A} is a nonempty subtree of
+      $({}^{<\omega}{A}, \subseteq)$. 
+
+    \item[(b)] Given a tree $T$ in $A$ and $f \in T$, define
+      \[
+        B_f(T) = \{\, x \in A : f^\frown x \in T \,\}.
+      \]
+      If our tree $T$ is clear from context, we simply write $B_f$.
+
+    \item[(c)] A tree $T$ in $A$ is a \textsl{\mbox{$*$-tree in $A$}} if and
+      only if for every $f \in T$ and for all $x \in B_f$,
+      $B_{f^\frown x} \subseteq x^{-1}B_f$.
+
+    \item[(d)] We call $A$ a \textsl{combinatorial $C$-set} if and
+      only if there exists a \mbox{$*$-tree} in $A$ such that for all
+      $F \in \Pf(T)$, $\bigcap_{f \in F} B_f$ is a $J$-set.
+  \end{itemize}
+\end{defn}
+
+To show that our definitions are not vacuous we prove the easy result
+that a semigroup is also a combinatorial $C$-set.
+\begin{prop}
+  If $(S, \cdot)$ is a semigroup, then $S$ is a combinatorial $C$-set.
+\end{prop}
+\begin{proof}
+  Observe that ${}^{<\omega}{S}$ is a \mbox{$*$-tree} such that for
+  every $f \in {}^{<\omega}{S}$, $B_f = S$. 
+  It follows that $S$ is a combinatorial $C$-set.
+\end{proof}
+
+\begin{fact}
+  Let $(S, \cdot)$ be a semigroup, $r \in \bbN$, and let $C \subseteq
+  S$ be a combinatorial $C$-set. 
+  If $C = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+  \ldots, r\}$ such that $C_i$ is a combinatorial $C$-sets.
+\end{fact}
+
+\section{Combinatorial $C$-sets}
+With these preliminaries out of the way, we now provide our proof that
+combinatorial $C$-sets satisfy the conclusion of the Central Sets
+Theorem. 
+\begin{cst}
+  Let $(S, \cdot)$ be a semigroup and let $C \subseteq S$ be a
+  combinatorial $C$-set.
+  Then there exist functions $m \colon \Pf(\calT) \to \bbN$, $\alpha
+  \in \bigtimes_{F \in \Pf(\calT)} S^{m(F) + 1}$, and $H \in
+  \bigtimes_{F \in Pf(\calT)} \calI_{m(F)}$ such that 
+  \begin{itemize}
+    \item[(1)] if $F$, $G \in \Pf(\calT)$ with $F \subsetneq G$, then
+      $\max H(F)\bigl(m(F)\bigr) < \min H(G)(1)$; and
+
+    \item[(2)] for $n \in \bbN$, if $G_1$, $G_2$, \ldots, $G_n \in
+      Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq
+      G_n$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$, then 
+      \[
+        \prod_{i=1}^n x(m(G_i), \alpha(G_i), H(G_i), f_i) \in C.
+      \]
+  \end{itemize}
+\end{cst}
+\begin{proof}
+  Let $T$ be a \mbox{$*$-tree} in $A$ such that for all $G \in
+  \Pf(T)$, $\bigcap_{g \in G} B_f$ is a $J$-set.
+  Fix $g \in T$.
+  Simliar to the proof of \cite[Theorem 3.8]{De:2008uq}, we will
+  recursively define our functions $m$, $\alpha$, and $H$ by the size
+  of $F \in \Pf(\calT)$ such that we satisfy the following hypothesis
+  for $F \in \Pf(\calT)$:
+  \begin{itemize}
+    \item[(i)] If $\emptyset \ne G \subsetneq F$, then $\max
+      H(G)\bigl(m(G)\bigr) < \min H(F)(1)$.
+
+    \item[(ii)] If $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2
+      \subsetneq \cdots \subsetneq G_n = G$, and $\la f_i \ra_{i=1}^n
+      \in \bigtimes_{i=1}^n G_i$, then 
+      \[
+        \prod_{i=1}^n x(m(G_i), \alpha(G_i), H(G_i), f_i) \in B_g.
+      \]
+  \end{itemize}
+
+  Let $F \in \Pf(\calT)$.
+  First, assume that $|F| = 1$, that is $F = \{f\}$ for some sequence
+  $f$ in $S$. 
+  Since $B_g$ is a $J$-set, pick $p \in \bbN$, $b \in S^{p+1}$, and $L
+  \in \calI_p$ such that $x(p, b, L, f) \in B_g$.
+  Put $m(\{f\}) = p$, $\alpha(\{f\}) = b$, and $H(\{f\}) = L$. 
+  In this case, hypothesis (i) is vacuously true while hypothesis (ii)
+  is trivially true.
+
+  Now assume that $|F| > 1$ and for all $\emptyset \ne G \subsetneq
+  F$, $m(G)$, $\alpha(G)$, and $H(G)$ have been defined so that
+  hypotheses (i) and (ii) both hold.
+  Put
+  \begin{align*}
+    M = \biggl\{\, \prod_{i=1}^n x(m(G_i), \alpha(G_i), H(G_i), f_i) &: n \in
+    \bbN, \emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots
+    \subsetneq G_n \subsetneq F \\
+    &\hspace{-3em}\mbox{ and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$} \,\biggr\}.
+  \end{align*}
+  Observe that since $F$ is finite, $M$ is also finite. 
+  By hypothesis (ii) we have that $M \subseteq B_g$.
+  Put $D = B_g \cap \bigcap_{x \in M} B_{g^\frown x}$.
+  Then $D$ is a $J$-set. 
+  For each $\emptyset \ne G \subsetneq F$, put $l(G) = \max
+  H(G)\bigl(m(G)\bigr)$ and put $k = \max\{\, l(G) : \emptyset \ne G
+  \subsetneq F\,\}$.
+
+  Since $D$ is a $J$-set, pick $p \in \bbN$, $b \in S^{p+1}$, and $L
+  \in \calI_p$ with $\min L(1) > k$ such that for all $f \in F$, $x(p,
+  b, L, f) \in D$. 
+  Put $m(F) = p$, $\alpha(F) = b$, and $H(F) = L$. 
+  We now verify that our hypotheses are satisfied. 
+
+  Hypothesis (i) is satisfied, since $\min H(F)(1) = \min L(1) > k \ge
+  \max l(G)$ for all $\emptyset \ne G \subseteq F$. 
+  To verify hypothesis (ii), let $n \in \bbN$, $\emptyset \ne G_1
+  \subsetneq G_2 \subsetneq \cdot \subsetneq G_n = F$, and $\la f_i
+  \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$. 
+  If $n=1$, then $\prod_{i=1}^n x(m(G_i), \alpha(G_i), H(G_i), f_i) =
+  x(m(F), \alpha(F), H(F), f_1) \in D \subseteq B_g$.
+  If $n>1$, put $y = \prod_{i=1}^{n-1} x(m(G_i), \alpha(G_i), H(G_i),
+  f_i)$.
+  Then $y \in M$ and since $x(m(G_n), \alpha(G_n), H(G_n), f_n) =
+  x(m(F), \alpha(F), H(F), f_i) \in D \subseteq B_{g^\frown y}
+  \subseteq y^{-1}B_g$, we have 
+  \begin{align*}
+    \prod_{i=1}^n x(m(G_i), \alpha(G_i), H(G_i), f_i) &=
+    \prod_{i=1}^{n-1} x(m(G_i), \alpha(G_i), H(G_i), f_i) + x(m(G_n),
+    \alpha(G_n), H(G_n), f_n) \\
+    &= y + x(m(G_n), \alpha(G_n), H(G_n), f_n) \in B_g.
+  \end{align*}
+  Therefore hypotheses (i) and (ii) are satisfied, and our proof is
+  complete. 
+\end{proof}
+\begin{rmk}
+  Therefore given our definition of a $C$-set, we see that every
+  combinatorial $C$-set is a $C$-set. 
+  Hindman and Strauss in \cite[Theorem 2.7]{Hindman:2009vn} prove that
+  every $C$-set is also a combinatorial $C$-set. 
+  Therefore we may drop the adjective ``combinatorial'' from
+  combinatorial $C$-set. 
+\end{rmk}
+
+\section{Combinatorial Central Sets are $C$-sets}
+Our next task shall be to prove combinatorially that ``combinatorial
+central sets'' (which are really central sets) are $C$-sets. 
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup, $C \subseteq S$, and $\calA
+  \subseteq \calP(S)$. 
+  \begin{itemize}
+    \item[(a)] We say $\calA$ is \textsl{collectionwise piecewise
+        syndetic} if and only if there exist functions $G \colon
+      \Pf(\calA) \to \Pf(S)$ and $x \colon \Pf(\calA) \times \Pf(S) \to
+      S$ such that for every $F \in \Pf(S)$ and for all $\calF$,
+      $\calH \in \Pf(\calA)$ with $\calF \subseteq \calH$ we have
+      $F \cdot x(\calH, F) \subseteq \bigcup_{t \in G(\calF)}
+      t^{-1}\bigcap\calF$.
+
+    \item[(b)] $C$ is a \textsl{combinatorial central set} if and only
+      if there exists a \mbox{$*$-tree} $T$ in $C$ such that $\{\, B_f
+      : f \in T \,\}$ is collectionwise piecewise syndetic.
+  \end{itemize}
+\end{defn}
+
+Again the tree ${}^{<\omega}{S}$ shows that if $S$ is a semigroup,
+then $S$ is a combinatorial central set. 
+It's a fact that if $C = \bigcup_{i=1}^r C_i$ and $C$ is a
+combinatorial central set, then at least one $C_i$ is a combinatorial
+central set. 
+
+\begin{prop}
+  Let $(S, \cdot)$ be a semigroup and let $\calA \subseteq \calP(S)$
+  be a collectionwise piecewise syndetic set.
+  Then for all $\calF \in \Pf(\calA)$, $\cap \calF$ is piecewise
+  syndetic in $S$.
+\end{prop}
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$. 
+  If $A$ is piecewise syndetic in $S$, then $A$ is a $J$-set in $S$. 
+\end{thm}
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and $C \subseteq S$. 
+  If $C$ is a combinatorial central set, then $C$ is a (combinatorial)
+  $C$-set.
+\end{thm}
+% Notes section produced by the 'endnotes' package
+%\theendnotes
+
+% Things referenced in the introduction. Eventually this will placed
+% in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+\end{document}
