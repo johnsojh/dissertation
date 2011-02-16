@@ -1,0 +1,291 @@
+% Draft of Introduction for my Dissertation
+
+\documentclass{article}
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{endnotes}
+% \usepackage[doublespacing]{setspace}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{CSTv1}{Original Central Sets Theorem}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{rmk}[thm]{Remark}
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\section{Overview}
+Using notions from topological dynamics, Furstenberg defined the
+concept of a central set of natural numbers and proved a powerful
+combinatorial result that has since come to be called the Central Sets
+Theorem \cite[Proposition 8.21]{Furstenberg:1981fk}. 
+To give a brief demonstration on the versatility of the Central Sets
+Theorem we show how we may easily derive van der Waerden's Theorem
+from the Central Sets Theorem.
+To aid us in our derivation we temporarily assume the following facts:
+\begin{itemize}
+  \item A central subset of $\bbN$ is a type of ``large'' subset of $\bbN$.
+  \item $\bbN$ is a central set.
+  \item If $C$ is a central subset of $\bbN$ and $C = C_1 \cup C_2$,
+    then either $C_1$ is central or $C_2$ is central.
+    For $r \in \bbN$ it follows (by induction on $r$) that if $C$ is a
+    central set and $C = \bigcup_{i=1}^r C_i$, then there exists $i
+    \in \{1, 2, \ldots, r\}$ such that $C_i$ is central.
+  \item The Central Sets Theorem is true.
+\end{itemize}
+In what follows, if $X$ is a nonempty set, we let $\Pf(X)$ denote the
+set of all nonempty finite subsets of $X$.
+\begin{cst}
+  Let $C \subseteq \bbN$ be central and let $l \in \bbN$.
+  For each $i \in \{1, 2, \ldots, l\}$ let $\la y_{i,n}
+  \ra_{n=1}^\infty$ be a sequence in $\bbZ$.
+  Then there exist sequences $\la a_n \ra_{n=1}^\infty$ in $\bbN$ and
+  $\la H_n \ra_{n=1}^\infty$ in $\Pf(\bbN)$ such that 
+  \begin{itemize}
+    \item[(1)] for every $n \in \bbN$, $\max H_n < \min H_{n+1}$; and
+    \item[(2)] for every $G \in \Pf(\bbN)$ and $i \in \{1, 2, \ldots,
+      l\}$ we have
+      \[
+        \sum_{n \in G}\Bigl(a_n + \sum_{t \in H_n} y_{i,t}\Bigr) \in C.
+      \]
+  \end{itemize}
+\end{cst}
+
+\begin{vdw}
+  If $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$, then for each $l
+  \in \bbN$ there exist $i \in \{1, 2, \ldots, r\}$ and $a$, $d \in
+  \bbN$ such that $\{\, a, a+d, \ldots, a+ld \,\} \subseteq C_i$.
+\end{vdw}
+\begin{proof}
+  By our temporary assumption we may pick $i \in \{1, 2, \ldots, r\}$
+  such that $C_i$ is central. 
+  Fix a sequence $\la x_n \ra_{n=1}^\infty$ in $\bbN$ and let $l \in
+  \bbN$.
+  For each $j \in \{0, 1, \ldots, l\}$ defined the sequence $\la
+  y_{j,n} \ra_{n=1}^\infty$ in $\bbZ$ by $y_{j,n} = j \cdot x_n$. 
+  Pick sequences $\la a_n \ra_{n=1}^\infty$ in $\bbN$ and $\la H_n
+  \ra_{n=1}^\infty$ in $\Pf(\bbN)$ as guaranteed by the Central Sets
+  Theorem. 
+  Put $a = a_1$ and $d = \sum_{t \in H_1} x_t$. 
+  Then for $j \in \{0, 1, \ldots, l\}$ we have $a+jd = a_1 +
+  j\cdot\sum_{t \in H_1} x_t = a_1 + \sum_{t \in H_1} y_{j,t} \in C_i$.
+  This completes the proof.
+\end{proof}
+\begin{rmk}
+  By a suitable choice of our sequence $\la x_n \ra_{n=1}^\infty$ in
+  the proof we may strengthen the conclusion of this theorem by
+  stating that there are ``many'' $l+1$-term arithmetic progressions
+  in $C_i$. 
+\end{rmk}
+
+Van der Waerden's proof of his theorem \cite{Van-der-Waerden:1927fk}
+uses a complicated, but elementary, combinatorial argument based on
+the pigeonhole principle and ``double induction''.%
+\endnote{
+  I'm not sure of the exact form of van der Waerden's argument since I
+  have never read the paper \cite{Van-der-Waerden:1927fk}. 
+  This statement is based on my opinion that all known combinatorial
+  proofs of van der Waerden's Theorem are not simple, Khinchin's
+  opinion on the difficulty of the original proof \cite[expressed in
+  Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
+  description on how he found his proof in
+  \cite{Van-der-Waerden:1971fk}. 
+  The interested reader can find a combinatorial proof of van der
+  Waerden's Theorem in Section 2 of \cite{Hindman:1979fk}.
+}
+Obviously using partition regularity of central sets and the Central
+Sets Theorem makes van der Waerden's Theorem easy to derive.
+At this point the reader may suspect that the ``true'' difficulties
+then must lie in proving these facts. 
+However we shall soon see that hardest part will be absorbing all of
+the needed definitions. 
+
+\section{Algebraic Preliminaries}
+The concept of a central set has been generalized to semigroups, and
+admits a simple definition using the algebraic structure of the
+Stone-\v{C}ech compactification of a discrete semigroup.
+We chose to give this algebraic technology priority for several
+reasons: proving that central sets are partition regular automatically
+falls out of our definition, proving the Central Sets Theorem requires
+a fairly easy induction argument, and strengthen its conclusion also
+becomes easy. 
+\begin{defn}
+  Let $S$ be a nonempty set, let $* \colon S \times S \to S$ be
+  a binary operation on $S$, and let $J \subseteq S$ be a nonempty
+  subset of $S$.
+  \begin{itemize}
+    \item[(a)] We call the pair $(S, *)$ a \textsl{semigroup} if
+      and only if for all $x$, $y$, and $z \in S$, $(x * y) *
+      z = x * (y * z)$.
+    \item[(b)] For each $x \in S$ define the functions $\lambda_x
+      \colon S \to S$ and $\rho_x \colon S \to S$ by $\lambda_x(y) = x
+      * y$ and $\rho_x(y) = y * x$, respectively.
+    \item[(c)] We call an element $x \in S$ \textsl{idempotent} if and
+      only if $x*x = x$. 
+    \item[(d)] We say $J$ is a \textsl{left ideal (of S)} if and only
+      if $S * J \subseteq J$.
+      A left ideal is a \textsl{minimal left ideal} if and only if the
+      only left ideal it contains is itself.
+    \item[(e)] We say $J$ is a \textsl{right ideal (of S)} if and only
+      if $J * S \subseteq J$.
+      A right ideal is a \textsl{minimal right ideal} if and only if the
+      only right ideal it contains is itself.
+    \item[(f)] We say $J$ is a \textsl{(two-sided) ideal (of S)} if and only
+      if $J$ is both a left ideal and right ideal.
+      An ideal is a \textsl{minimal ideal} if and only if the only
+      ideal it contains is itself.
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  As usual in mathematics, we will often denote the binary operation
+  on our semigroup by $\cdot$ and often we will omit writing it at
+  all.
+\end{rmk}
+
+The following easy results show that a semigroup contains at most
+one minimal ideal, and that a minimal ideal is contained in every ideal.
+\begin{prop}
+  Let $S$ be a semigroup.
+  If $J_1$ and $J_2$ are minimal ideals of $S$, then $J_1 = J_2$.
+\end{prop}
+\begin{proof}
+  We show that $J_1 \cap J_2$ is an ideal of $S$. 
+  The conclusion then follows from the minimality of $J_1$ and $J_2$.
+  
+  To see that $J_1 \cap J_2 \ne \emptyset$, let $x \in J_1$ and
+  $y \in J_2$. 
+  Since $J_1$ is a right ideal, $xy \in J_1$. 
+  Since $J_2$ is a left ideal, $xy \in J_2$. 
+  Hence $xy \in J_1 \cap J_2$. 
+
+  To see that $J_1 \cap J_2$ is an ideal, let $x \in J_1 \cap J_2$ and
+  $y \in S$. 
+  Since $J_1$ and $J_2$ are both left ideals, we have $xy \in J_1$ and
+  $xy \in J_2$.
+  Similarly since $J_1$ and $J_2$ are both right ideals, we have $yx
+  \in J_1$ and $yx \in J_2$. 
+  Therefore $J_1 \cap J_2$ is an ideal.
+
+  Finally, since $J_1 \cap J_2 \subseteq J_1$ and $J_1 \cap J_2
+  \subseteq J_2$ it follows by minimality of $J_1$ and $J_2$ that $J_1
+  = J_1 \cap J_2 = J_2$.
+\end{proof}
+\begin{prop}
+  Let $S$ be a semigroup with the minimal ideal $J$. 
+  If $I$ is an ideal of $S$, then $J \subseteq I$.
+\end{prop}
+\begin{proof}
+  Similar to the proof above, $J \cap I$ is an ideal of $S$. 
+  By minimality of $J$ we have $J \cap I = J$. 
+  Therefore it follows that $J \subseteq I$.
+\end{proof}
+
+With these results we are justified in making the following definition. 
+\begin{defn}
+  Let $(S,\cdot)$ be a semigroup. 
+  We call the minimal ideal of $S$ the \textsl{smallest ideal} and
+  denote it by $K(S)$.%
+  \endnote{
+    The notation of $K(S)$ denoting the smallest ideal comes from the
+    Russian mathematician Suschkewitsch.
+    He called the smallest ideal the \textsl{kernel} of the
+    semigroup.
+    Suschkewitsch, based off of the description given in
+    \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that
+    all finite semigroups have a smallest ideal and using this fact
+    was able to produce a structure theorem for finite semigroups. 
+  }
+\end{defn}
+Unfortunately not all semigroups have a smallest ideal or
+idempotents. 
+However, we will only be concerned with a certain class of topological
+semigroups that has both of these objects.
+
+\begin{defn}
+  A \textsl{compact right-topological semigroup} is a triple $(S,
+  \calT, \cdot)$ such that $(S, \calT)$ is a compact Hausdorff space, $(S, \cdot)$ is
+  a semigroup, and for every $x \in S$, $\rho_x \colon S
+  \to S$ is continuous. 
+\end{defn}
+
+\begin{thm}
+  Compact right-topological semigroups contains idempotents and
+  the smallest ideal.
+\end{thm}
+\begin{proof}
+  The existence of idempotents and the smallest ideal is proved in \cite[Theorem
+  2.5]{Hindman:1998fk} and \cite[Theorem 2.8]{Hindman:1998fk}, respectively.
+\end{proof}
+The importance of the smallest ideal for us is that with a suitably
+constructed semigroup we will be able to define central sets in terms
+of idempotents of the smallest ideal.
+
+\begin{defn}
+  Let $S$ be a nonempty set.
+  A nonempty set $p \subseteq \calP(S)$ is called an
+  \textsl{ultrafilter} if and only if $p$ satisfies the following
+  four properties: 
+  \begin{itemize}
+    \item[(1)] If $A$, $B \in p$, then $A \cap B \in p$.
+    \item[(2)] If $A \in p$ and $A \subseteq B \subseteq S$, then $B
+      \in p$.
+    \item[(3)] $\emptyset \not\in p$.
+    \item[(4)] For all $A \subseteq S$, either $A \in p$ or $S
+      \setminus A \in p$. 
+  \end{itemize}
+\end{defn}
+
+Given a discrete semigroup $(S,\cdot)$, we let $\beta S$ be the
+collection of all ultrafilters on $S$, and identify the principal
+ultrafilters with the points of $S$. 
+For all $A \subseteq S$, we let $\overline{A} = \{\, p \in \beta S : A
+\in p \,\}$. 
+Then $\{\, \overline{A} : A \subseteq \,\}$ is a basis of open sets in
+$\beta S$.
+We can extend the semigroup operation on $S$ to $\beta S$ in the
+following manner.
+
+\section{Commutative Central Sets Theorem}
+\section{Central Sets Theorem}
+\section{Open Questions and Problems}
+
+% Notes section produced by the 'endnotes' package
+\theendnotes
+
+% Things referenced in the introduction. Eventually this will placed
+% in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+\end{document}
+
