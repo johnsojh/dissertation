@@ -8,11 +8,97 @@ Introduction
 5.  Open Questions and Problems
 *.  Notes
 
+2.  Algebraic and Topological Preliminaries
+    
+    A _semigroup_ is a pair (S, *) such that S is a nonempty set and *
+    is an associative binary operation on S, that is, for all x, y,
+    and z in S, x*(y*z) = (x*y)*z.  As usual in mathematics we will
+    often suppress the explicit mention of our binary operation * by
+    simply saying S is a semigroup.  Clearly any group is also a
+    semigroup, but the standard canonical example of a semigroup that
+    is not a group is simply the set of natural numbers under
+    addition.  Another class of examples can be obtained by
+    considering the multiplicative part of a ring.  In analogy with
+    the definition of a commutative ring, we define a _commutative
+    semigroup_ as a semigroup such that for all x and y, xy = yx. Also
+    in analogy with ring theory, we can define certain ideals in
+    semigroups. Given a semigroup S and a nonempty subset I of S, we
+    say I is a _left ideal (of S)_ iff SI is contained in I; we say I
+    is a _right ideal (of S)_ iff IS is contained in I; and, finally,
+    we say I is a _(two-sided) ideal (of S)_ iff I is both a left
+    ideal and right ideal.  (The phrases in parentheses will often be
+    omitted if they are clear from context.)
+
+    The study of ideals in semigroups is one of the main differences
+    between semigroup theory and group theory.  (A semigroup is a
+    group if and only if the only left and right ideals are the whole
+    semigroup itself.)  Moreover, semigroup theory is different from
+    ring theory as the following simple example shows that not every
+    semigroup can be embedded as the multiplicative part of some ring.  
+
+    Example.  We call (S, *) a _right-zero semigroup_ iff for all x, y
+    in S, x*y = y.  A simple check shows that this is really a
+    semigroup. The name "right-zero" is derived from the fact that, in
+    the natural numbers, multiplying on the right by zero yields
+    zero.  Hence in a right-zero semigroup every element is "zero".  
+
+    Suppose that S is a right-zero semigroup with |S| > 2.  We claim
+    that S cannot be the multiplicative "part" of any ring.  Suppose,
+    to the contrary, that there exists such a ring.  Then for all a,
+    b, and c in S, we have that (b+c)*a = b*a + c*a by the ring
+    axioms.  Since S is right-zero, we have that (b+c)*a = a and b*a
+    = a = c*a.  Hence a = a + a and this implies that a = 0. Since |S|
+    > 2, it follows that there exists a, b in S with a != b and a = 0
+    = b. 
+    Example.
+    
+    We call a left ideal L of a semigroup _minimal_ iff L doesn't
+    contain any proper left ideals.  We define the concept of a
+    _minimal right ideal_ dually, and a we call an ideal I _minimal_
+    iff it contains no proper ideal.  Even though much of the
+    literature in semigroup theory mentions minimal ideals, we won't
+    use this terminology since it follows that a semigroup has at most
+    one minimal ideal and this ideal is contained in every ideal of
+    the semigroup.  Therefore we refer to the minimal ideal as the
+    _smallest ideal_.
+
+    Proposition.  Let S be a semigroup and let K be an ideal of S.  If
+    K is a minimal ideal and I is an ideal of S, then K is contained
+    in I.
+    Proof.  Observe that K intersected with I is nonempty.  (If x is
+    in K and y in I, then xy in K and I since they are both ideals.)
+    Hence K intersect I is contained in K and I.  Since K is minimal,
+    K = K intersect I and so K is contained in I.                   []
+
+    With these result we are justified in making the following
+    important definition.
+
+    Definition.  Let S be a semigroup. If S has a minimal ideal, then
+    we call this ideal the _smallest ideal_ and denote it by
+    K(S). *Endnote for why this is called K(S)*  
+
+    Not all semigroups possess a smallest ideal, for instance, (N, +)
+    and (N, *) don't have smallest ideals.  However, for the class of
+    semigroups we shall consider, we are guaranteed a smallest ideal.
+    
+    We shall not move on to define how topology can interact with our
+    semigroup operations in various ways; but, the reader interested
+    in the (purely) algebraic theory of semigroups can consult the
+    article [Hollings:2007uq] for a very brief introduction to
+    semigroup theory or the monograph [Clifford:1961fk] for much more
+    detail. 
+
 
 References 
 ----------
 
+[Clifford:1961fk]	The Algebraic Theory of Semigroups
 [De:2008uq]		"A New and Stronger Central Sets Theorem"
 [Hindman:1998fk]	The Book
 [Hindman:2010fk]	"Cartesian Products of Sets Satisfying CST"
 [input in .bib]		"Sets Satisfying the Central Sets Theorem"
+[Hollings:2005vn]	"A Summary Translation of ..."
+[Hollings:2007uq]	"Some first tantalizing steps ..."
+[Hollings:2009kx]	"The Early Development of ..."
+[Hollings:2009uq]	"Anton Kazimirovich ..."
+
