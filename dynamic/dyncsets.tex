@@ -1,0 +1,949 @@
+% Draft of my Dynamical Characterization of C-sets Results
+% by: John H. Johnson
+% email: john.j.jr@gmail.com
+
+\documentclass[12pt]{article}
+
+% \usepackage[doublespacing]{setspace}
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{endnotes}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{vdW}[thm]{Van der Waerden's Theorem}
+\newtheorem{FS}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{rmk}[thm]{Remark}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\ds}{(X, \la T_s \ra_{s\in S})}
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -3 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+% Much of this Introduction section will probably eventually be folded
+% into the Introduction chapter.
+\section{Introduction}
+One of the early important theorems in Ramsey Theory
+is van der Waerden's Theorem.%
+\endnote{The field Ramsey Theory is named in honor of Frank P.~Ramsey,
+  who contributed the important Ramsey's Theorem.
+  This theorem can be thought of as a powerful generalization of the
+  Pigeonhole Principle.
+  Curiously, van der Waerden's Theorem was published, in 1927
+  \cite{Van-der-Waerden:1927fk}, 
+  three years early than the publication of Ramsey's Theorem in
+  \cite{Ramsey:1930uq}.
+  In fact, there are several important Ramsey Theoretic results
+  published before Ramsey's Theorem.
+}
+This theorem can be stated in several equivalent ways, but for our
+purposes it is useful to state it as follows.
+
+  \begin{vdW}
+    If $k \in \bbN$ and $\bbN = \bigcup_{i=1}^k A_i$, then for each $l \in
+    \bbN$, there exist $i \in \{1, 2, \ldots, k\}$ and $a$, $d \in
+    \mathbb{N}$ such that 
+      \[
+        \{\, a, a+d, \ldots, a+ld \,\} \subseteq A_i.
+      \]
+  \end{vdW}
+
+Van der Waerden's proof of this theorem uses a complicated,
+but elementary, combinatorial argument.%
+\endnote{Actually I'm not sure of the exact form of van der Waerden's
+  proof of his theorem. 
+  This statement is based on \cite[Section 1, pages
+  11--12]{Khinchin:1998fk}.
+  In this book Khinchin doesn't give the original proof, but he states
+  that van der Waerden explained the original proof to him. 
+  Khinchin says, ``It was elementary, but not simple by any means''
+  \cite[Section 1, page 11]{Khinchin:1998fk}.
+  The combinatorial proof in this book is due to M.A.~Lukomskaya, and
+  again according to Khinchin it is ``considerably simpler and more
+  transparent'' \cite[Section 1, page 12]{Khinchin:1998fk}.
+  For a very short combinatorial proof of van der Waerden's Theorem
+  see \cite{Graham:1974uq}
+}
+Since the original argument, there have been several proofs of van der
+Waerden's Theorem. 
+Combinatorial proofs, using the pigeonhole principle and ``double
+induction'', can be found in \cite[Chapter 1, pages
+11--17]{Khinchin:1998fk} and \cite{Graham:1974uq}.
+In my (necessarily biased) opinion, the easiest proof of van der
+Waerden's Theorem is via the algebraic structure of the Stone-\v{C}ech
+compactification of $\bbN$ \cite[Chapter 14, Section 1, pages
+279--281]{Hindman:1998fk}.
+Somewhat related to this last method is a proof of van der
+Waerden's Theorem via topological dynamics due originally to
+Furstenberg and Weiss in \cite{Furstenberg:1978kx}.
+
+As motivation and warmup for this chapter, we shall sketch a
+proof of van der Waerden's Theorem using topological dynamics.  
+To proceed with this proof we will use the following ``recurrence''
+type theorem.
+Truthfully, all we have done is to hide the real difficulties in the
+proof of van der Waerden's Theorem into the proof of this Recurrence
+Theorem. 
+
+In what follows, if $X$ is a set, $T : X \to X$ a function, and $n \in
+\bbN$, then the notation $T^n$ means the $n$-fold composition of $T$
+with itself.
+So for example, $T^1 = T$, $T^2 = T \circ T$, $T^3 = T \circ T \circ
+T$, and so on. 
+
+  \begin{recur}
+    Let $X$ be a compact Hausdorff space, $l \in \bbN$, and let $T_i
+    : X \to X$ be a continuous map for all $i \in \{1, 2, \ldots, l\}$
+    such that for all $i$, $j \in \{1, 2, \ldots, l\}$
+    we have $T_i \circ T_j = T_j \circ T_i$.
+    Then there exists a point $x \in X$ such that for all
+    neighborhoods $U$ of $x$, there exists $n \in \mathbb{N}$ such
+    that $U \cap \bigcap_{i=1}^l (T_i^n)^{-1}[U] \ne \emptyset$.%
+      \endnote{
+        This Recurrence Theorem follows easily from the following stronger
+        result. 
+% I should at least have a reference for the proof of my version of
+% the Multiple Birkhoff Recurrence Theorem. Usually the Multiple
+% Birkhoff Recurrence Theorem is stated as being true for compact
+% metric spaces. However using the principle that anything true for
+% compact metric spaces is true for compact Hausdorff spaces, then it
+% becomes "intuitively obvious" that my version is true also. Maybe I
+% should try to give a proof (perhaps in an Appendix) of the Multiple
+% Birkhoff Recurrence Theorem using [HS, Exercise 19.3.1].
+        \begin{MBR}
+          Let $X$ be a compact Hausdorff space, $l \in \bbN$, and let
+          $\bigl\la T_i : X \to X : i \in \{1, 2, \ldots, l\} \bigr\ra$ be
+          a finite sequence of continuous maps such that for all $i$, $j
+          \in \{1, 2, \ldots, l\}$ we have $T_i \circ T_j = T_j \circ
+          T_i$. 
+          Then there exist $x \in X$ and a strictly increasing sequence
+          $\la n_k \ra_{k=1}^\infty$ in $\bbN$ such that $\lim_{k \to
+            \infty} T_i^{n_k}(x) = x$ for all $i \in \{1, 2, \ldots, l\}$.
+        \end{MBR}
+        \begin{proof}[Pointers to proof]
+          \textsc{Citation needed for proof of this statement.}
+        \end{proof}
+    
+        \begin{recur}
+          Let $X$ be a compact Hausdorff space, $l \in \bbN$, and let
+          $\bigl\la T
+          : X \to X : i \in \{1, 2, \ldots, l\} \bigr\ra$ be a finite
+          sequence of
+          continuous maps such that for all $i$, $j \in \{1, 2, \ldots, l\}$
+          we have $T_i \circ T_j = T_j \circ T_i$.
+          Then there exists a point $x \in X$ such that for all
+          neighborhoods $U$ of $x$, there exists $n \in \mathbb{N}$ such
+          that $U \cap \bigcap_{i=1}^l (T_i^n)^{-1}[U] \ne \emptyset$.
+        \end{recur}
+        \begin{proof}
+          Pick $x \in X$ and a strictly increasing sequence $\la n_k
+          \ra_{k=1}^\infty$ as guaranteed by the Multiple Birkhoff
+          Recurrence Theorem.
+          Let $U$ be a neighborhood of $x$.
+          Then for all $i \in \{1, 2, \ldots, l\}$, there exists $K_i \in
+          \bbN$ such that if $k \ge K_i$, then $T_i^{n_k}(x) \in U$, that
+          is $x \in (T_i^{n_k})^{-1}[U]$. 
+          Put $K = \max\{K_1, K_2, \ldots, K_l\}$.
+          If $k \ge K$, then $x \in U \cap \bigcap_{i=1}^l (T_i^{n_k})^{-1}[U]$.
+        \end{proof}
+      }
+  \end{recur}
+
+This result roughly states that when given any finite collection of
+commutating continuous functions there is a point in our space that is
+not moved too far by our iterated functions. 
+
+Using this theorem we can now provide a relatively straightforward
+proof of van der Waerden's Theorem. 
+
+  \begin{vdW}
+    If $k \in \bbN$ and $\bbN = \bigcup_{i=1}^k A_i$, then for each $l \in
+    \bbN$, there exist $i \in \{1, 2, \ldots, k\}$ and $a$, $d \in
+    \mathbb{N}$ such that 
+      \[
+        \{\, a, a+d, \ldots, a+ld \,\} \subseteq A_i.
+      \]
+  \end{vdW}
+  \begin{proof}
+    The proof in outline runs as follows.
+    First, we construct a compact Hausdorff space such that partitions
+    of $\bbN$ with at most $k$ cells correspond with points in our
+    topological space. 
+    Once this correspondence is given, we can recast the conclusion of
+    van der Waerden's Theorem into a statement about points in our
+    space. 
+    This construction is the topological part in our topological
+    dynamics proof.
+    Secondly, for the dynamical part, we construct a continuous
+    function from our space to itself. 
+    With this map we can apply the Recurrence Theorem to produce a
+    point that corresponds to the conclusion of van der
+    Waerden's Theorem. 
+
+    We'll start with the construction of our compact Hausdorff space. 
+    Put $X = \setfunc{\omega}{\{1, 2, \ldots, k \}}$, where $\omega =
+    \bbN \cup \{0\}$. 
+    Give each set $\{1, 2, \ldots, k\}$ the discrete topology, and give $X$
+    the product topology. 
+    Then $X$ is a compact Hausdorff space. 
+    We can now translate van der Waerden's Theorem into a statement
+    about certain points of $X$. 
+    Given $\bbN = \bigcup_{i=1}^k A_i$, we can define a point $y \in
+    X$ by, for $n \in \bbN$, $y(n) = i$ if and only if $i = \min\bigl\{\, j
+    \in \{1, 2, \ldots, k\} : n \in A_j \,\bigr\}$.
+    We define $y(0)$ arbitrarily. 
+    (We can also note that any point in $X$ determines a finite
+    partition of $\bbN$ into $k$ cells, but this fact will not be used 
+    in the proof.)
+    Observe that it is now necessary and sufficient to show that
+    for every $l \in \bbN$, there exists $a$, $d \in \bbN$ such 
+    that $y(a) = y(a+d) = \cdots = y(a+ld)$.
+
+    With our topological space constructed, we now focus on the
+    ``dynamical part'' of our proof.
+    Define the function $T : X \to X$ by $T(x)(n) = x(n+1)$. 
+    We will show that $T$ is continuous. 
+    
+    For $i \in \omega$ let $\pi_i : X \to \{1, 2, \ldots, k\}$ be the
+    usual projection map given by $\pi_i(x) = x(i)$. 
+    Recall that $\bigl\{\, \pi_i^{-1}[\{j\}] : \hbox{$i \in \omega$ and $j
+      \in \{1, 2, \ldots, k\}$} \,\bigr\}$ is a subbasis for $X$. 
+    Let $i \in \omega$ and $j \in \{1, 2, \ldots, k\}$, then
+      \begin{align*}
+        x \in T^{-1}\bigl[\pi_i^{-1}[\{j\}]\bigr] &\iff (\pi_i \circ
+        T)(x) = j, \\
+        &\iff T(x)(i) = j, \\
+        &\iff x(i+1) = j, \\
+        &\iff x \in \pi_{i+1}^{-1}[\{j\}].
+      \end{align*}
+    Hence $T^{-1}\bigl[\pi_i^{-1}[\{j\}]\bigr] =
+    \pi_{i+1}^{-1}[\{j\}]$, and so $T$ is continuous. 
+
+    We will now construct a compact subspace of $X$ that is invariant
+    under our map $T$.
+    We will then apply our Recurrence Theorem to this particular subspace.
+    To this end, put $Y = c\ell_X\bigl(\{\, T^a(x) : a \in \bbN
+    \,\}\bigr)$, and for each $i \in \{1, 2, \ldots, l\}$ put $T_i =
+    T^i$. 
+    By definition, it's evident that $Y$ is a compact Hausdorff
+    subspace of $X$. 
+    We will show that $T[Y] \subseteq Y$. 
+    If we can show this claim, then it follows that $T_i[Y] \subseteq
+    Y$ for all $i \in \{1, 2, \ldots, l\}$. 
+    
+    Let $y \in Y$, and let $U$ be a neighborhood of $T(y)$. 
+    Since $T$ is continuous we can pick a neighborhood $V$ of $y$ such
+    that $T[V] \subseteq U$. 
+    By definition of $Y$, we have that $V \cap \{\, T^a(x) : a \in
+    \bbN \,\} \ne \emptyset$. 
+    Pick $a \in \bbN$ such that $T^a(x) \in V$. 
+    Then $ T^{a+1}(x) = (T \circ T^a)(x) \in T[V] \subseteq U$.
+    Hence $U \cap \{\, T^a(x) : a \in \bbN \,\} \ne \emptyset$, and it
+    follows that $T(y) \in Y$. 
+
+    We can now say that the finite sequence $\la T_1 \upharpoonright_Y
+    , T_2 \upharpoonright_Y, \ldots, T_l \upharpoonright_Y
+    \ra$ of functions are commutating continuous functions of $Y$ into
+    itself.
+    Hence we can apply the Recurrence Theorem to pick a point $y \in
+    Y$ such that for all neighborhoods $U$ of $y$, there exists $d \in
+    \bbN$ such that $(U \cap Y) \cap \bigcap_{i=1}^l (T_i^d)^{-1}[U
+    \cap Y] \ne \emptyset$.
+    Put $U = \pi_0^{-1}[\{y(0)\}]$. 
+    Then $U$ is an open neighborhood of $y$ and 
+    $U \cap \bigcap_{i=1}^l(T_i^d)^{-1}[U] \cap Y = (U \cap Y) \cap
+    \bigcap_{i=1}^l (T_i^d)^{-1}[U \cap Y] \ne \emptyset$. 
+    Hence we can pick $a \in \mathbb{N}$ such that $T^a(x) \in U \cap
+    \bigcap_{i=1}^l(T_i^d)^{-1}[U]$. 
+    
+    Note that for all $i \in \{1, 2, \ldots, l\}$, we have
+    $(T_i^d)^{-1}[U] = (T^{id})^{-1}[U]$. 
+    By our choice of $a \in \bbN$, we have that $T^{a+id}(x) \in U$
+    for all $i \in \{0, 1, \ldots, l\}$. 
+    Hence $y(0) = \pi_0\bigl(T^{a+id}(x)\bigr)$ for all $i \in \{0, 1,
+    \ldots, l\}$. 
+    Since $x(a+id) = T^{a+id}(x)(0)$ for all $i \in \{0, 1, \ldots,
+    l\}$, it follows that $x(a) = x(a + d) = \cdots = x(a+ ld)$. 
+    This completes our proof.% 
+    \endnote{
+      This method of proving van der Waerden's Theorem via topological
+      dynamics is due to Furstenberg and Weiss in
+      \cite{Furstenberg:1978kx}. 
+      For a nice and more leisurely exposition of the proof of van der
+      Waerden's Theorem via topological dynamics see the article by
+      Mulvey \cite{Mulvey:1997vn}.
+    }
+  \end{proof}
+
+It turns out that our use of the Recurrence Theorem has been rather
+weak.
+It's possible to strengthen the conclusion, and derive several
+different van der Waerden type
+theorems from the Recurrence Theorem.
+Just to name drop one extension it's possible to derive the
+so called Multidimensional van der Waerden Theorem from the
+Recurrence Theorem.%
+\endnote{
+  Despite the name, the Multidimensional van der Waerden Theorem is
+  \textsl{not} due to van der Waerden himself. 
+  A proof of the Multidimensional van der Waerden Theorem, using the
+  Multiple Birkhoff Theorem, can be found in \cite[Chapter 2, Section
+  3, pages 46--47]{Furstenberg:1981fk}.
+}
+We won't be concerned with all of the possible extensions of van
+der Waerden's Theorem save one: Furstenberg's Central Sets Theorem.
+
+Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk}, using notions of
+topological dynamics, defined the concept of a central subset of
+$\bbN$.
+He was able to prove three important facts about central sets.
+  \begin{itemize}
+    \item[(1)] If a central set is finitely partitioned, then at least
+      one cell in the partition is a central set 
+      \cite[Theorem 8.8, page 161]{Furstenberg:1981fk}.
+    \item[(2)] Central sets satisfy a version of the Central Sets
+      Theorem \cite[Theorem 8.21]{Furstenberg:1981fk}.
+      (We shall give a statement of this theorem shortly.)
+    \item[(3)] Central sets contain solutions to finite kernel
+      partition regular matrices \cite[Theorem 8.22, page
+      172]{Furstenberg:1981fk}. 
+      % (Since this last property takes a bit of time to define properly,
+      % we will skip over giving a proper definition of finite kernel
+      % partition regular matrices.)
+  \end{itemize}
+
+The concept of a central set can be generalized to all semigroups and
+admits a simple definition using the algebraic structure of the
+Stone-\v{C}ech compactification of our semigroup. 
+We chose to give the algebraic definition of central sets since it is
+through this algebra that the Central Sets Theorem has recently been
+extended.
+We give a brief review of the algebraic structure of the
+Stone-\v{C}ech compactification of a discrete semigroup.
+
+% These next three paragraphs will probably eventually be removed and
+% put into the Intro.
+
+Given a discrete semigroup $(S, \cdot)$, we let $\beta S$ be the
+collection of all ultrafilters on $S$, and identify the principal
+ultrafilters with the points of $S$. 
+For all $A \subseteq S$, we let $\overline{A} = \{\, p \in \beta S : A
+\in p \,\}$. 
+Then $\{\, \overline{A} : A \subseteq S \,\}$ is a basis of open sets
+of $\beta S$. 
+We can extend the semigroup operation on $S$ to $\beta S$ in the
+following manner.
+For $p$, $q \in \beta S$ and for all $A \subseteq S$, $A \in p \cdot
+q$ if and only if $\{\, x \in S: x^{-1}A \in q \,\} \in p$, where
+$x^{-1}A = \{\, y \in S : xy \in A \,\}$. 
+
+With our definitions, $(\beta S, \cdot)$ becomes a compact Hausdorff
+right-topological semigroup with $S$ contained in the topological
+center of $\beta S$.
+What makes $\beta S$ a right-topological semigroup is that for all $q
+\in \beta S$, the map $\rho_q : \beta S \to \beta S$ given by
+$\rho_q(p) = pq$ is continuous. 
+A point $x \in \beta S$ is in the topological center of $\beta S$ if
+and only if the map $\lambda_x : \beta S \to \beta S$, defined by
+$\lambda_x(p) = xp$ is continuous.
+
+It's a fact that any compact Hausdorff right-topological semigroup $T$ has
+a smallest ideal, denoted by $K(T)$. 
+We can now give the definition of a central subset of a discrete
+semigroup $S$.
+
+  \begin{defn}
+    Let $(S, \cdot)$ be a discrete semigroup, and let $C \subseteq S$.
+    We say $C$ is a \textsl{central} set if and only if there exists
+    $p \in K(\beta S)$ such that $p = p \cdot p$ and $C \in p$.
+  \end{defn}
+
+% I'm definitely cheating some people out of credit here! Need to go
+% back and insert the full origin on the algebraic definition of
+% central sets and their equivalence to the definition via topological
+% dynamics. 
+The fact that this definition is equivalent to Furstenberg's original
+definition is proved in \cite[Chapter 19, Section 3,
+pages 404--407]{Hindman:1998fk}.
+
+We can now formulate the Central Sets Theorem for (commutative)
+semigroups.
+(The reason we give the theorem only for commutative semigroups now,
+is that the general version of the Central Sets Theorem is quite
+complicated to state. 
+We will eventually give the ``full'' version of the Central Sets
+Theorem however.)
+
+  \begin{thm}
+    \label{thm:cst2}
+    Let $(S,+)$ be a commutative semigroup, put $\mathcal{T} =
+    \setfunc{\bbN}{S}$, and let $C \subseteq S$ be central.
+    Let $F \in \mathcal{P}_f(\mathcal{T})$. 
+    Then there exist sequences $\la a_n \ra_{n=1}^\infty$ in $S$ and
+    $\la H_n \ra_{n=1}^\infty$ in $\mathcal{P}_f(\bbN)$ such that
+      \begin{itemize}
+        \item[(1)] $\max H_n < \min H_{n+1}$ for all $n \in \bbN$, and
+        \item[(2)] for all $G \in \mathcal{P}_f(\bbN)$ and every $f
+          \in F$, we have
+          \[
+            \sum_{n \in G}\Bigl(a_n + \sum_{t \in H_n} f(t)\Bigr) \in C.
+          \]
+      \end{itemize}
+  \end{thm}
+
+There are currently four different versions of the Central Sets
+Theorem. 
+(Theorem \ref{thm:cst2} is the second version.)
+Currently the most general version of the Central Sets Theorem for
+commutative semigroups is the following. 
+
+  \begin{thm}
+    \label{thm:newcst}
+    Let $(S,+)$ be a commutative semigroup, put $\mathcal{T} =
+    \setfunc{\bbN}{S}$, and let $C \subseteq S$ be central. 
+    Then there exist functions $\alpha : \mathcal{P}_f(\mathcal{T})
+    \to S$ and $H : \mathcal{P}_f(\mathcal{T}) \to \mathcal{P}_f(\bbN)$ such
+    that
+      \begin{itemize}
+        \item[(1)] if $F$, $G \in \mathcal{P}_f(\mathcal{T})$ and $F
+          \subsetneq G$, then $\max H(F) < \min H(G)$, and
+        \item[(2)] whenever $m \in \bbN$, $\la G_1, G_2, \ldots, G_m
+          \ra$ is a finite sequence in $\mathcal{P}_f(\mathcal{T})$
+          with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$,
+          and for each $i \in \{1, 2, \ldots, m\}$, $f_i \in G_i$ we
+          have
+          \[
+            \sum_{i=1}^m\Bigl(\alpha(G_i)+\sum_{t \in H(G_i)}
+            f_i(t)\Bigr) \in C.
+          \]
+      \end{itemize}
+  \end{thm}
+
+
+Given that the Central Sets Theorem guarantees that central sets have
+strong combinatorial properties, it's natural to wonder if the Central
+Sets Theorem characterizes centrals sets. 
+Unfortunately, there is evidence that the Central Sets Theorem (even
+the newest one) misses some of the combinatorial richness of central
+sets.%
+\endnote{
+  See \cite[Section 14.5, pages 288--294]{Hindman:1998fk} for a
+  combinatorial characterization of central sets. 
+  This characterization uses a complicated notion of a
+  \textsl{collectionwise piecewise syndetic} set.
+  In my opinion, since $C$-sets have a much simpler combinatorial
+  characterization, this suggest that the Central Sets Theorem misses
+  much of the combinatorial richness of central sets.
+}
+Since most of the applications of central sets involved the use of the
+Central Sets Theorem, recently the focus has shifted to the study of
+those sets which satisfy the conclusion of Theorem \ref{thm:newcst}. 
+We will now give a definition of these sets.
+
+  \begin{defn}
+    Let $(S, \cdot)$ be a semigroup.
+      \begin{itemize}
+        \item[(a)] For each $m \in \bbN$, put 
+          \begin{align*}
+            \mathcal{I}_m &= \Bigl\{\, \bigl( H(1), H(2), \ldots, H(m)
+            \bigr) : \hbox{$H(i) \in \mathcal{P}_f(\bbN)$ for all $i
+              \in \{1, 2, \ldots, m\}$} \\
+            &\hbox{ and $\max H(i) < \min H(i+1)$
+            for all $i \in \{1, 2, \ldots, m-1\}$} \Bigr\}
+         \end{align*}
+        \item[(b)] $\mathcal{T} = \setfunc{\bbN}{S}$. 
+        \item[(c)] Given $m \in \bbN$, $a \in S^{m+1}$, $H \in
+          \mathcal{I}_m$, and $f \in \mathcal{T}$, put 
+            \[
+            x(m, a, H, f) = \prod_{i=1}^m\Bigl(a(i)\prod_{t \in H(i)}
+            f(t) \Bigr)a(m+1).
+            \]
+        \item[(d)] A subset $A \subseteq S$ is a \textsl{$J$-set} if
+          and only if for all $F \in \mathcal{P}_f(\mathcal{T})$ there
+          exist $m \in \bbN$, $a \in S^{m+1}$, and $H \in \mathcal{I}_m$
+          such that for all $f \in F$ we have $x(m,a,H,f) \in A$.
+        \item[(e)] $J(S) = \{\, p \in \beta S : \hbox{$A$ is a $J$-set
+            for all $A \in p$} \,\}$.
+        % How do you create a big times symbol again?
+        \item[(f)] A subset $C \subseteq S$ is a \textsl{$C$-set} if
+          and only if there exist functions $m :
+          \mathcal{P}_f(\mathcal{T}) \to \bbN$, $\alpha \in
+          \bigtimes_{F \in \mathcal{P}_f(\mathcal{T})} S^{m(F)+1}$,
+          and $H \in \bigtimes_{F \in \mathcal{P}_f(\mathcal{T})}
+          \mathcal{I}_{m(F)}$ such that
+
+          \begin{itemize}
+            \item[(1)] if $F$, $G \in \mathcal{P}_f(\mathcal{T})$ and $F
+              \subsetneq G$, then $\max H(F)\bigl(m(F)\bigr) < \min
+              H(G)(1)$, and
+           \item[(2)] whenever $n \in \bbN$, $\la G_1, G_2, \ldots, G_n
+              \ra$ is a finite sequence in $\mathcal{P}_f(\mathcal{T})$
+              with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n$,
+              and for each $i \in \{1, 2, \ldots, n\}$, $f_i \in G_i$ we
+              have
+              \[
+              \prod_{i=1}^n\Bigl(x\bigl(m(G_i), \alpha(G_i), H(G_i),
+              f_i\bigr)\Bigr) \in C
+             \]
+      \end{itemize}
+    \end{itemize}
+  \end{defn}
+
+  \begin{thm}
+    $J(S)$ is a closed ideal of $\beta S$.
+  \end{thm}
+  \begin{proof}
+   This is \cite[Theorem 3.5]{De:2008uq}.
+  \end{proof}
+  
+  \begin{thm}
+    \label{thm:csetid}
+    Let $C \subseteq S$. 
+    Then $C$ is a $C$-set if and only if there exists $p\cdot p = p
+    \in J(S)$ such that $C \in p$.
+  \end{thm}
+  \begin{proof}
+    This is \cite[Theorem 3.8]{De:2008uq}.%
+    \endnote{
+      In this theorem, strongly rich sets are the same as our
+      $C$-sets. 
+      There is nothing to prove here since the choice is just a matter
+      of terminology.
+      Currently, $C$-sets is the preferred term. 
+    }
+  \end{proof}
+
+Since central sets where originally defined using notions of
+topological dynamics, it is natural to investigate whether $C$-sets
+admit a dynamical characterization.
+We will prove such a characterization in Section \ref{sec:dyncsets}.
+Before we can begin we will need to define what we mean by a dynamical
+system, and provide a connection to $\beta S$.
+
+\section{Preliminaries}
+  \begin{defn}
+    \label{defn:semiact}
+    Let $S$ be a set. 
+    A triple $(X, S, \pi)$ is a \textsl{semigroup action of $S$ on
+      $X$} (or more shortly, \textsl{$S$ acts on $X$}) if and only if 
+      \begin{itemize}
+        \item[(1)] $S$ is a semigroup; and
+        
+        \item[(2)] $\pi : S \times X \to X$ is a function such that
+          for all $s$, $t \in S$ and for every $x \in X$,
+          \[ \pi\bigl(s, \pi(t,x)\bigr) = \pi(st, x). \]
+      \end{itemize}
+  \end{defn}
+  
+  \begin{rmk}
+    The usual (and sometimes confusing) convention is to write the value
+    $\pi(s,x)$ as $s \cdot x$.
+    Following this convention the condition on $\pi$ becomes $s \cdot (t
+    \cdot x) = st \cdot x$.
+    We will not follow this convention since we will soon introduce
+    better notation that will suit our purposes.
+  \end{rmk}
+
+Eventually we will want to extend our action of $S$ on $X$ to an
+action of $\beta S$ on $X$.
+To produce this extension we will be using \cite[Lemma
+3.30]{Hindman:1998fk} (and also \cite[Corollary
+4.22]{Hindman:1998fk}). 
+Before we can use these results directly we will need to characterize
+semigroup actions into a more convenient form. 
+
+  \begin{prop} 
+    \label{prop:semiact}
+    Let $X$ be a set, $S$ a semigroup and $\pi : S \times X \to X$.
+    The triple $(X, S, \pi)$ is a semigroup action if and only if
+    there exists a semigroup homomorphism $T : S \to \setfunc{X}{X}$ such
+    that for all $s \in S$ and every $x \in X$,
+      \[ T(s)(x) = \pi(s,x). \]
+  \end{prop}
+  \begin{proof}
+    First observe that $(\setfunc{X}{X}, \circ)$ is a semigroup.
+    Now assume that the triple $(X, S, \pi)$ is a semigroup action. 
+    Define the map $T : S \to \setfunc{X}{X}$ by $T(s)(x) =
+    \pi(s,x)$.
+    To see that $T$ is a semigroup homomorphism, let $s$, $t \in S$
+    and $x \in X$. 
+    Then 
+      \begin{align*}
+        T(st)(x) = \pi(st,x) &= \pi\bigl(s, \pi(t,x)\bigr), \\
+        &= \pi\bigl(s, T(t)(x)\bigr), \\
+        &= T(s)\bigl(T(t)(x)\bigr), \\
+        &= \bigl(T(s) \circ T(t)\bigr) (x).
+      \end{align*}
+    Hence $T(st) = T(s) \circ T(t)$.
+
+    Conversely, suppose $T$ is a semigroup homomorphism. 
+    Let $s$, $t \in S$ and $x \in X$.
+    Then 
+      \begin{align*}
+        \pi(st, x) &= T(st)(x), \\
+        &= \bigl(T(s) \circ T(t)\bigr) (x), \\
+        &= \pi\bigl(s, T(t)(x)\bigr), \\
+        &= \pi\bigl(s, \pi(t,x)\bigr).
+      \end{align*}
+    Hence $(X, S, \pi)$ is a semigroup action.
+  \end{proof}
+
+With this Proposition we can now effectively forgot about our original
+Definition \ref{defn:semiact} and simply consider semigroup actions
+as elements of $\hom(S, \setfunc{X}{X})$. 
+However, in this chapter we are not just concerned with any type of
+semigroup action.
+After all we are taking $\beta S$ to be a compact right topological
+semigroup, and so we would like to apply this topological algebra to
+our action in some way. 
+We shall soon see that the notion of a dynamical system is one way to
+accomplish this goal.
+
+  \begin{defn}
+    A pair $\ds$ is a \textsl{dynamical system} if and only if
+      \begin{itemize}
+        \item[(1)] $X$ is a compact Hausdorff space;
+        \item[(2)] $S$ is a semigroup;
+        \item[(3)] $T_s : X \to X$ is continuous for all $s \in S$;
+          and
+        \item[(4)] $T_s \circ T_t = T_{st}$ for all $s$, $t \in S$.%
+        \endnote{
+          In our definition of a dynamical system, the topological space
+          $X$ is taken to be compact Hausdorff to ensure that
+          $\setfunc{X}{X}$ is compact Hausdorff and limits along
+          ultrafilters exist and are unique. 
+          (Compactness guarantees existence, and Hausdorffness guarantees
+          uniqueness.) 
+        }
+% I'm sure that there are dynamical systems where the phase space is
+% not compact Hausdorff. Would be nice to mention were the reader can
+% go to read about such dynamical systems. 
+      \end{itemize}
+  \end{defn}
+
+  \begin{rmk}
+    Let $\ds$ be a dynamical system and define $T : S \to
+    \setfunc{X}{X}$ by $T(s) = T_s$.
+    Then by Proposition \ref{prop:semiact} we are justified in saying
+    that \textsl{$S$ acts on $X$ via $\la T_s \ra_{s \in S}$}.
+  \end{rmk}
+
+Using this remark we can extend the action of the dynamical system to
+$\beta S$ as follows.
+Giving $\setfunc{X}{X}$ the product topology and, as usual, taking $S$ to be 
+discrete, we have that the function $T :
+S \to \setfunc{X}{X}$ is a continuous semigroup
+homomorphism into a compact space.
+Therefore by \cite[Theorem 3.27]{Hindman:1998fk} we can produce a
+continuous extension $\widetilde{T}$ of $T$.
+(More directly, $\widetilde{T}$ is defined for each $p \in \beta S$ by
+$\widetilde{T}(p) \in \bigcap \{\, c\ell\bigl( T[A] \bigr) : A \in p \,\}$, where
+the closure is in $\setfunc{X}{X}$.)
+Now by \cite[Theorem 2.22(a)]{Hindman:1998fk} the space $\setfunc{X}{X}$ is
+a compact right-topological semigroup.
+In order to show that $\widetilde{T}$ is a semigroup homomorphism it
+suffices by, \cite[Corollary 4.22]{Hindman:1998fk}, to show that for all
+$s \in S$, the
+map $\lambda_{T(s)}$ is continuous.
+However by \cite[Theorem 2.2(b)]{Hindman:1998fk} we have that
+$\lambda_{T(s)}$ is continuous if and only if $T(s)$ is continuous. 
+Since $\ds$ is a dynamical system and $T(s) = T_s$ we know by
+definition that $T(s)$ is continuous. 
+Hence $\widetilde{T} : \beta S \to \setfunc{X}{X}$ is a continuous semigroup
+homomorphism.
+
+  \begin{rmk}
+    By using the map $\widetilde{T} : \beta S \to X$, we can define
+    $T_p : X \to X$, for $p \in \beta S$, as $T_p =
+    \widetilde{T}(p)$. 
+    Since $\widetilde{T}$ is a semigroup homomorphism we immediately
+    conclude that $T_p \circ T_q = T_{pq}$ for all $p$, $q \in \beta
+    S$.
+   \end{rmk}
+
+It's important to note that in general $(\beta S, \la T_p \ra_{p
+  \in \beta S})$ is not a dynamical system. 
+The next example shows that $T_p$ may not be continuous for $p \in S^*$.
+ 
+
+  \begin{example}
+    We have that $(\beta\bbN, \la \lambda_s \ra_{s\in\bbN})$ is a
+    dynamical system, but if $p \in \bbN^*$, then $\lambda_p$ is not
+    continuous.
+    This is proved in \cite[Theorem 6.10 and Remark 6.11]{Hindman:1998fk}.
+   \end{example}
+
+This example is somewhat disappointing since we lose the ``dynamical
+part'' when extending the dynamical system to $\beta S$.
+However even with this lost we will be able to prove something
+intelligible about certain dynamical systems. 
+Intuitively, the points of $S^*$ can be thought of as points at
+infinity. 
+Since in dynamical systems we are often concerned with the
+``long-run'' behavior of our maps $T_s$ we will often be able to
+correspond any interesting long run behaviors with a point at infinity
+in $S^*$.
+
+To make this idea precise, we will be using the notion of a limit
+along an ultrafilter. 
+
+  \begin{defn}
+    \label{defn:plim}
+    Let $S$ be a discrete space, $p \in \beta S$, $X$ a compact
+    Hausdorff topological space, $\la x_s : s \in S \ra$ a family
+    of points in $X$, and $y \in X$.
+    Then \hbox{$p$-$\displaystyle\lim_{s \in S} x_s = y$} if and only
+    if for every
+    neighborhood $U$ of $y$ we have $\{\, s \in S : x_s \in U \,\} \in p$.
+  \end{defn}
+
+  \begin{rmk}
+    Our definition of a \hbox{$p$-limit} is a bit more restrictive
+    then usual.
+    Normally the definition only takes $X$ be any topological space.
+    We placed these extra restrictions on $X$ to ensure that every
+    \hbox{$p$-limit} exists and is unique.
+  \end{rmk}
+
+  \begin{prop}
+    \label{prop:dsplim}
+    Let $\ds$ be a dynamical system.
+    Then for every $p \in \beta S$ and each $x \in X$ we have $T_p(x)
+    = \hbox{$p$--$\lim_{s \in S} T_s(x)$}$.
+  \end{prop}
+  \begin{proof}
+    By definition, we need to show that for all neighborhoods $U$ of
+    $T_p(x)$, we have $\{\, s \in S : T_s(x) \in U \,\} \in p$. 
+    Define $\pi_x : \setfunc{X}{X} \to X$ by $\pi_x(f) = f(x)$ and let
+    $U$ be a neighborhood of $T_p(x)$.
+    Note that $\pi_x^{-1}[U]$ is a neighborhood of $T_p$.
+    By definition of $T_p$, we have that for all $A \in p$,
+    $\pi_x^{-1}[U] \cap \{\, T_s : s \in A \,\} \ne \emptyset$. 
+    Hence for all $A \in p$, there exists $s \in A$ such that $T_s(x)
+    \in U$. 
+
+    Suppose there exists a neighborhood $U$ of $T_p(x)$ such that
+    $\{\, s \in S : T_s(x) \in U \,\} \not\in p$. 
+    Put $A = \{\, s \in S : T_s(x) \not\in U\,\}$.
+    Then $A \in p$.
+    Therefore there exists $s \in A$ such that $T_s(x) \in U$ (by our
+    first paragraph) and $T_s(x) \not\in U$ (by our definition of
+    $A$), a contradiction.
+  \end{proof}
+
+With these preliminaries out of the way, we can now provide a
+dynamical characterization of $C$-sets.
+
+\section{Dynamical Characterization of $C$-sets}
+\label{sec:dyncsets}
+ \begin{defn}
+    \label{defn:JSUR}
+    Let $\ds$ be a dynamical system, and let $x$, $y \in X$. 
+    The pair $(x,y)$ is \textsl{jointly sparsely uniformly recurrent}
+    (we'll abbreviate this to JSUR) if and only if $\{\, s \in S :
+    \hbox{$T_s(x) \in U$ and $T_s(y) \in U$} \,\}$ is a $J$-set for every
+    neighborhood $U$ of $y$.%
+    \endnote{
+      In this section Definition \ref{defn:JSUR}, Lemma \ref{lem:JSUR},
+      and Theorem \ref{thm:dyncsets} and their proofs are all, essentially,
+      minor modifications of \cite[Definition 3.1]{Burns:2007uq},
+      \cite[Lemma 3.3]{Burns:2007uq}, \cite[Theorem 3.4]{Burns:2007uq}
+      respectively. 
+    }
+  \end{defn}
+
+
+  \begin{lem}
+    \label{lem:JSUR}
+    Let $\ds$ be a dynamical system, and let $x$, $y \in X$.
+    The following statements are equivalent.
+    \begin{itemize}
+      \item[(a)] The pair $(x, y)$ is JSUR.
+      \item[(b)] There exists $r \in J(S)$ such that $T_r(x) = y = T_r(y)$.
+      \item[(c)] There exists an idempotent $r \in J(S)$ such that $T_r(x)
+        = y = T_r(y)$. 
+    \end{itemize}
+  \end{lem}
+  \begin{proof}
+    (a) $\Rightarrow$ (b). 
+    For each neighborhood $U$ of $y$, put 
+      \[  
+        B_U = \{\, s \in S : \hbox{$T_s(x) \in U$ and $T_s(y) \in U$}
+        \,\}.
+      \]
+    By assumption each $B_U$ is a $J$-set. 
+    We now show that the collection $\{\, B_U : \hbox{$U$ is a
+      neighborhood of $y$} \,\}$ is closed under finite intersection
+    by showing that, for all neighborhoods $U$ and $V$ of $y$ we have $B_{U
+      \cap V} = B_U \cap B_V$.
+    Let $s \in S$, then 
+      \begin{align*}
+        s \in B_{U \cap V} &\iff \hbox{$T_s(x) \in U \cap V$ and $T_s(y) \in U
+        \cap V$}, \\
+      &\iff \hbox{$T_s(x) \in U$, $T_s(x) \in V$, $T_s(y) \in U$, and
+        $T_s(y) \in V$}, \\
+      &\iff s \in B_U \cap B_V.
+      \end{align*}
+    
+    By \cite[Theorem 2.14]{Hindman:2010fk}, we know that every $J$-set
+    of $S$ is partition regular. 
+    Therefore by \cite[Theorem 3.11 (b)]{Hindman:1998fk},  we can pick 
+    $r \in J(S)$ such that $\{\, B_U : \hbox{$U$ is a neighborhood of
+      $y$}\,\} \subseteq r$. 
+    
+    Now for all neighborhoods $U$ of $y$, we have $B_U \subseteq \{\,
+    s \in S : T_s(x) \in U \,\}$ and $B_U \subseteq \{\, s \in S :
+    T_s(y) \in U \,\}$. 
+    Therefore $\{\, s \in S : T_s(x) \in U\,\} \in r$ and $\{\, s \in
+    S : T_s(y) \in U \,\} \in r$. 
+    By Definition \ref{defn:plim}, we can conclude that
+    $r$-$\displaystyle\lim_{s\in S} T_s(x) = y$ and
+    $r$-$\displaystyle\lim_{s \in S} T_s(y) = y$. 
+    Hence by Proposition \ref{prop:dsplim}, we have $T_r(x) =
+    r$-$\displaystyle\lim_{s \in S} T_s(x) = y = r$-$\displaystyle\lim_{s \in S}
+    T_s(y) = T_r(y)$.
+  
+    (b) $\Rightarrow$ (c).
+    Put $M  = \{\, r \in J(S) : T_r(x) = y = T_r(y) \,\}$. 
+    We'll show that $M$ is a nonempty compact subsemigroup of $J(S)$. 
+    If we can show this, then we can pick an idempotent in $M$ and our
+    result follows.
+    The fact that $M \ne \emptyset$ follows from our assumption. 
+    To see that $M$ is compact it suffices to show that $M$ is
+    closed. 
+    Let $r \not\in M$, then either $T_r(x) \ne y$ or $T_r(y) \ne y$. 
+    First, assume that $T_r(x) \ne y$. 
+    By Definition \ref{defn:plim} and Proposition \ref{prop:dsplim},
+    pick a
+    neighborhood $U$ of $y$ such that 
+    $\{\, s \in S : T_s(x) \in U \,\} \not\in r$.
+    Put $A = \{\, s \in S : T_s(x) \in U \,\}$ and note that $S
+    \setminus A \in r$ and $\overline{S \setminus A} \cap M =
+    \emptyset$.
+    [If $p \in \overline{S \setminus A} \cap M$, then $A = \{\, s \in
+    S : T_s(x) \in U \,\} \in p$ by Definition \ref{defn:plim} and
+    Proposition \ref{prop:dsplim}.
+    We have also have that $S \setminus A \in p$.
+    Hence $\emptyset = A \cap (S \setminus A) \in p$, a
+    contradiction.]
+    Now assume that $T_r(y) \ne y$. 
+    By Definition \ref{defn:plim} and \ref{prop:dsplim}, pick a
+    neighborhood $U$ of $y$ such that
+    $\{\, s \in S : T_s(y) \in U \,\} \not\in r$.
+    Put $A = \{\, s \in S : T_s(y) \in U \,\}$ and note that $S
+    \setminus A \in r$ and $\overline{S \setminus A} \cap M =
+    \emptyset$.
+    Hence $M$ is a nonempty closed subset of $J(S)$.
+
+    To see that $M$ is a subsemigroup, let $q$, $r \in M$.
+    Then $T_{qr}(x) = T_q\bigl(T_r(x)\bigr) = T_q(y) =
+    T_q\bigl(T_r(y)\bigr) = T_{qr}(y)$ and $T_q(y) = y$. 
+    Hence $qr \in M$. 
+    
+    (c) $\Rightarrow$ (a).
+    Pick $r$ as guaranteed in (c). 
+    Let $U$ be a neighborhood of $y$. 
+    Then $\{\, s \in S : T_s(x) \in U \,\} \in r$ and $\{\,  s \in S :
+    T_s(y) \in U \,\} \in r$.
+    Hence $\{\, s \in S : \hbox{$T_s(x) \in U$ and $T_s(y) \in U$}
+    \,\} \in r$.  
+  \end{proof}
+
+  \begin{thm}
+    \label{thm:dyncsets}
+    Let $(S,\cdot)$ be a semigroup and $A \subseteq S$. 
+    Then $A$ is a $C$-set if and only if there exist a dynamical
+    system $\ds$ with points $x$, $y \in X$ where $(x,y)$ is JSUR, and
+    a neighborhood $U$ of $y$ such that $A = \{\, s \in S : T_s(x) \in
+    U \,\}$.
+  \end{thm}
+  \begin{proof}
+    ($\Rightarrow$) Let $A \subseteq S$ be our $C$-set, and by
+    Theorem \ref{thm:csetid} pick an idempotent $r \in J(S)$ such that
+    $A \in r$. 
+    Let $R = S \cup \{e\}$ be the semigroup with an identity $e$
+    adjoined to S. 
+    (For expository convenience, we still add this new identity even
+    if $S$ already contains an identity.)
+    Give $\{0,1\}$ the discrete topology, and take
+    $\setfunc{R}{\{0,1\}}$ to have
+    the product topology, and put $X = \setfunc{R}{\{0,1\}}$.
+    Hence $X$ is a compact Hausdorff space.
+    For each $s \in S$, define $T_s : X \to X$ by $T_s(f) = f \circ
+    \rho_s$. 
+    % Perhaps I should sketch the argument here?
+    By \cite[Theorem 19.14]{Hindman:1998fk}, $\ds$ is a dynamical
+    system. 
+    
+    Now let $x = \cchi_A$ be the characteristic function of $A$, and
+    put $y = T_r(x)$.
+    % Perhaps I should provide a proof since there is not one
+    % explicitly given in the book?
+    Then by \cite[Remark 19.13]{Hindman:1998fk}, we have that $T_r(y)
+    = T_r\bigl(T_r(x)\bigr) = T_{rr}(x) = T_r(x) = y$.
+    Therefore by (c) in Lemma \ref{lem:JSUR}, the pair $(x, y)$ is JSUR.
+
+    Put $U = \{\, w \in X : w(e) = y(e) \,\}$, and note that $U =
+    \pi^{-1}\bigl[\{y(e)\}\bigr]$ and so $y \in U$. 
+    Hence $U$ is a (subbasic) open neighborhood of $y$.
+    To help us show that $U$ is the neighborhood of $y$ we are looking
+    for we will show that $y(e) = 1$.
+    Since $y = T_r(x)$ we have that $\{\, s \in S : T_s(x) \in U \,\}
+    \in r$ by Definition \ref{defn:plim} and Proposition \ref{prop:dsplim}.
+    Since $A \in r$, we can pick $s \in A$ such that $T_s(x) \in U$. 
+    Then by definition of $U$ and our choice of $T_s(x) \in U$, we
+    have $y(e) = T_s(x)(e) = x\bigl(\rho_s(e)\bigr) = x(es) = x(s) =
+    \chi_{A}(s) = 1$. 
+    Finally, given $s \in S$, we have
+      \begin{align*}
+        s \in A &\iff \chi_{A}(s) = 1, \\
+                &\iff x(s) = 1, \\
+                &\iff x(es) = 1, \\
+                &\iff (x \circ \rho_s)(e) = 1, \\
+                &\iff T_s(x)(e) = 1 = y(e), \\
+                &\iff T_s(x) \in U.
+      \end{align*}
+   Hence $A = \{\, s \in S : T_s(x) \in U \,\}$. 
+   
+   ($\Leftarrow$) Let $\ds$ and let the points $x$, $y \in X$ be given as
+   guaranteed.
+   By Theorem \ref{thm:csetid}, pick an idempotent $r \in J(S)$
+   such that $T_r(x) = y = T_r(y)$. 
+   Since $U$ is a neighborhood of $y$ and $T_r(x) = y$, we have that
+   $A \in r$ by Definition \ref{defn:plim} and Proposition \ref{prop:dsplim}. 
+ \end{proof}
+
+% Thinking about cutting this section.
+\section{Open Problems}
+  \begin{enumerate}
+    \item Produce a dynamical characterization of rich sets.
+    \item Produce a dynamical characterization of strongly central sets.
+  \end{enumerate}
+
+\theendnotes
+
+\bibliographystyle{plain}
+\bibliography{references}
+\end{document}
