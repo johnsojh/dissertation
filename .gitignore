@@ -1,0 +1,20 @@
+# Ignore the auxiliary files produced by LaTeX
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.toc
+
+# Ignore file produced by endnotes package
+*.ent
+
+# Ignore the files produced by BiBTeX
+*.bbl
+*.blg
+*.rel
+
+# Ignore final pdf output
+*.pdf
+
+# Ignore metafile data added by Mac OS X
+.DS_Store
