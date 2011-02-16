@@ -1,0 +1,55 @@
+Rough Outline of Dissertation
+
+Front Matter
+------------
+     Abstract
+     Acknowledgement
+     Dedication
+     Table of Contents
+
+Chapters
+--------
+
+(o)  Introduction
+     1.  Overview
+     2.	 Algebraic and Topological Preliminaries
+     3.  Commutative Central Sets Theorem
+     4.  Central Sets Theorem
+     5.  Open Questions and Problems
+     *.  Notes
+
+(1)  Dynamical Characterization of C-sets
+     1.  Overview
+     2.  Basic Topological Dynamics
+     3.	 Dynamical Characterization of C-sets
+     4.  Open Questions and Problems
+     *.	 Notes
+
+(2)  Results on Combinatorial C-sets
+     1.	 Overview
+     2.  Combinatorial C-sets
+     3.  Combinatorial Central Sets
+     4.  Piecewise Syndetic Sets and J-sets
+     5.  Open Questions and Problems
+     *.  Notes
+
+(3)  Subsemigroups and Ideals
+     1.  Overview
+     2.  Commutative Semigroups
+     3.  Arbitrary Semigroups
+     4.	 An Example
+     5.  Open Questions and Problems
+     *.	 Notes
+
+(o)  References
+
+End-matter
+----------
+
+(o)  Index
+
+
+Pie-in-the-sky 
+--------------
+
+(o)  New combinatorial of Finite Sums Theorem
