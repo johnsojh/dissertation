@@ -1,0 +1,13 @@
+Dr. Hindman
+
+I'm still working on my Dissertation, but my writing is proceeding
+slower than I originally anticipated.  (For instance, I have clearly
+missed by February 16 deadline!)  In addition, I have also been
+thinking about several other (mathematical) projects connected to my
+Dissertation which I would like to tell you about in this letter.
+
+In my Introduction I would like to motivate the definitions surrounding
+the "noncommutative version" of the Central Sets Theorem by showing
+that J-sets should satisfy the conclusion of the Noncommutative van
+der Waerden Theorem.  (I'll abbreviate this theorem by NVDW from now
+on.)  Recall that in "
