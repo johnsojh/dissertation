@@ -159,10 +159,12 @@ from context.)
 The study of ideals in semigroups is one of the main differences
 between semigroup theory and group theory.
 (A semigroup is a group if and only if the only left and right ideals
-is the semigroup itself.)
-Moreover, semigroup theory is different from ring theory too, as the
+is the semigroup itself.
+\cite[Example 1.28]{Hindman:1998fk} shows that a semigroup with only
+one ideal need not be a group.)
+Moreover, semigroup theory is different from ring theory too---as the
 following simple example shows that not every semigroup can be
-embedded as the multiplicative semigroup of some ring.
+embedded into the multiplicative semigroup of some ring.
 
 \begin{example}
   We call $(S, \cdot)$ a \textsl{right-zero semigroup} if and only if
@@ -189,10 +191,11 @@ embedded as the multiplicative semigroup of some ring.
 
 We call a left ideal $L$ of a semigroup \textsl{minimal} if and only
 if $L$ doesn't contain any proper left ideals.
-We define the concept of a \textsl{minimal right ideal} dually, and we
-can an ideal $I$ \textsl{minimal} if it doesn't contain any proper
+We define the concept of a \textsl{minimal right ideal} dually, and, we
+call an ideal $I$ \textsl{minimal} if it doesn't contain any proper
 ideal. 
-The following result proves that a semigroup contains at most one
+In contrast to ring theory, the following result proves that a
+semigroup contains at most one
 minimal ideal.
 
 \begin{prop}
@@ -201,9 +204,8 @@ minimal ideal.
 \end{prop}
 \begin{proof}
   It suffices to show that $K \cap I$ is an ideal.  
-  Then the conclusion will follow from the minimality of $K$ and the
-  fact that $K \cap I \subseteq I$.
-
+  Then the conclusion will follow from $K \cap I \subseteq I$, $K\cap
+  I \subseteq K$, and the minimality of $K$.
   To see that $K \cap I \ne \emptyset$, let $x \in K$ and $y \in I$.
   Then since $K$ and $I$ are ideals, $xy \in K$ and $xy \in I$.
 
@@ -219,6 +221,23 @@ definition.
   If $S$ has a minimal ideal, then we call this ideal the
   \textsl{smallest ideal (of S)} and denote this ideal by $K(S)$.%
   \endnote{
+    The use of $K(S)$ to denote the smallest ideal is derived from
+    early semigroup research done by Suschkewitsch in
+    \cite{Suschkewitsch:1928kx}. 
+    In this paper, Suschkewitsch investigates the structure of finite
+    semigroups.
+    He proves that a finite semigroup has minimal left ideals; minimal
+    right ideals; a smallest ideal which he denotes by $\mathfrak{K}$
+    (fraktur $K$)
+    and calls the \textsl{kernel}; and that all of these ideals are
+    related in nice ways.
+    In particular, he proves that the smallest ideal is the union of
+    all minimal left ideals, the union of all minimal right ideals,
+    and a structure theorem on $K(S)$.
+    I haven't personally read this Suschkewitsch paper.
+    This summary is based on \cite[Appendix A]{Clifford:1961fk},
+    the brief biography of Suschkewitsch in \cite{Hollings:2009uq},
+    and the unpublished ``summary translation'' of \cite{Hollings:2005vn}.
   }
 \end{defn}
 \begin{rmk}
@@ -231,7 +250,7 @@ Given a semigroup $S$, for each $x \in S$ we define the functions
 $\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by
 $\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
 For $A \subseteq S$ and $x \in S$, we use the special notation
-$x^{-1}A = x^{-1}A = \lambda_x^{-1}[A]$. 
+$x^{-1}A = \lambda_x^{-1}[A]$. 
 (Hence $x^{-1}A = \{\, y \in S : xy \in A \,\}$.)
 Finally, we call an element $e \in S$ an \textsl{idempotent} if and
 only if $ee = e$.
