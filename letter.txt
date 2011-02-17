@@ -42,4 +42,31 @@ with another theorem of mine, the following (possibly) weaker result.
 
   is contained in A.  
 
+---------
 
+Another project I have been working on is a combinatorial proof of the
+central sets theorem.  It turns out that using your combinatorial
+characterization of C-sets, I can easily derive the Central Sets
+Theorem by the same argument you, De, and Strauss used in "A new and
+stronger Central Sets Theorem" paper.  I'm now stuck on trying to
+prove two things:
+
+      (1)  Prove combinatorially that piecewise syndetic sets are
+      	   J-sets.
+
+      (2)  Prove combinatorially that central sets are partition
+           regular. 
+
+Of course, (1) would imply another combinatorial proof of van der
+Waerden's Theorem; and (2) would imply another combinatorial proof of
+Hindman's Theorem.  (So I guess being stuck here is to be expected.) 
+
+I don't have a good idea on how to proceed with (1).  My only plan for
+this problem is to read the original paper by Hales and Jewett and try
+to modify their combinatorial methods.  
+
+I feel I'm much closer to figuring out (2).  Let me describe my method
+and what I have so far.  Instead of focusing on (2) directly, lets
+fo 
+
+      
