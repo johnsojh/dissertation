@@ -10,4 +10,36 @@ In my Introduction I would like to motivate the definitions surrounding
 the "noncommutative version" of the Central Sets Theorem by showing
 that J-sets should satisfy the conclusion of the Noncommutative van
 der Waerden Theorem.  (I'll abbreviate this theorem by NVDW from now
-on.)  Recall that in "
+on.)  Recall that in you paper "Ramsey Theory in Noncommutative
+Semigroups", you and Bergelson formulated and prove NVDW.
+
+  NVDW.  Let S be a semigroup, l and r natural numbers, and let <d_n>
+  be a sequence in S.  If S = U C_i, then there exist C_i, m in N, a
+  in S^{m+1}, and n(1) < n(2) < ... < n(m) in N such that
+  
+  {a(1)a(2)...a(m)a(m+1), a(1)d_{n(1)}a(2)d_{n(2)}...a(m+1), ...,
+    a(1)d^l_{n(1)}...a(m+1)} 
+
+  is contained in C_i.
+
+You and Bergelson prove this fact by showing that piecewise syndetic
+sets satisfy the conclusion of NVDW via Theorem 2.6 in the paper.
+Looking at this theorem, I realized that it's possible to prove that
+piecewise syndetic sets are not only J-sets, but that they are J-sets
+in which you can choose how many terms of the sequences you multiple
+together.  More precisely we get the following theorem. 
+
+Ideally, in analogy with how the strengthened version of VDW follows,
+I would like to easily use the definition of J-sets to show that
+J-sets satisfy the conclusion of NVDW.  Now I can easily prove, along
+with another theorem of mine, the following (possibly) weaker result.
+
+  Thm.  Let S be a semigroup and A a J-subset of S.  Then there exist
+  m in N, a in S^{m+1}, and d in S^{m+1} such that
+
+  {a(1)a(2)...a(m)a(m+1), a(1)d(1)a(2)d(2)...a(m+1), ...,
+    a(1)d^l(1)...a(m+1)} 
+
+  is contained in A.  
+
+

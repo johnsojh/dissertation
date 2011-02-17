@@ -3,6 +3,34 @@
 
 \documentclass[12pt]{letter}
 
+\usepackage{amsthm, amssymb, amsmath}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem*{nvdw}{Noncommutative van der Waerden Theorem}
+\newtheorem*{thm}{Theorem}
+\newtheorem*{ques}{Question}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+\newcommand{\ds}{(X, \la T_s \ra_{s\in S})}
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -3 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+
 \makeatletter
 \let\@texttop\relax
 \makeatother
@@ -13,5 +41,149 @@
 \begin{document}
 \begin{letter}{}
 \opening{Dr.~Hindman}
+
+I'm still working on my Dissertation, but as you can deduce, my
+writing is proceeding slower than I originally planned.  
+(For instance, I have clearly missed my February 16 deadline!)
+In addition, I have also been working on several other (mathematical)
+projects connected to my Dissertation.
+
+In my Introduction I would like to motivate the definitions
+surrounding the ``noncommutative version'' of the Central Sets Theorem
+by showing that J-sets should satisfy the conclusion of the
+Noncommutative van der Waerden Theorem.  
+(I'll abbreviate this theorem by NVDW from now on.)
+Recall that in your paper ``Ramsey Theory in Noncommutative
+Semigroups'', you and Bergelson formulated and proved NVDW.
+
+\begin{nvdw}
+  Let $S$ be a semigroup, $l$, $r \in \bbN$, and let $\la d_n
+  \ra_{n=1}^\infty$ be a sequence in $S$. 
+  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$, $m \in \bbN$, $a \in S^{m+1}$, and $n(1) < n(2) <
+  \cdots < n(m)$ in $\bbN$ such that 
+  \[
+    \biggl\{ \prod_{j=1}^{m+1}a(j) \biggr\} \cup \biggl\{\,
+    \prod_{j=1}^m\Bigl(a(j)d_{n(j)}^k\Bigr)a(m+1) : k \in \{1, 2, \ldots, l\}
+    \,\biggr\} \subseteq C_i.
+  \]
+\end{nvdw}
+
+You and Bergelson prove this fact by showing that piecewise syndetic
+sets satisfy the conclusion of NVDW via Theorem 2.6 (in the paper).
+Now in analogy with how the strengthened version of VDW easily follows
+the definition of J-sets, I would like to show, only using the
+definition, that J-sets satisfy the conclusion of NVDW.
+Unfortunately, I'm not able to prove such a statement, and I'm not
+even sure if it is a fact.
+
+Using the definition of J-sets and another theorem of mine, I am able
+to easily prove the following (possibly) weaker result.
+
+\begin{thm}
+  Let $A$ be a $J$-set of a semigroup $S$.
+  Then there exist $m \in \bbN$, $a \in S^{m+1}$, and $d \in S^{m+1}$
+  such that
+  \[
+    \biggl\{ \prod_{j=1}^{m+1}a(j) \biggr\} \cup \biggl\{\,
+    \prod_{j=1}^m\Bigl(a(j)d(j)^k\Bigr)a(m+1) : k \in \{1, 2, \ldots, l\}
+    \,\biggr\} \subseteq A.
+  \]
+\end{thm}
+
+The reason for my pessimism expressed above is that Theorem 2.6 (in
+the paper) made me realize that piecewise syndetic sets are not only
+J-sets, but they are J-sets in which you can choose how many terms of
+your set of sequences you multiple together.
+More precisely, we have the following theorem.
+
+\begin{defn}
+  For each $m$, $k \in \bbN$, put
+  \begin{align*}
+    \calI_{m,k} &= \Bigl\{\, \bigl(H(1), H(2), \ldots, H(m)\bigr) :
+    \mbox{for each $i \in \{1, 2, \ldots, m\}$, $H(i) \in \Pf(\bbN)$}
+    \\
+    &\hspace{5em}\mbox{and $|H(i)| = k$ with $\max H(i) < \min
+      H(i+1)$}\\
+    &\hspace{5em}\mbox{for every $i \in \{1, 2, \ldots, m-1\}$} \,\Bigr\}.
+  \end{align*}
+\end{defn}
+
+\begin{thm}
+  Let $A$ be a piecewise syndetic subset of a semigroup $S$. 
+  Let $F \in \Pf(\setfunc{\bbN}{S})$.
+  Then for all $k \in \bbN$, there exist $m \in \bbN$, $a \in
+  S^{m+1}$, $H \in \calI_{m,k}$ such that for all $f \in F$, $x(m, a,
+  H, f) \in A$.
+\end{thm}
+\begin{proof}
+  Let $k \in \bbN$ and enumerate $F$ as $\{f_1, f_2, \ldots, f_l \}$.
+  Put $Y = \bigtimes_{t=1}^l \beta S$.
+  For each $i \in \bbN$, put
+  \begin{align*}
+    I_i &= \Bigl\{\, \bigl( x(m, a, H, f_1), x(m, a, H, f_2), \ldots,
+    x(m, a, H, f_l) \bigr) : \mbox{$m \in \bbN$, $a \in S^{m+1}$,} \\
+    &\hspace{5em} \mbox{$H \in \calI_{m,k}$, and $\min H(1) > i$}
+    \,\Bigr\},
+  \end{align*}
+  and put $E_i = I_i \cup \{(a, a, \ldots, a) : a \in S\}$.
+  Put $I = \bigcap_{i=1}^\infty \overline{I_i}$ and $E =
+  \bigcap_{i=1}^\infty \overline{E_i}$.
+  Observe $I$ and $E$ are nonempty closed subsets of $Y$.
+  [Since each $I_i \ne \emptyset$ and $I_{i+1} \subseteq I_i$.]
+  
+  We claim that $E$ is a subsemigroup of $Y$ and $I$ is an ideal of
+  $E$. 
+  Let $p$, $q \in E$, $U$ be an open neighborhood of $pq$, and let $i
+  \in \bbN$. 
+  Since $\rho_q$ is continuous, pick $V$ a neighborhood of $p$ such
+  that $Vq \subseteq U$. 
+  If $p \in I$, then pick $\vec{x} \in I_i \cap V$ otherwise pick
+  $\vec{x} \in E_i \cap V$.
+  If $\vec{x} \in I_i$, then pick $m \in \bbN$, $a \in S^{m+1}$, and
+  $H \in \calI_{m,k}$ with $\min H(1) > i$ such that
+  \[
+    \vec{x} = \bigl( x(m, a, H, f_1), x(m, a, H, f_2), \ldots, x(m,
+    a, H, f_l) \bigr)
+  \]
+  In this case put $j = \max H(m)$, otherwise put $j=i$. 
+
+  Since $\lambda_{\vec{x}}$ is continuous, pick $W$ a neighborhood of
+  $q$ such that $xW \subseteq U$. 
+  If $q \in I$, then pick $\vec{y} \in I_j \cap W$, otherwise pick
+  $\vec{y} \in E_j \cap W$.
+  Then $\vec{x}+\vec{y} \in E_i \cap U$, and if $p \in I$ or $q \in
+  I$, then $\vec{x} + \vec{y} \in I_i \cap U$. 
+  Hence, it follows that $E$ is a subsemigroup of $Y$ and $I$ is an
+  ideal of $E$.
+
+  Pick $p \in K(\beta S) \cap \overline{A}$ and put $\overline{p} =
+  (p, p, \ldots, p)$. 
+  Since $K(Y) = \bigtimes_{t=1}^l K(\beta S)$, we have that
+  $\overline{p} \in K(Y)$. 
+  We show that $\overline{p} \in E$.
+  Let $U$ be a neighborhood of $\overline{p}$ and pick $B_1$, $B_2$,
+  \dots, $B_l \in p$ such that $\bigtimes_{t=1}^l \overline{B_t}
+  \subseteq U$. 
+  Pick $a \in \bigcap_{t=1}^l B_t$, then $(a, a, \ldots, a) \in U \cap
+  E_i$ for all $i \in \bbN$. 
+  Hence $\overline{p} \in E$ and moreover $\overline{p} \in K(Y) \cap
+  E$.
+
+  Since $K(Y) \cap E \ne \emptyset$, we know that $K(E) = K(Y) \cap
+  E$.
+  Therefore $\overline{p} \in K(E) \subseteq I$.
+  Hence $I_i \cap \bigtimes_{i=1}^l A \ne \emptyset$ for all $i \in
+  \bbN$ and so our conclusion follows.
+\end{proof}
+
+If we call a set $A$ that satisfies the conclusion of this theorem a
+\textsl{strong $J$-set}, we can formulate a natural questions. 
+
+\begin{ques}
+  Is every $J$-set a strong $J$-set?
+\end{ques}
+
+
 \end{letter}
 \end{document}
