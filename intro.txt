@@ -88,6 +88,22 @@ Introduction
     semigroup theory or the monograph [Clifford:1961fk] for much more
     detail. 
 
+    *Endnote for why this is called K(S)*  The use of K(S) to denote
+     the smallest ideal is derived from early semigroup research done
+     by Suschkewitsch in [Suschkewitsch:1928kx].  In this paper,
+     Suschkewitsch investigates the structure of finite semigroups.
+     He is able to prove that a finite semigroup has minimal left
+     ideals, minimal right ideals, and a smallest ideal which he
+     denotes by [Fraktur K] and calls the kernel of the semigroup.
+     Additionally, he proves that the smallest ideal is the union of
+     all the minimal left ideals and the union of all the minimal
+     right ideals and he obtains a structure theorem on the smallest
+     ideal.  I haven't personally read this Suschkewitsch paper, so
+     the above summary is based on Appendix A of [Clifford:1961fk],
+     the brief biography of Suschkewitsch in [Hollings:2009uq], and
+     the unpublished note of [Hollings:2005vn]. 
+    
+
 
 References 
 ----------
@@ -101,4 +117,5 @@ References
 [Hollings:2007uq]	"Some first tantalizing steps ..."
 [Hollings:2009kx]	"The Early Development of ..."
 [Hollings:2009uq]	"Anton Kazimirovich ..."
+[Suschkewitsch:1928kx]	"Uber ..."
 
