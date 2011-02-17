@@ -33,7 +33,13 @@ Chapters
      5.  Open Questions and Problems
      *.  Notes
 
-(3)  Subsemigroups and Ideals
+(3)  Group Action on C-sets in N
+     1.  Overview
+     2.  C-set analogues of theorems on K(\beta S)
+     3.	 Open Questions and Problems
+     *.	 Notes
+
+(4)  Subsemigroups and Ideals
      1.  Overview
      2.  Commutative Semigroups
      3.  Arbitrary Semigroups
