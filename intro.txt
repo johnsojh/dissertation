@@ -103,7 +103,34 @@ Introduction
      the brief biography of Suschkewitsch in [Hollings:2009uq], and
      the unpublished note of [Hollings:2005vn]. 
     
+    Definition. 
 
+    (a)  A _right-topological semigroup_ is a triple (S, T, *) such that
+    	 (S, T) is a topological space, (S, *) is a semigroup, and for all
+	 x in S, rho_x is continuous. 
+
+    (b)  A _left-topological semigroup_ is a triple (S, T, *) such that
+         (S,T) is a topological space, (S, *) is a semigroup, and for all x
+    	 in S, lambda_x is continuous.
+
+    (c)	 A _semitopological semigroup_ is a right-topological semigroup
+    	 which is also a left-topological semigroup. (With the same
+    	 underlying topology.)
+
+    (d)  A _topological semigroup_ is a triple (S, T, *) such that (S,
+         T) is a topological space, (S, *) is a semigroup, and * : S x
+         S -> S is continuous in the product topology of S x S. 
+
+It's clear that  (d) -> (c), (c) -> (a), (c) -> (b), but it's known 
+known that non of these implications reverse.  (See Exercises 2.1.1 and
+2.1.2 in [Hindman:1998fk].)  Since the theories of left-topological
+and right-topological semigroups are "dual", it's a matter of taste which
+one we chose to work in.  We follow [Hindman:1998fk] and develop our
+theory in terms of right-topological semigroups.  Again, following
+[Hindman:1998fk] we make the further restriction, and only consider
+Hausdorff spaces.  Hence from now on whenever we mention a topological
+space, we assume that it is Hausdorff. 
+    
 
 References 
 ----------

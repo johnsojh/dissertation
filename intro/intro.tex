@@ -3,7 +3,9 @@
 \documentclass[12pt]{article}
 \usepackage{amsthm, amssymb, amsmath}
 \usepackage{endnotes}
+\usepackage{todonotes}
 % \usepackage[doublespacing]{setspace}
+\usepackage{url}
 
 \newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
 \theoremstyle{plain}
@@ -139,7 +141,7 @@ that is, for all $x$, $y$, and $z \in S$, $x \cdot (y \cdot z) = (x
 As usual in mathematics we will often suppress the explicit mention of
 our binary operation $\cdot$ and simply write that $S$ is a semigroup.
 Clearly any group is also a semigroup, but the canonical
-example of a semigroup that is not a group is the set of
+example of a semigroup which is not a group is the set of
 natural numbers under addition.
 Another class of examples can be obtained by considering the
 multiplicative part of a ring. 
@@ -162,7 +164,7 @@ between semigroup theory and group theory.
 is the semigroup itself.
 \cite[Example 1.28]{Hindman:1998fk} shows that a semigroup with only
 one ideal need not be a group.)
-Moreover, semigroup theory is different from ring theory too---as the
+Moreover, semigroup theory is different from ring theory too --- as the
 following simple example shows that not every semigroup can be
 embedded into the multiplicative semigroup of some ring.
 
@@ -173,7 +175,7 @@ embedded into the multiplicative semigroup of some ring.
   produces a semigroup.
   The name ``right-zero'' is derived from the fact that, in the
   natural numbers, multiplying on the right by zero yields zero.
-  Hence in a right-zero semigroup every element is ``zero'' when
+  Hence in a right-zero semigroup every element is a ``zero'' when
   multiplied on the right.
 
   Suppose that $S$ is a right-zero semigroup with $|S| > 2$. 
@@ -206,9 +208,9 @@ minimal ideal.
   It suffices to show that $K \cap I$ is an ideal.  
   Then the conclusion will follow from $K \cap I \subseteq I$, $K\cap
   I \subseteq K$, and the minimality of $K$.
+
   To see that $K \cap I \ne \emptyset$, let $x \in K$ and $y \in I$.
   Then since $K$ and $I$ are ideals, $xy \in K$ and $xy \in I$.
-
   Now let $x \in K \cap I$ and $y \in S$.
   Since $K$ and $I$ are ideals, $xy \in K$, $xy \in I$, $yx \in K$,
   and $yx \in I$.
@@ -219,7 +221,8 @@ definition.
 \begin{defn}
   Let $S$ be a semigroup.
   If $S$ has a minimal ideal, then we call this ideal the
-  \textsl{smallest ideal (of S)} and denote this ideal by $K(S)$.%
+  \textsl{smallest ideal (of S)} and denote this ideal by
+  $K(S)$. \todo{Turn endnotes into hyperlinks.}%
   \endnote{
     The use of $K(S)$ to denote the smallest ideal is derived from
     early semigroup research done by Suschkewitsch in
@@ -234,6 +237,8 @@ definition.
     In particular, he proves that the smallest ideal is the union of
     all minimal left ideals, the union of all minimal right ideals,
     and a structure theorem on $K(S)$.
+
+    N.B. 
     I haven't personally read this Suschkewitsch paper.
     This summary is based on \cite[Appendix A]{Clifford:1961fk},
     the brief biography of Suschkewitsch in \cite{Hollings:2009uq},
@@ -257,8 +262,9 @@ only if $ee = e$.
 
 We shall not go further into the (purely) algebraic theory of
 semigroups; but, the interested reader can consult the article
-\cite{Hollings:2007uq} for a brief introduction or the monograph
-\cite{Clifford:1961fk} for more extensive information. 
+\cite{Hollings:2007uq} for a brief introduction or the monographs 
+\cite{Clifford:1961fk} and \cite{Clifford:1967fk} for more extensive
+information. 
 For our purposes the semigroup theory contained in \cite[Chapters 1
 and 2]{Hindman:1998fk} will suffice. 
 
