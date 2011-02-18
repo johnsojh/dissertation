@@ -18,11 +18,15 @@
 \newcommand{\ra}{\rangle}
 \newcommand{\bbN}{\mathbb{N}}
 \newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calX}{\mathcal{X}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\Pf}{\mathcal{P}_f}
-\newcommand{\ds}{(X, \la T_s \ra_{s\in S})}
+\newcommand{\dom}{\mathrm{dom}}
 \newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -3 pt #2$}}
 
 \font\bigmath=cmsy10 scaled \magstep 3
@@ -35,24 +39,26 @@
 \let\@texttop\relax
 \makeatother
 
-\date{February 17, 2011}
+\date{February 18, 2011}
 \signature{John H.~Johnson}
 
 \begin{document}
 \begin{letter}{}
 \opening{Dr.~Hindman}
 
-I'm still working on my Dissertation, but as you can deduce, my
+I'm still working on my Dissertation, but as you have probably already
+deduced, my
 writing is proceeding slower than I originally planned.  
 (For instance, I have clearly missed my February 16 deadline!)
-In addition, I have also been working on several other (mathematical)
-projects connected to my Dissertation.
+Recently I have been working on 2.05 (mathematical) projects on things
+I would like to put into my Dissertation.
+However, currently everything is stalled out and perhaps you can
+provide some guidance. 
 
-In my Introduction I would like to motivate the definitions
+My first project I would like to motivate the definitions
 surrounding the ``noncommutative version'' of the Central Sets Theorem
-by showing that J-sets should satisfy the conclusion of the
+by showing that $J$-sets should satisfy the conclusion of the
 Noncommutative van der Waerden Theorem.  
-(I'll abbreviate this theorem by NVDW from now on.)
 Recall that in your paper ``Ramsey Theory in Noncommutative
 Semigroups'', you and Bergelson formulated and proved NVDW.
 
@@ -72,12 +78,12 @@ Semigroups'', you and Bergelson formulated and proved NVDW.
 You and Bergelson prove this fact by showing that piecewise syndetic
 sets satisfy the conclusion of NVDW via Theorem 2.6 (in the paper).
 Now in analogy with how the strengthened version of VDW easily follows
-the definition of J-sets, I would like to show, only using the
-definition, that J-sets satisfy the conclusion of NVDW.
+the definition of $J$-sets, I would like to show only using the
+definition, that $J$-sets satisfy the conclusion of NVDW.
 Unfortunately, I'm not able to prove such a statement, and I'm not
 even sure if it is a fact.
 
-Using the definition of J-sets and another theorem of mine, I am able
+Using the definition of $J$-sets and another theorem of mine, I am able
 to easily prove the following (possibly) weaker result.
 
 \begin{thm}
@@ -93,8 +99,9 @@ to easily prove the following (possibly) weaker result.
 
 The reason for my pessimism expressed above is that Theorem 2.6 (in
 the paper) made me realize that piecewise syndetic sets are not only
-J-sets, but they are J-sets in which you can choose how many terms of
+$J$-sets, but they are $J$-sets in which you can choose how many terms of
 your set of sequences you multiple together.
+So it appears we may need a similar level of control for $J$-sets too.
 More precisely, we have the following theorem.
 
 \begin{defn}
@@ -107,6 +114,13 @@ More precisely, we have the following theorem.
       H(i+1)$}\\
     &\hspace{5em}\mbox{for every $i \in \{1, 2, \ldots, m-1\}$} \,\Bigr\}.
   \end{align*}
+
+  Given a semigroup $S$, $a \in S^{m+1}$, $H \in \calI_{m,k}$, and a
+  sequence $f$ in $S$, define
+  \[
+    x(m, a, H, f) = \prod_{j=1}^m\Bigl( a(j)\prod_{t \in H(j)} f(t)
+    \Bigr) a(m+1).
+  \]
 \end{defn}
 
 \begin{thm}
@@ -152,8 +166,8 @@ More precisely, we have the following theorem.
   $q$ such that $xW \subseteq U$. 
   If $q \in I$, then pick $\vec{y} \in I_j \cap W$, otherwise pick
   $\vec{y} \in E_j \cap W$.
-  Then $\vec{x}+\vec{y} \in E_i \cap U$, and if $p \in I$ or $q \in
-  I$, then $\vec{x} + \vec{y} \in I_i \cap U$. 
+  Then $\vec{x} \vec{y} \in E_i \cap U$, and if $p \in I$ or $q \in
+  I$, then $\vec{x} \vec{y} \in I_i \cap U$. 
   Hence, it follows that $E$ is a subsemigroup of $Y$ and $I$ is an
   ideal of $E$.
 
@@ -178,37 +192,109 @@ More precisely, we have the following theorem.
 \end{proof}
 
 If we call a set $A$ that satisfies the conclusion of this theorem a
-\textsl{strong $J$-set}, we can formulate a natural questions. 
+\textsl{strong $J$-set}, we can formulate a natural question. 
 
 \begin{ques}
   Is every $J$-set a strong $J$-set?
 \end{ques}
 
-Another project I have been working on is a combinatorial proof of the
-Central Sets Theorem.
-It turns out that using the combinatorial characterization of $C$-sets
-in terms of trees, it's easy to derive the Central Sets Theorem by the
-same argument in ``A new and stronger Central Sets Theorem'' paper.
-However, I'm now stuck on trying to prove the following two things:
-\begin{enumerate}
-  \item Prove, combinatorially, that piecewise syndetic sets are
-    $J$-sets.
-  
-  \item Prove, combinatorially, that central sets are partition
-    regular. 
-\end{enumerate}
-Of course, (1) would give another combinatorial proof of VDW; and (2)
-would give another combinatorial proof of Hindman's Theorem. 
-(So I guess being stuck here is to be expected.)
+At one point, I believed I had an approach, using Lemma 2.10 in
+``Cartesian Products of Sets Satisfying the Central Sets Theorem''
+paper, that would give a ``yes'' answer to this question. 
+However it didn't stand up to close scrutiny, and I'm not sure how to
+fix it. (Or, if it can even be fixed.)
 
+My second project has been to find a combinatorial proof that central
+sets are partition regular. 
+Of course this would imply Hindman's Theorem, so it's no surprise that
+I'm stuck here. 
+Recall the definition ([HS, Def.~14.23]) for a \mbox{$*$-tree} in $A$,
+where $A$ is a subset of a semigroup $S$.
 
-I don't have a good idea on how to approach (1) other than carefully
-read the original Hales-Jewett paper and try and modify their methods.
-For (2), I feel that I'm much closer to figuring this out.
+\begin{defn}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  We say a \mbox{$*$-tree} $T$ in $A$ has \textsl{f.i.p.}~if and only if
+  $(\forall F \in \Pf(T))(\bigcap_{f \in F} B_f \ne \emptyset)$.
+\end{defn}
 
-However, instead of focusing on (2) directly, let me focus on a
-another problem I feel that I can generalize directly to
-(2). 
+It's easy to show that a set $A$ with a \mbox{$*$-tree} with f.i.p.~is
+an IP-set. 
+The converse is true by Lemma 2.6 in ``A simple characterization of
+sets satisfying the Central Sets Theorem''. 
+One of the nice things about working with \mbox{$*$-trees} with
+f.i.p.~instead of IP-sets is that the fact that idempotent
+ultrafilters exist follows ``naturally'' from an application of Zorn's
+Lemma.
+
+\begin{thm}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  If there exists a \mbox{$*$-tree} in $A$ with f.i.p. and $A = C_1
+  \cup C_2 \cup \cdots \cup C_r$, then there exists $i \in \{1, 2,
+  \ldots, r\}$ such that $C_i$ has a \mbox{$*$-tree} with f.i.p.
+\end{thm}
+\begin{proof}
+  Let $T$ be a \mbox{$*$-tree} in $A$ with f.i.p.
+  Put $\calB = \{\, B_f(T) : f \in T \,\}$ and put 
+  \begin{align*}
+      \cal{X} &= \bigl\{\, \calC \subseteq \calP(A) : \mbox{$\calC$ has
+      f.i.p., $\calB \subseteq \calC$,} \\
+    &\hspace{4em}\mbox{and $(\forall C \in
+      \calC)(\{\, x \in C: (\exists D \in \calC)(D \subseteq x^{-1}C)
+      \,\} \in \calC)$} \,\bigr\}.
+  \end{align*}
+  Since $T$ has f.i.p. it follows that $\calB$ has f.i.p.
+  Since $T$ is a \mbox{$*$-tree} it follows that for all $f \in T$, 
+  $B_f = \{\, x \in B_f : \mbox{$(\exists g \in T)\bigr(B_g \subseteq
+    x^{-1}B_f(T)\bigl)$} \,\} \in \calB$ since $B_{f^\frown x} \subseteq
+  x^{-1}B_f$. 
+  Hence $\calB \in \calX$ and $\calX \ne \emptyset$. 
+  Now every chain in $\calX$ also has an upper bound, so we can apply
+  Zorn's Lemma to pick a maximal member.
+  This maximal member will be an idempotent ultrafilter.
+\end{proof}
+
+What I would like is a proof of this Theorem without the Axiom of
+Choice, but using filters (and possibly ultrafilters).
+I know that Hindman's Theorem is equivalent to the existence of
+idempotent ultrafilters in $\beta S$, and idempotent ultrafilters in
+$\beta \bbN$ are necessarily nonprincipal.
+Hence, I also know that Hindman's Theorem implies the so-called Weak
+Ultrafilter Principle, that is the statement that, a nonprincipal
+ultrafilter exists on $\bbN$.
+Since Hindman's Theorem implies this weak form of choice, any proof of
+Hindman's Theorem can't be totally constructive.  
+
+With this in mind, I have slowly been reading Yehuda Rav's paper,
+``Variants of Rado's Selection Lemma and their Applications''.
+The interesting thing about this paper is that Rav proves that there
+are several combinatorial-type statements equivalent to the
+Ultrafilter Principle.
+(Recall the Ultrafilter Principle states that every filter can be
+extended to an ultrafilter.
+This Principle is stronger than the Weak Ultrafilter Principle.)
+I've been trying to apply these combinatorial-type statements to
+produce another proof of Hindman's Theorem, but so far no luck.
+
+Another possible avenue I haven't investigated yet is to use a
+combination of the Axiom of Choice for Finite Sets (ACF) and Rado's
+Selection Lemma (RL).  
+It's known that under ZF, \mbox{ACF+RL} implies the Ultrafilter Principle.
+However, I recently found a paper, ``The Axiom of Choice for Finite
+Sets'' by R.~L.~Blair and M.~L.~Tomber, that reformulates the ACF into a
+restricted form of Zorn's Lemma. 
+So now my plan is to see if I can use this restricted Zorn's Lemma
+along with RL to produce another proof of Hindman's Theorem.
+Once (or if!) this is done, I'll then try to translate this into the
+combinatorial-type theorems in Rav's paper.
+
+Finally, my 0.05 project is to prove, combinatorially, that piecewise
+syndetic sets are $J$-sets.
+This is only $5/100$ of a project since I don't really have any 
+ideas here.
+The only plan I have is to carefully read the original Hales-Jewett
+paper and try to modify their methods. 
+
+\closing{Sincerely, }
 
 \end{letter}
 \end{document}
