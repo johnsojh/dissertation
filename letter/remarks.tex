@@ -36,7 +36,86 @@
 
 
 \begin{document}
+Recall from the letter that we have the following definition and theorem.
+\begin{defn}
+  For each $m$, $k \in \bbN$, put
+  \begin{align*}
+    \calI_{m,k} &= \Bigl\{\, \bigl(H(1), H(2), \ldots, H(m)\bigr) :
+    \mbox{for each $i \in \{1, 2, \ldots, m\}$, $H(i) \in \Pf(\bbN)$}
+    \\
+    &\hspace{5em}\mbox{and $|H(i)| = k$ with $\max H(i) < \min
+      H(i+1)$}\\
+    &\hspace{5em}\mbox{for every $i \in \{1, 2, \ldots, m-1\}$} \,\Bigr\}.
+  \end{align*}
 
+  Given a semigroup $S$, $a \in S^{m+1}$, $H \in \calI_{m,k}$, and a
+  sequence $f$ in $S$, define
+  \[
+    x(m, a, H, f) = \prod_{j=1}^m\Bigl( a(j)\prod_{t \in H(j)} f(t)
+    \Bigr) a(m+1).
+  \]
+\end{defn}
+
+\begin{thm}
+  Let $A$ be a piecewise syndetic subset of a semigroup $S$. 
+  Let $F \in \Pf(\setfunc{\bbN}{S})$.
+  Then for all $k \in \bbN$, there exist $m \in \bbN$, $a \in
+  S^{m+1}$, $H \in \calI_{m,k}$ such that for all $f \in F$, $x(m, a,
+  H, f) \in A$.
+\end{thm}
+
+Calling sets which satisfy the conclusion of this theorem
+\textsl{strong $J$-sets} I asked the following natural question.
+
+\begin{ques}
+  Is every $J$-set a strong $J$-set?
+\end{ques}
+
+By a simple argument of Hindman, it turns out that the answer to this
+question is ``yes''.
+This argument is based on a few observations concerning piecewise
+syndetic sets and $\calI_{m,k}$.
+
+\begin{thm}
+  Let $A$ be a piecewise syndetic subset of a semigroup $S$.
+  For each $k \in \bbN$ and $F \in \Pf(\setfunc{\bbN}{S})$ let $S(k,
+  F)$ denote the following statement:
+  \[
+    (\exists m \in \bbN) (\exists a \in S^{m+1}) (\exists H \in
+    \calI_{m,k}) (\forall f \in F) \bigl( x(m, a, H, f) \in A \bigr).
+  \]
+  If for all $F \in \Pf(\setfunc{\bbN}{S})$, $S(1,F)$ is true,
+  then $S(1, F) \implies S(k, F)$ for all $k \in \bbN$.
+\end{thm}
+\begin{proof}
+  Let $k \in \bbN$.
+  If $k = 1$, then the conclusion is trivially true.
+  So we may assume that $k > 1$.
+  For each $f \in F$, define $g_f \in \setfunc{\bbN}{S}$ by $g_f(t) =
+  f(k t) f(k t+1) \cdots f(k t+(k-1))$. 
+  
+  Put $G = \{\, g_f : f \in F \,\}$.
+  Then since $S(1, G)$ is true, pick $m \in \bbN$, $a \in S^{m+1}$,
+  and a strictly increasing sequence $n(1) < n(2) < \cdots < n(m)$ in
+  $\bbN$ such that for every $f \in F$,
+  $\prod_{j=1}^m\Bigl(a(j)g_f \bigl(n(j)\bigr)\Bigr) a(m+1) \in A$. 
+
+  For each $j \in \{1, 2, \ldots, m\}$, define $H(j) \in \Pf(\bbN)$ by
+  $H(j) = \{\, k  n(j), k n(j) + 1, \ldots, k n(j) + (k-1) \,\}$. 
+  I claim that $\max H(j) < min H(j+1)$ for all $j \in \{1, 2, \ldots,
+  m\}$. 
+  Now $\max H(j) = k n(j) + (k-1)$ and $\min H(j+1) = k n(j+1)$. 
+  Observe that we have the following:
+  \begin{align*}
+    n(j) < n(j+1) &\implies n(j) < n(j) + 1 \le n(j+1), \\
+    &\implies k n(j) < k n(j) + k \le k n(j+1), \\
+    &\implies k n(j) < k n(j) + (k-1) < k n(j) + k \le k n(j+1).
+  \end{align*}
+  Hence our claim follows.
+  Moreover, $H = \bigl(H(1), H(2), \ldots, H(m) \bigr) \in
+  calI_{m,k}$ and it follows that for all $f \in F$, $x(m, a, H, f)
+  \in A$.
+\end{proof}
 \end{document}
 
 
