@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm, amssymb, amsmath}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem*{nvdw}{Noncommutative van der Waerden Theorem}
+\newtheorem*{hj}{Hales-Jewett Theorem}
+\newtheorem*{thm}{Theorem}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{lem}{Lemma}
+\newtheorem*{ques}{Question}
+
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+\newcommand{\dom}{\mathrm{dom}}
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -3 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\begin{defn}
+  Let $S$ be a free semigroup on the alphabet $A$ and let $v$ be a
+  variable which is not a member of $A$.
+  \begin{itemize}
+    \item[(a)] A \textsl{variable word} $w(v)$ is a member of the free
+      semigroup on the alphabet $A \cup \{v\}$ in which $v$ appears. 
+  \end{itemize}
+\end{defn}
+\end{document}
+
