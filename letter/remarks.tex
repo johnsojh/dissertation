@@ -9,6 +9,8 @@
 \theoremstyle{plain}
 \newtheorem*{nvdw}{Noncommutative van der Waerden Theorem}
 \newtheorem*{thm}{Theorem}
+\newtheorem*{cor}{Corollary}
+\newtheorem*{lem}{Lemma}
 \newtheorem*{ques}{Question}
 
 \theoremstyle{definition}
@@ -143,19 +145,64 @@ syndetic sets and $\calI_{m,k}$.
 \end{defn}
 
 \begin{defn}
-  Let $S$ be a semigroup and $C \subseteq S$. 
-  We call $C$ a \textsl{$C$-set (in S)} if and only if there exist
-  functions $m \colon \Pf(\calT) \to \bbN$, $\alpha \in \bigtimes_{F
-    \in \Pf(\calT)} S^{m(F) + 1}$, $n \in \bigtimes_{F \in \Pf(\calT)}
-  \setfunc{<\omega}{S}$, such that
+  Let $S$ be a semigroup.
   \begin{itemize}
-    \item[(1)] \mbox{$\la$something$\ra$}
-    \item[(2)] whenever $p \in \bbN$, $G_1$, $G_2$, \ldots, $G_p \in
-      \Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots
-      \subsetneq G_p$, and $\la f_i \ra_{i=1}^p \in \bigtimes_{i=1}^p
-      G_i$, then 
+    \item[(a)] Given $m \in \bbN$, $a \in S^{m+1}$, a strictly
+      increasing sequence $n(1) < n(2) < \cdots < n(m)$ in $\bbN$, and
+      $f \in \calT(S)$, define
+      \[
+        x(m, a, n, f) = \biggl( \prod_{j=1}^m \bigl( a(j) f(n(j))
+        \bigr) \biggr) a(m+1).
+      \]
+      
+    \item[(b)] A set $A \subseteq S$ is a \textsl{$J$-set (in S)} if
+      and only if for every $F \in \Pf(\calT(S))$, there exist $m \in
+      \bbN$, $a \in S^{m+1}$, and a strictly increasing sequence $n(1)
+      < n(2) < \cdots < n(m)$ in $\bbN$, such that for all $f \in F$,
+      $x(m, a, n, f) \in A$. 
+
+    \item[(c)] A set $C \subseteq S$ is a \textsl{$C$-set (in S)} if
+      and only if there exist functions $m \colon \Pf(\calT) \to
+      \bbN$, $\alpha \in \bigtimes_{F \in \Pf(\calT)} S^{m(F) + 1}$,
+      $n \in \bigtimes_{F \in \Pf(\calT)} \bbN^{m(F)}$ such that 
+      \begin{itemize}
+        \item[(1)] for each $F \in \Pf(\calT)$, $n(F)$ is a strictly
+          increasing sequence;
+        
+        \item[(2)] if $F$, $G \in \Pf(\calT)$ with $F \subsetneq G$,
+          then $n(F)\bigl(m(F)\bigr) < n(G)(1)$; and
+
+        \item[(3)] whenever $p \in \bbN$, $G_1$, $G_2$, \ldots, $G_p
+          \in \Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots
+          \subsetneq G_p$ and $\la f_i \ra_{i=1}^p \in
+          \bigtimes_{i=1}^p G_i$, then $\prod_{i=1}^p x(m(G_i),
+          \alpha(G_i), n(G_i), f_i) \in A$. 
+      \end{itemize}
   \end{itemize}
 \end{defn}
+
+\begin{lem}
+  Let $S$ be a semigroup, $A \subseteq S$ a $J$-set, and $A = A_1 \cup
+  A_2$.
+  Then either $A_1$ is a $J$-set in $S$ or $A_2$ is a $J$-set in $S$.
+\end{lem}
+
+\begin{thm}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  Then $\overline{A} \cap J(S) \ne \emptyset$ if and only if $A$ is a
+  $J$-set. 
+\end{thm}
+
+\begin{thm}
+  Let $S$ be a semigroup and $C \subseteq S$.
+  Then $C$ is a $C$-set if and only if there is an idempotent $p \in
+  \overline{C} \cap J(S)$. 
+\end{thm}
+
+\begin{cor}
+  Let $S$ be a semigroup and $C \subseteq S$.
+  If $C$ is a central set, then $C$ is a $C$-set. 
+\end{cor}
 \end{document}
 
 
