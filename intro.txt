@@ -130,6 +130,16 @@ theory in terms of right-topological semigroups.  Again, following
 [Hindman:1998fk] we make the further restriction, and only consider
 Hausdorff spaces.  Hence from now on whenever we mention a topological
 space, we assume that it is Hausdorff. 
+
+4.  Central Sets Theorem
+
+So far we have only stated the Central Sets Theorem for commutative
+semigroups.  However there is a version of the Central Sets Theorem
+valid for all semigroups.  Before we state this version however, it
+may be convenient to explore the motivation behind this 
+
+Since the noncommutative version of the Central Sets Theorem requires
+somewhat more 
     
 
 References 
