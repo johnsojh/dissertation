@@ -613,6 +613,60 @@ We next show that our definition of a $J$-set is equivalent to
 In order to show that $J(S)$ is nonempty we now focus on showing that
 $J$-sets are partition regular. 
 
+\begin{thm}
+  Let $S$ be a semigroup, $A \subseteq S$ a $J$-set, and $A = A_1 \cup
+  A_2$. 
+  Then either $A_1$ is a $J$-set or $A_2$ is a $J$-set. 
+\end{thm}
+\begin{proof}
+  Let $F \in \Pf(\calT)$, $k = |F|$, and enumerate $F = \{ f_1, f_2,
+  \ldots, f_k \}$. 
+  By the Hales-Jewett Theorem, pick $n \in \bbN$, such that whenever
+  $[k]^n$ is 2-colored there exists a monochromatic combinatorial
+  line.
+  
+  Fix $b \in S$ and for each $w = (x_1, x_2, \ldots, x_n) \in [k]^n$
+  define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n
+  \bigr(f_{x_i}(nt+i)b\bigr)$.
+  Since $\{\, g_w : w \in [k]^n \,\} \in \Pf(\calT)$ and $A$ is a
+  $J$-set, pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$
+  such that for all $w \in [k]^n$, $x(m, a, t, g_w) \in A$.
+  Define $\varphi \colon [k]^n \to \{1, 2\}$ by $\varphi(w) = 1 $ if
+  $x(m, a, t, g_w) \in A_1$, and $\varphi(w) = 2$ otherwise.
+  Pick a variable word $w(\star)$ that begins and ends with a constant
+  such that $\bigl\{\, w(s) : s \in
+  \{1, 2, \ldots, k\} \,\bigr\}$ is a monochromatic combinatorial line
+  with respect to $\varphi$.
+  Without loss of generality we suppose that $\varphi\bigl(w(s)\bigr)
+  = 1$ for all $s \in \{1, 2, \ldots, k\}$. 
+
+  Let $w(\star) = (x_1, x_2, \ldots, x_n)$ where each $x_i \in \{1, 2,
+  \ldots, \} \cup \{\star\}$ and some $x_i = \star$. 
+  Let $r$ be the number of variable blocks in $w(\star)$, more
+  formally, let $r = \bigm|\bigl\{\, (i, i+1) \in \{1, 2, \ldots, n-1\} :
+  x_i = \star, x_{i+1} \in \{1, 2, \ldots, k\} \,\bigr\}\bigm|$.
+  Pick $L \in \calI_{r+1}$ and $M \in \calI_r$ such that for each $i
+  \in \{1, 2, \ldots, r\}$ , we have $\max L(i) < \min M(i)$, $\max
+  M(i) < \min L(i+1)$, and 
+  \begin{align*}
+    \bigcup_{i=1}^{r+1} L(i) &= \bigl\{\, i \in \{1, 2, \ldots, n \} :
+    x_i \in \{1, 2, \ldots, k\} \,\bigr\}, \\
+    \bigcup_{i=1}^r M(i) &= \bigl\{\, i \in \{1, 2, \ldots, n \} : x_i
+    = \star \,\bigr\}.
+  \end{align*}
+  (For example, if $k = 3$, $n = 8$, and $w(\star) = (2, \star, \star,
+  3, 1, \star, 1, 2)$, then $r = 2$, $L(1) = \{1\}$, $M(1) = \{2,
+  3\}$, $L(2) = \{4, 5\}$, $M(2) = \{6\}$, and $L(3) = \{7, 8\}$.)
+  
+  Looking at the expression of $x(m, a, t, g_w(s))$ it's intuitively
+  clear that there exists $p \in \bbN$, $c \in S^{p+1}$, and $u \in
+  \calJ_p$ such that $x(m, a, t, g_{w(s)}) = x(p, c, u, f_s)$ for all
+  $u \in \{1, 2, \ldots, k\}$. 
+  If $A_1$ was not a $J$-set, then  we can go back and select $F$ such
+  that $A_1$ fails the definitions of a $J$-set with this $F$. 
+  However, then would get a contradiction. 
+\end{proof}
+
 \section{Open Questions and Problems}
 
 % Notes section produced by the 'endnotes' package
