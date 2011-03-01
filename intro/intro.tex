@@ -11,7 +11,7 @@
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{CSTv1}{Original Central Sets Theorem}
-\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem*{vdw}{Van der Waerden's Theorem}
 \newtheorem{FST}[thm]{Hindman's Theorem}
 \newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
 \newtheorem{recur}[thm]{Recurrence Theorem}
@@ -35,6 +35,7 @@
 \newcommand{\ra}{\rangle}
 \newcommand{\bbN}{\mathbb{N}}
 \newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calG}{\mathcal{G}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
@@ -49,6 +50,203 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+\section{Combinatorial Motivation} 
+Let $S$ be a set and let $\calG \subseteq \calP(S)$.
+We call the pair $(S, \calG)$ \textsl{partition regular} if and only
+if for every $r \in \bbN$, if $S = \bigcup_{i=1}^r C_i$, then there
+exist $i \in \{1, 2, \ldots, r\}$ and $G \in \calG$ such that $G
+\subseteq C_i$. 
+With this bit of terminology (originally due to Rado in
+\cite{Rado:1945kx}), we can roughly define Ramsey Theory as the
+  study and classification of partition regular sets. 
+With such a ``definition'', it's a fact that studying partition
+regular $(S, \calG)$ is equivalent to studying certain ultrafilters on
+$S$. 
+(See \cite[Theorem 5.7]{Hindman:1998fk} for a proof of this fact.)
+For an example of a partition regular set, take $S$ be an infinite set
+and let $\calG$ be the set of all infinite subsets of $S$, then the
+pigeonhole principle implies that $(S, \calG)$ is partition regular.
+
+For us we will mainly consider partition regular $(S, \calG)$, where
+$S$ is a semigroup and elements of $\calG$ are defined in terms of the
+algebraic structure of $S$.
+Moreover, given our semigroup $S$ we can give $\beta S$,
+the Stone-\v{C}ech compactification of $S$, the structure of a Hausdorff
+compact right-topological semigroup (we define what this means later),
+such that elements in $\calG$ are associated with certain algebraic
+structures of $\beta S$. 
+Hence studying $(S, \calG)$, which is a purely algebraic and
+combinatorial object, is equivalent to studying the algebraic and
+topological structure of $\beta S$. 
+In this section we focus purely on the algebraic and combinatorial
+side of this equivalence.
+
+\begin{rmk}
+  In what follows we shall intentionally use the term partition
+  regular rather loosely by not explicitly mentioning the set
+  $\calG$. 
+\end{rmk}
+
+
+We begin by giving one of the earliest Ramsey Theoretic result that
+still forms the bases for much of the contemporary research in the
+field.
+
+\begin{vdw}
+  Let $r \in \bbN$.
+  If $\bbN = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d
+  \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq C_i$. 
+\end{vdw}
+
+This theorems says that finite arithmetic progressions are
+partition regular. 
+Van der Waerden's proof of his theorem in
+\cite{Van-der-Waerden:1927fk} uses a complicated, but elementary,
+combinatorial argument based on the pigeonhole principle and ``double
+induction.''%
+\endnote{
+  I'm not sure of the exact form of van der Waerden's argument since I
+  have never read the paper \cite{Van-der-Waerden:1927fk}. 
+  This statement is based on my opinion that all known combinatorial
+  proofs of van der Waerden's Theorem are not simple, Khinchin's
+  opinion on the difficulty of the original proof \cite[expressed in
+  Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
+  description on how he found his proof in
+  \cite{Van-der-Waerden:1971fk}. 
+  The interested reader can find a combinatorial proof of van der
+  Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
+  \cite[Chapter 1]{Khinchin:1998fk}.
+}
+Van der Waerden's Theorem can be rewritten to apply to any semigroup,
+and, as observed in the Introduction of \cite{Bergelson:1992fk}, this
+fact follows directly from van der Waerden's Theorem itself.
+
+\begin{thm}
+  Let $S$ be a semigroup and let $r$, $\ell \in \bbN$.
+  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$ and $a$, $d \in S$ such that $\{\, a , ad, \ldots, ad^\ell
+  \,\} \subseteq C_i$. 
+\end{thm}
+\begin{proof}
+  Fix $x \in S$.
+  We shall consider the set $\{\, x^n : n \in \bbN \,\}$.
+  For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN
+  : x^n \in C_i \,\}$.
+  Then $\bbN = \bigcup_{i=1}^r B_i$, and we can apply van der
+  Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ and $b$, $c
+  \in \bbN$ such that $\{\, b, b+c, \ldots, b+\ell c \,\} \subseteq B_i$. 
+  By definition of $B_i$, we have that $\{\, x^b, x^{b+c}, \ldots,
+  x^{b+ \ell c} \,\} \subseteq C_i$. 
+  To complete the proof, simply put $a = x^b$ and $d = x^c$. 
+\end{proof}
+
+We begin with one of the earliest Ramsey Theoretic result called van
+der Waerden's Theorem.  
+This theorem is the motivation for much of contemporary research
+in Ramsey Theory and for us it will serve the same purpose.
+We first formulate this theorem as follows. 
+
+\begin{vdw}[Arithmetic progressions are partition regular]
+  Let $r \in \bbN$.
+  If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+  \ldots, r\}$ such that for all $l \in \bbN$, there exists $a$, $d
+  \in \bbN$ with $\{\, a, a+d, \ldots, a+ld \,\} \subseteq C_i$.
+\end{vdw}
+
+\begin{rmk}
+  The corresponding statement where we replace our \mbox{$l$-term}
+  arithmetic progression with an infinite arithmetic progression is
+  false.
+  Consider partitioning $\bbN$ up into two classes and give each class
+  alternatively long blocks. 
+\end{rmk}
+
+Using a little terminology we can recast this theorem into a short
+phrase. 
+
+\begin{defn}
+  Let $X$ be a set and $\calG \subseteq \calP(X)$.
+  We say that $(X, \calG)$ is \textsl{partition regular} if and only
+  if for every $r \in \bbN$, if $X = \bigcup_{i=1}^r C_i$, then there
+  exist $i \in \{1, 2, \ldots, r\}$ and $G \in \calG$ such that $G
+  \subseteq C_i$.
+\end{defn}
+
+Then the collection of all finite arithmetic progressions is partition
+regular with respect to $\bbN$. 
+
+Van der Waerden's Theorem can be rewritten to apply to any semigroup
+and in fact this result follows directly from van der Waerden's
+Theorem itself.
+
+\begin{thm}
+  Let $S$ be a semigroup and let $r$, $l \in \bbN$.
+  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$ and $a$, $d \in S$ such that $\{\, a , ad, \ldots, ad^l
+  \,\} \subseteq C_i$. 
+\end{thm}
+\begin{proof}
+  Fix $x \in S$.
+  We shall consider the set $\{\, x^n : n \in \bbN \,\}$.
+  For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN
+  : x^n \in C_i \,\}$.
+  Then $\bbN = \bigcup_{i=1}^r B_i$, and we can apply van der
+  Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ and $b$, $c
+  \in \bbN$ such that $\{\, b, b+c, \ldots, b+lc \,\} \subseteq B_i$. 
+  By definition of $B_i$, we have that $\{\, x^b, x^{b+c}, \ldots,
+  x^{b+lc} \,\} \subseteq C_i$. 
+  To complete the proof, simply put $a = x^b$ and $d = x^c$. 
+\end{proof}
+
+However as observed in the Introduction of \cite{Bergelson:1992fk},
+there are two potential problems with such a straightforward
+approach: Our increment $d$ may be a right identity element in our
+semigroup; and, even if $d$ is not an identity element, there is no
+guarantee that all of the elements in $\{\, a, ad, \ldots, ad^l \,\}$
+are distinct. 
+
+\begin{example}
+  For an example of the first problem we consider a left-zero
+  semigroup $S$.
+  (A semigroup $(S, \cdot)$ is a \textsl{left-zero semigroup} if and
+  only if for all $x$, $y \in S$, $x \cdot y = x$.
+  The name ``left-zero'' is derived from the fact that, in the
+  integers, multiplying on the left by zero yields zero.  
+  Hence in a left-zero semigroup every element behaves like zero when
+  multiplied on the left.)
+  Observe that in $S$, every element is a right identity. 
+  Hence $\{\, a, ad, \ldots, ad^l \,\} = \{a\}$ for every $a$, $d \in S$.
+\end{example}
+
+\begin{example}
+  For an example of the second problem, let $p \in \bbN$, and let $G =
+  \bigoplus_{n \in \bbN} (\bbZ/p\bbZ)$, where $\bbZ/p\bbZ$ is the
+  cyclic group of order $p$.
+  We show that if $l > p$, then for all $a$, $d \in G$, the elements
+  in $\{\, a, ad, \ldots, ad^l \,\}$ are not all distinct.
+
+  Let $d \in G$ not be the identity. 
+  Then $d^p = 1$, where 1 is the identity in $G$. 
+  Hence if $a \in G$, then $a = ad^p$. 
+\end{example}
+
+To at least attempt to avoid the first problem, we go back and
+strengthen the conclusion of van der Waerden's Theorem.
+(However, note that we cannot always guarantee that the first problem
+will not occur as our example shows.)
+
+\begin{thm}
+  Let $\la y_n \ra_{n=1}^\infty$ be a sequence in $\bbN$, and let $r$,
+  $l \in \bbN$.
+  If $\bbN = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$, $a \in \bbN$, and $d \in \mathrm{FS}(\la y_n
+  \ra_{n=1}^\infty$ such that $\{\, a, a+d, \ldots, a+ld \,\}
+  \subseteq C_i$.
+\end{thm}
+
+
+
 \section{Overview}
 Using notions from topological dynamics, Furstenberg defined the
 concept of a central set of natural numbers and proved a powerful
