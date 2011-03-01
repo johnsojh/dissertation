@@ -257,6 +257,46 @@ It's easy to see the following fact.
      Fact?  Let S be a semigroup.  There exists a combinatorial line
      which is not an algebraic line. 
 
+So we give the following analogue of van der Waerden's Theorem that
+handles such cases nicely.
+
+     Theorem.  Let V be an infinite-dimensional vector space over a
+     finite field F and let r be in N.  If V = C_1 U C_2 U ... U C_r,
+     then there exists i in {1, 2, ..., r} such that C_i has the
+     following property:
+         
+	 for every n in N, there exists a subspace W of V with dim W
+	 >= n, such that for some a in V, a + W is contained in C_i. 
+
+Combinatorial Motivation
+
+We start by looking at one of the earliest Ramsey Theoretic result,
+van der Waerden's Theorem.  This theorem is the motivation for much of
+the contemporary research in Ramsey Theory, and for us it will serve a
+similar purpose.  One particular formulation of this theorem is the
+following.
+
+	Van der Waerden's Theorem.  Let r, l be in N.  If N = C_1 U
+	C_2 U ... U C_r, then there exist i in {1, 2, ..., r} and a,d
+	in N such that {a, a+d, ..., a+ld} is contained in C_i. 
+
+As we hinted at, van der Waerden's Theorem can be written in many
+equivalent forms.  The following is an incomplete list of some
+equivalent forms of van der Waerden's Theorem.  (A more complete list
+can be found in [Landman:2004fk, Theorem 2.5].  Unfortunately, as far
+as I know, no one has collected together all of the currently known
+equivalent statements of van der Waerden's Theorem.)
+
+	Theorem 1. 
+
+
+The conclusion of each of these equivalent forms can be rewritten to
+apply to any semigroup, and moreover, the corresponding result follows
+directly from van der Waerden's Theorem itself.  The first result we
+shall derive from Theorem 1(a) is the following.
+
+        Theorem 2. 
+
     
 
 References 
@@ -271,5 +311,6 @@ References
 [Hollings:2007uq]	"Some first tantalizing steps ..."
 [Hollings:2009kx]	"The Early Development of ..."
 [Hollings:2009uq]	"Anton Kazimirovich ..."
+[Landman:2004fk]	_Ramsey Theory on the Integers_
 [Suschkewitsch:1928kx]	"Uber ..."
 
