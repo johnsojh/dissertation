@@ -59,8 +59,8 @@ exist $i \in \{1, 2, \ldots, r\}$ and $G \in \calG$ such that $G
 With this bit of terminology (originally due to Rado in
 \cite{Rado:1945kx}), we can roughly define Ramsey Theory as the
   study and classification of partition regular sets. 
-With such a ``definition'', it's a fact that studying partition
-regular $(S, \calG)$ is equivalent to studying certain ultrafilters on
+With such a ``definition'', it's a fact that studying a partition
+regular set $(S, \calG)$ is equivalent to studying certain ultrafilters on
 $S$. 
 (See \cite[Theorem 5.7]{Hindman:1998fk} for a proof of this fact.)
 For an example of a partition regular set, take $S$ be an infinite set
@@ -72,7 +72,7 @@ $S$ is a semigroup and elements of $\calG$ are defined in terms of the
 algebraic structure of $S$.
 Moreover, given our semigroup $S$ we can give $\beta S$,
 the Stone-\v{C}ech compactification of $S$, the structure of a Hausdorff
-compact right-topological semigroup (we define what this means later),
+compact right-topological semigroup (we define what this means later)
 such that elements in $\calG$ are associated with certain algebraic
 structures of $\beta S$. 
 Hence studying $(S, \calG)$, which is a purely algebraic and
@@ -89,7 +89,7 @@ side of this equivalence.
 
 
 We begin by giving one of the earliest Ramsey Theoretic result that
-still forms the bases for much of the contemporary research in the
+still forms the basis for much of the contemporary research in the
 field.
 
 \begin{vdw}
@@ -123,10 +123,10 @@ and, as observed in the Introduction of \cite{Bergelson:1992fk}, this
 fact follows directly from van der Waerden's Theorem itself.
 
 \begin{thm}
-  Let $S$ be a semigroup and let $r$, $\ell \in \bbN$.
-  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
-  \ldots, r\}$ and $a$, $d \in S$ such that $\{\, a , ad, \ldots, ad^\ell
-  \,\} \subseteq C_i$. 
+  Let $S$ be a semigroup and let $r \in \bbN$.
+  If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+  \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d
+  \in S$ with $\{\, a , ad, \ldots, ad^\ell \,\} \subseteq C_i$. 
 \end{thm}
 \begin{proof}
   Fix $x \in S$.
@@ -134,12 +134,29 @@ fact follows directly from van der Waerden's Theorem itself.
   For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN
   : x^n \in C_i \,\}$.
   Then $\bbN = \bigcup_{i=1}^r B_i$, and we can apply van der
-  Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ and $b$, $c
-  \in \bbN$ such that $\{\, b, b+c, \ldots, b+\ell c \,\} \subseteq B_i$. 
+  Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ such that for
+  all $\ell \in \bbN$ there exist $b$, $c \in \bbN$ with $\{\, b, b+c,
+  \ldots, b+\ell c \,\} \subseteq B_i$. 
   By definition of $B_i$, we have that $\{\, x^b, x^{b+c}, \ldots,
   x^{b+ \ell c} \,\} \subseteq C_i$. 
   To complete the proof, simply put $a = x^b$ and $d = x^c$. 
 \end{proof}
+
+However as also observed in the Introduction of
+\cite{Bergelson:1992fk} there are two potential problems with such a
+straightforward approach:
+Our increment $d$ may be a right identity element in our semigroup;
+and, even if $d$ is not a right identity element, there is no
+guarantee that all the elements in $\{\, a, ad, \ldots, ad^{\ell}
+\,\}$ are distinct. 
+(See the Introduction of \cite{Bergelson:1992fk} for an example of
+each potential problem.)
+Moreover, we shall find that when we consider the algebraic structure
+of $\beta S$, that such a straightforward generalization doesn't
+interact nicely with the algebraic structure of $\beta S$. 
+
+One of the first proper generalization of an arithmetic progression to
+a semigroup is the notion of a piecewise syndetic set.  
 
 We begin with one of the earliest Ramsey Theoretic result called van
 der Waerden's Theorem.  
