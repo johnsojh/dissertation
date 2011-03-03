@@ -156,7 +156,138 @@ of $\beta S$, that such a straightforward generalization doesn't
 interact nicely with the algebraic structure of $\beta S$. 
 
 One of the first proper generalization of an arithmetic progression to
-a semigroup is the notion of a piecewise syndetic set.  
+a semigroup is the notion of a piecewise syndetic set. 
+However, since the definition of a piecewise syndetic set is, initially,
+somewhat difficult to understand, we choose to give a bit of
+motivation to the concept before explicitly defining it. 
+
+
+\begin{thm}
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] Let $r \in \bbN$.
+      If $\bbN = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+      \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
+      $d \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq
+      C_i$. 
+
+    \item[(b)] For $\ell \in \bbN$, if $\la x_n \ra_{n=1}^\infty$ is a
+      strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} -
+      x_n : n \in \bbN \,\}$ finite, then $\{\, x_n : n \in \bbN
+      \,\}$ contains a \mbox{$\ell$-term} arithmetic progression. 
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  \cite[Theorem 2.5]{Landman:2004fk} contains a more complete list of
+  statements equivalent to van der Waerden's Theorem, and in particular
+  a proof of our equivalence. 
+\end{proof}
+
+We wish to translate statement (b), which is equivalent to van der
+Waerden's Theorem, in this result to the language of semigroups.
+Of course, given an arbitrary semigroup, there is no guarantee that we
+the terms ``strictly increasing'' and ``distance between two
+elements'' makes sense.
+It is the goal of the next result to show that we need not use such
+terms.
+In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of
+all nonempty finite subsets of $X$. 
+Also, if $A \subseteq \bbN$ and $x \in \bbN$, we define $-x + A = \{\,
+y \in \bbN : x + y \in A \,\}$.
+
+\begin{prop}
+  Let $A \subseteq \bbN$ be infinite.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] Enumerate $A$ as a strictly increasing sequence $\la
+      x_n \ra_{n=1}^\infty$.
+      Then $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite.
+
+    \item[(b)] There exists $G \in \Pf(\bbN)$ such that $\bbN =
+      \bigcup_{t \in G} -t + A$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  \textsl{(a) $\implies$ (b).}
+  Let $c = \max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ and put $G = \{1,
+  2, \ldots, c\}$. 
+  Clearly, $\bigcup_{t \in G} -t + A \subseteq \bbN$ so let $x \in \bbN$. 
+  Since $\la x_n \ra_{n=1}^\infty$ is strictly increasing, there
+  exists $n \in \bbN$ such that $x_n \le x < x_{n+1}$.  
+  Then $1 \le x_{n+1} - x \le x_{n+1} - x_n \le c$, that is, $x_{n+1}
+  - x \in G$.
+  Hence $(x_{n+1} - x) + x = x_{n+1} \in A$, and this completes the
+  forward direction of the proof.
+
+  \textsl{(b) $\implies$ (a).}
+  Enumerate $A$ a strictly increasing sequence $\la x_n
+  \ra_{n=1}^\infty$. 
+  Pick the smallest $c \in \bbN$, such that $G \subseteq \{1, 2,
+  \ldots, c\}$.
+  We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le c$. 
+  Let $n \in \bbN$ and pick $t \in G$ and $m \in \bbN$ such that
+  $x_{n+1} = t + x_m$, that is, $x_{n+1} - x_m = t \in G \subseteq
+  \{1, 2, \ldots, c\}$. 
+  Since $\la x_n \ra_{n=1}^\infty$ is strictly increasing, we have
+  that $x_m \le x_n$.
+  It follows that $1 \le x_{n+1} - x_n \le x_{n+1} - x_m \le c$, and
+  this completes the proof of the reverse direction.
+\end{proof}
+
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup.
+  \begin{itemize}
+    \item[(a)] For all $x \in S$ and $A \subseteq S$, define $x^{-1}A = \{\, y
+      \in S : x \cdot y \in A \,\}$.
+    
+    \item[(b)] For all $A$, $B \subseteq S$, define $AB = \{\, a\cdot
+      b : \mbox{$a \in A$ and $b \in B$} \,\}$. 
+      If $A = \{a\}$ or $B = \{b\}$, then we write $\{a\}B$ as $aB$
+      and $A\{b\}$ as $Ab$, respectively. 
+
+    \item[(c)] We call $A$ a \textsl{syndetic (set in $S$)} if and
+      only if there exist $G \in \Pf(S)$ such that for all $S =
+      \bigcup_{t \in G} t^{-1}A$. 
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  It's important to note that in (a) we are not assuming that $x$ has
+  an inverse in $S$.
+  (In particular, $x^{-1}A$ may even be empty.)
+
+  Analogous to group theory, if $S$ is a commutative semigroup we
+  write the semigroup operation as $+$. 
+  Under this case, we write $x^{-1}A$ as $-x + A$ and $AB$ as $A +
+  B$. 
+\end{rmk}
+
+Even though we have successfully imported a statement equivalent to
+van der Waerden's Theorem in terms of the algebraic structure of a
+general semigroup, it turns out that a syndetic set is not partition
+regular. 
+(In particular, we can partition $\bbN$, which is clearly syndetic,
+into two classes, both of them not syndetic.)
+In order to recover partition regularity, we weaken the definition of
+a syndetic set to obtain a piecewise syndetic set.
+
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  We say $A$ is \textsl{piecewise syndetic (set in S)} if and only if there
+  exists $G \in \Pf(S)$ such that for all $F \in \Pf(S)$ there exists
+  $x \in S$ with $Fx \subseteq \bigcup_{t \in G} t^{-1}A$.
+\end{defn}
+
+\begin{prop}
+  Let $S$ be a semigroup and $A \subseteq S$ piecewise syndetic.
+  If $A = C_1 \cup C_2$, then either $C_1$ is piecewise syndetic or
+  $C_2$ is piecewise syndetic.
+\end{prop}
+\begin{proof}
+  
+\end{proof}
+
+The definition behind piecewise syndetic sets is difficult to
+understand 
 
 We begin with one of the earliest Ramsey Theoretic result called van
 der Waerden's Theorem.  
