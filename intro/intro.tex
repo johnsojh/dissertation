@@ -64,33 +64,42 @@ regular set $(S, \calG)$ is equivalent to studying certain ultrafilters on
 $S$. 
 (See \cite[Theorem 5.7]{Hindman:1998fk} for a proof of this fact.)
 For an example of a partition regular set, take $S$ be an infinite set
-and let $\calG$ be the set of all infinite subsets of $S$, then the
+and let $\calG = \{\, A \subseteq S : \mbox{$A$ is infinite} \,\}$ be
+the set of all infinite subsets of $S$, then the
 pigeonhole principle implies that $(S, \calG)$ is partition regular.
 
-For us we will mainly consider partition regular $(S, \calG)$, where
-$S$ is a semigroup and elements of $\calG$ are defined in terms of the
-algebraic structure of $S$.
-Moreover, given our semigroup $S$ we can give $\beta S$,
+In this dissertation we will mainly consider partition regular $(S,
+\calG)$, where $S$ is a semigroup and elements of $\calG$ are defined
+in terms of the algebraic structure of $S$.
+Moreover, if we giving $S$ the discrete topology we can give $\beta S$,
 the Stone-\v{C}ech compactification of $S$, the structure of a Hausdorff
-compact right-topological semigroup (we define what this means later)
+compact right-topological semigroup 
 such that elements in $\calG$ are associated with certain algebraic
 structures of $\beta S$. 
+(A \textsl{right-topological semigroup} is a semigroup that is also a
+topological space such that for every element $y$ in our semigroup the
+function $x \mapsto xy$ is continuous.)
 Hence studying $(S, \calG)$, which is a purely algebraic and
 combinatorial object, is equivalent to studying the algebraic and
 topological structure of $\beta S$. 
-In this section we focus purely on the algebraic and combinatorial
+In this section, we focus purely on the algebraic and combinatorial
 side of this equivalence.
 
 \begin{rmk}
-  In what follows we shall intentionally use the term partition
-  regular rather loosely by not explicitly mentioning the set
+  In what follows we shall intentionally use the term ``partition
+  regular'' rather loosely by not explicitly mentioning the set
   $\calG$. 
+  For instance, we often say that property $P$ is partition regular if
+  and only if whenever $S$ has property $P$ and $S = \bigcup_{i=1}^r
+  C_i$, then $C_i$ has property $P$ for some $i \in \{1, 2, \ldots,
+  r\}$. 
 \end{rmk}
-
 
 We begin by giving one of the earliest Ramsey Theoretic result that
 still forms the basis for much of the contemporary research in the
 field.
+This theorem states that the property of containing arbitrarily long
+finite arithmetic progressions is partition regular. 
 
 \begin{vdw}
   Let $r \in \bbN$.
@@ -99,25 +108,26 @@ field.
   \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq C_i$. 
 \end{vdw}
 
-This theorems says that finite arithmetic progressions are
-partition regular. 
-Van der Waerden's proof of his theorem in
-\cite{Van-der-Waerden:1927fk} uses a complicated, but elementary,
-combinatorial argument based on the pigeonhole principle and ``double
-induction.''%
-\endnote{
-  I'm not sure of the exact form of van der Waerden's argument since I
-  have never read the paper \cite{Van-der-Waerden:1927fk}. 
-  This statement is based on my opinion that all known combinatorial
-  proofs of van der Waerden's Theorem are not simple, Khinchin's
-  opinion on the difficulty of the original proof \cite[expressed in
-  Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
-  description on how he found his proof in
-  \cite{Van-der-Waerden:1971fk}. 
-  The interested reader can find a combinatorial proof of van der
-  Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
-  \cite[Chapter 1]{Khinchin:1998fk}.
-}
+\begin{rmk}
+  Van der Waerden's proof of his theorem in
+  \cite{Van-der-Waerden:1927fk} uses a complicated, but elementary,
+  combinatorial argument based on the pigeonhole principle and ``double
+  induction.''%
+  \endnote{
+    I'm not sure of the exact form of van der Waerden's argument since I
+    have never read the paper \cite{Van-der-Waerden:1927fk}. 
+    This statement is based on my opinion that all known combinatorial
+    proofs of van der Waerden's Theorem are not simple, Khinchin's
+    opinion on the difficulty of the original proof \cite[expressed in
+    Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
+    description on how he found his proof in
+    \cite{Van-der-Waerden:1971fk}. 
+    The interested reader can find a combinatorial proof of van der
+    Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
+    \cite[Chapter 1]{Khinchin:1998fk}.
+  }  
+\end{rmk}
+
 Van der Waerden's Theorem can be rewritten to apply to any semigroup,
 and, as observed in the Introduction of \cite{Bergelson:1992fk}, this
 fact follows directly from van der Waerden's Theorem itself.
@@ -153,20 +163,23 @@ guarantee that all the elements in $\{\, a, ad, \ldots, ad^{\ell}
 each potential problem.)
 Moreover, we shall find that when we consider the algebraic structure
 of $\beta S$, that such a straightforward generalization doesn't
-interact nicely with the algebraic structure of $\beta S$. 
+interact nicely with the algebraic structure of $\beta S$ when $S$ is
+a noncommutative semigroup. 
 
-One of the first proper generalization of an arithmetic progression to
-a semigroup is the notion of a piecewise syndetic set. 
+One of the first proper generalization of a set that contains
+arbitrarily long finite arithmetic progression to a semigroup is the
+notion of a piecewise syndetic set. 
 However, since the definition of a piecewise syndetic set is, initially,
-somewhat difficult to understand, we choose to give a bit of
-motivation to the concept before explicitly defining it. 
+somewhat difficult to understand, we choose to give a some 
+motivation on how this concept occurs before explicitly defining it. 
 
 
 \begin{thm}
+  \label{thm:vdwEqSyn}
   The following statements are equivalent.
   \begin{itemize}
     \item[(a)] Let $r \in \bbN$.
-      If $\bbN = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+      If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
       \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
       $d \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq
       C_i$. 
@@ -183,19 +196,21 @@ motivation to the concept before explicitly defining it.
   a proof of our equivalence. 
 \end{proof}
 
-We wish to translate statement (b), which is equivalent to van der
-Waerden's Theorem, in this result to the language of semigroups.
-Of course, given an arbitrary semigroup, there is no guarantee that we
+We wish to translate statement Theorem \ref{thm:vdwEqSyn} (b) into
+the language of semigroups.
+Of course, given an arbitrary semigroup, there is no guarantee that 
 the terms ``strictly increasing'' and ``distance between two
 elements'' makes sense.
-It is the goal of the next result to show that we need not use such
+It is the goal of the next result to show that we can forgo these
 terms.
+
 In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of
 all nonempty finite subsets of $X$. 
 Also, if $A \subseteq \bbN$ and $x \in \bbN$, we define $-x + A = \{\,
 y \in \bbN : x + y \in A \,\}$.
 
 \begin{prop}
+  \label{prop:syn}
   Let $A \subseteq \bbN$ be infinite.
   The following statements are equivalent.
   \begin{itemize}
@@ -222,15 +237,16 @@ y \in \bbN : x + y \in A \,\}$.
   \textsl{(b) $\implies$ (a).}
   Enumerate $A$ a strictly increasing sequence $\la x_n
   \ra_{n=1}^\infty$. 
-  Pick the smallest $c \in \bbN$, such that $G \subseteq \{1, 2,
-  \ldots, c\}$.
+  Pick $c \in \bbN$ such that $G \subseteq \{1, 2, \ldots, c\}$.
   We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le c$. 
-  Let $n \in \bbN$ and pick $t \in G$ and $m \in \bbN$ such that
-  $x_{n+1} = t + x_m$, that is, $x_{n+1} - x_m = t \in G \subseteq
-  \{1, 2, \ldots, c\}$. 
-  Since $\la x_n \ra_{n=1}^\infty$ is strictly increasing, we have
-  that $x_m \le x_n$.
-  It follows that $1 \le x_{n+1} - x_n \le x_{n+1} - x_m \le c$, and
+
+  Let $n \in \bbN$.
+  Since $\bbN = \bigcup_{t \in G} -t+A$ and $x_n \in \bbN$, pick $t
+  \in G$ such that $t + x_n \in A$.
+  Hence pick $m \in \bbN$ such that $x_m = t + x_n$, that is, $x_m -
+  x_m = t \le c$. 
+  Observe that $x_{n+1} \le x_m$.
+  Therefore it follows that $x_{n+1} - x_n \le x_m - x_n \le c$, and 
   this completes the proof of the reverse direction.
 \end{proof}
 
@@ -254,6 +270,8 @@ y \in \bbN : x + y \in A \,\}$.
   It's important to note that in (a) we are not assuming that $x$ has
   an inverse in $S$.
   (In particular, $x^{-1}A$ may even be empty.)
+  If for every $x \in S$ we define the function $\lambda_x \colon S
+  \to S$ by $\lambda_x(y) = xy$, then $x^{-1}A = \lambda_x^{-1}[A]$. 
 
   Analogous to group theory, if $S$ is a commutative semigroup we
   write the semigroup operation as $+$. 
@@ -261,14 +279,75 @@ y \in \bbN : x + y \in A \,\}$.
   B$. 
 \end{rmk}
 
-Even though we have successfully imported a statement equivalent to
-van der Waerden's Theorem in terms of the algebraic structure of a
-general semigroup, it turns out that a syndetic set is not partition
-regular. 
-(In particular, we can partition $\bbN$, which is clearly syndetic,
-into two classes, both of them not syndetic.)
+Even though we have successfully translated Theorem
+\ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact
+that the notion of syndetic set is \textsl{not} partition regular. 
+(See the Introduction in \cite{Bergelson:2001fk} for an example in
+$\bbN$.)
 In order to recover partition regularity, we weaken the definition of
-a syndetic set to obtain a piecewise syndetic set.
+a syndetic set.
+ 
+Given $F \in \Pf(\bbN)$ with $|F| = n$, enumerate $F$ as a strictly
+increasing sequence $x_1 < x_2 < \cdots < x_n$. 
+We define the \textsl{gap size of $F$} as $\max\bigr\{\, x_{j+1} - x_j : j
+\in \{1, 2, \ldots, n-1\} \,\bigl\}$.
+We will temporarily denote the gap size of $F$ by $g(F)$. 
+We call a set $A \subseteq \bbN$ \textsl{piecewise syndetic} if and
+only if there exists $b \in \bbN$ such that for all $N \in \bbN$,
+there exists $F \in \Pf(A)$ with $|F| \ge N$ and $g(F) \le b$.
+
+It's clear that a syndetic set in $\bbN$ is a piecewise syndetic set
+in $\bbN$.
+It's also clear that  parts of this definition may not make since
+for arbitrarily semigroups.
+
+\begin{prop}
+  Let $A \subseteq \bbN$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $A$ is piecewise syndetic.
+    
+    \item[(b)] There exists $G \in \Pf(\bbN)$ such that for all $F \in
+      \Pf(\bbN)$, there exists $x \in \bbN$ such that $F+x \subseteq
+      \bigcup_{t \in G} -t+A$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  \textsl{(a) $\implies$ (b).}
+  Pick $b \in \bbN$ as guaranteed by the definition. 
+  Put $G = \{1, 2, \ldots, b\}$.
+  We show that for all $F \in \Pf(\bbN)$, there exists $x \in \bbN$
+  such that $F+x \subseteq \bigcup_{t \in G} -t + A$.
+
+  Let $F \in \Pf(\bbN)$ and put $N = 3 |F| \max F$. 
+  Pick $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$. 
+  We may assume that $|B| = N$. 
+  Enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots
+  < x_N$
+  It suffices to show that there exists $x \in \bbN$ such
+  that $F + x \subseteq \bigcup_{t \in G} -t + B$.
+  (Since $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t +
+  A$.)
+  Pick $x \in \bbN$ such that $\{1, 2, \ldots, |F| \max F, |F| \max F
+  + 1, \ldots, 2|F| \max F\} + x \subseteq \{x_1, x_1 + 1,
+  \ldots, x_N\}$.
+  (We can do this since $|B| = 3 |F| \max F$.)
+  Let $f \in F$, then $f + x \in \{x_1, x_1 + 1, \ldots, x_N
+  \}$ and we can pick $n \in \bbN$ with $x_n \le f+x < x_{n+1}$. 
+  Since $x_{n+1} - x_n \le b$, there exists $t \in G$ such that $t +
+  f + x = x_{n+1}$. 
+  This completes the forward direction of the proof.  
+  
+  \textsl{(b) $\implies$ (a).}
+\end{proof}
+
+\begin{prop}
+  Let $A \subseteq \bbN$.
+  If $A$ is syndetic, then $A$ is piecewise syndetic.
+\end{prop}
+\begin{proof}
+  This follows directly from Proposition \ref{prop:syn}
+\end{proof}
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.

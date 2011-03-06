@@ -297,6 +297,11 @@ shall derive from Theorem 1(a) is the following.
 
         Theorem 2. 
 
+Let S be a set and let G subset of P(S).  We call the pair (S, G)
+_partition regular_ if and only if for every r in N, whenever S = C_1
+U C_2 U ... U C_r, there exist i in {1, 2, ..., r} and G in G such
+that G is contained in C_i.  
+
     
 
 References 
