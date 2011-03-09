@@ -294,7 +294,7 @@ We define the \textsl{gap size of $F$} as $\max\bigr\{\, x_{j+1} - x_j : j
 We will temporarily denote the gap size of $F$ by $g(F)$. 
 We call a set $A \subseteq \bbN$ \textsl{piecewise syndetic} if and
 only if there exists $b \in \bbN$ such that for all $N \in \bbN$,
-there exists $F \in \Pf(A)$ with $|F| \ge N$ and $g(F) \le b$.
+there exists $B \in \Pf(A)$ with $|B| \le N$ and $g(B) \le b$.
 
 It's clear that a syndetic set in $\bbN$ is a piecewise syndetic set
 in $\bbN$.
@@ -320,34 +320,41 @@ for arbitrarily semigroups.
   such that $F+x \subseteq \bigcup_{t \in G} -t + A$.
 
   Let $F \in \Pf(\bbN)$ and put $N = 3 |F| \max F$. 
-  Pick $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$. 
-  We may assume that $|B| = N$. 
-  Enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots
-  < x_N$
+  Pick $B \in \Pf(A)$ with $|B| \le N$ and $g(B) \le b$. 
+  Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence
+  $x_1 < x_2 < \cdots  < x_N$
   It suffices to show that there exists $x \in \bbN$ such
   that $F + x \subseteq \bigcup_{t \in G} -t + B$.
   (Since $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t +
   A$.)
   Pick $x \in \bbN$ such that $\{1, 2, \ldots, |F| \max F, |F| \max F
   + 1, \ldots, 2|F| \max F\} + x \subseteq \{x_1, x_1 + 1,
-  \ldots, x_N\}$.
-  (We can do this since $|B| = 3 |F| \max F$.)
-  Let $f \in F$, then $f + x \in \{x_1, x_1 + 1, \ldots, x_N
-  \}$ and we can pick $n \in \bbN$ with $x_n \le f+x < x_{n+1}$. 
-  Since $x_{n+1} - x_n \le b$, there exists $t \in G$ such that $t +
-  f + x = x_{n+1}$. 
+  \ldots, x_n\}$.
+  (We can do this since $n = |B| \le 3 |F| \max F$.)
+  Let $f \in F$, then $f + x \in \{x_1, x_1 + 1, \ldots, x_n
+  \}$ and we can pick $m \in \{1, 2, \ldots, n\}$ with $x_m \le f+x < x_{m+1}$. 
+  Since $x_{m+1} - x_m \le b$, there exists $t \in G$ such that $t +
+  f + x = x_{m+1}$. 
   This completes the forward direction of the proof.  
   
   \textsl{(b) $\implies$ (a).}
+  Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
+  Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$. that $|F| \ge N$. 
+  Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t +
+  A$. 
+  For each $i \in \{1, 2, \ldots, 2bN\}$, pick $t_i \in G$ such that
+  $t_i + i + x \in A$. 
+  Put $B = \bigl\{\, t_i + i + x : f \in \{1, 2, \ldots, 2bN\} \,\bigr\}$. 
+  We show that $g(B) \le b$. 
+  For $i \in \{1, 2, \ldots, 2bN-1\}$ we have that $t_{i+1} + (i+1) +
+  x - (t_i + i + x) = t_{i+1} - t_i + 1 \le b - 1 + 1 = b$.
+  This completes the reverse direction of the proof.
 \end{proof}
 
-\begin{prop}
-  Let $A \subseteq \bbN$.
-  If $A$ is syndetic, then $A$ is piecewise syndetic.
-\end{prop}
-\begin{proof}
-  This follows directly from Proposition \ref{prop:syn}
-\end{proof}
+With this equivalence we now can define the notion of a piecewise
+syndetic set in a semigroup. 
+Moreover, unlike syndetic sets, piecewise syndetic sets are partition
+regular.
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
@@ -362,7 +369,34 @@ for arbitrarily semigroups.
   $C_2$ is piecewise syndetic.
 \end{prop}
 \begin{proof}
+  Pick $G \in \Pf(S)$ such that for all $F \in \Pf(S)$, there exists
+  $x \in S$ such that $Fx \subseteq \bigcup_{t \in G} t^{-1}A$. 
+  Suppose, to the contrary, that $C_1$ is not piecewise syndetic and
+  $C_2$ is not piecewise syndetic. 
+  Since $C_1$ is not piecewise syndetic, we can pick $F \in
+  \Pf(S)$ such that for all $x \in S$, $Fx \setminus (\bigcup_{t \in
+    G} t^{-1}C_1) \ne \emptyset$. 
+  Since $C_2$ is not piecewise syndetic, we can pick $H \in \Pf(S)$
+  such that for all $x \in S$, $Hx \setminus (\bigcup_{t \in GF}
+  t^{-1}C_1) \ne emptyset$.
+  Since $FH \in \Pf(S)$ pick $x \in S$ such that 
+  \[
+    FHx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2). 
+  \]
   
+  Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}B$. 
+  Now $Fyx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$,
+  $yx \in S$, and $C_1$ is not piecewise syndetic, so we have that 
+  \[
+    Fyz \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset. 
+  \]
+  Pick $z \in F$ such that $zyx \not\in \bigcup_{t \in G} t^{-1}C_1$. 
+  Now $zyx \in \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, so pick $t \in
+  G$ such that $tzyx \in C_1 \cup C_2$. 
+  If $tzyx \in C_1$, then $zyx \in t^{-1}C_1$, a contradiction.
+  If $tzyx \in C_2$, then $yx \in (tz)^{-1}C_2$, a contradiction.
+  Hence we conclude that either $C_1$ is piecewise syndetic or $C_2$
+  is piecewise syndetic.
 \end{proof}
 
 The definition behind piecewise syndetic sets is difficult to
