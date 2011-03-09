@@ -64,14 +64,13 @@ regular set $(S, \calG)$ is equivalent to studying certain ultrafilters on
 $S$. 
 (See \cite[Theorem 5.7]{Hindman:1998fk} for a proof of this fact.)
 For an example of a partition regular set, take $S$ be an infinite set
-and let $\calG = \{\, A \subseteq S : \mbox{$A$ is infinite} \,\}$ be
-the set of all infinite subsets of $S$, then the
+and let $\calG = \{\, A \subseteq S : \mbox{$A$ is infinite} \,\}$, then the
 pigeonhole principle implies that $(S, \calG)$ is partition regular.
 
 In this dissertation we will mainly consider partition regular $(S,
 \calG)$, where $S$ is a semigroup and elements of $\calG$ are defined
 in terms of the algebraic structure of $S$.
-Moreover, if we giving $S$ the discrete topology we can give $\beta S$,
+Moreover, if we give $S$ the discrete topology we can give $\beta S$,
 the Stone-\v{C}ech compactification of $S$, the structure of a Hausdorff
 compact right-topological semigroup 
 such that elements in $\calG$ are associated with certain algebraic
@@ -122,6 +121,9 @@ finite arithmetic progressions is partition regular.
     Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
     description on how he found his proof in
     \cite{Van-der-Waerden:1971fk}. 
+    (Van der Waerden's description in \cite{Van-der-Waerden:1971fk}
+    seems to imply that his proof is similar to the one in
+    \cite[Chapter 1]{Khinchin:1998fk}.)
     The interested reader can find a combinatorial proof of van der
     Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
     \cite[Chapter 1]{Khinchin:1998fk}.
@@ -170,9 +172,14 @@ One of the first proper generalization of a set that contains
 arbitrarily long finite arithmetic progression to a semigroup is the
 notion of a piecewise syndetic set. 
 However, since the definition of a piecewise syndetic set is, initially,
-somewhat difficult to understand, we choose to give a some 
-motivation on how this concept occurs before explicitly defining it. 
+somewhat difficult to understand, we choose to give some 
+motivation on how this concept can be derived before explicitly
+defining it. 
+Consequently, we start by proving that a certain statement is
+equivalent to van der Waerden's Theorem. 
 
+In what follows, if $A \subseteq \bbN$ and $x \in \bbN$, we define $-x
++ A = \{\, y \in \bbN : x + y \in A \,\}$.
 
 \begin{thm}
   \label{thm:vdwEqSyn}
@@ -184,16 +191,78 @@ motivation on how this concept occurs before explicitly defining it.
       $d \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq
       C_i$. 
 
-    \item[(b)] For $\ell \in \bbN$, if $\la x_n \ra_{n=1}^\infty$ is a
-      strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} -
-      x_n : n \in \bbN \,\}$ finite, then $\{\, x_n : n \in \bbN
-      \,\}$ contains a \mbox{$\ell$-term} arithmetic progression. 
+    \item[(b)] Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing
+      sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN
+      \,\}$ finite.
+      Then for all $\ell \in \bbN$, the set $\{\, x_n : n \in \bbN
+      \,\}$ contains a \mbox{$\ell$-term} arithmetic progression.
   \end{itemize}
 \end{thm}
 \begin{proof}
-  \cite[Theorem 2.5]{Landman:2004fk} contains a more complete list of
-  statements equivalent to van der Waerden's Theorem, and in particular
-  a proof of our equivalence. 
+  \textsl{(a) $\implies$ (b).}
+  Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in
+  $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite. 
+  Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup
+  \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
+  We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
+  Suppose temporarily that this claim is true.
+  We can then apply (a) to pick $i \in \{1, 2, \ldots, b\}$ such that
+  for all $\ell \in \bbN$, the set $-i + A$ contains a
+  \mbox{$\ell$-term} arithmetic progression. 
+  From this situation it follows that $A$ contains a
+  \mbox{$\ell$-term} arithmetic progression for every $\ell \in
+  \bbN$. 
+  We now prove our claim.
+  
+  Clearly, $\bigcup_{t=1}^b -t+A \subseteq \bbN$.
+  Let $x \in \bbN$.
+  First, assume that $x < x_1$, then since $x_1 \le b$, we can pick $t
+  \in \{1, 2, \ldots, b\}$ such that $t + x = x_1$, that is, $x \in
+  -t+A$.
+  Now assume that $x_1 \le x$.
+  Since $\la x_n \ra_{n=1}^\infty$ is a strictly increasing sequence,
+  we can pick $n \in \bbN$ such that $x_n \le x < x_{n+1}$.
+  Moreover, since $x_{n+1} - x_n \le b$, we can pick $t \in \{1, 2,
+  \ldots, b\}$ such that $t + x = x_{n+1}$, that is, $x \in -t + A$.
+  This completes the proof for this direction. 
+
+  \textsl{(b) $\implies$ (a).}
+  Let $r \in \bbN$, and $\bbN = \bigcup_{i=1}^r C_i$. 
+  By the pigeonhole principle, we can pick $i \in \{1, 2, \ldots, r\}$
+  such that $C_i$ is infinite.
+  Without loss of generality suppose that $C_1$ is infinite. 
+  Enumerate $C_1$ as a strictly increasing sequence $\la x_n
+  \ra_{n=1}^\infty$.
+  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are
+  done by (b). 
+  Hence suppose instead that $\max\{\, x_{n+1} - x_n : n \in \bbN
+  \,\}$ is infinite, that is, for all $\ell \in \bbN$, there exists $n
+  \in \bbN$ with $x_{n+1} - x_n \ge \ell + 2$. 
+  Therefore, for all $\ell \in \bbN$, there exists $n \in \bbN$ such
+  that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (\ell + 1) \,\} \subseteq
+  \bigcup_{i=2}^r C_i$. 
+  This means that $\bigcup_{i=2}^r C_i$ contains a \mbox{$\ell$-term}
+  arithmetic progression for every $\ell \in \bbN$.
+  In particular, $\bigcup_{i=2}^r C_i$ is infinite and so by the
+  pigeonhole principle, we may pick $i \in \{2, 3, \ldots, r\}$ such
+  that $C_i$ is infinite.
+  Without loss of generality, suppose that $C_2$ is infinite.
+
+  Enumerate $C_2$ as a strictly increasing sequence $\la x_n
+  \ra_{n=1}^\infty$.
+  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are
+  done by (b).
+  Suppose that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite,
+  then, as above, for every $\ell \in \bbN$, there exists $n \in
+  \bbN$, such that $\{\, x_n +1, x_n + 2, \ldots, x_n + (\ell +1) \,\}
+  \subseteq \bigcup_{i=3}^r C_i$. 
+  Since $\bigcup_{i=3}^r C_i$, we may continue as before.
+  Eventually, we will stop at a set with bounded gaps or a set that
+  contains arbitrarily long arithmetic progressions.%
+  \endnote{
+    \cite[Theorem 2.5]{Landman:2004fk} contains a more complete list
+    of statements equivalent to van der Waerden's Theorem.
+  }
 \end{proof}
 
 We wish to translate statement Theorem \ref{thm:vdwEqSyn} (b) into
@@ -206,8 +275,6 @@ terms.
 
 In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of
 all nonempty finite subsets of $X$. 
-Also, if $A \subseteq \bbN$ and $x \in \bbN$, we define $-x + A = \{\,
-y \in \bbN : x + y \in A \,\}$.
 
 \begin{prop}
   \label{prop:syn}
@@ -354,7 +421,14 @@ for arbitrarily semigroups.
 With this equivalence we now can define the notion of a piecewise
 syndetic set in a semigroup. 
 Moreover, unlike syndetic sets, piecewise syndetic sets are partition
-regular.
+regular.%
+\endnote{
+  In \cite[Lemma 1]{Brown:1971fk}, proves that if the natural numbers
+  are finitely partitioned, then at least one cell of the partition is
+  piecewise syndetic.
+  It's an interesting question as to whether, Brown's Lemma can be
+  extended to prove Proposition \ref{prop:psReg}.
+}
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
@@ -364,6 +438,7 @@ regular.
 \end{defn}
 
 \begin{prop}
+  \label{prop:psReg}
   Let $S$ be a semigroup and $A \subseteq S$ piecewise syndetic.
   If $A = C_1 \cup C_2$, then either $C_1$ is piecewise syndetic or
   $C_2$ is piecewise syndetic.
