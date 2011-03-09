@@ -291,12 +291,16 @@ all nonempty finite subsets of $X$.
 \end{prop}
 \begin{proof}
   \textsl{(a) $\implies$ (b).}
-  Let $c = \max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ and put $G = \{1,
-  2, \ldots, c\}$. 
-  Clearly, $\bigcup_{t \in G} -t + A \subseteq \bbN$ so let $x \in \bbN$. 
+  Let $b = \max\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}$ and
+  put $G = \{1, 2, \ldots, b\}$. 
+  Clearly, $\bigcup_{t \in G} -t + A \subseteq \bbN$ so let $x \in
+  \bbN$. 
+  First, assume that $x < x_1$, then since $x_1 \le b$, we can pick $t
+  \in G$ such that $t + x = x_1$, that is $x \in -t + A$.
+  Now assume that $x_1 \le x$.
   Since $\la x_n \ra_{n=1}^\infty$ is strictly increasing, there
   exists $n \in \bbN$ such that $x_n \le x < x_{n+1}$.  
-  Then $1 \le x_{n+1} - x \le x_{n+1} - x_n \le c$, that is, $x_{n+1}
+  Then $1 \le x_{n+1} - x \le x_{n+1} - x_n \le b$, that is, $x_{n+1}
   - x \in G$.
   Hence $(x_{n+1} - x) + x = x_{n+1} \in A$, and this completes the
   forward direction of the proof.
@@ -304,16 +308,16 @@ all nonempty finite subsets of $X$.
   \textsl{(b) $\implies$ (a).}
   Enumerate $A$ a strictly increasing sequence $\la x_n
   \ra_{n=1}^\infty$. 
-  Pick $c \in \bbN$ such that $G \subseteq \{1, 2, \ldots, c\}$.
-  We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le c$. 
+  Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$.
+  We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le b$. 
 
   Let $n \in \bbN$.
   Since $\bbN = \bigcup_{t \in G} -t+A$ and $x_n \in \bbN$, pick $t
   \in G$ such that $t + x_n \in A$.
   Hence pick $m \in \bbN$ such that $x_m = t + x_n$, that is, $x_m -
-  x_m = t \le c$. 
+  x_m = t \le b$. 
   Observe that $x_{n+1} \le x_m$.
-  Therefore it follows that $x_{n+1} - x_n \le x_m - x_n \le c$, and 
+  Therefore it follows that $x_{n+1} - x_n \le x_m - x_n \le b$, and 
   this completes the proof of the reverse direction.
 \end{proof}
 
