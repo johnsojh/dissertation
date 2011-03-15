@@ -51,6 +51,152 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+\subsection{Algebraic Semigroup Theory}
+A \textsl{semigroup} is a pair $(S, \cdot)$ such that $S$ is nonempty
+and $\cdot$ is an associate binary operation on $S$, that is, $x \cdot
+(y \cdot z) = (x \cdot y) \cdot z$ for all $x$, $y$, and $z \in S$.
+As usual in mathematics, we will often suppress the explicit mention
+of our associate binary operation $\cdot$ in algebraic formulas and
+simply write that $S$ is a semigroup. 
+
+Given a semigroup $S$ for each $x \in S$, we define functions
+$\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by
+$\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
+For $A \subseteq S$ and $x \in S$, we use the special notation
+$x^{-1}A$ to mean $\lambda_x^{-1}[A]$, that is, $x^{-1}A = \{\, y \in
+S : xy \in A \,\}$. 
+
+Let $\emptyset \ne I \subseteq S$, where $S$ is a semigroup.
+We call $I$ a \textsl{left ideal (of S)} if and only if for every $x
+\in S$, $\lambda_x[I] \subseteq I$; we call $I$ a \textsl{right ideal
+  (of S)} if and only if for every $x \in S$, $\rho_x[I] \subseteq
+I$; and finally, we call $I$ a \textsl{(two-sided) ideal (of S)} if
+and only $I$ is both a left ideal and right ideal. 
+The phrases in parenthesis will often be omitted if they are clear
+from context.
+
+A semigroup can contain, at most one, smallest ideal, that is, a
+two-sided ideal contained in every ideal.
+We denote the smallest ideal of a semigroup $S$, if it exists, by
+$K(S)$. 
+We have the following important fact about the smallest ideal.
+\begin{fact}
+  Let $\la S_i : i \in I \ra$ be a family of semigroups and let $S =
+  \bigtimes_{i \in I} S_i$.
+  Define a binary operation on $S$ coordinatewise.
+  Suppose that, for each $i \in I$, $S_i$ has a smallest ideal.
+  Then $S$ has a smallest ideal and $K(S) = \bigtimes_{i \in I}
+  K(S_i)$. 
+\end{fact}
+\begin{proof}
+  A proof of this fact is in \cite[Theorem 2.23]{Hindman:1998fk}.
+\end{proof}
+Finally, we call an element $e \in S$, an \textsl{idempotent} if and
+only if $e e = e$.
+
+\subsection{Compact Right-Topological Semigroups}
+A \textsl{right-topological semigroup} $S$ is a semigroup which is
+also a topological space such that for every $x \in S$, the function
+$\rho_x$ is continuous. 
+From now on, unless otherwise noted, we will assume that all mentioned
+topological spaces are Hausdorff. 
+We this assumption we automatically gain the following facts.
+
+\begin{fact}
+  Let $S$ be a compact right-topological semigroup.
+  \begin{itemize}
+    \item[(a)] $S$ contains an idempotent.
+
+    \item[(b)] The smallest ideal of $S$ exists.
+  \end{itemize}
+\end{fact}
+\begin{proof}
+  Proofs for (a) and (b) can be found in \cite[Theorem
+  2.5]{Hindman:1998fk} \cite[Theorem 2.8]{Hindman:1998fk},
+  respectively.
+\end{proof}
+
+\begin{fact}
+  Let $\la S_i : i \in I \ra$ be a family of right-topological
+  semigroups and let $S = \bigtimes_{i \in I} S_i$.
+  Given $S$ the product topology and define a binary operation on $S$
+  coordinatewise. 
+  \begin{itemize}
+    \item[(a)] If each $S_i$ is compact, then $S$ is compact.
+
+    \item[(b)] If $\vec{x} \in S$ and for each $i \in I$,
+      $\lambda_{x_i} \colon S_i \to S_i$ is continuous, then
+      $\lambda_{\vec{x}} \colon S \to S$ is continuous.
+  \end{itemize}
+\end{fact}
+\begin{proof}
+  The proof of (a) follows directly from Tychonoff's Theorem,
+  and the proof of (b) is a straightforward exercise.
+\end{proof}
+
+\subsection{Algebra in the Stone-\v{C}ech Compactification}
+\begin{defn}
+  Let $S$ be a nonempty set.
+  A set $\emptyset \ne p \subseteq \calP(S)$ is called an
+  \textsl{ultrafilter (on S)} if and only if $p$ satisfies the
+  following four conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \not\in p$.
+    \item[(2)] If $A$ and $B \in p$, then $A \cap B \in p$.
+    \item[(3)] If $A \in p$ and $A \subseteq B \subseteq S$, then $B
+      \in p$.
+    \item[(4)] For all $A \subseteq S$, either $A \in p$ or $S
+      \setminus A \in p$. 
+  \end{itemize}
+\end{defn}
+We call an ultrafilter $p$ on $S$ a \textsl{principal ultrafilter} if and
+only if there exists $a \in S$ such that $p = \{\, A \subseteq S : a
+\in A \,\}$.
+Nonprincipal ultrafilters, on an infinite set, can be shown to exist
+by Zorn's Lemma. 
+(In fact, the existence of nonprincipal ultrafilters requires some
+weak form of a ``nonconstructive'' axiom of choice.
+See \cite{Rav:1977ys} for interesting discussion about ``combinatorial
+principles'' equivalent to the existence of nonprincipal
+ultrafilters.)
+
+Given a set $S$, we let $\beta S = \{\, p : \mbox{$p$ is an
+  ultrafilter on $S$} \,\}$.
+If $S$ is also a discrete topological space, then we can topologize
+$\beta S$ as follows. 
+For each $A \subseteq S$, define $\overline{A} = \{\, p \in \beta S :
+A \in p \,\}$. 
+Then $\{\, \overline{A} : A \subseteq S \,\}$ forms a basis for a
+topology on $\beta S$.
+In fact, this topology is the Stone-\v{C}ech compactification of $S$
+\cite[Theorem 3.27]{Hindman:1998fk}. 
+
+Finally, if $S$ is a semigroup with the discrete topology, then we can
+extend the semigroup operation on $S$ to $\beta S$ \cite[Theorem
+4.1]{Hindman:1998fk}.
+This turns $\beta S$ into a compact right-topological semigroup with
+the property that for all $s \in S$, $\lambda_s$ is continuous. 
+We shall constantly use the following facts.
+\begin{fact}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  \begin{itemize}
+    \item[(a)] For any $p$, $q \in \beta S$, $A \in pq$ if and only if
+      $\{\, s \in S : s^{-1}A \in q \,\} \in p$. 
+    
+    \item[(b)] For any $p \in \beta S$ and $s \in S$, $A \in sp$ if
+      and only if $s^{-1}A \in p$.
+
+    \item[(c)] For any $p \in \beta S$ and $s \in S$, $A \in ps$ if
+      and only if $As^{-1} \in p$.
+  \end{itemize}
+\end{fact}
+\begin{proof}
+  \cite[Theorem 4.12]{Hindman:1998fk} contains a proof for (a) and
+  (b).
+  Statement (c) is a straight-forward exercise (once you have seen the
+  proof of (a) and (b)).
+\end{proof}
+
 \section{Combinatorial Motivation} 
 Let $S$ be a set and let $\calG \subseteq \calP(S)$.
 We call the pair $(S, \calG)$ \textsl{partition regular} if and only
