@@ -12,6 +12,7 @@
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{CSTv1}{Original Central Sets Theorem}
 \newtheorem*{vdw}{Van der Waerden's Theorem}
+\newtheorem*{hj}{Hales-Jewett Theorem}
 \newtheorem{FST}[thm]{Hindman's Theorem}
 \newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
 \newtheorem{recur}[thm]{Recurrence Theorem}
@@ -356,21 +357,24 @@ that the notion of syndetic set is \textsl{not} partition regular.
 (See the Introduction in \cite{Bergelson:2001fk} for an example in
 $\bbN$.)
 In order to recover partition regularity, we weaken the definition of
-a syndetic set.
+a syndetic set to obtain a piecewise syndetic set.
  
+For a first definition of a piecewise syndetic set we introduce some
+temporary terminology and notation.
 Given $F \in \Pf(\bbN)$ with $|F| = n$, enumerate $F$ as a strictly
 increasing sequence $x_1 < x_2 < \cdots < x_n$. 
-We define the \textsl{gap size of $F$} as $\max\bigr\{\, x_{j+1} - x_j : j
-\in \{1, 2, \ldots, n-1\} \,\bigl\}$.
-We will temporarily denote the gap size of $F$ by $g(F)$. 
+We define the \textsl{gap size of $F$} as $g(F) = \max\bigr\{\,
+x_{j+1} - x_j : j \in \{1, 2, \ldots, n-1\} \,\bigl\}$.
 We call a set $A \subseteq \bbN$ \textsl{piecewise syndetic} if and
 only if there exists $b \in \bbN$ such that for all $N \in \bbN$,
-there exists $B \in \Pf(A)$ with $|B| \le N$ and $g(B) \le b$.
+there exists $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$.
 
 It's clear that a syndetic set in $\bbN$ is a piecewise syndetic set
 in $\bbN$.
 It's also clear that  parts of this definition may not make since
 for arbitrarily semigroups.
+It's is the purpose of this next result to show that we can dispense
+with the potentially troublesome parts.
 
 \begin{prop}
   Let $A \subseteq \bbN$.
@@ -478,113 +482,139 @@ regular.%
   is piecewise syndetic.
 \end{proof}
 
-The definition behind piecewise syndetic sets is difficult to
-understand 
-
-We begin with one of the earliest Ramsey Theoretic result called van
-der Waerden's Theorem.  
-This theorem is the motivation for much of contemporary research
-in Ramsey Theory and for us it will serve the same purpose.
-We first formulate this theorem as follows. 
-
-\begin{vdw}[Arithmetic progressions are partition regular]
-  Let $r \in \bbN$.
-  If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
-  \ldots, r\}$ such that for all $l \in \bbN$, there exists $a$, $d
-  \in \bbN$ with $\{\, a, a+d, \ldots, a+ld \,\} \subseteq C_i$.
-\end{vdw}
-
-\begin{rmk}
-  The corresponding statement where we replace our \mbox{$l$-term}
-  arithmetic progression with an infinite arithmetic progression is
-  false.
-  Consider partitioning $\bbN$ up into two classes and give each class
-  alternatively long blocks. 
-\end{rmk}
-
-Using a little terminology we can recast this theorem into a short
-phrase. 
+There is another statement we can import into a general semigroup, the
+Hales-Jewett Theorem.
+To state this theorem we require some terminology. 
 
 \begin{defn}
-  Let $X$ be a set and $\calG \subseteq \calP(X)$.
-  We say that $(X, \calG)$ is \textsl{partition regular} if and only
-  if for every $r \in \bbN$, if $X = \bigcup_{i=1}^r C_i$, then there
-  exist $i \in \{1, 2, \ldots, r\}$ and $G \in \calG$ such that $G
-  \subseteq C_i$.
+  Let $S$ be the free semigroup on the finite alphabet $A$, and let
+  $\star$ denote an element not in $A$.
+  \begin{itemize}
+    \item[(a)] A \textsl{variable word (on $A$)} $w(\star)$ is a word in the
+      free semigroup on the alphabet $A \cup \{\star\}$ in which
+      $\star$ occurs.
+
+    \item[(b)] Given a variable word $w(\star)$ on $A$ and $a \in A$,
+      we let $w(a)$ denote the word in $S$ where each occurrence of
+      $\star$ in $w(\star)$ is replaced by $a$.
+
+    \item[(c)] Given a variable word $w(\star)$ on $A$ we call the set
+      $\{\, w(a) : a \in A \,\}$ a \textsl{combinatorial line}.
+  \end{itemize}
 \end{defn}
 
-Then the collection of all finite arithmetic progressions is partition
-regular with respect to $\bbN$. 
-
-Van der Waerden's Theorem can be rewritten to apply to any semigroup
-and in fact this result follows directly from van der Waerden's
-Theorem itself.
-
-\begin{thm}
-  Let $S$ be a semigroup and let $r$, $l \in \bbN$.
+\begin{hj}
+  Let $A$ be a finite nonempty alphabet, $S$ be a free semigroup on
+  $A$, and let $r \in \bbN$.
   If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
-  \ldots, r\}$ and $a$, $d \in S$ such that $\{\, a , ad, \ldots, ad^l
-  \,\} \subseteq C_i$. 
-\end{thm}
+  \ldots, r\}$ such that $C_i$ contains a combinatorial line. 
+\end{hj}
+
+We will define a certain specific type of ``combinatorial line'' type
+structure in a general semigroup called a \textsl{$J$-set}.
+
+\begin{defn}
+  Let $S$ be a semigroup. 
+  \begin{itemize}
+    \item[(a)] Define $\calT(S) = \setfunc{\bbN}{S}$.
+      If $S$ is clear from context, we simply write $\calT(S)$ as
+      $\calT$.
+
+    \item[(b)] For each $m \in \bbN$, define
+      \[
+        \calJ_m = \{\, (t_1, t_2, \ldots, t_m) \in \bbN^m : t_1 < t_2
+        < \cdots < t_m \,\}.
+      \]
+
+    \item[(c)] For each $m \in \bbN$, $a \in S^{m+1}$, $t \in
+      \calJ_m$, and $f \in \calT$, define
+      \[
+        x(m, a, t, f) = \biggl(\prod_{i=1}^m \bigl( a(j) f(t_j) \bigr)
+        \biggr) a(m+1).
+      \]
+
+    \item[(d)] We call $A \subseteq S$ a \textsl{$J$-set}%
+      \endnote{
+        Despite appearances to the contrary I did \textsl{not} name
+        this concept.
+        The term $J$-set is first coined in \cite[Definition
+        2.4(b)]{Hindman:1996uq} as a $J_Y$-set.
+      }
+      \textsl{(in S)} if and only if for every $F \in \Pf(\calT)$,
+      there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$
+      such that for all $f  \in F$, $x(m, a, t, f) \in A$. 
+  \end{itemize}
+\end{defn}
+
+Observe that our definition of a $J$-set is a certain type of
+``combinatorial line'' in a general semigroup.
+We don't wish to push this analogy too far since we don't completely
+understand it yet.
+Now we will look at some of the combinatorial results connected with
+$J$-sets.
+
+\section{$J$-sets are Partition Regular}
+Our definition of a $J$-set is superficially stronger than the
+definitions given in \cite[Definition 2.3(d)]{Hindman:2010fk} and
+\cite[Definition 3.3(e)]{De:2008uq}. 
+To show that our definition and \cite[Definition
+2.3(d)]{Hindman:2010fk} are equivalent we will make use of a technical
+lemma.
+
+\begin{lem}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $A$ is a $J$-set.
+    
+    \item[(b)] For all $F \in \calT$, there exists $m \in \bbN$, $a
+      \in S^{m+1}$, and $\bigl( H(1), H(2), \ldots, H(m) \bigr) \in
+      \bigr(\Pf(\bbN)\bigl)^m$ such that 
+      \begin{itemize}
+        \item[(i)] For all $i \in \{1, 2, \ldots, m-1 \}$, $\max H(i) <
+        \min H(i+1)$.
+       
+        \item[(ii)] For all $f \in F$, 
+          \[
+            \biggl( \prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} f(t)
+            \bigr) \biggr) a(m+1) \in A.
+          \]
+      \end{itemize}
+  \end{itemize}
+\end{lem}
 \begin{proof}
-  Fix $x \in S$.
-  We shall consider the set $\{\, x^n : n \in \bbN \,\}$.
-  For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN
-  : x^n \in C_i \,\}$.
-  Then $\bbN = \bigcup_{i=1}^r B_i$, and we can apply van der
-  Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ and $b$, $c
-  \in \bbN$ such that $\{\, b, b+c, \ldots, b+lc \,\} \subseteq B_i$. 
-  By definition of $B_i$, we have that $\{\, x^b, x^{b+c}, \ldots,
-  x^{b+lc} \,\} \subseteq C_i$. 
-  To complete the proof, simply put $a = x^b$ and $d = x^c$. 
+  \textsl{(a) $\implies$ (b).} 
+  This direction is clear after a moment's thought. 
+
+  \textsl{(b) $\implies$ (a).}
+  Let $F \in \calT$ and fix $b \in S$. 
+  For all $f \in F$, define $g_f(t) = f(t)b$ and put $G = \{\, g_f : f
+  \in F \,\}$.
+  Since $G \in \calT$ and (b) is assumed to hold, we can pick $m \in
+  \bbN$, $a \in S^{m+1}$, and $\bigl( H(1), H(2), \ldots, H(m) \bigr)
+  \in \bigl( \Pf(\bbN) \bigr)^m$ such that $\bigl( H(1), H(2), \ldots,
+  H(m) \bigr)$ satisfies condition (i) of (b), and for all $f \in F$,
+  \[
+    \biggl( \prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g_f(t) \bigr)
+    \biggr) a(m+1) \in A.
+  \]
+
+  For notation, convenience put $H(0) = \emptyset$ and for each $\ell \in
+  \{0, 1, \ldots, m\}$ define $h_\ell = 1 + \sum_{i=0}^\ell |H(i)|$. 
+  Put $n = \sum_{i=1}^m |H(i)|$ and enumerate $\bigcup_{i=1}^m H(i)$
+  as a strictly increasing sequence $\la t_i \ra_{i=1}^n$. 
+  Define $c \in S^{n+1}$ as follows:
+  \[
+    c(j) = 
+    \begin{cases}
+      a(1) & \mbox{if $j = 1$,}\\
+      b    & \mbox{if $\ell \in \{0, 1, \ldots, m-1\}$ } \\
+      & \hspace{2em}\mbox{and $j \in \{h_\ell +1, h_\ell + 2, \ldots,
+        h_\ell + h_{\ell +1} - 1 \}$, and}\\
+      b a(\ell + 1) &
+    \end{cases}
+  \]
 \end{proof}
-
-However as observed in the Introduction of \cite{Bergelson:1992fk},
-there are two potential problems with such a straightforward
-approach: Our increment $d$ may be a right identity element in our
-semigroup; and, even if $d$ is not an identity element, there is no
-guarantee that all of the elements in $\{\, a, ad, \ldots, ad^l \,\}$
-are distinct. 
-
-\begin{example}
-  For an example of the first problem we consider a left-zero
-  semigroup $S$.
-  (A semigroup $(S, \cdot)$ is a \textsl{left-zero semigroup} if and
-  only if for all $x$, $y \in S$, $x \cdot y = x$.
-  The name ``left-zero'' is derived from the fact that, in the
-  integers, multiplying on the left by zero yields zero.  
-  Hence in a left-zero semigroup every element behaves like zero when
-  multiplied on the left.)
-  Observe that in $S$, every element is a right identity. 
-  Hence $\{\, a, ad, \ldots, ad^l \,\} = \{a\}$ for every $a$, $d \in S$.
-\end{example}
-
-\begin{example}
-  For an example of the second problem, let $p \in \bbN$, and let $G =
-  \bigoplus_{n \in \bbN} (\bbZ/p\bbZ)$, where $\bbZ/p\bbZ$ is the
-  cyclic group of order $p$.
-  We show that if $l > p$, then for all $a$, $d \in G$, the elements
-  in $\{\, a, ad, \ldots, ad^l \,\}$ are not all distinct.
-
-  Let $d \in G$ not be the identity. 
-  Then $d^p = 1$, where 1 is the identity in $G$. 
-  Hence if $a \in G$, then $a = ad^p$. 
-\end{example}
-
-To at least attempt to avoid the first problem, we go back and
-strengthen the conclusion of van der Waerden's Theorem.
-(However, note that we cannot always guarantee that the first problem
-will not occur as our example shows.)
-
-\begin{thm}
-  Let $\la y_n \ra_{n=1}^\infty$ be a sequence in $\bbN$, and let $r$,
-  $l \in \bbN$.
-  If $\bbN = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
-  \ldots, r\}$, $a \in \bbN$, and $d \in \mathrm{FS}(\la y_n
-  \ra_{n=1}^\infty$ such that $\{\, a, a+d, \ldots, a+ld \,\}
-  \subseteq C_i$.
-\end{thm}
-
 
 
 \section{Overview}
