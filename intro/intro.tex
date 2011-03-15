@@ -51,13 +51,36 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+\section{Algebraic and Topological Preliminaries}
+We start by giving a, possibly laconic, introduction to the basic
+definitions and results we use from algebraic semigroup theory and the
+algebraic structure of the Stone-\v{C}ech compactification.
+The interested reader can consult the article \cite{Hollings:2007uq}
+for a more expensive, but still brief, introduction to algebraic
+semigroup theory or the monographs \cite{Clifford:1961fk} and
+\cite{Clifford:1967fk} for more extensive information.
+\textsl{The} standard reference for detailed information about the
+algebraic structure of the Stone-\v{C}ech compactification is
+\cite{Hindman:1998fk}, and the survey papers \cite{Hindman:2002kx} and
+\cite{Hindman:2010uq} contains the latest information on this
+algebraic structure. 
+
 \subsection{Algebraic Semigroup Theory}
-A \textsl{semigroup} is a pair $(S, \cdot)$ such that $S$ is nonempty
-and $\cdot$ is an associate binary operation on $S$, that is, $x \cdot
+A \textsl{semigroup} is a pair $(S, \cdot)$ such that $S$ is a
+nonempty set
+and $\cdot$ is an associative binary operation on $S$, that is, $x \cdot
 (y \cdot z) = (x \cdot y) \cdot z$ for all $x$, $y$, and $z \in S$.
-As usual in mathematics, we will often suppress the explicit mention
-of our associate binary operation $\cdot$ in algebraic formulas and
-simply write that $S$ is a semigroup. 
+As usual in mathematics, we will often simply write that $S$ is a
+semigroup and suppress the explicit mention
+of our associative binary operation $\cdot$ in algebraic formulas. 
+We call an element $e \in S$ an \textsl{idempotent} if and only if $ee
+= e$. 
+Clearly any group and the multiplicative part of a ring are examples
+of semigroups.
+However, semigroup theory is different from group theory and ring
+theory since there are semigroups which cannot naturally be embedded
+in any group, and there are semigroups which cannot form the
+multiplicative part of any ring.
 
 Given a semigroup $S$ for each $x \in S$, we define functions
 $\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by
