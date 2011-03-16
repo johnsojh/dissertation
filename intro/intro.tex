@@ -36,10 +36,13 @@
 \newcommand{\ra}{\rangle}
 \newcommand{\bbN}{\mathbb{N}}
 \newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\AP}{\mathcal{AP}}
+\newcommand{\AL}{\mathcal{AL}}
 \newcommand{\calG}{\mathcal{G}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\Pf}{\mathcal{P}_f}
 
@@ -79,17 +82,18 @@ Clearly any group and the multiplicative part of a ring are examples
 of semigroups.
 However, semigroup theory is different from group theory and ring
 theory since there are semigroups which cannot naturally be embedded
-in any group, and there are semigroups which cannot form the
-multiplicative part of any ring.
+in any group or form the multiplicative part of any ring.
 
 Given a semigroup $S$ for each $x \in S$, we define functions
 $\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by
 $\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
-For $A \subseteq S$ and $x \in S$, we use the special notation
+For $A \subseteq S$ and $x \in S$, we use the special notations
 $x^{-1}A$ to mean $\lambda_x^{-1}[A]$, that is, $x^{-1}A = \{\, y \in
 S : xy \in A \,\}$. 
+If $S$ is commutative, with binary operation $+$, then we write
+$x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A -x$, respectively.
 
-Let $\emptyset \ne I \subseteq S$, where $S$ is a semigroup.
+Let where $S$ is a semigroup and $\emptyset \ne I \subseteq S$. 
 We call $I$ a \textsl{left ideal (of S)} if and only if for every $x
 \in S$, $\lambda_x[I] \subseteq I$; we call $I$ a \textsl{right ideal
   (of S)} if and only if for every $x \in S$, $\rho_x[I] \subseteq
@@ -103,19 +107,18 @@ two-sided ideal contained in every ideal.
 We denote the smallest ideal of a semigroup $S$, if it exists, by
 $K(S)$. 
 We have the following important fact about the smallest ideal.
-\begin{fact}
-  Let $\la S_i : i \in I \ra$ be a family of semigroups and let $S =
-  \bigtimes_{i \in I} S_i$.
-  Define a binary operation on $S$ coordinatewise.
+
+\begin{thm}
+  Let $\la S_i : i \in I \ra$ be a family of semigroups,put $S =
+  \bigtimes_{i \in I} S_i$, and define an associative binary operation
+  on $S$ coordinatewise in terms of the operations on each $S_i$.
   Suppose that, for each $i \in I$, $S_i$ has a smallest ideal.
   Then $S$ has a smallest ideal and $K(S) = \bigtimes_{i \in I}
   K(S_i)$. 
-\end{fact}
+\end{thm}
 \begin{proof}
   A proof of this fact is in \cite[Theorem 2.23]{Hindman:1998fk}.
 \end{proof}
-Finally, we call an element $e \in S$, an \textsl{idempotent} if and
-only if $e e = e$.
 
 \subsection{Compact Right-Topological Semigroups}
 A \textsl{right-topological semigroup} $S$ is a semigroup which is
@@ -220,15 +223,122 @@ We shall constantly use the following facts.
   proof of (a) and (b)).
 \end{proof}
 
+Since we shall apply the algebraic structure of the Stone-\v{C}ech
+compactification to Ramsey Theory problems, or results inspired by
+them, we shall implicitly use the following definition and explicitly
+use the following theorem. 
+
+\begin{defn}
+  Let $S$ be a set and $\calR \subseteq \calP(S)$.
+  We call $\calR$ \textsl{partition regular} if and only if for every
+  $A \in \calR$ and $r \in \bbN$, whenever $A = \bigcup_{i=1}^r C_i$,
+  there exist $i \in \{1, 2, \ldots, r\}$ and $B \in \calR$ such that
+  $B \subseteq C_i$.
+\end{defn}
+
+
+\section{Partition Regularity and Ideals}
+
+Let $S$ be a set and $\calR \subseteq \calP(S)$.
+We call $\calR$ \textsl{partition regular} if and only if, for every
+$A \in \calR$ and $r \in \bbN$, if $A = \bigcup_{i=1}^r$, then there
+exist $i \in \{1, 2, \ldots, r\}$ and $B \in \calR$ such that $B
+\subseteq C_i$.
+With this bit of terminology (originally due to Rado in
+\cite{Rado:1945kx}), we can roughly define Ramsey Theory as the
+  study and classification of partition regular sets. 
+The following theorem shows that studying partition regular sets is
+equivalent to studying certain ultrafilters.
+
+\begin{thm}
+  \label{thm:pr}
+  Let $S$ be a set and let $\emptyset \ne \calR \subseteq \calP(S)$.
+  Assume that $\emptyset \not\in \calR$ and put $\calR^{\uparrow} =
+  \{\, B \subseteq S : \mbox{there exists $A \in \calR$ with $A
+    \subseteq B$} \,\}$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calR$ is partition regular.
+
+    \item[(b)] $\{\, p \in \beta S : p \subseteq \calR^\uparrow \,\}$
+      is nonempty.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  This follows from \cite[Theorem 3.11]{Hindman:1998fk}.
+\end{proof}
+
+Of course, in this dissertation we will mainly be considered with
+partition regular sets when the underlying set is a semigroup and
+$\calR$ is defined in terms of the algebraic structure of our
+semigroup.
+We begin by giving one of the earliest Ramsey Theoretic result that
+still forms the basis for much of the contemporary research in the
+field.
+
+\begin{vdw}
+  Let $A \subseteq \bbN$ have the property that for every $\ell \in
+  \bbN$, there exist $a$, $b \in \bbN$ such that $\{\, a, a+d, \ldots,
+  a+\ell d\,\} \subseteq A$.
+  Let $r \in \bbN$.
+  If $A = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d
+  \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq C_i$. 
+\end{vdw}
+
+\begin{rmk}
+  Van der Waerden's proof of his theorem in
+  \cite{Van-der-Waerden:1927fk} uses a complicated, but elementary,
+  combinatorial argument based on the pigeonhole principle and ``double
+  induction.''%
+  \endnote{
+    I'm not sure of the exact form of van der Waerden's argument since I
+    have never read the paper \cite{Van-der-Waerden:1927fk}. 
+    This statement is based on my opinion that all known combinatorial
+    proofs of van der Waerden's Theorem are not simple, Khinchin's
+    opinion on the difficulty of the original proof \cite[expressed in
+    Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
+    description on how he found his proof in
+    \cite{Van-der-Waerden:1971fk}. 
+    (Van der Waerden's description in \cite{Van-der-Waerden:1971fk}
+    seems to imply that his proof is similar to the one in
+    \cite[Chapter 1]{Khinchin:1998fk}.)
+    The interested reader can find a combinatorial proof of van der
+    Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
+    \cite[Chapter 1]{Khinchin:1998fk}.
+  }  
+\end{rmk}
+
+Van der Waerden's theorem implies that the property of containing
+arbitrarily long finite arithmetic progressions is partition regular. 
+For convenience we call such sets \textsl{AP-sets}.
+
+\begin{defn}
+  We call $A \subseteq \bbN$ an \textsl{AP-set} if and only if for
+  every $\ell \in \bbN$ there exist $a$, $b \in \bbN$ such that $\{\,
+  a, a+d, \ldots, a+\ell d\,\} \subseteq A$.
+\end{defn}
+
+\begin{defn}
+  $\AP = \{\, p \in \beta \bbN : \mbox{for all $A \in p$, $A$ is an
+    AP-set} \,\}$. 
+\end{defn}
+
+Our Theorem \ref{thm:pr} shows that $\AP$ is a nonempty subset of
+$\beta\bbN$. 
+In fact we will show that $\AP$ is a closed ideal of $\beta\bbN$. 
+(This result is originally due to Hindman.)
+\begin{thm}
+  $\AP$ is a closed ideal of $\beta\bbN$.
+\end{thm}
+
 \section{Combinatorial Motivation} 
 Let $S$ be a set and let $\calG \subseteq \calP(S)$.
 We call the pair $(S, \calG)$ \textsl{partition regular} if and only
 if for every $r \in \bbN$, if $S = \bigcup_{i=1}^r C_i$, then there
 exist $i \in \{1, 2, \ldots, r\}$ and $G \in \calG$ such that $G
 \subseteq C_i$. 
-With this bit of terminology (originally due to Rado in
-\cite{Rado:1945kx}), we can roughly define Ramsey Theory as the
-  study and classification of partition regular sets. 
+
 With such a ``definition'', it's a fact that studying a partition
 regular set $(S, \calG)$ is equivalent to studying certain ultrafilters on
 $S$. 
@@ -264,41 +374,6 @@ side of this equivalence.
   r\}$. 
 \end{rmk}
 
-We begin by giving one of the earliest Ramsey Theoretic result that
-still forms the basis for much of the contemporary research in the
-field.
-This theorem states that the property of containing arbitrarily long
-finite arithmetic progressions is partition regular. 
-
-\begin{vdw}
-  Let $r \in \bbN$.
-  If $\bbN = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
-  \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d
-  \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq C_i$. 
-\end{vdw}
-
-\begin{rmk}
-  Van der Waerden's proof of his theorem in
-  \cite{Van-der-Waerden:1927fk} uses a complicated, but elementary,
-  combinatorial argument based on the pigeonhole principle and ``double
-  induction.''%
-  \endnote{
-    I'm not sure of the exact form of van der Waerden's argument since I
-    have never read the paper \cite{Van-der-Waerden:1927fk}. 
-    This statement is based on my opinion that all known combinatorial
-    proofs of van der Waerden's Theorem are not simple, Khinchin's
-    opinion on the difficulty of the original proof \cite[expressed in
-    Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
-    description on how he found his proof in
-    \cite{Van-der-Waerden:1971fk}. 
-    (Van der Waerden's description in \cite{Van-der-Waerden:1971fk}
-    seems to imply that his proof is similar to the one in
-    \cite[Chapter 1]{Khinchin:1998fk}.)
-    The interested reader can find a combinatorial proof of van der
-    Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
-    \cite[Chapter 1]{Khinchin:1998fk}.
-  }  
-\end{rmk}
 
 Van der Waerden's Theorem can be rewritten to apply to any semigroup,
 and, as observed in the Introduction of \cite{Bergelson:1992fk}, this
