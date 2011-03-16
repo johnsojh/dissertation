@@ -4,7 +4,7 @@
 \usepackage{amsthm, amssymb, amsmath}
 \usepackage{endnotes}
 \usepackage{todonotes}
-% \usepackage[doublespacing]{setspace}
+\usepackage[doublespacing]{setspace}
 \usepackage{url}
 
 \newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
@@ -53,16 +53,16 @@
 \begin{document}
 \section{Algebraic and Topological Preliminaries}
 We start by giving a, possibly laconic, introduction to the basic
-definitions and results we use from algebraic semigroup theory and the
+definitions and results we need from algebraic semigroup theory and the
 algebraic structure of the Stone-\v{C}ech compactification.
 The interested reader can consult the article \cite{Hollings:2007uq}
-for a more expensive, but still brief, introduction to algebraic
+for a more expansive, but still brief, introduction to algebraic
 semigroup theory or the monographs \cite{Clifford:1961fk} and
 \cite{Clifford:1967fk} for more extensive information.
 \textsl{The} standard reference for detailed information about the
 algebraic structure of the Stone-\v{C}ech compactification is
-\cite{Hindman:1998fk}, and the survey papers \cite{Hindman:2002kx} and
-\cite{Hindman:2010uq} contains the latest information on this
+\cite{Hindman:1998fk}, along with the survey papers \cite{Hindman:2002kx} and
+\cite{Hindman:2010uq} which contains the latest information on this
 algebraic structure. 
 
 \subsection{Algebraic Semigroup Theory}
@@ -70,8 +70,8 @@ A \textsl{semigroup} is a pair $(S, \cdot)$ such that $S$ is a
 nonempty set
 and $\cdot$ is an associative binary operation on $S$, that is, $x \cdot
 (y \cdot z) = (x \cdot y) \cdot z$ for all $x$, $y$, and $z \in S$.
-As usual in mathematics, we will often simply write that $S$ is a
-semigroup and suppress the explicit mention
+As usual in mathematics, we will often simply write that `$S$ is a
+semigroup' and suppress the explicit mention
 of our associative binary operation $\cdot$ in algebraic formulas. 
 We call an element $e \in S$ an \textsl{idempotent} if and only if $ee
 = e$. 
@@ -81,13 +81,16 @@ However, semigroup theory is different from group theory and ring
 theory since there are semigroups which cannot naturally be embedded
 in any group, and there are semigroups which cannot form the
 multiplicative part of any ring.
+For instance, a semigroup may have many idempotents but a group only
+has one.
 
 Given a semigroup $S$ for each $x \in S$, we define functions
 $\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by
 $\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
 For $A \subseteq S$ and $x \in S$, we use the special notation
-$x^{-1}A$ to mean $\lambda_x^{-1}[A]$, that is, $x^{-1}A = \{\, y \in
-S : xy \in A \,\}$. 
+$x^{-1}A$ to mean $\lambda_x^{-1}[A]$ and $Ax^{-1}$ to mean
+$\rho_x^{-1}[A]$, that is, $x^{-1}A = \{\, y \in S : xy \in A \,\}$
+and $Ax^{-1} = \{\, y \in S : yx \in A \,\}$.
 
 Let $\emptyset \ne I \subseteq S$, where $S$ is a semigroup.
 We call $I$ a \textsl{left ideal (of S)} if and only if for every $x
@@ -95,27 +98,24 @@ We call $I$ a \textsl{left ideal (of S)} if and only if for every $x
   (of S)} if and only if for every $x \in S$, $\rho_x[I] \subseteq
 I$; and finally, we call $I$ a \textsl{(two-sided) ideal (of S)} if
 and only $I$ is both a left ideal and right ideal. 
-The phrases in parenthesis will often be omitted if they are clear
-from context.
-
+(The phrases in parenthesis will often be omitted if they are clear
+from context.)
 A semigroup can contain, at most one, smallest ideal, that is, a
 two-sided ideal contained in every ideal.
 We denote the smallest ideal of a semigroup $S$, if it exists, by
 $K(S)$. 
 We have the following important fact about the smallest ideal.
-\begin{fact}
+\begin{thm}
   Let $\la S_i : i \in I \ra$ be a family of semigroups and let $S =
-  \bigtimes_{i \in I} S_i$.
-  Define a binary operation on $S$ coordinatewise.
+  \bigtimes_{i \in I} S_i$ and define an associative binary operation
+  on $S$ coordinatewise in terms of the operations on each $S_i$.
   Suppose that, for each $i \in I$, $S_i$ has a smallest ideal.
   Then $S$ has a smallest ideal and $K(S) = \bigtimes_{i \in I}
   K(S_i)$. 
-\end{fact}
+\end{thm}
 \begin{proof}
   A proof of this fact is in \cite[Theorem 2.23]{Hindman:1998fk}.
 \end{proof}
-Finally, we call an element $e \in S$, an \textsl{idempotent} if and
-only if $e e = e$.
 
 \subsection{Compact Right-Topological Semigroups}
 A \textsl{right-topological semigroup} $S$ is a semigroup which is
