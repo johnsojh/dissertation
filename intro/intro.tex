@@ -123,26 +123,23 @@ also a topological space such that for every $x \in S$, the function
 $\rho_x$ is continuous. 
 From now on, unless otherwise noted, we will assume that all mentioned
 topological spaces are Hausdorff. 
-We this assumption we automatically gain the following facts.
+We this assumption we automatically gain the following facts about
+compact right-topological semigroups
 
-\begin{fact}
+\begin{thm}
+  \label{thm:IdK_S}
   Let $S$ be a compact right-topological semigroup.
-  \begin{itemize}
-    \item[(a)] $S$ contains an idempotent.
-
-    \item[(b)] The smallest ideal of $S$ exists.
-  \end{itemize}
-\end{fact}
+  Then $S$ contains an idempotent and the smallest ideal of $S$ exists.
+\end{thm}
 \begin{proof}
-  Proofs for (a) and (b) can be found in \cite[Theorem
-  2.5]{Hindman:1998fk} \cite[Theorem 2.8]{Hindman:1998fk},
-  respectively.
+  This conclusion is proved in \cite[Theorem2.5]{Hindman:1998fk}
+  \cite[Theorem 2.8]{Hindman:1998fk},
 \end{proof}
 
-\begin{fact}
+\begin{thm}
   Let $\la S_i : i \in I \ra$ be a family of right-topological
   semigroups and let $S = \bigtimes_{i \in I} S_i$.
-  Given $S$ the product topology and define a binary operation on $S$
+  Give $S$ the product topology and define a binary operation on $S$
   coordinatewise. 
   \begin{itemize}
     \item[(a)] If each $S_i$ is compact, then $S$ is compact.
@@ -151,7 +148,7 @@ We this assumption we automatically gain the following facts.
       $\lambda_{x_i} \colon S_i \to S_i$ is continuous, then
       $\lambda_{\vec{x}} \colon S \to S$ is continuous.
   \end{itemize}
-\end{fact}
+\end{thm}
 \begin{proof}
   The proof of (a) follows directly from Tychonoff's Theorem,
   and the proof of (b) is a straightforward exercise.
@@ -176,12 +173,27 @@ We call an ultrafilter $p$ on $S$ a \textsl{principal ultrafilter} if and
 only if there exists $a \in S$ such that $p = \{\, A \subseteq S : a
 \in A \,\}$.
 Nonprincipal ultrafilters, on an infinite set, can be shown to exist
-by Zorn's Lemma. 
-(In fact, the existence of nonprincipal ultrafilters requires some
-weak form of a ``nonconstructive'' axiom of choice.
-See \cite{Rav:1977ys} for interesting discussion about ``combinatorial
-principles'' equivalent to the existence of nonprincipal
-ultrafilters.)
+by Zorn's Lemma.%
+\endnote{
+  In fact, the existence of nonprincipal ultrafilters requires some
+  weak from of choice.  
+  See section 2 of \cite{Rav:1977ys} for an interesting collection of
+  statements which are essentially combinatorial formulations of the
+  Ultrafilter Principle.  
+  (The Ultrafilter Principle states that every filter can
+  be extended to an ultrafilter.  
+  This principle is known to be stronger than the statement that every
+  infinite set has a nonprincipal ultrafilter.) 
+  These combinatorial statements are essentially variants of Rado's
+  Selection Lemma.
+  
+  However the reader probably shouldn't read too much into fact that
+  there are combinatorial statements equivalent to the Ultrafilter
+  Principle, since this principle is still a ``nonconstructive''
+  statement. 
+  See Chapter 6 in \cite{Schechter:1997fk} for a discussion on this
+  point. 
+} 
 
 Given a set $S$, we let $\beta S = \{\, p : \mbox{$p$ is an
   ultrafilter on $S$} \,\}$.
@@ -190,17 +202,22 @@ $\beta S$ as follows.
 For each $A \subseteq S$, define $\overline{A} = \{\, p \in \beta S :
 A \in p \,\}$. 
 Then $\{\, \overline{A} : A \subseteq S \,\}$ forms a basis for a
+compact Hausdorff
 topology on $\beta S$.
-In fact, this topology is the Stone-\v{C}ech compactification of $S$
-\cite[Theorem 3.27]{Hindman:1998fk}. 
+In fact, by \cite[Theorem 3.27]{Hindman:1998fk} this topology is the
+Stone-\v{C}ech compactification of $S$. 
 
 Finally, if $S$ is a semigroup with the discrete topology, then we can
 extend the semigroup operation on $S$ to $\beta S$ \cite[Theorem
 4.1]{Hindman:1998fk}.
 This turns $\beta S$ into a compact right-topological semigroup with
 the property that for all $s \in S$, $\lambda_s$ is continuous. 
-We shall constantly use the following facts.
-\begin{fact}
+In particular, $\beta S$ has at least one idempotent by Theorem
+\ref{thm:IdK_S} (it typically has more) and the smallest ideal
+$K(\beta S)$.
+
+We shall constantly use the following theorem.
+\begin{thm}
   Let $S$ be a semigroup and $A \subseteq S$.
   \begin{itemize}
     \item[(a)] For any $p$, $q \in \beta S$, $A \in pq$ if and only if
@@ -212,7 +229,7 @@ We shall constantly use the following facts.
     \item[(c)] For any $p \in \beta S$ and $s \in S$, $A \in ps$ if
       and only if $As^{-1} \in p$.
   \end{itemize}
-\end{fact}
+\end{thm}
 \begin{proof}
   \cite[Theorem 4.12]{Hindman:1998fk} contains a proof for (a) and
   (b).
