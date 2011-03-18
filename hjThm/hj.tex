@@ -12,6 +12,7 @@
 \newtheorem{thm}{Theorem}
 \newtheorem*{vdw}{Van der Waerden's Theorem}
 \newtheorem*{hj}{Hales-Jewett Theorem}
+\newtheorem*{ramsey}{Ramsey's Theorem}
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{lem}[thm]{Lemma}
@@ -37,6 +38,7 @@
 \newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\Pf}{\mathcal{P}_f}
 
@@ -48,7 +50,89 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+\begin{defn}
+  Let $X$ be a set, $\calS \subseteq \calP(X)$, and $\kappa$ a
+  cardinal number.
+  \begin{itemize}
+    \item[(a)] We call $\calS$ \textsl{\mbox{$\kappa$-regular} in $X$}
+      if and only if whenever $X = \bigcup_{i=1}^\kappa C_i$, there
+      exist $i \in \kappa+1$ and $A \in \calS$ such that $A \subseteq
+      C_i$.
 
+    \item[(b)] We call $\calS$ \textsl{regular in $X$} if and only if
+      $\calS$ is \mbox{$n$-regular} for all $n \in \bbN$.
+  \end{itemize}
+\end{defn}
+
+\begin{example}
+  Let $X = \{1, 2, \ldots, n(m-1) + 1\}$ and $\calS = \{\, A \subseteq
+  X : |A| = m \,\}$.
+  Then $\calS$ is \mbox{$n$-regular} in $X$ but not
+  \mbox{$n+1$-regular}.
+\end{example}
+\begin{proof}
+  
+\end{proof}
+
+\begin{ramsey}
+  For all $k$, $m$, $n \in \bbN$, there exists $p \in \bbN$ such that
+  if $A = \{1, 2, \ldots, p\}$, then $\bigl\{\, [B]^k : B \in [A]^m
+  \,\bigr\}$ is \mbox{$n$-regular} in $[A]^k$.
+\end{ramsey}
+
+\begin{defn}
+  Let $\calS$ and $\calT$ both be collection of sets.
+  Define
+  \[
+    \calS \otimes \calT = \{\, A \times B : \mbox{$A \in \calS$ and
+      $B \in \calT$} \,\}.
+  \]
+\end{defn}
+
+\begin{lem}
+  Let $\kappa$ and $\lambda$ be cardinal numbers and let $X$ be a set
+  with $|X| = \kappa$. 
+  Let $\calS$ be \mbox{$\lambda$-regular} in $X$ and let $\calT$ be
+  \mbox{$\lambda^\kappa$-regular} in $Y$.
+  Then $\calS \otimes \calT$ is \mbox{$\lambda$-regular} in $X \times
+  Y$.
+\end{lem}
+\begin{proof}
+  
+\end{proof}
+
+\begin{defn}
+  Let $X$ and $Y$ be sets with $\calS \subseteq \calP(X)$ and $\calT
+  \subseteq \calP(Y)$.
+  We call $f \colon X \to Y$ \textsl{provincial with respect to
+    $\calS$ and $\calT$} if and only if for every $A \in \calS$, there
+  exists $B \in \calT$ such that $B \subseteq f[A]$.
+\end{defn}
+
+\begin{lem}
+  Let $f \colon X \to Y$ be provincial with respect to $\calS$ and
+  $\calT$.
+  Let $\kappa$ be a cardinal.
+  If $\calS$ is \mbox{$\kappa$-regular} in $X$, then $\calT$ is
+  \mbox{$\kappa$-regular} in $Y$.
+\end{lem}
+\begin{proof}
+  
+\end{proof}
+
+\begin{lem}
+  Let $(S, \cdot)$ be a semigroup and $\calS \subseteq \calP(S)$.
+  Suppose that for all $k \in \bbN$, there exists $F \in \Pf(S)$ such
+  that $\calS$ is \mbox{$k$-regular} in $F$.
+  Then for each $n \in \bbN$,
+  \[
+    \calS_n = \{\, A_1A_2 \cdots A_n : A_i \in \calS \,\}
+  \]
+  is regular in $S$.
+\end{lem}
+\begin{proof}
+  
+\end{proof}
 \bibliographystyle{amsplain}
 \bibliography{../references}
 \end{document}
