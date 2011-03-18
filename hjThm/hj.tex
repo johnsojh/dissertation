@@ -68,10 +68,23 @@
   Let $X = \{1, 2, \ldots, n(m-1) + 1\}$ and $\calS = \{\, A \subseteq
   X : |A| = m \,\}$.
   Then $\calS$ is \mbox{$n$-regular} in $X$ but not
-  \mbox{$n+1$-regular}.
+  \mbox{$(n+1)$-regular}.
 \end{example}
 \begin{proof}
-  
+  We first show that $\calS$ is \mbox{$n$-regular} in $X$.
+  Let $X = \bigcup_{i=1}^n C_i$.
+  If each $C_i$ has at most $m-1$ elements, then $|X| \le n(m-1)$, a
+  contradiction. 
+  Hence there exist $i \in \{1, 2, \ldots, n\}$ and $A \in \calS$ such
+  that $A \subseteq C_i$.
+
+  We now show that $\calS$ is not \mbox{$(n+1)$-regular} in $X$.
+  For each $i \in \{1, 2, \ldots, n\}$ pick $C_i \subseteq X$ such
+  that $|C_i| = m-1$ and $C_i \cap C_j = \emptyset$ for $i \ne j$.
+  Put $C_{n+1} = X \setminus \bigl(\bigcup_{i=1}^n C_i\bigr)$, then
+  $|C_{n+1}| = 1$. 
+  Moreover, $X = \bigcup_{i=1}^{n+1} C_i$ and no $C_i$ contains a
+  \mbox{$m$-element} set.
 \end{proof}
 
 \begin{ramsey}
@@ -90,6 +103,7 @@
 \end{defn}
 
 \begin{lem}
+  \label{lem:TensorReg}
   Let $\kappa$ and $\lambda$ be cardinal numbers and let $X$ be a set
   with $|X| = \kappa$. 
   Let $\calS$ be \mbox{$\lambda$-regular} in $X$ and let $\calT$ be
@@ -98,7 +112,27 @@
   Y$.
 \end{lem}
 \begin{proof}
+  Let $f \colon X \times Y \to \lambda$ and note that this function is
+  equivalent to a partition of $X \times Y$ into $\lambda$ pieces.
+  For each $y \in Y$ define the function $f_y \colon X \to \lambda$ by
+  $f_y(x) = f(x,y)$. 
+  Since the number of functions from $X$ to $\lambda$ is
+  $\kappa^\lambda$, we can consider the mapping $y \mapsto f_y$ as a
+  partition of $Y$ into $\lambda^\kappa$ pieces.
   
+  Now $\calT$ is \mbox{$\lambda^\kappa$-regular} in $Y$, so we can
+  pick $T \in \calT$ such that for all $y$, $y' \in T$, $f_y =
+  f_{y'}$, that is, for all $y$, $y' \in T$ and for every $x \in
+  X$, we have $f(x,y) = f(x',y')$.
+
+  Let $y \in T$, then $f_y$ partitions $X$ into $\lambda$ pieces.
+  Since $\calS$ is \mbox{$\lambda$-regular} in $X$, we can pick $S \in
+  \calS$ such that for all $x$, $x' \in S$, $f_y(x) = f_y(x')$, that
+  is, $f(x, y) = f(x', y)$.
+  Then it follows that for all $y$, $y' \in T$ and for every $s$, $s'
+  in S$, we have that $f(x,y) = f(x', y) = f(x',y')$.
+  It follows that $\calS \otimes \calT$ is \mbox{$\lambda$-regular} in
+  $X \times Y$.
 \end{proof}
 
 \begin{defn}
@@ -110,6 +144,7 @@
 \end{defn}
 
 \begin{lem}
+  \label{lem:provin}
   Let $f \colon X \to Y$ be provincial with respect to $\calS$ and
   $\calT$.
   Let $\kappa$ be a cardinal.
@@ -117,7 +152,14 @@
   \mbox{$\kappa$-regular} in $Y$.
 \end{lem}
 \begin{proof}
-  
+  Let $g \colon Y \to \kappa$, then $g \circ f \colon X \to \kappa$.
+  Pick $A \in \calS$ such that for all $a$, $a' \in A$, $(g \circ
+  f)(a) = (g \circ f)(a')$.
+  Since $f$ is provincial, pick $B \in \calT$ such that $B \subseteq
+  f[A]$.
+  Then for all $b$, $b' \in B$, there exist $a$, $a' \in A$ such that
+  $b = f(a)$, $b' = f(a')$, and $g(b) = (g \circ f)(a) = (g \circ
+  f)(a') = g(b')$.
 \end{proof}
 
 \begin{lem}
@@ -131,7 +173,28 @@
   is regular in $S$.
 \end{lem}
 \begin{proof}
-  
+  We proceed by induction on $n$. 
+  Observe that since $\calS_1 = \calS$ we are done, by hypothesis,
+  when $n = 1$.
+  Let $n > 1$ and assume that $\calS_{n-1}$ is regular in $S$.
+
+  Let $k \in \bbN$.
+  Then there exist $m \in \bbN$ and $T \in [S]^m$ such that $\calS$ is
+  regular in $T$.
+  Since $\calS_{n-1}$ is regular in $S$, we have that $\calS_{n-1}$ is
+  \mbox{$k^m$-regular} in $S$.
+  By Lemma \ref{lem:TensorReg}, $\calS \otimes \calS_{n-1}$ is
+  \mbox{$k$-regular} in $T \times S \subseteq S \times S$.
+  We claim that the mapping $(x,y) \mapsto xy$ is provincial with
+  respect to $\calS \otimes \calS_{n-1}$ and $\calS_n$. 
+  If this claim is true, then it follows by Lemma \ref{lem:provin}
+  that $\calS_n$ is regular.
+
+  To that $(x,y) \mapsto xy$ is provincial with respect to $\calS
+  \otimes \calS_{n-1}$ and $\calS_n$, let $C \in \calS$ and $D \in
+  \calS_{n-1}$, then $C \times D \in \calS \otimes \calS_{n-1}$.
+  The image of $C$ and $D$ under the map is $CD$ which is an element
+  of $\calS_n$.
 \end{proof}
 \bibliographystyle{amsplain}
 \bibliography{../references}
