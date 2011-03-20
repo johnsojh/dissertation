@@ -49,6 +49,927 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+\section{Algebraic and Topological Preliminaries}
+We start by giving a, possibly laconic, introduction to the basic
+definitions and results we need from algebraic semigroup theory and the
+algebraic structure of the Stone-\v{C}ech compactification.
+The interested reader can consult the article \cite{Hollings:2007uq}
+for a more expansive, but still brief, introduction to algebraic
+semigroup theory or the monographs \cite{Clifford:1961fk} and
+\cite{Clifford:1967fk} for more extensive information.
+\textsl{The} standard reference for detailed information about the
+algebraic structure of the Stone-\v{C}ech compactification is
+\cite{Hindman:1998fk}, along with the survey papers \cite{Hindman:2002kx} and
+\cite{Hindman:2010uq} which contains the latest information on this
+algebraic structure. 
+
+\subsection{Algebraic Semigroup Theory}
+A \textsl{semigroup} is a pair $(S, \cdot)$ such that $S$ is a
+nonempty set
+and $\cdot$ is an associative binary operation on $S$, that is, $x \cdot
+(y \cdot z) = (x \cdot y) \cdot z$ for all $x$, $y$, and $z \in S$.
+As usual in mathematics, we will often simply write that `$S$ is a
+semigroup' and suppress the explicit mention
+of our associative binary operation $\cdot$ in algebraic formulas. 
+We call an element $e \in S$ an \textsl{idempotent} if and only if $ee
+= e$. 
+Clearly any group and the multiplicative part of a ring are examples
+of semigroups.
+However, semigroup theory is different from group theory and ring
+theory since there are semigroups which cannot naturally be embedded
+in any group or form the multiplicative part of any ring.
+For instance, a semigroup may have many idempotents but a group only
+has one.
+
+Given a semigroup $S$ for each $x \in S$, we define functions
+$\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by
+$\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
+For $A \subseteq S$ and $x \in S$, we use the special notations
+$x^{-1}A$ to mean $\lambda_x^{-1}[A]$, that is, $x^{-1}A = \{\, y \in
+S : xy \in A \,\}$. 
+If $S$ is commutative, with binary operation $+$, then we write
+$x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A -x$, respectively.
+
+
+Let where $S$ is a semigroup and $\emptyset \ne I \subseteq S$. 
+We call $I$ a \textsl{left ideal (of S)} if and only if for every $x
+\in S$, $\lambda_x[I] \subseteq I$; we call $I$ a \textsl{right ideal
+  (of S)} if and only if for every $x \in S$, $\rho_x[I] \subseteq
+I$; and finally, we call $I$ a \textsl{(two-sided) ideal (of S)} if
+and only $I$ is both a left ideal and right ideal. 
+(The phrases in parenthesis will often be omitted if they are clear
+from context.)
+A semigroup can contain, at most one, smallest ideal, that is, a
+two-sided ideal contained in every ideal.
+We denote the smallest ideal of a semigroup $S$, if it exists, by
+$K(S)$. 
+We have the following important fact about the smallest ideal.
+
+\begin{thm}
+  Let $\la S_i : i \in I \ra$ be a family of semigroups,put $S =
+  \bigtimes_{i \in I} S_i$, and define an associative binary operation
+  on $S$ coordinatewise in terms of the operations on each $S_i$.
+  Suppose that, for each $i \in I$, $S_i$ has a smallest ideal.
+  Then $S$ has a smallest ideal and $K(S) = \bigtimes_{i \in I}
+  K(S_i)$. 
+\end{thm}
+\begin{proof}
+  A proof of this fact is in \cite[Theorem 2.23]{Hindman:1998fk}.
+\end{proof}
+
+\subsection{Compact Right-Topological Semigroups}
+A \textsl{right-topological semigroup} $S$ is a semigroup which is
+also a topological space such that for every $x \in S$, the function
+$\rho_x$ is continuous. 
+From now on, unless otherwise noted, we will assume that all mentioned
+topological spaces are Hausdorff. 
+We this assumption we automatically gain the following facts about
+compact right-topological semigroups
+
+\begin{thm}
+  \label{thm:IdK_S}
+  Let $S$ be a compact right-topological semigroup.
+  Then $S$ contains an idempotent and the smallest ideal of $S$ exists.
+\end{thm}
+\begin{proof}
+  This conclusion is proved in \cite[Theorem2.5]{Hindman:1998fk}
+  \cite[Theorem 2.8]{Hindman:1998fk},
+\end{proof}
+
+\begin{thm}
+  Let $\la S_i : i \in I \ra$ be a family of right-topological
+  semigroups and let $S = \bigtimes_{i \in I} S_i$.
+  Give $S$ the product topology and define a binary operation on $S$
+  coordinatewise. 
+  \begin{itemize}
+    \item[(a)] If each $S_i$ is compact, then $S$ is compact.
+
+    \item[(b)] If $\vec{x} \in S$ and for each $i \in I$,
+      $\lambda_{x_i} \colon S_i \to S_i$ is continuous, then
+      $\lambda_{\vec{x}} \colon S \to S$ is continuous.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  The proof of (a) follows directly from Tychonoff's Theorem,
+  and the proof of (b) is a straightforward exercise.
+\end{proof}
+
+\subsection{Algebra in the Stone-\v{C}ech Compactification}
+\begin{defn}
+  Let $S$ be a nonempty set.
+  A set $\emptyset \ne p \subseteq \calP(S)$ is called an
+  \textsl{ultrafilter (on S)} if and only if $p$ satisfies the
+  following four conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \not\in p$.
+    \item[(2)] If $A$ and $B \in p$, then $A \cap B \in p$.
+    \item[(3)] If $A \in p$ and $A \subseteq B \subseteq S$, then $B
+      \in p$.
+    \item[(4)] For all $A \subseteq S$, either $A \in p$ or $S
+      \setminus A \in p$. 
+  \end{itemize}
+\end{defn}
+We call an ultrafilter $p$ on $S$ a \textsl{principal ultrafilter} if and
+only if there exists $a \in S$ such that $p = \{\, A \subseteq S : a
+\in A \,\}$.
+Nonprincipal ultrafilters, on an infinite set, can be shown to exist
+by Zorn's Lemma.%
+\endnote{
+  In fact, the existence of nonprincipal ultrafilters requires some
+  weak from of choice.  
+  See section 2 of \cite{Rav:1977ys} for an interesting collection of
+  statements which are essentially combinatorial formulations of the
+  Ultrafilter Principle.  
+  (The Ultrafilter Principle states that every filter can
+  be extended to an ultrafilter.  
+  This principle is known to be stronger than the statement that every
+  infinite set has a nonprincipal ultrafilter.) 
+  These combinatorial statements are essentially variants of Rado's
+  Selection Lemma.
+  
+  However the reader probably shouldn't read too much into fact that
+  there are combinatorial statements equivalent to the Ultrafilter
+  Principle, since this principle is still a ``nonconstructive''
+  statement. 
+  See Chapter 6 in \cite{Schechter:1997fk} for a discussion on this
+  point. 
+} 
+
+Given a set $S$, we let $\beta S = \{\, p : \mbox{$p$ is an
+  ultrafilter on $S$} \,\}$.
+If $S$ is also a discrete topological space, then we can topologize
+$\beta S$ as follows. 
+For each $A \subseteq S$, define $\overline{A} = \{\, p \in \beta S :
+A \in p \,\}$. 
+Then $\{\, \overline{A} : A \subseteq S \,\}$ forms a basis for a
+compact Hausdorff
+topology on $\beta S$.
+In fact, by \cite[Theorem 3.27]{Hindman:1998fk} this topology is the
+Stone-\v{C}ech compactification of $S$. 
+
+Finally, if $S$ is a semigroup with the discrete topology, then we can
+extend the semigroup operation on $S$ to $\beta S$ \cite[Theorem
+4.1]{Hindman:1998fk}.
+This turns $\beta S$ into a compact right-topological semigroup with
+the property that for all $s \in S$, $\lambda_s$ is continuous. 
+In particular, $\beta S$ has at least one idempotent by Theorem
+\ref{thm:IdK_S} (it typically has more) and the smallest ideal
+$K(\beta S)$.
+
+We shall constantly use the following theorem.
+\begin{thm}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  \begin{itemize}
+    \item[(a)] For any $p$, $q \in \beta S$, $A \in pq$ if and only if
+      $\{\, s \in S : s^{-1}A \in q \,\} \in p$. 
+    
+    \item[(b)] For any $p \in \beta S$ and $s \in S$, $A \in sp$ if
+      and only if $s^{-1}A \in p$.
+
+    \item[(c)] For any $p \in \beta S$ and $s \in S$, $A \in ps$ if
+      and only if $As^{-1} \in p$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  \cite[Theorem 4.12]{Hindman:1998fk} contains a proof for (a) and
+  (b).
+  Statement (c) is a straight-forward exercise (once you have seen the
+  proof of (a) and (b)).
+\end{proof}
+
+Since we shall apply the algebraic structure of the Stone-\v{C}ech
+compactification to Ramsey Theory problems, or results inspired by
+them, we shall implicitly use the following definition and explicitly
+use the following theorem. 
+
+\begin{defn}
+  Let $S$ be a set and $\calR \subseteq \calP(S)$.
+  We call $\calR$ \textsl{partition regular} if and only if for every
+  $A \in \calR$ and $r \in \bbN$, whenever $A = \bigcup_{i=1}^r C_i$,
+  there exist $i \in \{1, 2, \ldots, r\}$ and $B \in \calR$ such that
+  $B \subseteq C_i$.
+\end{defn}
+
+
+\section{Partition Regularity and Ideals}
+
+Let $S$ be a set and $\calR \subseteq \calP(S)$.
+We call $\calR$ \textsl{partition regular} if and only if, for every
+$A \in \calR$ and $r \in \bbN$, if $A = \bigcup_{i=1}^r C_i$, then there
+exist $i \in \{1, 2, \ldots, r\}$ and $B \in \calR$ such that $B
+\subseteq C_i$.
+With this bit of terminology (originally due to Rado in
+\cite{Rado:1945kx}), we can roughly define Ramsey Theory as the
+  study and classification of partition regular sets. 
+The following theorem shows that studying partition regular sets is
+equivalent to studying certain ultrafilters.
+
+\begin{thm}
+  \label{thm:pr}
+  Let $S$ be a set and let $\emptyset \ne \calR \subseteq \calP(S)$.
+  Assume that $\emptyset \not\in \calR$ and put $\calR^{\uparrow} =
+  \{\, B \subseteq S : \mbox{there exists $A \in \calR$ with $A
+    \subseteq B$} \,\}$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calR$ is partition regular.
+
+    \item[(b)] $\{\, p \in \beta S : p \subseteq \calR^\uparrow \,\}$
+      is nonempty.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  This follows from \cite[Theorem 3.11]{Hindman:1998fk}.
+\end{proof}
+
+Of course, in this dissertation we will mainly be considered with
+partition regular sets when the underlying set is a semigroup and
+$\calR$ is defined in terms of the algebraic structure of our
+semigroup.
+We begin by giving one of the earliest Ramsey Theoretic result that
+still forms the basis for much of the contemporary research in the
+field.
+
+\begin{vdw}
+  Let $A \subseteq \bbN$ have the property that for every $\ell \in
+  \bbN$, there exist $a$, $b \in \bbN$ such that $\{\, a, a+d, \ldots,
+  a+\ell d\,\} \subseteq A$.
+  Let $r \in \bbN$.
+  If $A = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d
+  \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq C_i$. 
+\end{vdw}
+
+\begin{rmk}
+  Van der Waerden's proof of his theorem in
+  \cite{Van-der-Waerden:1927fk} uses a complicated, but elementary,
+  combinatorial argument based on the pigeonhole principle and ``double
+  induction.''%
+  \endnote{
+    I'm not sure of the exact form of van der Waerden's argument since I
+    have never read the paper \cite{Van-der-Waerden:1927fk}. 
+    This statement is based on my opinion that all known combinatorial
+    proofs of van der Waerden's Theorem are not simple, Khinchin's
+    opinion on the difficulty of the original proof \cite[expressed in
+    Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's
+    description on how he found his proof in
+    \cite{Van-der-Waerden:1971fk}. 
+    (Van der Waerden's description in \cite{Van-der-Waerden:1971fk}
+    seems to imply that his proof is similar to the one in
+    \cite[Chapter 1]{Khinchin:1998fk}.)
+    The interested reader can find a combinatorial proof of van der
+    Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or
+    \cite[Chapter 1]{Khinchin:1998fk}.
+  }  
+\end{rmk}
+
+Van der Waerden's theorem implies that the property of containing
+arbitrarily long finite arithmetic progressions is partition regular. 
+For convenience we call such sets \textsl{AP-sets}.
+
+\begin{defn}
+  We call $A \subseteq \bbN$ an \textsl{AP-set} if and only if for
+  every $\ell \in \bbN$ there exist $a$, $b \in \bbN$ such that $\{\,
+  a, a+d, \ldots, a+\ell d\,\} \subseteq A$.
+\end{defn}
+
+\begin{defn}
+  $\AP = \{\, p \in \beta \bbN : \mbox{for all $A \in p$, $A$ is an
+    AP-set} \,\}$. 
+\end{defn}
+
+Our Theorem \ref{thm:pr} shows that $\AP$ is a nonempty subset of
+$\beta\bbN$. 
+In fact, we have that that $\AP$ is a closed ideal of $(\beta\bbN, +)$. 
+\begin{thm}
+  $\AP$ is a closed ideal of $(\beta\bbN, +)$.
+\end{thm}
+\begin{proof}
+  To see that $\AP$ is closed, let $p \not\in \AP$.
+  Pick $A \in p$ such that $A$ is not an AP-set. 
+  Then $\overline{A} \cap \AP = \emptyset$.
+
+  \cite[Theorem 14.5]{Hindman:1998fk} proves that $\AP$ is an 
+  ideal in $(\beta\bbN, +)$ and $(\beta\bbN, \cdot)$. 
+\end{proof}
+
+Our first task shall be to rewrite van der Waerden's Theorem so that
+it can apply to any semigroup.
+As first observed in the Introduction of \cite{Bergelson:1992fk}, this
+fact follows directly from van der Waerden's Theorem itself.
+
+\subsection{Algebraic Lines}
+
+\begin{defn}
+  Let $S$ be a semigroup.
+  \begin{itemize}
+    \item[(a)] Let $a$, $d \in S$ and $\ell \in \bbN$.
+      We call the set $\{\, a, ad, \ldots, ad^\ell \,\}$ is called an
+      \textsl{\mbox{$\ell$-term} algebraic line}.
+
+    \item[(b)] We call $A \subseteq S$ an \textsl{AL-set} if and only
+      if for every $\ell \in \bbN$, $A$ contains an \mbox{$\ell$-term}
+      algebraic line. 
+  \end{itemize}
+\end{defn}
+
+\begin{thm}
+  \label{thm:vdwAL}
+  Let $S$ be a semigroup, $A \subseteq S$ an AL-set, and $r \in \bbN$.
+  If $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+  \ldots, r\}$ such that $C_i$ is an AL-set.
+\end{thm}
+\begin{proof}
+  Let $f \colon S \to \bbN$.
+  For each $\ell \in \bbN$, pick $a_\ell$, $d_\ell \in S$ such that
+  $\{\, a_\ell, a_\ell d_\ell, \ldots, a_\ell d_\ell^\ell \,\}
+  \subseteq A$ and put $B_\ell = \{\, f(a_\ell), f(a_\ell) +
+  f(d_\ell), \ldots, f(a_\ell) + \ell f(d_\ell) \,\}$.
+  Put $B = \bigcup_{\ell \in \bbN} B_\ell$ and observe that $B$ is an
+  AP-set.
+  
+  For each $i \in \{1, 2, \ldots, r\}$ put $D_i = \{\, x \in B :
+  \mbox{there exists $\ell \in \bbN$ such that $x = f(a_\ell) + \ell
+    f(d_\ell)$ or $x = f(a_\ell)$ and $a_\ell \in C_i$ or $a_\ell
+    d_\ell^\ell \in C_i$} \,\}$.
+  Then $B = \bigcup_{i=1}^r D_i$ and by van der Waerden's Theorem, we
+  may pick $i \in \{1, 2, \ldots, r\}$ such that $D_i$ is an AP-set.
+  It follows that $C_i$ is an AL-set.
+\end{proof}
+
+\begin{defn}
+  Let $S$ be a semigroup and put
+  \[
+    \AL(S) = \{\, p \in \beta S : \mbox{for all $A \in p$, $A$ is an
+      AL-set} \,\}.
+  \]
+\end{defn}
+
+\begin{thm}
+  Let $S$ be a semigroup, then $\AL(S)$ is a nonempty closed left
+  ideal of $\beta S$.
+\end{thm}
+\begin{proof}
+  The fact that $\AL(S) \ne \emptyset$ follows from Theorem \ref{thm:pr}
+  and \ref{thm:vdwAL}.
+  To see that $\AL(S)$ is closed, let $p \not\in \AL(S)$.
+  Pick $A \in p$ such that $A$ is not an $AL$-set, then $\overline{A}
+  \cap \AL(S) = \emptyset$.
+
+  Let $p \in \AL(S)$ and $q \in S$. 
+  If $A \in qp$, then $\{\, x \in S : x^{-1}A \in p \,\} \in q$.
+  Pick $x \in S$ such that $x^{-1}A \in p$.
+  Let $\ell \in \bbN$ and pick $a$, $d \in S$ such that $\{\, a, ad,
+  \ldots, ad^\ell \,\} \subseteq x^{-1}A$. 
+  Since $\{\, xa, xad, \ldots, xad^\ell \,\} \subseteq A$, it follows
+  that $A$ is an AL-set.
+\end{proof}
+
+However the next result shows that $\AL(S)$ may not be a right ideal
+when $S$ is noncommutative.
+
+\begin{thm}
+  Let $S$ be the free semigroup on two generators $a$ and $b$.
+  Then $\AL(S)$ is not a right ideal of $\beta S$.
+\end{thm}
+\begin{proof}
+  Observe that $\{\, b^n : n \in \bbN \,\}$ is an $AL$-set, so pick $p
+  \in \AL(S)$ such that $\{\, b^n : n \in \bbN \,\} \in p$. 
+  We claim that $pa \not\in \AL(S)$. 
+  Let $A \in pa$, then $Aa^{-1} \in p$.
+  We show that for all $c$, $d \in S$, $\{\, c, cd \,\} \not\subseteq
+  A$. 
+\end{proof}
+
+
+\section{Combinatorial Motivation} 
+Let $S$ be a set and let $\calG \subseteq \calP(S)$.
+We call the pair $(S, \calG)$ \textsl{partition regular} if and only
+if for every $r \in \bbN$, if $S = \bigcup_{i=1}^r C_i$, then there
+exist $i \in \{1, 2, \ldots, r\}$ and $G \in \calG$ such that $G
+\subseteq C_i$. 
+
+With such a ``definition'', it's a fact that studying a partition
+regular set $(S, \calG)$ is equivalent to studying certain ultrafilters on
+$S$. 
+(See \cite[Theorem 5.7]{Hindman:1998fk} for a proof of this fact.)
+For an example of a partition regular set, take $S$ be an infinite set
+and let $\calG = \{\, A \subseteq S : \mbox{$A$ is infinite} \,\}$, then the
+pigeonhole principle implies that $(S, \calG)$ is partition regular.
+
+In this dissertation we will mainly consider partition regular $(S,
+\calG)$, where $S$ is a semigroup and elements of $\calG$ are defined
+in terms of the algebraic structure of $S$.
+Moreover, if we give $S$ the discrete topology we can give $\beta S$,
+the Stone-\v{C}ech compactification of $S$, the structure of a Hausdorff
+compact right-topological semigroup 
+such that elements in $\calG$ are associated with certain algebraic
+structures of $\beta S$. 
+(A \textsl{right-topological semigroup} is a semigroup that is also a
+topological space such that for every element $y$ in our semigroup the
+function $x \mapsto xy$ is continuous.)
+Hence studying $(S, \calG)$, which is a purely algebraic and
+combinatorial object, is equivalent to studying the algebraic and
+topological structure of $\beta S$. 
+In this section, we focus purely on the algebraic and combinatorial
+side of this equivalence.
+
+\begin{rmk}
+  In what follows we shall intentionally use the term ``partition
+  regular'' rather loosely by not explicitly mentioning the set
+  $\calG$. 
+  For instance, we often say that property $P$ is partition regular if
+  and only if whenever $S$ has property $P$ and $S = \bigcup_{i=1}^r
+  C_i$, then $C_i$ has property $P$ for some $i \in \{1, 2, \ldots,
+  r\}$. 
+\end{rmk}
+
+
+Van der Waerden's Theorem can be rewritten to apply to any semigroup,
+and, as observed in the Introduction of \cite{Bergelson:1992fk}, this
+fact follows directly from van der Waerden's Theorem itself.
+
+\begin{thm}
+  Let $S$ be a semigroup and let $r \in \bbN$.
+  If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+  \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d
+  \in S$ with $\{\, a , ad, \ldots, ad^\ell \,\} \subseteq C_i$. 
+\end{thm}
+\begin{proof}
+  Fix $x \in S$.
+  We shall consider the set $\{\, x^n : n \in \bbN \,\}$.
+  For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN
+  : x^n \in C_i \,\}$.
+  Then $\bbN = \bigcup_{i=1}^r B_i$, and we can apply van der
+  Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ such that for
+  all $\ell \in \bbN$ there exist $b$, $c \in \bbN$ with $\{\, b, b+c,
+  \ldots, b+\ell c \,\} \subseteq B_i$. 
+  By definition of $B_i$, we have that $\{\, x^b, x^{b+c}, \ldots,
+  x^{b+ \ell c} \,\} \subseteq C_i$. 
+  To complete the proof, simply put $a = x^b$ and $d = x^c$. 
+\end{proof}
+
+However as also observed in the Introduction of
+\cite{Bergelson:1992fk} there are two potential problems with such a
+straightforward approach:
+Our increment $d$ may be a right identity element in our semigroup;
+and, even if $d$ is not a right identity element, there is no
+guarantee that all the elements in $\{\, a, ad, \ldots, ad^{\ell}
+\,\}$ are distinct. 
+(See the Introduction of \cite{Bergelson:1992fk} for an example of
+each potential problem.)
+Moreover, we shall find that when we consider the algebraic structure
+of $\beta S$, that such a straightforward generalization doesn't
+interact nicely with the algebraic structure of $\beta S$ when $S$ is
+a noncommutative semigroup. 
+
+One of the first proper generalization of a set that contains
+arbitrarily long finite arithmetic progression to a semigroup is the
+notion of a piecewise syndetic set. 
+However, since the definition of a piecewise syndetic set is, initially,
+somewhat difficult to understand, we choose to give some 
+motivation on how this concept can be derived before explicitly
+defining it. 
+Consequently, we start by proving that a certain statement is
+equivalent to van der Waerden's Theorem. 
+
+In what follows, if $A \subseteq \bbN$ and $x \in \bbN$, we define $-x
++ A = \{\, y \in \bbN : x + y \in A \,\}$.
+
+\begin{thm}
+  \label{thm:vdwEqSyn}
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] Let $r \in \bbN$.
+      If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+      \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
+      $d \in \bbN$ with $\{\, a, a+d, \ldots, a+\ell d \,\} \subseteq
+      C_i$. 
+
+    \item[(b)] Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing
+      sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN
+      \,\}$ finite.
+      Then for all $\ell \in \bbN$, the set $\{\, x_n : n \in \bbN
+      \,\}$ contains a \mbox{$\ell$-term} arithmetic progression.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  \textsl{(a) $\implies$ (b).}
+  Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in
+  $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite. 
+  Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup
+  \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
+  We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
+  Suppose temporarily that this claim is true.
+  We can then apply (a) to pick $i \in \{1, 2, \ldots, b\}$ such that
+  for all $\ell \in \bbN$, the set $-i + A$ contains a
+  \mbox{$\ell$-term} arithmetic progression. 
+  From this situation it follows that $A$ contains a
+  \mbox{$\ell$-term} arithmetic progression for every $\ell \in
+  \bbN$. 
+  We now prove our claim.
+  
+  Clearly, $\bigcup_{t=1}^b -t+A \subseteq \bbN$.
+  Let $x \in \bbN$.
+  First, assume that $x < x_1$, then since $x_1 \le b$, we can pick $t
+  \in \{1, 2, \ldots, b\}$ such that $t + x = x_1$, that is, $x \in
+  -t+A$.
+  Now assume that $x_1 \le x$.
+  Since $\la x_n \ra_{n=1}^\infty$ is a strictly increasing sequence,
+  we can pick $n \in \bbN$ such that $x_n \le x < x_{n+1}$.
+  Moreover, since $x_{n+1} - x_n \le b$, we can pick $t \in \{1, 2,
+  \ldots, b\}$ such that $t + x = x_{n+1}$, that is, $x \in -t + A$.
+  This completes the proof for this direction. 
+
+  \textsl{(b) $\implies$ (a).}
+  Let $r \in \bbN$, and $\bbN = \bigcup_{i=1}^r C_i$. 
+  By the pigeonhole principle, we can pick $i \in \{1, 2, \ldots, r\}$
+  such that $C_i$ is infinite.
+  Without loss of generality suppose that $C_1$ is infinite. 
+  Enumerate $C_1$ as a strictly increasing sequence $\la x_n
+  \ra_{n=1}^\infty$.
+  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are
+  done by (b). 
+  Hence suppose instead that $\max\{\, x_{n+1} - x_n : n \in \bbN
+  \,\}$ is infinite, that is, for all $\ell \in \bbN$, there exists $n
+  \in \bbN$ with $x_{n+1} - x_n \ge \ell + 2$. 
+  Therefore, for all $\ell \in \bbN$, there exists $n \in \bbN$ such
+  that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (\ell + 1) \,\} \subseteq
+  \bigcup_{i=2}^r C_i$. 
+  This means that $\bigcup_{i=2}^r C_i$ contains a \mbox{$\ell$-term}
+  arithmetic progression for every $\ell \in \bbN$.
+  In particular, $\bigcup_{i=2}^r C_i$ is infinite and so by the
+  pigeonhole principle, we may pick $i \in \{2, 3, \ldots, r\}$ such
+  that $C_i$ is infinite.
+  Without loss of generality, suppose that $C_2$ is infinite.
+
+  Enumerate $C_2$ as a strictly increasing sequence $\la x_n
+  \ra_{n=1}^\infty$.
+  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are
+  done by (b).
+  Suppose that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite,
+  then, as above, for every $\ell \in \bbN$, there exists $n \in
+  \bbN$, such that $\{\, x_n +1, x_n + 2, \ldots, x_n + (\ell +1) \,\}
+  \subseteq \bigcup_{i=3}^r C_i$. 
+  Since $\bigcup_{i=3}^r C_i$, we may continue as before.
+  Eventually, we will stop at a set with bounded gaps or a set that
+  contains arbitrarily long arithmetic progressions.%
+  \endnote{
+    \cite[Theorem 2.5]{Landman:2004fk} contains a more complete list
+    of statements equivalent to van der Waerden's Theorem.
+  }
+\end{proof}
+
+We wish to translate statement Theorem \ref{thm:vdwEqSyn} (b) into
+the language of semigroups.
+Of course, given an arbitrary semigroup, there is no guarantee that 
+the terms ``strictly increasing'' and ``distance between two
+elements'' makes sense.
+It is the goal of the next result to show that we can forgo these
+terms.
+
+In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of
+all nonempty finite subsets of $X$. 
+
+\begin{prop}
+  \label{prop:syn}
+  Let $A \subseteq \bbN$ be infinite.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] Enumerate $A$ as a strictly increasing sequence $\la
+      x_n \ra_{n=1}^\infty$.
+      Then $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite.
+
+    \item[(b)] There exists $G \in \Pf(\bbN)$ such that $\bbN =
+      \bigcup_{t \in G} -t + A$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  \textsl{(a) $\implies$ (b).}
+  Let $b = \max\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}$ and
+  put $G = \{1, 2, \ldots, b\}$. 
+  Clearly, $\bigcup_{t \in G} -t + A \subseteq \bbN$ so let $x \in
+  \bbN$. 
+  First, assume that $x < x_1$, then since $x_1 \le b$, we can pick $t
+  \in G$ such that $t + x = x_1$, that is $x \in -t + A$.
+  Now assume that $x_1 \le x$.
+  Since $\la x_n \ra_{n=1}^\infty$ is strictly increasing, there
+  exists $n \in \bbN$ such that $x_n \le x < x_{n+1}$.  
+  Then $1 \le x_{n+1} - x \le x_{n+1} - x_n \le b$, that is, $x_{n+1}
+  - x \in G$.
+  Hence $(x_{n+1} - x) + x = x_{n+1} \in A$, and this completes the
+  forward direction of the proof.
+
+  \textsl{(b) $\implies$ (a).}
+  Enumerate $A$ a strictly increasing sequence $\la x_n
+  \ra_{n=1}^\infty$. 
+  Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$.
+  We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le b$. 
+
+  Let $n \in \bbN$.
+  Since $\bbN = \bigcup_{t \in G} -t+A$ and $x_n \in \bbN$, pick $t
+  \in G$ such that $t + x_n \in A$.
+  Hence pick $m \in \bbN$ such that $x_m = t + x_n$, that is, $x_m -
+  x_m = t \le b$. 
+  Observe that $x_{n+1} \le x_m$.
+  Therefore it follows that $x_{n+1} - x_n \le x_m - x_n \le b$, and 
+  this completes the proof of the reverse direction.
+\end{proof}
+
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup.
+  \begin{itemize}
+    \item[(a)] For all $x \in S$ and $A \subseteq S$, define $x^{-1}A = \{\, y
+      \in S : x \cdot y \in A \,\}$.
+    
+    \item[(b)] For all $A$, $B \subseteq S$, define $AB = \{\, a\cdot
+      b : \mbox{$a \in A$ and $b \in B$} \,\}$. 
+      If $A = \{a\}$ or $B = \{b\}$, then we write $\{a\}B$ as $aB$
+      and $A\{b\}$ as $Ab$, respectively. 
+
+    \item[(c)] We call $A$ a \textsl{syndetic (set in $S$)} if and
+      only if there exist $G \in \Pf(S)$ such that for all $S =
+      \bigcup_{t \in G} t^{-1}A$. 
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  It's important to note that in (a) we are not assuming that $x$ has
+  an inverse in $S$.
+  (In particular, $x^{-1}A$ may even be empty.)
+  If for every $x \in S$ we define the function $\lambda_x \colon S
+  \to S$ by $\lambda_x(y) = xy$, then $x^{-1}A = \lambda_x^{-1}[A]$. 
+
+  Analogous to group theory, if $S$ is a commutative semigroup we
+  write the semigroup operation as $+$. 
+  Under this case, we write $x^{-1}A$ as $-x + A$ and $AB$ as $A +
+  B$. 
+\end{rmk}
+
+Even though we have successfully translated Theorem
+\ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact
+that the notion of syndetic set is \textsl{not} partition regular. 
+(See the Introduction in \cite{Bergelson:2001fk} for an example in
+$\bbN$.)
+In order to recover partition regularity, we weaken the definition of
+a syndetic set to obtain a piecewise syndetic set.
+ 
+For a first definition of a piecewise syndetic set we introduce some
+temporary terminology and notation.
+Given $F \in \Pf(\bbN)$ with $|F| = n$, enumerate $F$ as a strictly
+increasing sequence $x_1 < x_2 < \cdots < x_n$. 
+We define the \textsl{gap size of $F$} as $g(F) = \max\bigr\{\,
+x_{j+1} - x_j : j \in \{1, 2, \ldots, n-1\} \,\bigl\}$.
+We call a set $A \subseteq \bbN$ \textsl{piecewise syndetic} if and
+only if there exists $b \in \bbN$ such that for all $N \in \bbN$,
+there exists $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$.
+
+It's clear that a syndetic set in $\bbN$ is a piecewise syndetic set
+in $\bbN$.
+It's also clear that  parts of this definition may not make since
+for arbitrarily semigroups.
+It's is the purpose of this next result to show that we can dispense
+with the potentially troublesome parts.
+
+\begin{prop}
+  Let $A \subseteq \bbN$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $A$ is piecewise syndetic.
+    
+    \item[(b)] There exists $G \in \Pf(\bbN)$ such that for all $F \in
+      \Pf(\bbN)$, there exists $x \in \bbN$ such that $F+x \subseteq
+      \bigcup_{t \in G} -t+A$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  \textsl{(a) $\implies$ (b).}
+  Pick $b \in \bbN$ as guaranteed by the definition. 
+  Put $G = \{1, 2, \ldots, b\}$.
+  We show that for all $F \in \Pf(\bbN)$, there exists $x \in \bbN$
+  such that $F+x \subseteq \bigcup_{t \in G} -t + A$.
+
+  Let $F \in \Pf(\bbN)$ and put $N = 3 |F| \max F$. 
+  Pick $B \in \Pf(A)$ with $|B| \le N$ and $g(B) \le b$. 
+  Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence
+  $x_1 < x_2 < \cdots  < x_N$
+  It suffices to show that there exists $x \in \bbN$ such
+  that $F + x \subseteq \bigcup_{t \in G} -t + B$.
+  (Since $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t +
+  A$.)
+  Pick $x \in \bbN$ such that $\{1, 2, \ldots, |F| \max F, |F| \max F
+  + 1, \ldots, 2|F| \max F\} + x \subseteq \{x_1, x_1 + 1,
+  \ldots, x_n\}$.
+  (We can do this since $n = |B| \le 3 |F| \max F$.)
+  Let $f \in F$, then $f + x \in \{x_1, x_1 + 1, \ldots, x_n
+  \}$ and we can pick $m \in \{1, 2, \ldots, n\}$ with $x_m \le f+x < x_{m+1}$. 
+  Since $x_{m+1} - x_m \le b$, there exists $t \in G$ such that $t +
+  f + x = x_{m+1}$. 
+  This completes the forward direction of the proof.  
+  
+  \textsl{(b) $\implies$ (a).}
+  Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
+  Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$. that $|F| \ge N$. 
+  Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t +
+  A$. 
+  For each $i \in \{1, 2, \ldots, 2bN\}$, pick $t_i \in G$ such that
+  $t_i + i + x \in A$. 
+  Put $B = \bigl\{\, t_i + i + x : f \in \{1, 2, \ldots, 2bN\} \,\bigr\}$. 
+  We show that $g(B) \le b$. 
+  For $i \in \{1, 2, \ldots, 2bN-1\}$ we have that $t_{i+1} + (i+1) +
+  x - (t_i + i + x) = t_{i+1} - t_i + 1 \le b - 1 + 1 = b$.
+  This completes the reverse direction of the proof.
+\end{proof}
+
+With this equivalence we now can define the notion of a piecewise
+syndetic set in a semigroup. 
+Moreover, unlike syndetic sets, piecewise syndetic sets are partition
+regular.%
+\endnote{
+  In \cite[Lemma 1]{Brown:1971fk}, proves that if the natural numbers
+  are finitely partitioned, then at least one cell of the partition is
+  piecewise syndetic.
+  It's an interesting question as to whether, Brown's Lemma can be
+  extended to prove Proposition \ref{prop:psReg}.
+}
+
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  We say $A$ is \textsl{piecewise syndetic (set in S)} if and only if there
+  exists $G \in \Pf(S)$ such that for all $F \in \Pf(S)$ there exists
+  $x \in S$ with $Fx \subseteq \bigcup_{t \in G} t^{-1}A$.
+\end{defn}
+
+\begin{prop}
+  \label{prop:psReg}
+  Let $S$ be a semigroup and $A \subseteq S$ piecewise syndetic.
+  If $A = C_1 \cup C_2$, then either $C_1$ is piecewise syndetic or
+  $C_2$ is piecewise syndetic.
+\end{prop}
+\begin{proof}
+  Pick $G \in \Pf(S)$ such that for all $F \in \Pf(S)$, there exists
+  $x \in S$ such that $Fx \subseteq \bigcup_{t \in G} t^{-1}A$. 
+  Suppose, to the contrary, that $C_1$ is not piecewise syndetic and
+  $C_2$ is not piecewise syndetic. 
+  Since $C_1$ is not piecewise syndetic, we can pick $F \in
+  \Pf(S)$ such that for all $x \in S$, $Fx \setminus (\bigcup_{t \in
+    G} t^{-1}C_1) \ne \emptyset$. 
+  Since $C_2$ is not piecewise syndetic, we can pick $H \in \Pf(S)$
+  such that for all $x \in S$, $Hx \setminus (\bigcup_{t \in GF}
+  t^{-1}C_1) \ne emptyset$.
+  Since $FH \in \Pf(S)$ pick $x \in S$ such that 
+  \[
+    FHx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2). 
+  \]
+  
+  Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}B$. 
+  Now $Fyx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$,
+  $yx \in S$, and $C_1$ is not piecewise syndetic, so we have that 
+  \[
+    Fyz \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset. 
+  \]
+  Pick $z \in F$ such that $zyx \not\in \bigcup_{t \in G} t^{-1}C_1$. 
+  Now $zyx \in \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, so pick $t \in
+  G$ such that $tzyx \in C_1 \cup C_2$. 
+  If $tzyx \in C_1$, then $zyx \in t^{-1}C_1$, a contradiction.
+  If $tzyx \in C_2$, then $yx \in (tz)^{-1}C_2$, a contradiction.
+  Hence we conclude that either $C_1$ is piecewise syndetic or $C_2$
+  is piecewise syndetic.
+\end{proof}
+
+There is another statement we can import into a general semigroup, the
+Hales-Jewett Theorem.
+To state this theorem we require some terminology. 
+
+\begin{defn}
+  Let $S$ be the free semigroup on the finite alphabet $A$, and let
+  $\star$ denote an element not in $A$.
+  \begin{itemize}
+    \item[(a)] A \textsl{variable word (on $A$)} $w(\star)$ is a word in the
+      free semigroup on the alphabet $A \cup \{\star\}$ in which
+      $\star$ occurs.
+
+    \item[(b)] Given a variable word $w(\star)$ on $A$ and $a \in A$,
+      we let $w(a)$ denote the word in $S$ where each occurrence of
+      $\star$ in $w(\star)$ is replaced by $a$.
+
+    \item[(c)] Given a variable word $w(\star)$ on $A$ we call the set
+      $\{\, w(a) : a \in A \,\}$ a \textsl{combinatorial line}.
+  \end{itemize}
+\end{defn}
+
+\begin{hj}
+  Let $A$ be a finite nonempty alphabet, $S$ be a free semigroup on
+  $A$, and let $r \in \bbN$.
+  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+  \ldots, r\}$ such that $C_i$ contains a combinatorial line. 
+\end{hj}
+
+We will define a certain specific type of ``combinatorial line'' type
+structure in a general semigroup called a \textsl{$J$-set}.
+
+\begin{defn}
+  Let $S$ be a semigroup. 
+  \begin{itemize}
+    \item[(a)] Define $\calT(S) = \setfunc{\bbN}{S}$.
+      If $S$ is clear from context, we simply write $\calT(S)$ as
+      $\calT$.
+
+    \item[(b)] For each $m \in \bbN$, define
+      \[
+        \calJ_m = \{\, (t_1, t_2, \ldots, t_m) \in \bbN^m : t_1 < t_2
+        < \cdots < t_m \,\}.
+      \]
+
+    \item[(c)] For each $m \in \bbN$, $a \in S^{m+1}$, $t \in
+      \calJ_m$, and $f \in \calT$, define
+      \[
+        x(m, a, t, f) = \biggl(\prod_{i=1}^m \bigl( a(j) f(t_j) \bigr)
+        \biggr) a(m+1).
+      \]
+
+    \item[(d)] We call $A \subseteq S$ a \textsl{$J$-set}%
+      \endnote{
+        Despite appearances to the contrary I did \textsl{not} name
+        this concept.
+        The term $J$-set is first coined in \cite[Definition
+        2.4(b)]{Hindman:1996uq} as a $J_Y$-set.
+      }
+      \textsl{(in S)} if and only if for every $F \in \Pf(\calT)$,
+      there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$
+      such that for all $f  \in F$, $x(m, a, t, f) \in A$. 
+  \end{itemize}
+\end{defn}
+
+Observe that our definition of a $J$-set is a certain type of
+``combinatorial line'' in a general semigroup.
+We don't wish to push this analogy too far since we don't completely
+understand it yet.
+Now we will look at some of the combinatorial results connected with
+$J$-sets.
+
+\section{$J$-sets are Partition Regular}
+Our definition of a $J$-set is superficially stronger than the
+definitions given in \cite[Definition 2.3(d)]{Hindman:2010fk} and
+\cite[Definition 3.3(e)]{De:2008uq}. 
+To show that our definition and \cite[Definition
+2.3(d)]{Hindman:2010fk} are equivalent we will make use of a technical
+lemma.
+
+\begin{lem}
+  Let $S$ be a semigroup and $A \subseteq S$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $A$ is a $J$-set.
+    
+    \item[(b)] For all $F \in \calT$, there exists $m \in \bbN$, $a
+      \in S^{m+1}$, and $\bigl( H(1), H(2), \ldots, H(m) \bigr) \in
+      \bigr(\Pf(\bbN)\bigl)^m$ such that 
+      \begin{itemize}
+        \item[(i)] For all $i \in \{1, 2, \ldots, m-1 \}$, $\max H(i) <
+        \min H(i+1)$.
+       
+        \item[(ii)] For all $f \in F$, 
+          \[
+            \biggl( \prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} f(t)
+            \bigr) \biggr) a(m+1) \in A.
+          \]
+      \end{itemize}
+  \end{itemize}
+\end{lem}
+\begin{proof}
+  \textsl{(a) $\implies$ (b).} 
+  This direction is clear after a moment's thought. 
+
+  \textsl{(b) $\implies$ (a).}
+  Let $F \in \calT$ and fix $b \in S$. 
+  For all $f \in F$, define $g_f(t) = f(t)b$ and put $G = \{\, g_f : f
+  \in F \,\}$.
+  Since $G \in \calT$ and (b) is assumed to hold, we can pick $m \in
+  \bbN$, $a \in S^{m+1}$, and $\bigl( H(1), H(2), \ldots, H(m) \bigr)
+  \in \bigl( \Pf(\bbN) \bigr)^m$ such that $\bigl( H(1), H(2), \ldots,
+  H(m) \bigr)$ satisfies condition (i) of (b), and for all $f \in F$,
+  \[
+    \biggl( \prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g_f(t) \bigr)
+    \biggr) a(m+1) \in A.
+  \]
+
+  For notation, convenience put $H(0) = \emptyset$ and for each $\ell \in
+  \{0, 1, \ldots, m\}$ define $h_\ell = 1 + \sum_{i=0}^\ell |H(i)|$. 
+  Put $n = \sum_{i=1}^m |H(i)|$ and enumerate $\bigcup_{i=1}^m H(i)$
+  as a strictly increasing sequence $\la t_i \ra_{i=1}^n$. 
+  Define $c \in S^{n+1}$ as follows:
+  \[
+    c(j) = 
+    \begin{cases}
+      a(1) & \mbox{if $j = 1$,}\\
+      b    & \mbox{if $\ell \in \{0, 1, \ldots, m-1\}$ } \\
+      & \hspace{2em}\mbox{and $j \in \{h_\ell +1, h_\ell + 2, \ldots,
+        h_\ell + h_{\ell +1} - 1 \}$, and}\\
+      b a(\ell + 1) &
+    \end{cases}
+  \]
+\end{proof}
+
 \section{Overview}
 Using notions from topological dynamics, Furstenberg defined the
 concept of a central set of natural numbers and proved a powerful
