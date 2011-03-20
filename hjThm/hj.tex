@@ -196,6 +196,39 @@
   The image of $C$ and $D$ under the map is $CD$ which is an element
   of $\calS_n$.
 \end{proof}
+
+\begin{defn}
+  Let $S$ be the free semigroup on the alphabet $A$ and let $\star
+  \not\in A$.
+  \begin{itemize}
+    \item[(a)] A \textsl{variable word} $w(\star)$ is a word in the
+      free semigroup on $A \cup \{\star\}$ in which $\star$ occurs.
+
+    \item[(b)] $S(\star) = \{\, w(\star) : \mbox{$w(\star)$ is a
+        variable word} \,\}$.
+    
+    \item[(c)] Given a $w(\star) \in S(\star)$ and $a \in A$, let
+      $w(a)$ represent the word in which every occurrence of $\star$
+      is replaced by $a$.
+
+    \item[(d)] Given $B \subseteq A$ and $w(\star) \in S(\star)$ we
+      call the set $w[B] = \{\, w(a) : a \in B \,\}$ a
+      \textsl{combinatorial line}.
+  \end{itemize}
+\end{defn}
+
+\begin{prop}
+  Let $A$ be a set, $S$ the free semigroup on $A$, $B \subseteq A$,
+  and $n \in \bbN$.
+  If $w_1(\star)$, $w_2(\star)$, \dots, $w_n(\star) \in S(\star)$,
+  then there exists $w(\star) \in S(\star)$ such that for all $a \in
+  B$, $w_1(a)w_2(a)\cdots w_n(a) = w(a)$.
+\end{prop}
+
+\begin{hj}
+  Let $A$ be a finite set and let $S$ be the free semigroup on $A$. 
+  Then $\{\, w[A] : w(\star) \in S(\star) \,\}$ is regular in $S$. 
+\end{hj}
 \bibliographystyle{amsplain}
 \bibliography{../references}
 \end{document}
