@@ -17,7 +17,9 @@
 \newtheorem*{ffst}{Rado-Sanders-Folkman Theorem}
 \newtheorem*{fst}{Hindman's Theorem}
 
+% Numbered theorems
 \newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
 
 
 \begin{document}
@@ -50,59 +52,146 @@ we color all of the two element subsets of our infinite set.
 Can we find an infinite subset, of our original infinite set, such
 that all of the two element subsets of this infinite subset are
 monochromatic?
-The answer to this question turns out to be yes, but this time the
-proof is a bit harder.
+The answer to this question turns out to be yes, but the proof of this
+result will use several applications of the pigeonhole principle and a
+diagonal type argument.
 
 \begin{thm}
+  \label{thm:ramsey2Col}
   Let $X$ be an infinite set and $r \in \bbN$.
   If $\{\, A \subseteq X : |A| = 2 \,\} = C_1 \cup C_2$, then there
   exist an infinite subset $Y \subseteq X$ and $i \in \{1, 2\}$ such
   that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq C_i$.
 \end{thm}
 \begin{proof}
-  We will inductively pick sequences $\la X_i \ra_{i=1}^\infty$, $\la
-  x_i \ra_{i=1}^\infty$, $\la C_1^{(i)} \ra_{i=1}^\infty$, $\la
-  C_2^{(i)} \ra_{i=1}^\infty$, and $\la r_i \ra_{i=1}^\infty$
-  satisfying the following hypotheses:
+  We will recursively construct sequences $\la X_i \ra_{i=0}^\infty$,
+  $\la x_i \ra_{i=1}^\infty$, $\la (C_1^{(i)}, C_2^{(i)})
+  \ra_{i=1}^\infty$ and $\la r_i \ra_{i=1}^\infty$ satisfying the
+  following hypotheses:
   \begin{itemize}
-    \item[(1)] For all $i \in \bbN \setminus \{1\}$, $x_i \in X_{i-1}$.
+    \item[(1)] $x_i \in X_{i-1}$ for all $i \in \bbN$.
       
-    \item[(2)] For all $i \in \bbN \setminus \{1\}$, $X_i \subseteq
-      X_{i-1} \setminus \{x_i\}$ is infinite, and $X_1 \subseteq X$ is
-      infinite.
-     
-    \item[(3)] For all $j \in \{1, 2\}$ and $j \in \bbN \setminus
-      \{1\}$, $C_j^{(i)} = \{\, x \in X_{i-1} \setminus \{x_i\} : \{x,
-      x_i\} \in C_i \,\}$.
-     
-    \item[(4)] For all $i \in \bbN$, $X_i \subseteq C_{r_i}^{(i)}$.
+    \item[(2)] For $i \in \bbN$, $X_i$ is an infinite subset of
+      $X_{i-1} \setminus \{x_i\}$.
+
+    \item[(3)] For all $j \in \{1, 2\}$ and $i \in \bbN$, $C_j^{(i)} =
+      \bigl\{\, x \in X_{i-1} \setminus \{x_i\} : \{x, x_i\} \in C_j
+      \,\bigr\}$.
+
+    \item[(4)] For all and $i \in \bbN$, $X_i
+      \subseteq C_{r_i}^{(i)}$.
   \end{itemize}
-  Let $x_1 \in X$ and for each $j \in \{1, 2\}$ define $C^{(1)}_j =
-  \bigl\{\, x \in X \setminus \{x_1\} : \{x, x_1\} \in C_j \,\bigr\}$.
-  By the pigeonhole principle, pick an infinite subset $X_1 \subseteq
-  X \setminus \{x_1\}$ and $r_1 \in \{1, 2\}$ such that $X_1 \subseteq
-  C_{r_1}^{(1)}$. 
-  Let $k \in \bbN \setminus \{1\}$ and assume we have chosen sequences
-  $\la X_i \ra_{i=1}^{k-1}$, $\la x_i \ra_{i=1}^{k-1}$, $\la C_1^{(i)}
-  \ra_{i=1}^{k-1}$, $\la C_2^{(i)} \ra_{i=1}^{k-1}$, and $\la r_i \ra_{i=1}^{k-1}$
-  satisfying hypotheses (1)--(4). 
-  Let $x_k \in X_{k-1}$ and for each $j \in \{1, 2\}$ define
-  $C_j^{(k)} = \{\, x \in X_{k-1} \setminus \{x_k\} : \{x, x_k\} \in
-  C_j \,\}$. 
-  Since $X_{k-1}\setminus \{x_k\}$ is infinite and $X_{k-1}\setminus
-  \{x_k\} = C_1^{(k)} \cup C_2^{(k)}$, by the pigeonhole principle, we
-  can pick an infinite subset $X_k \subseteq X_{k-1} \setminus
-  \{x_k\}$ and $r_k \in \{1, 2\}$ such that $X_k \subseteq
-  C_{r_k}^{(k)}$.
   
-  Our hypothesis (1) -- (4) are satisfied. 
-  Pick an infinite subsequence $\la i_k \ra_{k=1}^\infty$ such that
-  $r_{i_1} = r_{i=2} = r_{i=3} = \cdots$. 
-  (This can be done by the pigeonhole principle.)
-  Put $Y = \{\, x_{i_k} : k \in \bbN$ and $i = r_{i_1}$, we claim that
-  $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq C_i$.
-  Let $k$, $\ell \in \bbN$ and suppose $k < \ell$. 
-  Then $X_{\ell} \subseteq X_k$, by hypothesis (2).
-  Now $X$ ...
+  Put $X_0 = X$ and $x_1 \in X_0$.
+  For each $j \in \{1,2\}$, define
+  \[
+    C_j^{(1)} = \bigl\{\, x \in X_0 \setminus \{x_1\} : \{x, x_1\} \in
+    C_j \,\bigr\}.
+  \]
+  Since $X_0 \setminus \{x_1\} = C_1^{(1)} \cup C_2^{(2)}$ and $X_0
+  \setminus \{x_1\}$ is infinite, then by the pigeonhole principle we
+  can pick an infinite subset $X_1 \subseteq X_0 \setminus \{x_1\}$
+  and $r_1 \in \{1, 2\}$ such that $X_1 \subseteq C_{r_1}^{(1)}$.
+  Our sequences $\la X_i \ra_{i=0}^1$, $\la x_i \ra_{i=1}^1$, $\la
+  (C_1^{(i)}, C_2^{(i)}) \ra_{i=1}^1$, and $\la r_i \ra_{i=1}^1$
+  satisfy hypotheses (1)-(4).
+
+  Let $k > 1$ and assume we have chosen sequences $\la X_i
+  \ra_{i=0}^{k-1}$, $\la x_i \ra_{i=1}^{k-1}$, $\la (C_1^{(i)}, C_2^{(i)})
+  \ra_{i=1}^{k-1}$, and $\la r_i \ra_{i=1}^{k-1}$ satisfying
+  hypotheses (1)-(4).
+  By hypothesis (2) we have that $X_{k-1}$ is infinite, so pick $x_k
+  \in X_{k-1}$.
+  For each $j \in \{1, 2\}$, define
+  \[
+    C_j^{(k)} = \bigl\{\, x \in X_{k-1} \setminus \{x_k\} : \{x, x_k\} \in
+    C_j \,\bigr\}.
+  \]
+  By the pigeonhole principle, we can pick an infinite subset $X_k
+  \subseteq X_{k-1} \setminus \{x_k\}$ and $r_k \in \{1, 2\}$ such
+  that $X_k \subseteq C_{r_k}^{(k)}$.
+  Our hypotheses (1)-(4) are satisfied by $\la X_i
+  \ra_{i=0}^{k}$, $\la x_i \ra_{i=1}^{k}$, $\la (C_1^{(i)}, C_2^{(i)})
+  \ra_{i=1}^{k}$, and $\la r_i \ra_{i=1}^{k}$ by construction. 
+  Hence our sequence $\la X_i \ra_{i=0}^{\infty}$, $\la x_i
+  \ra_{i=1}^{\infty}$, $\la (C_1^{(i)}, C_2^{(i)}) \ra_{i=1}^{\infty}$, and
+  $\la r_i \ra_{i=1}^{\infty}$ is recursively defined.
+
+  By the pigeonhole principle, either $\{\, i \in \bbN : r_i = 1 \,\}$
+  is infinite or $\{\, i \in \bbN : r_i = 2 \,\}$ is infinite.
+  Without loss of generality suppose that $\{\, i \in \bbN : r_i =
+  1\,\}$ is infinite.
+  Put $Y = \{\, x_i : r_i = 1 \,\}$.
+  We show that $Y$ is the infinite subset of $X$ we are looking for,
+  that is, we show that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq
+  C_1$.  
+  Let $i$, $j \in \{\, i \in \bbN : r_i = 1 \,\}$ and assume that $i <
+  j$.
+  Since $i \le j-1$ and by hypothesis (2), it follows that $X_j
+  \subseteq X_{i} \setminus \{x_{i+1}\}$. 
+  In particular, $x_j \in X_i \setminus \{x_{i+1}\}$.
+  By hypothesis (4), $X_i \subseteq C_{r_i}^{(i)}$, that is, for all
+  $x \in X_i$, $\{x, x_i\} \in C_{r_i}$. 
+  (This follows from hypothesis (3).)
+  Moreover, $\{x_j, x_i\} \in C_{r_i}$. 
+  However $r_i = r_j = 1$ by our choice of $i$ and $j$.
+  This completes the proof of this theorem.
 \end{proof}
+\begin{cor}
+  \label{cor:ramseyrCol}
+  Let $X$ be an infinite set and $r \in \bbN$.
+  If $\{\, A \subseteq X : |A| = 2 \,\} = \bigcup_{i=1}^r C_i$, then
+  there exist an infinite subset $Y \subseteq X$ and $i \in \{1, 2,
+  \ldots, r\}$ such that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq
+  C_i$.
+\end{cor}
+\begin{proof}
+  We proceed by induction on $r$.
+  For $r = 1$, the result is obvious.
+  Let $r > 1$ and assume that our result is true for $r-1$.
+  Let $\{\, A \subseteq X : |A| = 2 \,\} = \bigcup_{i=1}^r C_i$.
+  For $i \in \{1, 2, \ldots, r-2\}$ put $D_i = C_i$, and put $D_{r-1}
+  = C_{r-1} \cup C_r$.
+  Then $\{\, A \subseteq X : |A| = 2 \,\} = \bigcup_{i=1}^{r-1} D_i$. 
+  
+  By our induction hypothesis, pick an infinite subset $Y \subseteq
+  X$ and  $i \in \{1, 2, \ldots, r-1\}$ such that $\{\, B \subseteq Y
+  : |B| = 2 \,\} \subseteq D_i$.
+  If $i \in \{1, 2, \ldots, r-2\}$, then we're done.
+  If $i = r-1$, then our result follows from Theorem
+  \ref{thm:ramsey2Col}.
+\end{proof}
+
+What we have given is only a special case of a much more general
+theorem due to Ramsey in \cite[Theorem A]{Ramsey:1930uq}.
+To state his theorem concisely we introduce the following notation: If
+$X$ is a set and $k \in \bbN$, define $[X]^k = \{\, A \subseteq X :
+|A| = k \,\}$.
+
+\begin{ramsey}
+  Let $X$ be an infinite set and $r$, $k \in \bbN$.
+  If $[X]^k = \bigcup_{i=1}^r C_i$, then there exist an infinite subset
+  $Y \subseteq X$ and $i \in \{1, 2, \ldots, r\}$ such that $[Y]^k
+  \subseteq C_i$.
+\end{ramsey}
+\begin{proof}[Proof sketch]
+  We have essentially done most of the hard-work in proving Theorem
+  \ref{thm:ramsey2Col}. 
+  First prove the theorem for $r = 2$ and by induction on $k$.
+  Once this is done, proceed as in Corollary \ref{cor:ramseyrCol} to
+  prove the result for all $r \in \bbN$.
+
+  A full combinatorial proof can be found in Ramsey's original paper
+  \cite[Theorem A]{Ramsey:1930uq}. Another combinatorial proof is
+  given in Hindman's survey paper \cite[Theorem ??]{Hindman:1979fk}.
+  A proof using a nonprincipal ultrafilter can be found in
+  \cite[Theorem 18.2]{Hindman:1998fk}.
+
+\end{proof}
+
+% Things referenced in the preliminaries chapter. Eventually this will
+% placed in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+
 \end{document}
