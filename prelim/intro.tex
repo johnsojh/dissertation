@@ -11,7 +11,13 @@
 \theoremstyle{plain}
 \newtheorem{thm}{Theorem}[section]
 \newtheorem{CSTv1}{Original Central Sets Theorem}
-\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+
+\newtheorem*{schur}{Schur's Theorem}
+\newtheorem*{vdw}{Van der Waerden's Theorem}
+\newtheorem*{ramsey}{Ramsey's Theorem}
+\newtheorem*{ffst}{Rado-Sanders-Folkman Theorem}
+\newtheorem*{fst}{Hindman's Theorem}
+
 \newtheorem{FST}[thm]{Hindman's Theorem}
 \newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
 \newtheorem{recur}[thm]{Recurrence Theorem}
@@ -38,7 +44,11 @@
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+%\newcommand{\P}{\mathcal{P}}
 \newcommand{\calT}{\mathcal{T}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calU}{\mathcal{U}}
 \newcommand{\Pf}{\mathcal{P}_f}
 
 \newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
@@ -49,6 +59,53 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+\section{Partition Regularity and Ultrafilters}
+\subsection{Partition Regularity}
+\begin{defn}
+  Let $S$ be a set, $\calS \subseteq \calP(S)$, and $\kappa$ a cardinal
+  number. 
+  \begin{itemize}
+    \item[(a)] We call the pair $(S, \calS)$
+      \textsl{\mbox{$\kappa$-regular} in $S$} if and only if whenever
+      $S = \bigcup_{i=1}^\kappa C_i$, there exist $i \in \{1, 2,
+      \ldots, \kappa \,\}$ and $A \in \calS$ such that $A \subseteq
+      C_i$.
+
+    \item[(b)] We call the pair $(S, \calS)$ \textsl{regular in $S$}
+      if and only if $(S, \calS)$ is \mbox{$n$-regular} for every $n
+      \in \bbN$.
+  \end{itemize}
+  We call the pair $(S, \calR)$ \textsl{partition regular}
+\end{defn}
+
+\subsection{Ultrafilters}
+\begin{defn}
+  Let $S$ be a nonempty set.
+  A set $\emptyset \ne \calU \subseteq \calP(S)$ is called an
+  \textsl{ultrafilter (on S)} if and only if $\calU$ satisfies the
+  following four conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \not\in \calU$.
+    \item[(2)] If $A$ and $B \in \calU$, then $A \cap B \in \calU$.
+    \item[(3)] If $A \in \calU$ and $A \subseteq B \subseteq S$, then $B
+      \in \calU$.
+    \item[(4)] For all $A \subseteq S$, either $A \in \calU$ or $S
+      \setminus A \in \calU$. 
+  \end{itemize}
+\end{defn}
+
+\begin{thm}
+  Let $S$ be a set and $\calS \subseteq \calP(S)$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $(S, \calS)$ is partition regular.
+
+    \item[(b)] There is an ultrafilter $\calU$ on $S$ such that for
+      every $A \in \calU$, there exists $B \in \calS$ with $B
+      \subseteq A$.
+  \end{itemize}
+\end{thm}
+
 \section{Algebraic and Topological Preliminaries}
 We start by giving a, possibly laconic, introduction to the basic
 definitions and results we need from algebraic semigroup theory and the

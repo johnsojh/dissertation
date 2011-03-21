@@ -1,0 +1,108 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{endnotes}
+\usepackage{todonotes}
+% \usepackage[doublespacing]{setspace}
+\usepackage{url}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+
+% Unnumbered, named theorems.
+\newtheorem*{php}{Pigeonhole Principle}
+\newtheorem*{schur}{Schur's Theorem}
+\newtheorem*{vdw}{Van der Waerden's Theorem}
+\newtheorem*{ramsey}{Ramsey's Theorem}
+\newtheorem*{ffst}{Rado-Sanders-Folkman Theorem}
+\newtheorem*{fst}{Hindman's Theorem}
+
+\newtheorem{thm}{Theorem}[section]
+
+
+\begin{document}
+\section{Partition Regularity and Ultrafilters}
+
+% Angle brackets for sequences and families
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+% Blackboard bold letter
+\newcommand{\bbN}{\mathbb{N}}
+
+\subsection{Partition Regularity}
+Suppose we are given an infinite set and two colors.
+A moments thought shows that no matter how we color members of our
+infinite set, we can always pick an infinite subset all of whose
+members share the same color.
+This is nothing more than a version of the pigeonhole principle, and a
+bit more thought easily proves more.
+
+\begin{php}
+  Let $X$ be an infinite set and $r \in \bbN$.
+  If $X = \bigcup_{i=1}^r C_i$, then there exist an infinite subset $Y
+  \subseteq X$ and $i \in \{1, 2, \ldots, r\}$ such that $Y \subseteq
+  C_i$.
+\end{php}
+
+Now suppose that instead of coloring our infinite set with two colors,
+we color all of the two element subsets of our infinite set. 
+Can we find an infinite subset, of our original infinite set, such
+that all of the two element subsets of this infinite subset are
+monochromatic?
+The answer to this question turns out to be yes, but this time the
+proof is a bit harder.
+
+\begin{thm}
+  Let $X$ be an infinite set and $r \in \bbN$.
+  If $\{\, A \subseteq X : |A| = 2 \,\} = C_1 \cup C_2$, then there
+  exist an infinite subset $Y \subseteq X$ and $i \in \{1, 2\}$ such
+  that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq C_i$.
+\end{thm}
+\begin{proof}
+  We will inductively pick sequences $\la X_i \ra_{i=1}^\infty$, $\la
+  x_i \ra_{i=1}^\infty$, $\la C_1^{(i)} \ra_{i=1}^\infty$, $\la
+  C_2^{(i)} \ra_{i=1}^\infty$, and $\la r_i \ra_{i=1}^\infty$
+  satisfying the following hypotheses:
+  \begin{itemize}
+    \item[(1)] For all $i \in \bbN \setminus \{1\}$, $x_i \in X_{i-1}$.
+      
+    \item[(2)] For all $i \in \bbN \setminus \{1\}$, $X_i \subseteq
+      X_{i-1} \setminus \{x_i\}$ is infinite, and $X_1 \subseteq X$ is
+      infinite.
+     
+    \item[(3)] For all $j \in \{1, 2\}$ and $j \in \bbN \setminus
+      \{1\}$, $C_j^{(i)} = \{\, x \in X_{i-1} \setminus \{x_i\} : \{x,
+      x_i\} \in C_i \,\}$.
+     
+    \item[(4)] For all $i \in \bbN$, $X_i \subseteq C_{r_i}^{(i)}$.
+  \end{itemize}
+  Let $x_1 \in X$ and for each $j \in \{1, 2\}$ define $C^{(1)}_j =
+  \bigl\{\, x \in X \setminus \{x_1\} : \{x, x_1\} \in C_j \,\bigr\}$.
+  By the pigeonhole principle, pick an infinite subset $X_1 \subseteq
+  X \setminus \{x_1\}$ and $r_1 \in \{1, 2\}$ such that $X_1 \subseteq
+  C_{r_1}^{(1)}$. 
+  Let $k \in \bbN \setminus \{1\}$ and assume we have chosen sequences
+  $\la X_i \ra_{i=1}^{k-1}$, $\la x_i \ra_{i=1}^{k-1}$, $\la C_1^{(i)}
+  \ra_{i=1}^{k-1}$, $\la C_2^{(i)} \ra_{i=1}^{k-1}$, and $\la r_i \ra_{i=1}^{k-1}$
+  satisfying hypotheses (1)--(4). 
+  Let $x_k \in X_{k-1}$ and for each $j \in \{1, 2\}$ define
+  $C_j^{(k)} = \{\, x \in X_{k-1} \setminus \{x_k\} : \{x, x_k\} \in
+  C_j \,\}$. 
+  Since $X_{k-1}\setminus \{x_k\}$ is infinite and $X_{k-1}\setminus
+  \{x_k\} = C_1^{(k)} \cup C_2^{(k)}$, by the pigeonhole principle, we
+  can pick an infinite subset $X_k \subseteq X_{k-1} \setminus
+  \{x_k\}$ and $r_k \in \{1, 2\}$ such that $X_k \subseteq
+  C_{r_k}^{(k)}$.
+  
+  Our hypothesis (1) -- (4) are satisfied. 
+  Pick an infinite subsequence $\la i_k \ra_{k=1}^\infty$ such that
+  $r_{i_1} = r_{i=2} = r_{i=3} = \cdots$. 
+  (This can be done by the pigeonhole principle.)
+  Put $Y = \{\, x_{i_k} : k \in \bbN$ and $i = r_{i_1}$, we claim that
+  $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq C_i$.
+  Let $k$, $\ell \in \bbN$ and suppose $k < \ell$. 
+  Then $X_{\ell} \subseteq X_k$, by hypothesis (2).
+  Now $X$ ...
+\end{proof}
+\end{document}
