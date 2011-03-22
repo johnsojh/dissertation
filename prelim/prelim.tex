@@ -32,7 +32,41 @@
 % Blackboard bold letter
 \newcommand{\bbN}{\mathbb{N}}
 
+% Math. calligraphic letters
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+
 \subsection{Partition Regularity}
+Let $X$ be some nonempty set and let $\calR \subseteq \calP(S)$.  
+We call the pair $(X, \calR)$ \textsl{partition regular (in $X$)} if and
+only if for every $r \in \bbN$, if $X = \bigcup_{i=1}^r C_i$, then
+there exist $i \in \{1, 2, \ldots, r\}$ and $A \in \calR$ such that $A
+\subseteq C_i$.
+Partition regularity roughly asserts that some property of $X$, here
+represented by members of $\calR$, is ``large'' in $X$.
+In fact so large, that no matter how we finitely divide up $X$, at
+least one cell in the division has our specified property. 
+One of the easiest partition regular property to observe is the
+infinite form of the pigeonhole principle.
+
+\begin{php}
+  Let $X$ be an infinite set $\calR = \{\, A \subseteq X : \mbox{$A$
+    is infinite} \,\}$.
+\end{php}
+\begin{proof}
+  Let $r \in \bbN$ and $X = \bigcup_{i=1}^r C_i$.
+  Then $|X| \le \sum_{i=1}^r |C_i|$.
+  If $C_i$ is finite for all $i \in \{1, 2, \ldots, r\}$,
+  then $|X|$ is finite too, a contradiction.
+\end{proof}
+
+A powerful generalization of the pigeonhole principle was discovered
+by Ramsey in \cite{Ramsey:1930uq}. 
+
+\begin{ramsey}
+  
+\end{ramsey}
+
 Suppose we are given an infinite set and two colors.
 A moments thought shows that no matter how we color members of our
 infinite set, we can always pick an infinite subset all of whose
@@ -186,8 +220,20 @@ $X$ is a set and $k \in \bbN$, define $[X]^k = \{\, A \subseteq X :
   given in Hindman's survey paper \cite[Theorem ??]{Hindman:1979fk}.
   A proof using a nonprincipal ultrafilter can be found in
   \cite[Theorem 18.2]{Hindman:1998fk}.
-
 \end{proof}
+
+\begin{schur}
+  Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
+  Then there exist $i \in \{1, 2, \ldots, r\}$ and $x$, $y$, and $z
+  \in \bbN$ such that $\{\, x, y, x+y \,\} \subseteq C_i$.
+\end{schur}
+
+\begin{vdw}
+  Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
+  Then for every $\ell \in \bbN$, there exist $i \in \{1, 2, \ldots,
+  r\}$ and $a$, $d \in \bbN$ such that $\{\, a, a+d, \ldots, a+\ell d
+  \,\} \subseteq C_i$.
+\end{vdw}
 
 % Things referenced in the preliminaries chapter. Eventually this will
 % placed in a separate file so the References appear at the end.
