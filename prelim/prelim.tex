@@ -2,41 +2,106 @@
 
 \usepackage{amsthm, amssymb, amsmath}
 \usepackage{endnotes}
+\usepackage[margin=1in]{geometry}
 \usepackage{todonotes}
-% \usepackage[doublespacing]{setspace}
+\usepackage[doublespacing]{setspace}
 \usepackage{url}
 
 \newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
 \theoremstyle{plain}
-
-% Unnumbered, named theorems.
-\newtheorem*{php}{Pigeonhole Principle}
-\newtheorem*{schur}{Schur's Theorem}
-\newtheorem*{vdw}{Van der Waerden's Theorem}
-\newtheorem*{ramsey}{Ramsey's Theorem}
-\newtheorem*{ffst}{Rado-Sanders-Folkman Theorem}
-\newtheorem*{fst}{Hindman's Theorem}
-
-% Numbered theorems
 \newtheorem{thm}{Theorem}[section]
+\newtheorem{CSTv1}{Original Central Sets Theorem}
+
+% Unnumbered named theorems or results
+\newtheorem*{fact}{Fact}
+\newtheorem*{hj}{Hales-Jewett Theorem}
+\newtheorem*{php}{Pigeonhole Principle}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{ramsey}{Ramsey's Theorem}
+\newtheorem*{vdw}{Van der Waerden's Theorem}
+\newtheorem*{schur}{Schur's Theorem}
+
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
 \newtheorem{cor}[thm]{Corollary}
+
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+
+
+\theoremstyle{definition}
+% Unnumbered "definition" style theorem environments
+\newtheorem*{defn}{Definition}
+\newtheorem*{rmk}{Remark}
+
+\newtheorem{example}[thm]{Example}
+
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\AP}{\mathcal{AP}}
+\newcommand{\AL}{\mathcal{AL}}
+
+% Short names for calligraphic math letters.
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 
 \begin{document}
 \section{Partition Regularity and Ultrafilters}
 
-% Angle brackets for sequences and families
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-
-% Blackboard bold letter
-\newcommand{\bbN}{\mathbb{N}}
-
-% Math. calligraphic letters
-\newcommand{\calP}{\mathcal{P}}
-\newcommand{\calR}{\mathcal{R}}
-
 \subsection{Partition Regularity}
+The use of cardinality as a ``measure'' on the size of a set provides
+only a very rough notion on how large a set is.
+(The formal undecidability of the Continuum Hypothesis in ZFC starkly
+illustrates the problem of using cardinals to measure largeness.)
+We introduce another ``notion of largeness'' which allows for a more
+precise investigation into how large a particular set may be.
+
+\begin{defn}
+  Let $X$ be a nonempty set and $\calR$ a collection of sets with
+  $\emptyset\not\in \calR$. 
+  \begin{itemize}
+    \item[(a)] Let $\kappa$ a cardinal number. 
+      We call the pair $(X, \calR)$ \textsl{\mbox{$\kappa$-partition}
+        regular} if and only if whenever $X = \bigcup_{i < \kappa}
+      C_i$, there exist $i \in \kappa$ and $A \in \calR$ such that $A
+      \subseteq C_i$.
+
+    \item[(b)] We call the pair $(X, \calR)$ \textsl{partition
+        regular} if and only if $(X, \calR)$ is \mbox{$r$-partition}
+      regular for every $r \in \bbN$.
+  \end{itemize}
+\end{defn}
+
+% Say that we will only focus on partition regular statements and that
+% for κ>=ω is the domain for "infinite combinatorics.  Also mention
+% how this is used in modern set theory to investigate several notions
+% of large cardinals.
+
 Let $X$ be some nonempty set and let $\calR \subseteq \calP(S)$.  
 We call the pair $(X, \calR)$ \textsl{partition regular (in $X$)} if and
 only if for every $r \in \bbN$, if $X = \bigcup_{i=1}^r C_i$, then
