@@ -47,6 +47,7 @@
 \newcommand{\ra}{\rangle}
 \newcommand{\bbN}{\mathbb{N}}
 \newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbR}{\mathbb{R}}
 \newcommand{\AP}{\mathcal{AP}}
 \newcommand{\AL}{\mathcal{AL}}
 
@@ -74,22 +75,33 @@
 \section{Partition Regularity and Ultrafilters}
 
 \subsection{Partition Regularity}
-The use of cardinality as a ``measure'' on the size of a set provides
-only a very rough notion on how large a set is.
-(The formal undecidability of the Continuum Hypothesis in ZFC starkly
-illustrates the problem of using cardinals to measure largeness.)
-We introduce another ``notion of largeness'' which allows for a more
-precise investigation into how large a particular set may be.
+The cardinality of a set is commonly thought of as a ``measure'' on
+how large a particular set is.
+Intuitively this ``notion of largeness'' provides a good mathematical
+formalization of the size of sets since every set has exactly one
+cardinality, and under ZFC, every cardinality is comparable.%
+\endnote{
+  However despite the success of the notion of cardinality, one
+  possible disturbing aspect is the formal independence of the
+  Continuum Hypothesis from the axioms of ZFC.
+  This particular independence roughly asserts that, without adding
+  additional axioms to ZFC, we are unable to determine the exact
+  size of $|\bbR|$.
+  (The well-known diagonal argument enables us to determine the
+  relative size of $|\bbR|$ with respect to $|\bbN|$.)
+}
+In this section we will introduce another ``notion of largeness'' on a
+set that is of a different character from cardinality. 
 
 \begin{defn}
   Let $X$ be a nonempty set and $\calR$ a collection of sets with
   $\emptyset\not\in \calR$. 
   \begin{itemize}
-    \item[(a)] Let $\kappa$ a cardinal number. 
-      We call the pair $(X, \calR)$ \textsl{\mbox{$\kappa$-partition}
-        regular} if and only if whenever $X = \bigcup_{i < \kappa}
-      C_i$, there exist $i \in \kappa$ and $A \in \calR$ such that $A
-      \subseteq C_i$.
+    \item[(a)] Let $r$ be a natural number. 
+      The pair $(X, \calR)$ is called \textsl{\mbox{$r$-partition}
+        regular} if and only if whenever $X = \bigcup_{i=1}^r
+      C_i$, there exist $i \in \{1, 2, \ldots, r\}$ and $A \in \calR$
+      such that $A \subseteq C_i$.
 
     \item[(b)] We call the pair $(X, \calR)$ \textsl{partition
         regular} if and only if $(X, \calR)$ is \mbox{$r$-partition}
@@ -102,190 +114,128 @@ precise investigation into how large a particular set may be.
 % how this is used in modern set theory to investigate several notions
 % of large cardinals.
 
-Let $X$ be some nonempty set and let $\calR \subseteq \calP(S)$.  
-We call the pair $(X, \calR)$ \textsl{partition regular (in $X$)} if and
-only if for every $r \in \bbN$, if $X = \bigcup_{i=1}^r C_i$, then
-there exist $i \in \{1, 2, \ldots, r\}$ and $A \in \calR$ such that $A
-\subseteq C_i$.
 Partition regularity roughly asserts that some property of $X$, here
-represented by members of $\calR$, is ``large'' in $X$.
+represented by members of $\calR$, occurs a ``large'' number of times
+in $X$.
 In fact so large, that no matter how we finitely divide up $X$, at
 least one cell in the division has our specified property. 
 One of the easiest partition regular property to observe is the
 infinite form of the pigeonhole principle.
 
 \begin{php}
-  Let $X$ be an infinite set $\calR = \{\, A \subseteq X : \mbox{$A$
+  Let $X$ be an infinite put $\calR = \{\, A \subseteq X : \mbox{$A$
     is infinite} \,\}$.
+  Then $(X, \calR)$ is partition regular.
 \end{php}
 \begin{proof}
   Let $r \in \bbN$ and $X = \bigcup_{i=1}^r C_i$.
   Then $|X| \le \sum_{i=1}^r |C_i|$.
-  If $C_i$ is finite for all $i \in \{1, 2, \ldots, r\}$,
+  If $C_i$ is finite for each $i \in \{1, 2, \ldots, r\}$,
   then $|X|$ is finite too, a contradiction.
 \end{proof}
 
-A powerful generalization of the pigeonhole principle was discovered
-by Ramsey in \cite{Ramsey:1930uq}. 
+The Pigeonhole Principle is an easy result to prove. 
+However, a powerful generalization of this principle was discovered by
+Ramsey in \cite[Theorem A]{Ramsey:1930uq}. 
 
 \begin{ramsey}
-  
+  Let $X$ be an infinite set, and let $k \in \bbN$.
+  Put $\calR = \bigl\{\, \{\, A \subseteq Y : |A| = k \,\} : \mbox{$Y
+    \subseteq X$ is infinite} \,\bigr\}$.
+  Then $\bigl(\{\, A \subseteq X : |A| = k \,\}, \calR\bigr)$ is
+  partition regular. 
 \end{ramsey}
+\begin{proof}[Proof Sketch]
+  Observe that when $k = 1$ the result follows from the Pigeonhole
+  Principle. 
+  We now suppose that $k=2$ and we show that $\bigl(\{\, A
+  \subseteq X : |A| = 2 \,\}, \calR\bigr)$ is \mbox{2-partition}
+  regular: that is, we show that if $\{\, A \subseteq X : |A| = 2 \,\}
+  = C_1 \cup C_2$, then there exist an infinite subset $Y \subseteq
+  X$ and $i \in \{1, 2\}$ such that $\{\, B \subseteq Y : |B| = 2 \,\}
+  \subseteq C_i$. 
 
-Suppose we are given an infinite set and two colors.
-A moments thought shows that no matter how we color members of our
-infinite set, we can always pick an infinite subset all of whose
-members share the same color.
-This is nothing more than a version of the pigeonhole principle, and a
-bit more thought easily proves more.
-
-\begin{php}
-  Let $X$ be an infinite set and $r \in \bbN$.
-  If $X = \bigcup_{i=1}^r C_i$, then there exist an infinite subset $Y
-  \subseteq X$ and $i \in \{1, 2, \ldots, r\}$ such that $Y \subseteq
-  C_i$.
-\end{php}
-
-Now suppose that instead of coloring our infinite set with two colors,
-we color all of the two element subsets of our infinite set. 
-Can we find an infinite subset, of our original infinite set, such
-that all of the two element subsets of this infinite subset are
-monochromatic?
-The answer to this question turns out to be yes, but the proof of this
-result will use several applications of the pigeonhole principle and a
-diagonal type argument.
-
-\begin{thm}
-  \label{thm:ramsey2Col}
-  Let $X$ be an infinite set and $r \in \bbN$.
-  If $\{\, A \subseteq X : |A| = 2 \,\} = C_1 \cup C_2$, then there
-  exist an infinite subset $Y \subseteq X$ and $i \in \{1, 2\}$ such
-  that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq C_i$.
-\end{thm}
-\begin{proof}
-  We will recursively construct sequences $\la X_i \ra_{i=0}^\infty$,
-  $\la x_i \ra_{i=1}^\infty$, $\la (C_1^{(i)}, C_2^{(i)})
-  \ra_{i=1}^\infty$ and $\la r_i \ra_{i=1}^\infty$ satisfying the
-  following hypotheses:
+  To this end, we will recursively construct sequences $\la X_n
+  \ra_{n=0}^\infty$, $\la x_n \ra_{n=1}^\infty$, $\bigl\la (C_1^{(n)},
+  C_2^{(n)}) \bigr\ra_{n=1}^\infty$, and $\la r_n \ra_{n=1}^\infty$
+  satisfying the following hypotheses:
   \begin{itemize}
-    \item[(1)] $x_i \in X_{i-1}$ for all $i \in \bbN$.
-      
-    \item[(2)] For $i \in \bbN$, $X_i$ is an infinite subset of
-      $X_{i-1} \setminus \{x_i\}$.
-
-    \item[(3)] For all $j \in \{1, 2\}$ and $i \in \bbN$, $C_j^{(i)} =
-      \bigl\{\, x \in X_{i-1} \setminus \{x_i\} : \{x, x_i\} \in C_j
-      \,\bigr\}$.
-
-    \item[(4)] For all and $i \in \bbN$, $X_i
-      \subseteq C_{r_i}^{(i)}$.
+    \item[(0)] $X_0 = X$.
+    \item[(1)] $x_n \in X_{n-1}$ for all $n \in \bbN$.
+    \item[(2)] $X_n$ is an infinite subset of $X_{n-1} \setminus
+      \{x_n\}$ for each $n \in \bbN$.
+    \item[(3)] For all $i \in \{1, 2\}$ and $n \in \bbN$, 
+      \[
+        C_i^{(n)} = \{\, x \in X_{n-1} \setminus \{x_n\} : \{x, x_n\}
+        \in C_i \,\}.
+      \]
+    \item[(4)] $X_n \subseteq C_{r_n}^{(n)}$ for all $n \in \bbN$. 
   \end{itemize}
-  
-  Put $X_0 = X$ and $x_1 \in X_0$.
-  For each $j \in \{1,2\}$, define
+  We first show how these sequences prove our special case of Ramsey's
+  Theorem. 
+  By hypotheses (0), (1), and (2), the set $\la x_n \ra_{n=1}^\infty$
+  is a one-to-one sequence in $X$; and by the Pigeonhole Principle,
+  either $\{\, n \in \bbN : r_n = 1 \,\}$ is infinite or $\{\, n \in
+  \bbN : r_n = 2 \,\}$ is infinite. 
+  Without loss of generality suppose $\{\, n \in \bbN : r_n = 1 \,\}$
+  is infinite and put $Y = \{\, x_n : \mbox{$n \in \bbN$ and $r_n =
+    1$} \,\}$.
+  Then $Y \subseteq X$ is infinite and we claim that $\{\, A \subseteq
+  Y : |A| = 2\,\} \subseteq C_1$.
+  To see this claim, let $m$ and $n$ be natural numbers with $m < n$
+  and $r_m = r_n = 1$. 
+  By hypothesis (2), it follows that $X_{n-1} \subseteq X_m$. 
+  Hence $x_n \in X_m$ since $x_n \in X_{n-1}$. 
+  By hypotheses (3) and (4), it follows that $\{x_n , x_m \} \in
+  C_1$. 
+  This finishes the proof of our claim.
+
+  We now recursively construct our sequences to satisfy hypotheses
+  (0)-(4). 
+  Put $X_0 = X$ let $k > 1$ and assume we have constructed sequences
+  $\la X_n \ra_{n=0}^{k-1}$, $\la x_n \ra_{n=1}^{k-1}$, $\bigl\la
+  (C_1^{(n)}, C_2^{(n)}) \bigr\ra_{n=1}^{k-1}$, and $\la r_n
+  \ra_{n=1}^{k-1}$ satisfying hypotheses (0)-(4).
+  By hypothesis (2), $X_{k-1}$ is infinite so pick $x_k \in X_{k-1}$.  
+  For each $i \in \{1, 2\}$ define
   \[
-    C_j^{(1)} = \bigl\{\, x \in X_0 \setminus \{x_1\} : \{x, x_1\} \in
-    C_j \,\bigr\}.
+    C_i^{(k)} = \bigl\{\, x \in X_{k-1} \setminus \{x_k\} : \{x, x_k\} \in
+    C_i \,\bigr\}.
   \]
-  Since $X_0 \setminus \{x_1\} = C_1^{(1)} \cup C_2^{(2)}$ and $X_0
-  \setminus \{x_1\}$ is infinite, then by the pigeonhole principle we
-  can pick an infinite subset $X_1 \subseteq X_0 \setminus \{x_1\}$
-  and $r_1 \in \{1, 2\}$ such that $X_1 \subseteq C_{r_1}^{(1)}$.
-  Our sequences $\la X_i \ra_{i=0}^1$, $\la x_i \ra_{i=1}^1$, $\la
-  (C_1^{(i)}, C_2^{(i)}) \ra_{i=1}^1$, and $\la r_i \ra_{i=1}^1$
-  satisfy hypotheses (1)-(4).
+  Then $X_{k-1} \setminus \{x_k\}= C_1^{(k)} \cup C_2^{(k)}$ and so by the Pigeonhole
+  Principle, we can pick an infinite subset $X_k \subseteq X_{k-1}
+  \setminus \{x_k\}$ and $r_k \in \{1, 2\}$ such that $X_k \subseteq
+  C_{r_k}^{(k)}$. 
+  By construction the sequences $\la X_n \ra_{n=0}^k$, $\la x_n
+  \ra_{n=1}^k$, $\bigl\la (C_1^{(n)}, C_2^{(n)})
+  \bigr\ra_{n=1}^k$, and $\la r_n \ra_{n=1}^k$ satisfying
+  hypotheses (0)-(4).
+  This completes our recursive construction.
 
-  Let $k > 1$ and assume we have chosen sequences $\la X_i
-  \ra_{i=0}^{k-1}$, $\la x_i \ra_{i=1}^{k-1}$, $\la (C_1^{(i)}, C_2^{(i)})
-  \ra_{i=1}^{k-1}$, and $\la r_i \ra_{i=1}^{k-1}$ satisfying
-  hypotheses (1)-(4).
-  By hypothesis (2) we have that $X_{k-1}$ is infinite, so pick $x_k
-  \in X_{k-1}$.
-  For each $j \in \{1, 2\}$, define
-  \[
-    C_j^{(k)} = \bigl\{\, x \in X_{k-1} \setminus \{x_k\} : \{x, x_k\} \in
-    C_j \,\bigr\}.
-  \]
-  By the pigeonhole principle, we can pick an infinite subset $X_k
-  \subseteq X_{k-1} \setminus \{x_k\}$ and $r_k \in \{1, 2\}$ such
-  that $X_k \subseteq C_{r_k}^{(k)}$.
-  Our hypotheses (1)-(4) are satisfied by $\la X_i
-  \ra_{i=0}^{k}$, $\la x_i \ra_{i=1}^{k}$, $\la (C_1^{(i)}, C_2^{(i)})
-  \ra_{i=1}^{k}$, and $\la r_i \ra_{i=1}^{k}$ by construction. 
-  Hence our sequence $\la X_i \ra_{i=0}^{\infty}$, $\la x_i
-  \ra_{i=1}^{\infty}$, $\la (C_1^{(i)}, C_2^{(i)}) \ra_{i=1}^{\infty}$, and
-  $\la r_i \ra_{i=1}^{\infty}$ is recursively defined.
-
-  By the pigeonhole principle, either $\{\, i \in \bbN : r_i = 1 \,\}$
-  is infinite or $\{\, i \in \bbN : r_i = 2 \,\}$ is infinite.
-  Without loss of generality suppose that $\{\, i \in \bbN : r_i =
-  1\,\}$ is infinite.
-  Put $Y = \{\, x_i : r_i = 1 \,\}$.
-  We show that $Y$ is the infinite subset of $X$ we are looking for,
-  that is, we show that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq
-  C_1$.  
-  Let $i$, $j \in \{\, i \in \bbN : r_i = 1 \,\}$ and assume that $i <
-  j$.
-  Since $i \le j-1$ and by hypothesis (2), it follows that $X_j
-  \subseteq X_{i} \setminus \{x_{i+1}\}$. 
-  In particular, $x_j \in X_i \setminus \{x_{i+1}\}$.
-  By hypothesis (4), $X_i \subseteq C_{r_i}^{(i)}$, that is, for all
-  $x \in X_i$, $\{x, x_i\} \in C_{r_i}$. 
-  (This follows from hypothesis (3).)
-  Moreover, $\{x_j, x_i\} \in C_{r_i}$. 
-  However $r_i = r_j = 1$ by our choice of $i$ and $j$.
-  This completes the proof of this theorem.
+  To show that $\bigl(\{\, A \subseteq X : |A| = 2 \,\}, \calR\bigr)$
+  is \mbox{$r$-partition} regular follows by induction on $r$. 
+  Finally to show that for all $k \in \bbN$, $\bigl(\{\, A \subseteq X
+  : |A| = k \,\}, \calR\bigr)$ is partition regular follows by
+  induction on $k$.
 \end{proof}
-\begin{cor}
-  \label{cor:ramseyrCol}
-  Let $X$ be an infinite set and $r \in \bbN$.
-  If $\{\, A \subseteq X : |A| = 2 \,\} = \bigcup_{i=1}^r C_i$, then
-  there exist an infinite subset $Y \subseteq X$ and $i \in \{1, 2,
-  \ldots, r\}$ such that $\{\, B \subseteq Y : |B| = 2 \,\} \subseteq
-  C_i$.
-\end{cor}
-\begin{proof}
-  We proceed by induction on $r$.
-  For $r = 1$, the result is obvious.
-  Let $r > 1$ and assume that our result is true for $r-1$.
-  Let $\{\, A \subseteq X : |A| = 2 \,\} = \bigcup_{i=1}^r C_i$.
-  For $i \in \{1, 2, \ldots, r-2\}$ put $D_i = C_i$, and put $D_{r-1}
-  = C_{r-1} \cup C_r$.
-  Then $\{\, A \subseteq X : |A| = 2 \,\} = \bigcup_{i=1}^{r-1} D_i$. 
-  
-  By our induction hypothesis, pick an infinite subset $Y \subseteq
-  X$ and  $i \in \{1, 2, \ldots, r-1\}$ such that $\{\, B \subseteq Y
-  : |B| = 2 \,\} \subseteq D_i$.
-  If $i \in \{1, 2, \ldots, r-2\}$, then we're done.
-  If $i = r-1$, then our result follows from Theorem
-  \ref{thm:ramsey2Col}.
-\end{proof}
+\begin{rmk}
+  The current proof sketch is essentially Ramsey's original
+  combinatorial proof is \cite[Theorem A]{Ramsey:1930uq}. 
+  A complete combinatorial proof, which is where the above is modeled
+  from, is in Hindman's survey paper \cite[Theorem
+  \textcolor{red}{??}]{Hindman:1979fk}.
+\end{rmk}
 
-What we have given is only a special case of a much more general
-theorem due to Ramsey in \cite[Theorem A]{Ramsey:1930uq}.
-To state his theorem concisely we introduce the following notation: If
-$X$ is a set and $k \in \bbN$, define $[X]^k = \{\, A \subseteq X :
-|A| = k \,\}$.
+Notice that the above argument is simliar to a diagonal
+type-argument. 
+We will show that in fact that there is a close connection between a
+partition regular set $(X, \calR)$ an a ultrafilter on $X$. 
 
-\begin{ramsey}
-  Let $X$ be an infinite set and $r$, $k \in \bbN$.
-  If $[X]^k = \bigcup_{i=1}^r C_i$, then there exist an infinite subset
-  $Y \subseteq X$ and $i \in \{1, 2, \ldots, r\}$ such that $[Y]^k
-  \subseteq C_i$.
-\end{ramsey}
-\begin{proof}[Proof sketch]
-  We have essentially done most of the hard-work in proving Theorem
-  \ref{thm:ramsey2Col}. 
-  First prove the theorem for $r = 2$ and by induction on $k$.
-  Once this is done, proceed as in Corollary \ref{cor:ramseyrCol} to
-  prove the result for all $r \in \bbN$.
-
-  A full combinatorial proof can be found in Ramsey's original paper
-  \cite[Theorem A]{Ramsey:1930uq}. Another combinatorial proof is
-  given in Hindman's survey paper \cite[Theorem ??]{Hindman:1979fk}.
-  A proof using a nonprincipal ultrafilter can be found in
-  \cite[Theorem 18.2]{Hindman:1998fk}.
-\end{proof}
+% While Ramsey's Theorem is important and provides a good example of a
+% partition regular pair $(X, \calR)$, in this dissertation we will
+% mainly be considering partition regular sets where the underlying set
+% $X$ has an algebraic structure of a semigroup and elements in $\calR$
+% are defined in terms of this structure. 
 
 \begin{schur}
   Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
@@ -299,6 +249,9 @@ $X$ is a set and $k \in \bbN$, define $[X]^k = \{\, A \subseteq X :
   r\}$ and $a$, $d \in \bbN$ such that $\{\, a, a+d, \ldots, a+\ell d
   \,\} \subseteq C_i$.
 \end{vdw}
+
+% Endnotes 
+\theendnotes
 
 % Things referenced in the preliminaries chapter. Eventually this will
 % placed in a separate file so the References appear at the end.
