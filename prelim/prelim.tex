@@ -53,6 +53,7 @@
 
 % Short names for calligraphic math letters.
 \newcommand{\calB}{\mathcal{B}}
+\newcommand{\calF}{\mathcal{F}}
 \newcommand{\calG}{\mathcal{G}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
@@ -249,6 +250,19 @@ partition regular set $(X, \calR)$ an a ultrafilter on $X$.
   r\}$ and $a$, $d \in \bbN$ such that $\{\, a, a+d, \ldots, a+\ell d
   \,\} \subseteq C_i$.
 \end{vdw}
+
+\subsection{Ultrafilters}
+\begin{defn}
+  Let $X$ be a nonempty set and $\calF \subseteq \calP(X)$.
+  We call $\calF$ a \textsl{filter (on X)} if and only if it satisfies
+  the following three conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \ne \calF$ and $\emptyset \not\in \calF$.
+    \item[(2)] If $A$, $B \in \calF$, then $A \cap B \in \calF$.
+    \item[(3)] If $A \in \calF$ and $A \subseteq B \subseteq X$, then
+      $B \in \calF$.
+  \end{itemize}
+\end{defn}
 
 % Endnotes 
 \theendnotes
