@@ -1,9 +1,34 @@
 \documentclass[12pt]{article}
 
 \usepackage{amsthm, amssymb, amsmath}
+\usepackage{color}
 \usepackage{endnotes}
-\usepackage[margin=1in]{geometry}
-\usepackage{todonotes}
+% Uncomment the following line if you want to actually print this
+% document. 
+% \usepackage[margin=1in]{geometry}
+
+% The following bit of code is taken from
+% http://jcl.posterous.com/latex-todonotes-and-margins to enable todo
+% notes to take up the large right margins.
+\usepackage[paperwidth=275.9mm, paperheight=279.4mm]{geometry}
+% regular letter size is 215.9 wide by 279.44 long  
+\setlength{\oddsidemargin}{35mm}  
+\setlength{\evensidemargin}{35mm}  
+\setlength{\voffset}{-1in}  
+\setlength{\hoffset}{-1in}  
+\setlength{\textwidth}{156mm}  
+\setlength{\topmargin}{4mm}  
+\setlength{\headheight}{10mm}  
+\setlength{\headsep}{12mm}  
+\setlength{\topskip}{0mm}  
+\setlength{\textheight}{228mm}  
+
+
+\setlength{\evensidemargin}{95mm}
+
+\usepackage[colorinlistoftodos, textwidth=65mm, shadow]{todonotes}  
+% End block taken from site
+
 \usepackage[doublespacing]{setspace}
 \usepackage{url}
 
@@ -35,13 +60,10 @@
 
 
 \theoremstyle{definition}
-% Unnumbered "definition" style theorem environments
-\newtheorem*{defn}{Definition}
-\newtheorem*{rmk}{Remark}
-
+% Numbered "definition" style theorem environments
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
 \newtheorem{example}[thm]{Example}
-
-
 
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
@@ -74,6 +96,35 @@
 
 \begin{document}
 \section{Partition Regularity and Ultrafilters}
+
+\subsection{Ultrafilters}
+Cardinality of a set is commonly thought of as a ``measure'' on 
+the size a particular set.
+Intuitively this ``notion of largeness'' provides a good mathematical
+formalization of size since every set has exactly one cardinality,
+and, under ZFC (that is, the usual Zermelo-Frankel axioms of set
+theory along with the axiom of choice), every cardinality is
+comparable. 
+However the concept of cardinality has its own mathematical
+peculiarities starkly illustrated by the formal independence of the
+Continuum Hypothesis from ZFC. 
+The Continuum Hypothesis states that the answer to the question, ``Is
+$|\bbR|$ the first cardinal after $\bbN$?'', is yes; and its
+independence means that, without adding extra set-theoretical axioms,
+we cannot determine the precise size of $|\bbR|$. 
+
+\todo{Add endnote reference to Grattan-Guinness paper ``How Betrand
+  Russell Discovered His Paradox'' for note on how Cantor is not the
+  first documented case of the use of a diagonal argument. 
+  Also mention Woodin's papers ``The Continuum Hypothesis'' Parts I
+  and II and several Mathoverflow questions on the current status of
+  CH.
+}%
+Of course, if we weaken the Continuum Hypothesis to the question, ``Is
+$|\bbR|$ bigger than $\bbN$?'', then the answer is, under ZFC, yes and
+follows from the famous diagonal argument of Cantor. 
+To point we wish to emphasize is that questions about relative sizes are
+often easier to work with than questions about absolute sizes. 
 
 \subsection{Partition Regularity}
 The cardinality of a set is commonly thought of as a ``measure'' on
