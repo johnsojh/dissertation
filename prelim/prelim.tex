@@ -3,6 +3,7 @@
 \usepackage{amsthm, amssymb, amsmath}
 \usepackage{color}
 \usepackage{endnotes}
+\usepackage{url}
 % Uncomment the following line if you want to actually print this
 % document. 
 % \usepackage[margin=1in]{geometry}
@@ -98,20 +99,31 @@
 \section{Partition Regularity and Ultrafilters}
 
 \subsection{Ultrafilters}
-Cardinality of a set is commonly thought of as a ``measure'' on 
-the size a particular set.
+Cardinality is commonly thought of as a ``measure'' on 
+the size a set.
 Intuitively this ``notion of largeness'' provides a good mathematical
-formalization of size since every set has exactly one cardinality,
-and, under ZFC (that is, the usual Zermelo-Frankel axioms of set
-theory along with the axiom of choice), every cardinality is
-comparable. 
+formalization of size since every set has exactly one cardinality;
+and under ZFC (that is, the usual Zermelo-Frankel axioms of set
+theory along with the axiom of choice), every set of cardinals is
+wellordered.
 However the concept of cardinality has its own mathematical
 peculiarities starkly illustrated by the formal independence of the
-Continuum Hypothesis from ZFC. 
-The Continuum Hypothesis states that the answer to the question, ``Is
-$|\bbR|$ the first cardinal after $\bbN$?'', is yes; and its
-independence means that, without adding extra set-theoretical axioms,
-we cannot determine the precise size of $|\bbR|$. 
+Continuum Hypothesis from ZFC (provided ZFC is consistent). 
+Recall that the Continuum Hypothesis is the affirmative answer to the
+question: ``Is $|\bbR|$ the first cardinal after $|\bbN|$?''
+Its independence means that, without adding extra set-theoretical axioms,
+we cannot determine the precise size of $|\bbR|$.%
+\endnote{
+  For the reader interested in more information about the Continuum
+  Hypothesis can consult the articles  \cite{Woodin:2001uq} and
+  \cite{Woodin:2001kx} by Woodin. 
+  Also check out the interesting answers to several questions
+  \cite{Gindi:2010vn} ask on \url{http://mathoverflow.net/}.%
+  \todo{
+    Figure out a proper way to include bibliographic entries for
+    websites.
+  }
+} 
 
 \todo{Add endnote reference to Grattan-Guinness paper ``How Betrand
   Russell Discovered His Paradox'' for note on how Cantor is not the
@@ -121,10 +133,53 @@ we cannot determine the precise size of $|\bbR|$.
   CH.
 }%
 Of course, if we weaken the Continuum Hypothesis to the question, ``Is
-$|\bbR|$ bigger than $\bbN$?'', then the answer is, under ZFC, yes and
+$|\bbR|$ bigger than $|\bbN|$?'', then the answer is, under ZFC, yes and
 follows from the famous diagonal argument of Cantor. 
 To point we wish to emphasize is that questions about relative sizes are
 often easier to work with than questions about absolute sizes. 
+Hence we with to focus on studying collection of sets that are
+relatively large with respect to some base set.
+\todo{
+  Insert brief history about filters and references to Cartan's paper,
+  Borubaki, and the \textsl{Handbook on the Foundations of Analysis}
+  book.
+}%
+The first mathematical formulation of largeness that we will look at is
+the notion of a filter. 
+
+\begin{defn}
+  Let $X$ be a nonempty set and $\calF \subseteq \calP(X)$. 
+  We call $\calF$ a \textsl{filter on $X$} if and only if $\calF$
+  satisfies the following three conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \not\in \calF$ and $\emptyset \ne \calF$.
+
+    \item[(2)] If $A$ and $B$ are elements of $\calF$, then $A \cap B
+      \in \calF$.
+
+    \item[(3)] If $A \in \calF$ and $A \subseteq B \subseteq X$, then
+      $B \in \calF$. 
+  \end{itemize}
+\end{defn}
+
+Intuitively, we may think of elements of a filter $\calF$ on a set $X$
+as a collection of ``large'' subsets of $X$. 
+From this point-of-view, conditions (1) and (3) line up nicely with
+our intuition and implies that $X \in \calF$. 
+(We normally won't consider the empty set as large and surely any set
+which contains a large set must also be considered large.)
+However from this intuitive point-of-view of filters condition (2)
+doesn't necessary align cleaning with our intuition. 
+This particular condition may be thought of as saying that we further
+require our large sets to interlock in a somewhat rigid fashion in
+that the intersection of two large sets is also large. 
+We shall see that this condition (2) is the reason for much of the
+interesting and useful mathematical uses of filters. 
+\missingfigure{
+Make a figure of some filters on the set $\{1, 2, 3, 4\}$.
+This figure should look similar to the one on wikipedia. 
+}
+
 
 \subsection{Partition Regularity}
 The cardinality of a set is commonly thought of as a ``measure'' on
