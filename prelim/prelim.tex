@@ -35,14 +35,19 @@
 
 \newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
 \theoremstyle{plain}
+
+% Numbered theorems 
 \newtheorem{thm}{Theorem}[section]
-\newtheorem{CSTv1}{Original Central Sets Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{up}[thm]{Ultrafilter Principle}
+
 
 % Unnumbered named theorems or results
 \newtheorem*{fact}{Fact}
 \newtheorem*{hj}{Hales-Jewett Theorem}
 \newtheorem*{php}{Pigeonhole Principle}
-\newtheorem*{prop}{Proposition}
 \newtheorem*{ramsey}{Ramsey's Theorem}
 \newtheorem*{vdw}{Van der Waerden's Theorem}
 \newtheorem*{schur}{Schur's Theorem}
@@ -52,9 +57,9 @@
 \newtheorem{recur}[thm]{Recurrence Theorem}
 \newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
 \newtheorem{cst}[thm]{Central Sets Theorem}
-\newtheorem{cor}[thm]{Corollary}
 
-\newtheorem{lem}[thm]{Lemma}
+
+
 \newtheorem{claim}[thm]{Claim}
 \newtheorem{ques}[thm]{Question}
 \newtheorem{conj}[thm]{Conjecture}
@@ -75,13 +80,16 @@
 \newcommand{\AL}{\mathcal{AL}}
 
 % Short names for calligraphic math letters.
+\newcommand{\calA}{\mathcal{A}}
 \newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calG}{\mathcal{G}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\calU}{\mathcal{U}}
 
@@ -97,115 +105,195 @@
 
 \begin{document}
 \section{Partition Regularity and Ultrafilters}
-
-\subsection{Ultrafilters}
-Cardinality is commonly thought of as a ``measure'' on 
-the size a set.
+Cardinality is commonly thought of as a ``measure'' on the size of sets.
 Intuitively this ``notion of largeness'' provides a good mathematical
-formalization of size since every set has exactly one cardinality;
-and under ZFC (that is, the usual Zermelo-Frankel axioms of set
-theory along with the axiom of choice), every set of cardinals is
-wellordered under some fixed order relation.
+formalization of size since every set has a unique cardinal number;
+and under ZFC (the usual Zermelo-Fraenkel axioms of set theory along
+with the axiom of choice) there is a fixed nontrivial order relation
+such that every set of cardinals is wellordered.
 However the concept of cardinality has its own mathematical
-peculiarities starkly illustrated by the formal independence of the
-Continuum Hypothesis from ZFC (provided ZFC is consistent). 
-Recall that the Continuum Hypothesis is the affirmative answer to the
-question: ``Is $|\bbR|$ the first cardinal after $|\bbN|$?''
-Its independence means that, without adding extra set-theoretical axioms,
-we cannot determine the precise size of $|\bbR|$.%
-\endnote{
-  For the reader interested in more information about the Continuum
-  Hypothesis can consult the articles  \cite{Woodin:2001uq} and
-  \cite{Woodin:2001kx} by Woodin. 
-  Also check out the interesting answers to a couple of questions,
-  \cite{Gindi:2010vn} and \cite{Kalai:2010uq}, asked on
-  \url{http://mathoverflow.net/}.%
-  \todo{
-    Figure out a proper way to include bibliographic entries for
-    websites.
-  }
-} 
+peculiarities as a notion of largeness.
+This peculiarity is starkly illustrated by the formal independence of
+the Continuum Hypothesis from ZFC (provided ZFC is a consistent
+theory).
+Recall that the Continuum Hypothesis is the assertion that $|\bbR|$ is
+the first cardinal after $|\bbN|$.
+The independence of this assertion means that, without adding extra
+set-theoretical axioms, we cannot determine the precise location of
+the cardinal $|\bbR|$ in the class of all cardinals.
 
-If we weaken the question referred to in the Continuum Hypothesis to
-ask: ``Is $|\bbR|$ bigger than $|\bbN|$?'', then the answer under ZFC
-becomes an easy yes that follows from the well known diagonal argument
-of Cantor.%
+Of course by using the well known diagonal argument of Cantor%
 \endnote{
-  Interestingly Grattan-Guinness observation in \cite [Note 1, page
-  134]{Grattan-Guinness:1978kx} imply that du Bois Reymond was the
-  first to publish a diagonal-type argument.
+  Interestingly Grattan-Guinness's observation in \cite[page 134,
+  footnote 1]{Grattan-Guinness:1978kx} implies that Paul de
+  Bois-Reymond was the first to publish a diagonal-type argument. 
 }
-Of course, if we weaken the Continuum Hypothesis to the question, ``Is
-$|\bbR|$ bigger than $|\bbN|$?'', then the answer is, under ZFC, yes and
-follows from the famous diagonal argument of Cantor. 
-To point we wish to emphasize is that questions about relative sizes are
-often easier to study than questions about absolute sizes.
-However the use of cardinals to study relative sizes is somewhat
-inflexible. 
-(Especially as it relates to $\bbN$.)
-In this section we give some basic definitions and results about two
-related mathematical formulations of relative size, ultrafilters and
-partition regularity.%
-\todo{
-  Insert brief history about filters and references to Cartan's paper,
-  Borubaki, and the \textsl{Handbook on the Foundations of Analysis}
-  book.
-}
-The first mathematical formulation of largeness that we will look at is
-the notion of a filter. 
+we can easily prove the weaker assertion that $|\bbR|$ is strictly
+greater than $|\bbN|$.
+The point we wish to emphasize is that questions about relative sizes
+are often easier to study than questions about absolute sizes.
+Unfortunately, cardinality is a somewhat blunt tool to use in this
+regard.
+Therefore in this section we introduce two different (but ultimately
+related) types of notion of largeness that are more amendable to
+answering certain questions on relative sizes.
 
+\subsection{Filters, Filter bases, Filter subbases and Ultrafilters}
 \begin{defn}
-  Let $X$ be a nonempty set and $\calF \subseteq \calP(X)$. 
-  We call $\calF$ a \textsl{filter on $X$} if and only if $\calF$
-  satisfies the following three conditions:
+  Let $X$ be a nonempty set.
   \begin{itemize}
-    \item[(1)] $\emptyset \not\in \calF$ and $\emptyset \ne \calF$.
+    \item[(a)] We call $\calF \subseteq \calP(X)$ a \textsl{filter on
+        $X$} if and only if $\calF$ satisfies the following three
+      conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calF$ and $\emptyset \not\in
+          \calF$.
+        
+        \item[(2)] If $A$ and $B$ are elements of $\calF$, then $A
+          \cap B \in \calF$.
 
-    \item[(2)] If $A$ and $B$ are elements of $\calF$, then $A \cap B
-      \in \calF$.
+        \item[(3)] If $A \in \calF$ and $A \subseteq B \subseteq X$,
+          then $B \in \calF$.
+      \end{itemize}
 
-    \item[(3)] If $A \in \calF$ and $A \subseteq B \subseteq X$, then
-      $B \in \calF$. 
+    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{filter
+        base on $X$} if and only if $\calB$ satisfies the following two
+      conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in
+          \calB$.
+        
+        \item[(2)] If $A$ and $B$ are elements of $\calB$, then there
+          exists $C \in \calB$ such that $C \subseteq A \cap B$.
+      \end{itemize}
+
+    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{filter
+        subbase on $X$} or we will commonly write that $\calS$ has the
+      \textsl{finite intersection property} (abbreviated f.i.p.%
+      \endnote{
+        I will often write something of the form ``let $\calS$ have
+        f.i.p.'' or ``let $\calS$ be f.i.p.''.
+        Strictly speaking this should be written as ``let
+        $\calS$ have the f.i.p.''.
+        However since this last form makes it sound like our set
+        $\calS$ is stricken with some horrible disease I prefer the
+        first two forms.
+      }%
+      ) if and
+      only for every nonempty finite subset $\calA \subseteq \calS$ we
+      have $\bigcap \calA \ne \emptyset$. 
   \end{itemize}
 \end{defn}
+\begin{rmk}
+  Intuitively we may think of elements of a filter as simply a
+  collection of relatively large subsets.
+  Conditions (1) and (3) of a filter nicely align with this intuition,
+  but condition (2) may at first look a litte strange.
+  This condition may be thought of as saying that we require our large
+  sets to interlock in a highly nontrivial way.%
+  \endnote{
+    Filters, filter bases, and ultrafilters were introduced in two
+    notes of Cartan, \cite{Cartan:1937vn} and \cite{Cartan:1937ys}, as
+    one way to generalize the use of arguments based on sequence in
+    metric spaces to topological spaces. 
+    However, see Sundstr\"{o}m's paper \cite[Section
+    4.2]{Sundstrom:2010zr} for some history and references to others
+    that discovered the concepts of filters and ultrafilters
+    independently. 
+  }
+\end{rmk}
 
-Intuitively, we may think of elements of a filter $\calF$ on a set $X$
-as a collection of ``large'' subsets of $X$. 
-From this point-of-view, conditions (1) and (3) line up nicely with
-our intuition and implies that $X \in \calF$. 
-(We normally won't consider the empty set as large and surely any set
-which contains a large set must also be considered large.)
-However from this intuitive point-of-view of filters condition (2)
-doesn't necessary align cleaning with our intuition. 
-This particular condition may be thought of as saying that we further
-require our large sets to interlock in a somewhat rigid fashion in
-that the intersection of two large sets is also large. 
-We shall see that this condition (2) is the reason for much of the
-interesting and useful mathematical uses of filters. 
-\missingfigure{
-Make a figure of some filters on the set $\{1, 2, 3, 4\}$.
-This figure should look similar to the one on wikipedia. 
+\begin{example}
+  Let $X$ be a nonempty set.
+  If $\emptyset \ne A \subseteq X$, then the set $\{\, B \subseteq X :
+  A \subseteq B \,\}$ is a filter on $X$.
+  We call such filters \textsl{principal filters}.
+\end{example}
+
+Using condition (2) of a filter, a simple argument shows that every
+filter on a nonempty finite set is necessarily a principal filter. 
+In this dissertation we will adopt the bias that principal filters are
+essentially trivial or well understood objects. 
+The next example shows that nonprincipal filters exist on every
+infinite set.
+
+\begin{example}
+  Let $X$ be an infinite set.
+  Then $\{\, A \subseteq X : \mbox{$X \setminus A$ is finite} \,\}$ is
+  a nonprincipal filter on $X$.
+  We call this filter the \textsl{cofinite filter} or
+  \textsl{Fr\'{e}chet filter}.
+\end{example}
+
+\todo{
+  Try to say more here about filter bases and filter subbases.
+  Perhaps draw the analogy with a topological base and subbase?
 }
+Filter bases and subbases can be used to naturally generate a filter.
+
+
+\begin{prop}
+  Let $\calB$ be a filter base on $X$.
+  The set $\{\, A \subseteq X : \mbox{$B \subseteq A$ for some $B \in
+    \calB$} \,\}$ is a filter on $X$.
+  We call this filter the \textsl{filter generated by the base $\calB$}.
+\end{prop}
+
+\begin{prop}
+  Let $\calS$ be a filter subbase on $X$.
+  Then $\calB = \{\, \bigcap \calA : \mbox{$\emptyset \ne \calA
+    \subseteq \calS$ is finite} \,\}$ is a filter base on $X$.
+\end{prop}
+
+\begin{cor}
+  The set $\{\, A \subseteq X : \mbox{$\bigcap\calA \subseteq A$ for
+    some finite $\emptyset \ne \calA \subseteq \calS$} \,\}$ is a
+  filter on $X$.
+  We call this filter the \textsl{filter generated by the subbase $\calS$}.
+\end{cor}
+
+\begin{defn}
+  Let $\calF_1$ and $\calF_2$ be filters on $X$.
+  We say that $\calF_1$ is \textsl{coarser than} $\calF_2$ or
+  $\calF_2$ is \textsl{finer than} $\calF_1$ if and only if $\calF_1
+  \subseteq \calF_2$. 
+\end{defn}
+
+The relation $\subseteq$ is a partially ordering on the collection of
+all filters on a set. 
+And with this partial order we have the following definition and
+result to show that our definition is not vacuous. 
+
+\begin{defn}
+  A filter $\calU$ on $X$ is called an \textsl{ultrafilter} if and
+  only if $\calU$ is a \mbox{$\subseteq$-maximal} filter.
+\end{defn}
+
+\begin{lem}
+  Let $\calC$ be a collection of filters on a set $X$.
+  Then $\bigcap\calC$ is a filter on $X$.
+  Moreover, if $\calC$ is a \mbox{$\subseteq$-chain}, then
+  $\bigcup\calC$ is a filter on $X$.
+\end{lem}
+
+\begin{up}
+  Every filter is contained in an ultrafilter. 
+\end{up}
+
+\begin{thm}
+  Let $\calU$ be a filter on $X$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calU$ is an ultrafilter on $X$.
+    \item[(b)] For every $A \subseteq X$, either $A \in \calU$ or $X
+      \setminus A \in \calU$.
+    \item[(c)] For every $A$, $B \subseteq X$, if $A \cup B \in
+      \calU$, then either $A \in \calU$ or $B \in \calU$.
+  \end{itemize}
+\end{thm}
 
 
 \subsection{Partition Regularity}
-The cardinality of a set is commonly thought of as a ``measure'' on
-how large a particular set is.
-Intuitively this ``notion of largeness'' provides a good mathematical
-formalization of the size of sets since every set has exactly one
-cardinality, and under ZFC, every cardinality is comparable.%
-\endnote{
-  However despite the success of the notion of cardinality, one
-  possible disturbing aspect is the formal independence of the
-  Continuum Hypothesis from the axioms of ZFC.
-  This particular independence roughly asserts that, without adding
-  additional axioms to ZFC, we are unable to determine the exact
-  size of $|\bbR|$.
-  (The well-known diagonal argument enables us to determine the
-  relative size of $|\bbR|$ with respect to $|\bbN|$.)
-}
-In this section we will introduce another ``notion of largeness'' on a
-set that is of a different character from cardinality. 
 
 \begin{defn}
   Let $X$ be a nonempty set and $\calR$ a collection of sets with
