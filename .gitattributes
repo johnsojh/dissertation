@@ -1,0 +1,4 @@
+# Git attributes file for LaTeX documents.
+# Found about this little trick at the blog 
+# http://idnotfound.wordpress.com/2009/05/09/word-by-word-diffs-in-git/
+*.tex	diff=tex
