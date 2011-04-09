@@ -1,0 +1,129 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{color}
+\usepackage{endnotes}
+\usepackage{url}
+
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage[doublespacing]{setspace}
+\usepackage{url}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+
+% Numbered theorems 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{up}[thm]{Ultrafilter Principle}
+
+
+% Unnumbered named theorems or results
+\newtheorem*{fact}{Fact}
+\newtheorem*{hj}{Hales-Jewett Theorem}
+\newtheorem*{php}{Pigeonhole Principle}
+\newtheorem*{ramsey}{Ramsey's Theorem}
+\newtheorem*{vdw}{Van der Waerden's Theorem}
+\newtheorem*{schur}{Schur's Theorem}
+
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+
+
+
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+
+
+\theoremstyle{definition}
+
+% Numbered "definition" style theorem environments
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\AP}{\mathcal{AP}}
+\newcommand{\AL}{\mathcal{AL}}
+
+% Short names for calligraphic math letters.
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\section{Ultrafilters and Partition Regularity}
+Cardinality is commonly thought of as a ``measure'' on the size of sets.
+Intuitively this ``notion of largeness'' provides a good mathematical formalization of size since every set has a unique cardinal number; and under ZFC (the usual Zermelo-Fraenkel axioms of set theory along with the axiom of choice) there is a fixed nontrivial order relation such that every set of cardinals is wellordered.
+However the concept of cardinality has its own mathematical peculiarities as a notion of largeness.
+One peculiarity is starkly illustrated by the formal independence of the Continuum Hypothesis from ZFC (provided ZFC is a consistent theory).
+Recall that the Continuum Hypothesis is the assertion that $|\bbR|$ is the first cardinal after $|\bbN|$.
+The independence of this statement means that, without adding extra set-theoretical axioms, we cannot determine the precise location of the cardinal $|\bbR|$ in the class of all cardinals.
+
+Of course by using the well-known diagonal argument of Cantor%
+\endnote{
+  Interestingly Grattan-Guinness's observation in \cite[page 134, footnote 1]{Grattan-Guinness:1978kx} implies that Paul de Bois-Reymond was the first to publish a diagonal-type argument. 
+}
+we can easily prove the weaker assertion that $|\bbR|$ is strictly greater than $|\bbN|$.
+The point we wish to emphasize is that questions about relative sizes are often easier to study than questions about absolute sizes.
+Unfortunately, another peculiarity of cardinality is that the concept is a somewhat blunt tool to use in the study of relative sizes.
+Therefore in this section we introduce two different (but ultimately related) notions of largeness that are more amendable to answering certain interesting questions on relative sizes.
+
+\subsection{Filters, Filter bases, Filter subbases, and Ultrafilters}
+Since the material in this section is mostly standard and can be found in several places we choose to leave most of the proofs of our assertions to the reader.
+% Add some references to the results we state.
+\begin{defn}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(a)] We call $\calF \subseteq \calP(X)$ a \textsl{filter on $X$} if and only if $\calF$ satisfies the following three conditions:
+    \begin{itemize}
+      \item[(1)] $\emptyset \ne \calF$ and $\emptyset \not\in\calF$.
+      \item[(2)] If $A$ and $B$ are elements of $\calF$, then $A
+        \cap B \in \calF$.
+      \item[(3)] If $A \in \calF$ and $A \subseteq B \subseteq X$,
+        then $B \in \calF$.
+    \end{itemize}
+  \end{itemize}
+\end{defn}
+
+% Endnotes 
+\theendnotes
+
+% Things referenced in the preliminaries chapter. Eventually this will
+% placed in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+
+\end{document}

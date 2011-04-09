@@ -86,6 +86,7 @@
 \newcommand{\calE}{\mathcal{E}}
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
 \newcommand{\calI}{\mathcal{I}}
 \newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
@@ -679,6 +680,11 @@ However in contrast to filter bases, we will see in Proposition
   \Phi \,\}$ is a filter.
 \end{prop}
 \begin{proof}[Proof Sketch]
+   \todo{
+    Here I use Zorn's Lemma, but since grill bases are essentially
+    combinatorial objects I wonder if there is a way to avoid the use
+    of Zorn's Lemma here?
+  }
   By Zorn's Lemma the set $\Phi$ has maximal elements.
 \end{proof}
 
@@ -700,6 +706,155 @@ However in contrast to filter bases, we will see in Proposition
       X \mbox{ with } \calB \subseteq \calG \,\}$.
   \end{itemize}
 \end{prop}
+\begin{proof}
+  (a) ($\subseteq$) Let $A \in F(\calB)$, then for every maximal
+  filter $\calF$ contained in $\calB$ we have $A \in \calF$.
+  Let $B \in \calB$, then the set $\{\, C \in \calB : B \subseteq
+  C\,\}$ is a filter contained in $\calB$. 
+  \todo{
+    Here I use Zorn's Lemma, but since grill bases are essentially
+    combinatorial objects I wonder if there is a way to avoid the use
+    of Zorn's Lemma here?
+  }
+  By a Zorn's Lemma argument, it follows that this set is contained in
+  a maximal filter $\calF \subseteq \calB$.
+  In particular, we have that $A \cap B \in \calF \subseteq \calB$.
+  
+  ($\supseteq$) Let $A \in \calB$ be such that $A \cap B \in \calB$
+  for every $B \in \calB$.
+  Suppose that there exists a maximal filter $\calF \subseteq \calB$
+  with $A \not\in \calF$. 
+  If $A \cap C \ne \emptyset$ for all $C \in \calF$, then $\calF \cup
+  \{A\}$ is a filter subbase that strictly contains the maximal filter
+  $\calF$, a contradiction.
+  Hence we may assume that there exists $C \in \calF$ such that $C
+  \cap A = \emptyset$. 
+  However in this case we also get a contradiction since $C \in \calB$,
+  $C \cap A = \emptyset$, and $\emptyset \not\in \calB$.
+
+  (b) Let $A \in \calB$.
+  We have that $A \in G\bigl(F(\calB)\bigr)$ if and only if $X
+  \setminus A \not\in F(\calB)$.
+  Moreover $X \setminus A \not\in F(\calB)$ if and only if $X \setminus A
+  \not\in \calB$ or $X \setminus A \in \calB$ and there exists $B \in
+  \calB$ with $(X \setminus A) \cap B \not\in \calB$.
+  This last assertion is true since $A \in \calB$, $A \cap (X
+  \setminus A) = \emptyset$, and $\emptyset \not\in \calB$.
+  
+  (c)
+  Put $\Gamma = \{\, \calG : \calG \mbox{ is a grill on } X \mbox{
+    with } \calB \subseteq \calG \,\}$.
+  Note that $\Gamma \ne \emptyset$ since $G\bigl(F(\calB)\bigr) \in
+  \Gamma$.
+  Clearly $\calB \subseteq \bigcap\Gamma$.
+  To see that $\bigcap\Gamma \subseteq \calB$ it suffices to prove
+  that for every $\calG \in \Gamma$, if $A \in \calG \setminus \calB$,
+  then there exists $\calH \in \Gamma$ such that $A \not\in \calH$.
+
+  Hence let $\calG \in \Gamma$ and $A \in \calG \setminus \calB$.
+  Put $\calH = \{\, B \subseteq X : B \ne \emptyset \mbox{ and } A
+  \not\subseteq B \,\} \cap \calG \setminus \{\, C \subseteq X : \emptyset \ne C
+  \subseteq A \,\}$.
+  We claim that $\calH \in \Gamma$  and $A \not\in \calH$. 
+  The fact that $A \not\in \calH$ is clear. 
+  Since $X \in \calG$, $A \subsetneq X$, it follows that $X \in
+  \calH$. 
+  Since $\emptyset \not\in \calG$ and $A \not\subseteq \emptyset$, we
+  have that $\emptyset \not\in \calH$. 
+  Now let $D \in \calH$ and $D \subseteq E \subseteq X$. 
+  First suppose that $D \in \calG$ and $D \not\subseteq A$.
+  Then $E \not\subseteq A$ and so $E \in \calH$ (since $E \in \calG$
+  too).
+  Now suppose that $A \not\subseteq D$. 
+  If $A \subseteq E$, then $E \in \calG$ and it follows that $E \in
+  \calH$. 
+  (Need a little argument just to show that $E \ne A$.)
+  If $A \not\subseteq E$, then since $E \ne \emptyset$ we have that $E
+  \in \calH$.
+
+  Now suppose that $D \cup E \in \calH$. 
+  If $A \not\subseteq D$ or $A \not\subseteq E$, then we're done.
+  So suppose that $A \subseteq D$ and $A \subseteq E$.
+  Then $D$ and $E$ are elements of $\calG$. 
+  Therefore $D \cup E \not\subseteq A$, that is, $(D \cup E) \cap (X
+  \setminus A) \ne \emptyset$. 
+  Hence either $D \cap (X \setminus A) \ne \emptyset$ or $E \cap (X
+  \setminus A) \ne \emptyset$.
+  Therefore either $D \in \calH$ or $E \in \calH$.
+\end{proof}
+
+
+\todo{
+  I'm unable to verify this proposition always. 
+}
+\begin{prop}
+  Let $\calF$ be a filter and $\calB$ a grill base on $X$.
+  Then $\calF = F(\calB)$ if and only if 
+  \begin{itemize}
+    \item[(1)] $\calB \subseteq (=?) \bigcup\{\, \calF' : \calF'
+      \mbox{ is a finer filter than } \calF \,\}$;
+
+    \item[(2)] for every $A \in \calB \setminus \calF$ there exists $B
+      \in \calB \setminus \calF$ such that $A \cap B \not \in \calB
+      \setminus \calF$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $A \in \calB$, then $A \in G\bigl(F(\calB)\bigr)$ so there
+  exists a filter that contains $\calF \cup \{A\}$.
+
+  Now let $A \in \calB\setminus\calF$.
+  Since $A \not\in \calF = F(\calB)$ there exists $B \in
+  \calB$ such that $A \cap B \not \in \calB$.
+  Hence $A \cap B \not\in \calB \setminus \calF$.   
+
+  ($\Leftarrow$)
+  Note that $A \subseteq B \iff X \setminus B \subeteq X \setminus
+  A$. 
+  (Hence to show that $\calF = F(\calB)$ it's necessary and sufficient 
+  to show that $\calB \setminus \calF  \subseteq \calB \setminus
+  F(\calB)$ and $\calB \setminus F(\calB) \subseteq \calB \setminus
+  \calF$.)
+  To show that $F(\caB) \subseteq \calF$ we show that $\calB \setminus
+  \calF \subseteq \calB \setminus F(\calB)$.
+  Let $A \in \calB \setminus \calF$, then by assumption there exists
+  $B \in calB \setminus \calF$ such that $A \cap B \not\in \calB
+  \setminus \calF$. 
+  If $A \cap B \in \calB \cap \calF$, then $A \in \calB \cap \calF$. 
+  Hence $A \cap B \not\in \calB$ and so it follows that $A \not\in
+  F(\caB)$.
+  Therefore $A \in \calB \setminus F(\calB)$. 
+\end{proof}
+
+\begin{prop}
+  Let $\calS$ be a grill subbase on a set $X$.
+  Put $B(\calS) = \bigcap \{\, \calB : \mbox{$\calB$ is a grill base
+    on $X$ and $\calS \subseteq \calB$} \,\}$.
+  Then $B(\calS)$ is a grill base on $X$.
+\end{prop}
+\begin{proof}
+  First observe that the set $\{\, \calB : \mbox{$\calB$ is a grill base
+    on $X$ and $\calS \subseteq \calB$} \,\}$ is nonempty since $\{\,
+  B \subseteq X : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}$ is
+  a grill base that contains $\calS$. 
+
+  Now $B(\calS) \ne \emptyset$ since $X \in \calB$ for each grill base
+  $\calB$ with $\calS \subseteq \calB$. 
+  Similarly $\emptyset \not \in B(\calS)$.
+  
+  Let $C \in B(\calS)$ and $C \subseteq D \subseteq X$. 
+  Then $D \in \calB$ for every grill base $\calB$ with $\calS
+  \subseteq \calB$.
+  Hence $D \in B(\calS)$.
+\end{proof}
+
+\begin{defn}
+  Let $\calS$ be a grill subbase on a nonempty set $X$.
+  We call the filter $F\bigl(B(\calS)\bigr)$ and the grill
+  $G\Bigl(F\bigl(B(\calS)\bigr)\Bigr)$ are \textsl{associated to
+    $\calT$}.
+\end{defn}
 
 \subsection{Partition Regularity}
 
