@@ -301,11 +301,151 @@ However as a practical matter, it may be inconvenient or difficult to verify tha
 Therefore in the next subsection we give some of the basic definitions and results around a concept ``dual'' to the notion of filters that will essentially make producing filters trivial.
 
 \subsection{Grills, Grill Bases, and Grill Subbases}
+The dual concept to filters that we will write in this section is due to a note of Choquet in \cite{Choquet:1947uq}. 
+Since Choquet's note doesn't contain any proofs, and since the concepts he lays out appear to be slightly less well-known than the concept of a filter, in this subsection we choose to give complete proofs for (most of) Choquet's assertions.
 
+\begin{defn}
+  \label{defn:grill}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(a)] We call $\calG \subseteq \calP(X)$ a \textsl{grill on $X$} if and only if $\calG$ satisfies the following three conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calG$ and $\emptyset \not\in \calG$.
 
+        \item[(2)] If $A \in \calG$ and $A \subseteq B \subseteq X$, then $B \in \calG$.
 
+        \item[(3)] If $A \in \calG$ and $B \not\in \calG$, then $A \setminus B \in \calG$. 
+     \end{itemize}
 
+    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{grill base on $X$} if and only if $\calB$     satisfies the following two conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
 
+        \item[(2)] If $A \in \calB$ and $A \subseteq B \subseteq X$, then $B \in \calB$.
+      \end{itemize}
+
+    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{grill subbase} if and only if $\emptyset \ne \calS$ and $\emptyset \not\in \calS$. 
+  \end{itemize}
+\end{defn}
+
+Before connecting the concept of a grill with that of a filter, we first prove a convenient result that allows us to use an alternative third condition in Definition \ref{defn:grill}(a).
+
+\begin{prop}
+  \label{prop:alt3}
+  Let $X$ be a nonempty set and $\calG \subseteq \calP(X)$.
+  Then $\calG$ is a grill on $X$ if and only if $\calG$ satisfies the following three conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \ne \calG$ and $\emptyset \not\in \calG$.
+
+    \item[(2)] If $A \in \calG$ and $A \subseteq B \subseteq X$, then $B \in \calG$.
+
+    \item[(3)] For all $A$, $B \subseteq X$, if $A \cup B \in \calG$, then either $A \in \calG$ or $B \in \calG$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  We only focus on proving that condition (3) in our Proposition is equivalent to condition (3) in Definition \ref{defn:grill}(a).
+
+  ($\Rightarrow$)
+  Let $A$ and $B$ be subsets of $X$ with $A \cup B \in \calG$.
+  Suppose that $A \not\in \calG$, then by Definition \ref{defn:grill}(a) $(A \cup B) \setminus A \in \calG$.
+  Since $(A \cup B) \setminus A \subseteq B$, condition (2) of Definition \ref{defn:grill}(a) implies that $B \in \calG$.
+
+  ($\Leftarrow$)
+  Let $A$ and $B$ be subsets of $X$ with $A \in \calG$ and $B \not\in \calG$.
+  Observe that since $B \not\in \calG$ we have $A \cap B \not\in G$.
+  Now $(A \setminus B) \cup (A \cap B) = A \in \calG$ and so by assumption we must have $A \setminus B \in \calG$.
+\end{proof}
+
+\begin{prop}
+  \label{prop:FltGrl}
+  Let $\calF$ be a filter on a set $X$ and put $G(\calF) = \{\, A \subseteq X : X \setminus A \not\in \calF \,\}$.
+  \begin{itemize}
+    \item[(a)] $G(\calF)$ is a grill on $X$.
+      We call the grill $G(\calF)$ the grill \textsl{associated with the filter $\calF$}.
+    \item[(b)] $G(\calF) = \{\, A \subseteq X : A \cap B \ne \emptyset \mbox{ for all $B \in \calF$} \,\}$.
+    \item[(c)] $G(\calF) = \bigcup\{\, \calF' : \mbox{$\calF'$ is a finer filter than $\calF$} \,\}$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  For notational convenience put $\calG = G(\calF)$.
+ 
+  (a)
+  To see that $\emptyset \ne \calG$ observe that $\calF \subseteq \calG$.
+  Also $\emptyset \ne \calG$ since $X \setminus \emptyset = X \in \calF$.
+
+  Now let $A \in \calG$ and $A \subseteq B \subseteq X$.
+  If $X \setminus B \in \calF$, then we would have $X \setminus A \in \calF$ too.
+  ($A \subseteq B$ implies $X \setminus B \subseteq X \setminus A$.)
+  Therefore we have that $B \in \calG$.
+
+  Instead of showing condition (3) of Definition \ref{defn:grill}(a) we prove that $\calG$ satisfies condition (3) of Proposition \ref{prop:alt3}.
+  Hence let $A \cup B \in \calG$, then $X \setminus (A \cup B) \not\in \calF$.
+  If $X \setminus A \in \calF$ and $X \setminus B \in \calF$, then $(X \setminus A) \cap (X \setminus B) \in \calF$.
+  Therefore either $X \setminus A \not\in \calF$ or $X \setminus B \not\in \calF$, that is, either $A \in \calG$ or $B \in \calG$.
+
+  (b)
+  Let $A \in \calG$ and $B \in \calF$.
+  If $A \cap B = \emptyset$, then $B \subseteq X \setminus A$. 
+  Therefore $A \cap B \ne \emptyset$.
+
+  Now let $A \subseteq X$ such that for all $B \in \calF$, $A \cap B \ne \emptyset$.
+  Then it follows immediately that $X \setminus A \not\in \calF$, that is, $A \in \calG$.
+
+  (c)
+  Let $A \in \calG$, then by (b) $\calF \cup \{A\}$ has f.i.p. and so there exists a filter $\calF'$ that contains $\calF \cup \{A\}$.
+  
+  Now let $\calF'$ be a finer filter than $\calF$ and let $A \in \calF'$. 
+  Since $\calF \subseteq \calF'$ and $\emptyset \ne \calF'$ we have that for all $B \in \calF$, $A \cap B \ne \emptyset$.
+  Hence by applying (b) we are done.
+\end{proof}
+
+\begin{prop}
+  \label{prop:GrlFlt}
+  Let $\calG$ be grill on $X$ and put $F(\calG) = \{\, A \in \calG : X \setminus A \not\in \calG \,\}$.
+  \begin{itemize}
+    \item[(a)] Then $F(\calG)$ is a filter on $X$.
+      We call the filter $(F\calG)$ the \textsl{filter associated with the grill $\calG$}.
+    \item[(b)] $F(\calG) = \{\, A \in \calG : \mbox{$A \cap B \in \calG$ for all $B \in \calG$} \,\}$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  For notational convenience put $\calF = F(\calG)$.
+  (a)
+  Since $X \setminus X = \emptyset \not\in \calG$ we have that $X \in \calF$ and so $\emptyset \ne \calF$.
+  Also since $X \setminus \emptyset = X \in \calG$, we have that $\emptyset \not\in \calF$.
+
+  Now let $A$ and $B$ be elements of $\calF$, that is, $X \setminus A$ and $X \setminus B$ are not in $\calG$.
+  From Proposition \ref{prop:alt3} it follows that $X \setminus (A \cap B) \not\in \calG$, that is, $A \cap B \in \calF$. 
+
+  Let $A \in \calF$ and $A \subseteq B \subseteq X$.
+  Since $X \setminus B \subseteq X \setminus A$ and $X \setminus A \not\in \calG$, it follows from Definition \ref{defn:grill}(a) that $X \setminus B \not\in \calG$, that is, $B \in \calF$.
+
+  (b)
+  Let $A \in \calF$ and $B \in \calG$.
+  Suppose that $A \cap B \not\in \calG$, then $X \setminus (A \cap B) \in \calF$.
+  Hence $X \setminus A \cup X \setminus B) \cap A \in \calF$, that is, $\emptyset \cup (X \setminus B \cap A) \in \calF$.
+  However $(X \setminus B) \cap A \in \calF$ if and only if $X \setminus (X \setminus B \cap A) \not\in \calG$, that is, $B \cup (X \setminus A) \not\in \calG$.
+  But this is a contradiction since $B \in \calG$ and $B \subseteq B \cup (X \setminus A)$.
+  
+  Now let $A \in \calG$ such that $A \cap B \in \calG$ for all $B \in \calG$.
+  Since $\emptyset \ne \calG$ it follows that $X \setminus A \not\in \calG$, that is, $A \in \calF$.
+\end{proof}
+
+We now give an easy result that asserts that the functions $G$ and $F$ implicitly defined in Propositions \ref{prop:FltGrl} and \ref{prop:GrlFlt} are one-to-one from the set of all filters onto the set of grills.
+
+\begin{prop}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(a)] If $\calG$ is a grill on $X$, then $\calG = G\bigl(F(\calG)\bigr)$.
+    
+    \item[(b)] If $\calF$ be a filter on $X$, then $\calF = F\bigl(G(\calF)\bigr)$.
+  \end{itemize}
+\end{prop}
+
+\begin{defn}
+  Let $\calF$ be a filter on $X$ and let $\calG$ be a grill on $X$.
+  We say $\calF$ and $\calG$ are \textsl{associated} if and only if $\calF = F(\calG)$ or $\calG = G(\calF)$. 
+\end{defn}
 % Endnotes 
 \theendnotes
 
