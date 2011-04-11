@@ -446,6 +446,138 @@ We now give an easy result that asserts that the functions $G$ and $F$ implicitl
   Let $\calF$ be a filter on $X$ and let $\calG$ be a grill on $X$.
   We say $\calF$ and $\calG$ are \textsl{associated} if and only if $\calF = F(\calG)$ or $\calG = G(\calF)$. 
 \end{defn}
+
+With the relation of association we have the following duality type result for filters and grills.
+
+\begin{prop}
+  Let the filter $\calF_1$ be associated with the grill $\calG_1$, and let the filter $\calF_2$ be associated with the grill $\calG_2$.
+  Then $\calF_1 \subseteq \calF_2$ if and only if $\calG_2 \subseteq \calG_1$.
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $A \in \calG_2$, that is, $X \setminus A \not\in \calF_2$.
+  Since $\calF_1 \subseteq \calF_2$ we have $X \setminus A \not\in \calF_1$ too.
+  Therefore $A \in G_1$.
+
+  ($\Leftarrow$)
+  Let $A \in \calF_1$.
+  If $A \not\in \calF_2$, then $X \setminus A \in \calG_2$ and (by assumption) $X \setminus A \in \calG_1$, that is, $A \not\in \calF_1$.
+  Therefore $A \in \calF_2$.
+\end{proof}
+
+\begin{prop}
+  A grill $\calG$ is a filter if and only if $F(\calG)$ is an ultrafilter.
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $A \subseteq X$.
+  We show that either $A \in F(\calG)$ or $X \setminus A \in F(\calG)$.
+  Suppose that $A \not\in F(\calG)$, that is, assume that either $A \not\in \calG$ or $A \in \calG$ and $X \setminus A \in \calG$.
+  By hypothesis $\calG$ is a filter and so we cannot have both $A \in \calG$ and $X \setminus A \in \calG$.
+  Since $A \not\in \calG$ and $X \in \calG$ we have that $X \setminus A \in \calG$ and so $X \setminus A \in F(\calG)$.
+
+  ($\Leftarrow$)
+  It suffices to show that $\calG$ is closed under finite intersections.
+  To this end let $A$ and $B$ be elements of $\calG$.
+  However suppose that $A \cap B \not\in \calG$.
+  If $A \cap B \in F(\calG)$, then $A \cap B \in \calG$.
+  Therefore since $F(\calG)$ is an ultrafilter we have that $(X \setminus A) \cup (X \setminus B) = X \setminus (A \cap B) \in F(\calG)$.
+  Also since $F(\calG)$ is an ultrafilter either $X \setminus A \in F(\calG)$ or $X \setminus B \in F(\calG)$. 
+  This last sentence implies that either $A \not\in \calG$ or $B \not\in \calG$, a contradiction.
+\end{proof}
+\begin{cor}
+  Let $\calU$ be a filter.
+  $\calU$ is an ultrafilter if and only if $\calU = G(\calU)$.
+\end{cor}
+\begin{proof}
+  Let $\calU$ be an ultrafilter.
+  It's immediate that $\calU \subseteq G(\calU)$.
+  Let $A \in G(\calU)$, that is, $X \setminus A \not\in \calU$. 
+  Since $X \setminus A \not\in \calU$ we must have $A \in \calU$.
+
+  Now suppose that $\calU$ is a filter with $\calU = G(\calU)$.
+  Then $\calU = F\bigl(G(\calU)\bigr)$ is an ultrafilter.
+\end{proof}
+
+We now shift our attention to grill bases.
+While grill bases are easier to describe then grills we shall see that in Proposition % TODO: Put in proposition number
+that there is generally \textsl{no} coarsest grill that contains a given base.
+(This negative result is in contrast to the fact that there is a coarsest filter that contains a filter base).
+
+\begin{prop}
+  \label{prop:grlBasePhi}
+  Let $\calB$ be a grill base on $X$ and put 
+  \[
+    \Phi = \{\, \calF : \mbox{$\calF \subseteq \calB$ is a filter} \,\}.
+  \]
+  Then $\Phi$ is a nonempty, partially ordered by $\subseteq$, and every \mbox{$\subseteq$-chain} in $\Phi$ has an upper bound in $\Phi$.
+\end{prop}
+\begin{proof}
+  Since $X \in \calB$ and $\{X\}$ is a filter contained in $\calB$ we have $\{X\} \in \Phi$.
+  $\Phi$ is obviously partially ordered by $\subseteq$.
+  Let $\calC$ be a chain in $\Phi$, then $\bigcup\calC$ is a filter by Lemma \ref{lem:chainFlt} and $\bigcup\calC \subseteq \calB$.
+\end{proof}
+
+\begin{prop}
+  Let $\calB$ be a grill base on $X$ and let $\Phi$ be as in Proposition \ref{prop:grlBasePhi}.
+  Put 
+  \[
+    F(\calB) = \bigcap\{\, \calF : \mbox{$\calF$ is a maximal filter in $\Phi$} \,\}.
+  \]
+  Then $F(\calB)$ is a filter on $X$.
+  We call the filter $F(\calB)$ the \textsl{filter associated with the base $\calB$}.
+\end{prop}
+\begin{proof}[Proof Sketch]
+  By Zorn's Lemma the set $\Phi$ has maximal elements, and by Lemma \ref{lem:chainFlt} $F(\calB)$ is a filter on $X$.
+\end{proof}
+
+\begin{cor}
+  $G\bigl(F(\calB)\bigr)$ is a grill on $X$.
+  We call the grill $G\bigl(F(\calB)\bigr)$ the \textsl{grill associated with the base $\calB$}.
+\end{cor}
+
+\begin{prop}
+  Let $\calB$ be a grill base on $X$.
+  \begin{itemize}
+    \item[(a)] $F(\calB) = \{\, A \in \calB : \mbox{$A \cap B \in \calB$ for all $B \in \calB$} \,\}$.
+
+    \item[(b)] $\calB \subseteq G\bigl(F(\calB)\bigr)$.
+
+    \item[(c)] $\calB  = \bigcap\{\, \calG : \mbox{$\calB \subseteq \calG$ and $\calG$ is a grill} \,\}$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  (a) 
+  Let $A \in F(\calB$, then for every maximal filter $\calF \subseteq \calB$ we have $A \in \calF$. 
+  Let $B \in \calB$, then the set $\{\, C \in \calB : B \subseteq C \,\}$ is a (principal) filter contained in $\calB$.
+  By applying Zorn's Lemma, it follows that this filter is contained in a maximal filter $\calF \subseteq \calB$.
+  In particular, $A \cap B \in \calF$ and so $A \cap B \in \calB$.
+
+  Now let $A \in \calB$ such that for all $B \in \calB$, $A \cap B \in \calB$.
+  Suppose that there exists a maximal filter $\calF \subseteq \calB$ with $A \not\in \calF$. 
+  If $A \cap C \ne \emptyset$ for all $C \in \calF$, then $\calF \cup \{\A\}$ is a filter subbase contained in $\calB$ that strictly contains the maximal filter $\calF$ in $\calB$.
+  Therefore there exists $C \in \calF$ such that $A \cap C = \emtpyset$.
+  However in this case, $C \in \calB$, $A \cap C = \emptyset$, and $\emptyset \not\in \calB$.
+  Therefore we must have that $A$ is a member of every maximal filter contained in $\calB$.
+
+  (b)
+  Observe that $A \in G\bigl(F(\calB)\bigr)$ if and only if $X \setminus A \not\in F(\calB)$ if and only if $X \setminus A \not\in \calB$ or $X \setminus A \in \calB$ and there exists $B \in \calB$ such that $(X \setminus A) \cap B \not\in \calB$.
+  Let $A \in \calB$. 
+  If $X \setminus A \not\in \calB$, then we're done.
+  If $X \setminus A \in \calB$, then $(X \setminus A) \cap A = \emptyset \not\in \calB$.
+
+  (c)
+  Put
+  \[
+    \Gamma = \{\, \calG : \mbox{$\calB \subseteq \calG$ and $\calG$ is a grill} \,\}.
+  \]
+  First note that $\Gamma \ne \emptyset$ since $G\bigl(F(\calB)\bigr) \in \Gamma$.
+  
+\end{proof}
+
+
+
+
 % Endnotes 
 \theendnotes
 
