@@ -1,0 +1,359 @@
+% Draft of Introduction for my Dissertation
+
+\documentclass[12pt]{article}
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{endnotes}
+\usepackage{todonotes}
+% \usepackage[doublespacing]{setspace}
+\usepackage{url}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{CSTv1}{Original Central Sets Theorem}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{rmk}[thm]{Remark}
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\begin{defn}
+Let $S$ be a semigroup and put $\calT = \setfunc{\bbN}{S}$. 
+  \begin{itemize}
+    \item[(a)] For each $m \in \bbN$, define
+      \[
+        \calJ_m = \{\, (t_1, t_2, \ldots, t_m) \in \bbN^m : t_1 < t_2 < \cdots < t_m \,\}.
+      \]
+
+    \item[(b)] For each $m \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$, and $f \in \calT$, define
+      \[
+        x(m, a, t, f) = \Bigl(\prod_{i=1}^m \bigl( a(i) f(t_i) \bigr) \Bigr) a(m+1).
+      \]
+
+    \item[(c)] We call $A \subseteq S$ a \textsl{$J$-set (in $S$)} if and only if for every $F \in \Pf(\calT)$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
+  \end{itemize}
+\end{defn}
+
+\begin{lem}
+  Let $S$ be a semigroup.
+  Let $n \in \bbN$, $c \in S^{n+1}$, $H \in \calI_n$, and $f \in \calT$.
+  Fix $b \in S$ and define $g \in \calT$ by $g(t) = f(t)b$.
+  Then there exists $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that $x(m, a, t, f) = \bigl(\prod_{i=1}^n ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n+1)$.
+\end{lem}
+\begin{proof}
+  Put $m = \sum_{i=1}^n |H(i)|$ and enumerate $\bigcup_{i=1}^n H(i)$ as a strictly increasing sequence $t_1 < t_2 < \cdots < t_m$ in $\bbN$.
+  Put $H(0) = \emptyset$, and for notational convenience for each $s \in \{0, 1, \ldots, n\}$ put $h_s = \sum_{i = 0}^s |H(i)|$. 
+  Define $a \in S^{m+1}$ as follows, for $j \in \{1, 2, \ldots, m+1\}$ put
+  \[
+    a(j) =
+    \begin{cases}
+      c(1) & \mbox{if $j = 1$;} \\
+      b    & \mbox{if $s \in \{0, 1, \ldots, n-1\}$ and $2+h_s \le j \le h_{s+1}$; and} \\
+      bc(s+1) & \mbox{if $s \in \{1, 2, \ldots, n\}$ and $j = 1+ h_s$.}
+    \end{cases}
+  \]
+
+  (To see how our $a$ was derived let's consider the example with $n = 3$, $H(1) = \{3, 5\}$, $H(2) = \{7\}$, and $H(3) = \{9, 11, 15\}$. 
+  In this example,
+  \[
+    \prod_{i=1}^n\bigl( c(i) \prod_{t \in H(i)} g(t) \bigr) c(n+1) = c(1)f(2)bf(3)b c(2) f(7)bc(3)f(9)bf(11)bf(15)bc(4).
+  \]
+  Therefore $m = 6$, $a(1) = c(1)$, $a(2) = b$, $a(3) = bc(2)$, $a(4) = bc(3)$, $a(5) = b$, $a(6) = b$, and $a(7) = bc(4)$.)
+
+  To show that $x(m, a, t, f) = \bigl(\prod_{i=1}^n ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n+1)$ we proceed by induction on $n$.
+  Let $n = 1$.
+  Assume that $|H(1)| = 1$, then $c(1)f(t_1)bc(2) = a(1) f(t_1) a(2)$. 
+  Now assume that $|H(1)| > 1$ and that for all $G \in \Pf(\bbN)$ with $|G| < |H(1)|$ we have a proper representation of $f$ with respect to $G$. 
+% TODO: Define the terminology "proper representation of f with respect to G.
+  Then we have that $c(1)\prod_{t \in H(1)} g(t)c(2) = c(1)\prod_{t \in H(1) \setminus \{t_n\}} g(t) f(t_n)b c(2)$. 
+
+\end{proof}
+
+\begin{defn}
+  Let $S$ be a semigroup and $\calT = \setfunc{\bbN}{S}$.
+  \begin{itemize}
+    \item[(a)] For each $m \in \bbN$, define
+      \[
+        \calJ_m = \{\, (t_1, t_2, \ldots, t_m) \in \bbN^m : t_1 < t_2
+        < \cdots < t_m \,\}.
+      \]
+
+    \item[(b)] For each $m \in \bbN$, $a \in S^{m+1}$, $t \in
+      \calJ_m$, and $f \in \calT$, define
+      \[
+        x(m, a, t, f) = \Bigl(\prod_{i=1}^m\bigl( a(j) f(t_j) \bigr)\Bigr) a(m+1)
+      \]
+
+    \item[(c)] We call $A \subseteq S$ a \textsl{$J$-set (in S)} if
+      and only if for every $F \in \Pf(\calT)$, there exist $m \in
+      \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f
+      \in F$, $x(m, a, t, f) \in A$.
+
+    \item[(d)] $J(S) = \{\, p \in \beta S : \mbox{for all $A \in p$,
+        $A$ is a $J$-set} \,\}$.
+
+    \item[(e)] We call $C \subseteq S$ a \textsl{$C$-set} if and only
+      if there exists functions $m \colon \Pf(\calT) \to \bbN$,
+      $\alpha \in \bigtimes_{F \in \Pf(\calT)} S^{m(F) + 1}$, and $t
+      \in \bigtimes_{F \in \Pf(\calT)} \calJ_m$ such that
+      \begin{itemize}
+        \item[(1)] if $F$, $G \in \Pf(\calT)$ with $F \subsetneq G$,
+          then $t(F)\bigl( m(F) \bigr) < t(G)(1)$; and
+        
+        \item[(2)] whenever $n \in \bbN$, $G_1$, $G_2$, \ldots, $G_n
+          \in \Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots
+          \subsetneq G_n$, and $\la f_i \ra_{i=1}^n \in
+          \bigtimes_{i=1}^n G_i$, we have
+          $\prod_{i=1}^n x(m(G_i), \alpha(G_i), t(G_i), f_i) \in C$. 
+      \end{itemize}
+  \end{itemize}
+\end{defn}
+Our definition of a $J$-set is superficially stronger than the
+definitions given in \cite[Definition 2.3(d)]{Hindman:2010fk} and
+\cite[Definition 3.3(e)]{De:2008uq}. 
+To show that our definition and \cite[Definition
+2.3(d)]{Hindman:2010fk} are equivalent we will make use of a technical
+lemma.
+\begin{lem}
+  Let $n \in \bbN$, $c \in S^{n+1}$, $H \in \calI_m$, and $f \in
+  \calT$. 
+  Fix $b \in S$ and define $g \in \calT$ by $g(t) = f(t)b$. 
+  Then there exists $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$
+  such that $x(m, a, t, f) = \bigl(\prod_{i=1}^n( c(i) \prod_{t \in H(i)}
+  g(t)\bigr) c(n+1)$
+\end{lem}
+\begin{proof}
+  Put $m = \sum_{i=1}^n |H(i)|$ and enumerate $\bigcup_{i=1}^n H(i)$
+  as a strictly increasing sequence $\la t_i \ra_{i=1}^m$. 
+  Put $H(0) = \emptyset$ and define $a \in S^{m+1}$ as follows:
+  \[
+    a(j) =
+    \begin{cases}
+      c(1) & \mbox{if $j = 1$,} \\
+      b    & \mbox{if $s \in \{0, 1, \ldots, n-1\}$ and $j \in \{1 +
+        \sum_{i=0}^s |H(i)| + 1,$}\\
+      & \hspace{1em}\mbox{$1 + \sum_{i=0}^s |H(i)| + 2, \ldots,
+        1 + \sum_{i=0}^s |H(i)| + |H(s+1)| - 1\}$, and} \\
+      bc(s+1) & \mbox{if $s \in \{1, 2, \ldots, n\}$ and $j = 1 +
+        \sum_{i=0}^s |H(i)|$.} 
+    \end{cases}
+  \]
+  We will show by induction on $n$ that $x(m, a, t, f) =
+  \bigl(\prod_{i=1}^n( c(i) \prod_{t \in H(i)} g(t)\bigr) c(n+1)$. 
+
+  (To see how our $a$ was derived consider the example with $n = 3$,
+  $H(1) = \{3, 5\}$, $H(2) = \{7\}$, and $H(3) = \{9, 11, 15\}$.
+  In this case, $\bigl(\prod_{i=1}^n( c(i) \prod_{t \in H(i)}
+  g(t)\bigr) c(n+1) =
+  c(1)f(2)bf(5)bc(2)f(7)bc(3)f(9)bf(11)bf(15)bc(4)$.
+  Hence $m = 6$ and $a(1) = c(1)$, $a(2) = b$, $a(3) = bc(2)$, $a(4) =
+  bc(3)$, $a(5) = b$, $a(6) = b$, and $a(7) = bc(4)$.)
+
+  First suppose $n = 1$, then
+  \begin{align*}
+    c(1) \prod_{t \in H(1)} g(t) c(2) &= c(1) \prod_{i=1}^m (f(t_i) b)
+    c(2). \\
+    &\mbox{Induction argument on $|H(1)|$
+      too \ldots}
+  \end{align*}
+\end{proof}
+\begin{cor}
+  \label{cor:stJsets}
+  Let $n \in \bbN$, $c \in S^{n+1}$, $H \in \calI_m$, and $F \in
+  \Pf(\calT)$. 
+  Fix $b \in S$ and for each $f \in F$ define $g_f \in \calT$ by
+  $g_f(t) = f(t)b$. 
+  Then there exists $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$
+  such that for all $f \in F$, $x(m, a, t, f) = \bigl(\prod_{i=1}^n(
+  c(i) \prod_{t \in H(i)} g_f(t)\bigr) c(n+1)$
+\end{cor}
+
+\begin{prop}
+  Let $S$ be a semigroup and let $A \subseteq S$ be a set which
+  satisfies \cite[Definition 2.3(d)]{Hindman:2010fk}, then $A$ is a $J$-set.
+\end{prop}
+\begin{proof}
+  Let $F \in \Pf(\calT)$ and fix $b \in S$. 
+  For each $f \in F$, define $g_f \in \calT$ by $g_f(t) = f(t)b$. 
+  Since $A$ satisfies \cite[Definition 2.3(d)]{Hindman:2010fk}, there
+  exist $n \in \bbN$, $c \in S^{n+1}$, and $H \in \calI_m$ such that
+  for all $f \in F$, $\bigl(\prod_{i=1}^n( c(i) \prod_{t \in H(i)}
+  g_f(t)\bigr) c(n+1) \in A$.
+  By Corollary \ref{cor:stJsets}, pick $m \in \bbN$, $a \in S^{m+1}$,
+  and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) =
+  \bigl(\prod_{i=1}^n( c(i) \prod_{t \in H(i)} g_f(t)\bigr) c(n+1)$.
+\end{proof}
+
+We next show that our definition of a $J$-set is equivalent to
+\cite[Definition 3.3(e)]{De:2008uq}.
+
+\begin{prop}
+  Let $S$ be a semigroup and let $A \subseteq S$ be a $J$-set. 
+  the for each $F \in \Pf(\calT)$ and $n \in \bbN$, we can pick $m \in
+  \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that $n < t_1$ and
+  for each $f \in F$, $x(m, a, t, f) \in A$.
+\end{prop}
+\begin{proof}
+  For each $f \in F$, define $g_f \in \calT$ by $g_f(t) = f(t + n)$. 
+  Then pick $m \in \bbN$, $a \in S^{m+1}$, and $s \in \calJ_m$ such
+  that for all $f \in F$, $x(m, a, s, g_f) \in A$. 
+  Define $t \in \calJ_m$ by $t_i = s_i + n$ for each $i \in \{1, 2,
+  \ldots, m\}$. 
+  Then $t_1 = s_1 + n > n$, and $x(m, a, t, f) = x(m, a, s, g_f)$. 
+\end{proof}
+
+\begin{thm}
+  Let $S$ be a semigroup. 
+  If $J(S) \ne \emptyset$, then $J(S)$ is a compact two-sided ideal of
+  $\beta S$. 
+\end{thm}
+\begin{proof}
+  To show that $J(S)$ is compact it suffices to show that $J(S)$ is
+  topologically closed in $\beta S$.
+  Let $p \not\in J(S)$, then pick $A \in p$ such that $A$ is not a
+  $J$-set. 
+  By definition of $J(S)$, we have that $\overline{A} \cap J(S) =
+  \emptyset$. 
+  Moreover, $\overline{A}$ is a (basic) open neighborhood of $p$. 
+
+  Now let $p \in J(S)$ and $q \in \beta S$. 
+  We show that $pq \in J(S)$ and $qp \in J(S)$. 
+
+  Let $F \in \Pf(\calT)$, let $A \in pq$, and let $B = \{\, x \in S :
+  x^{-1}A \in q \,\}$. 
+  Then $B \in p$. 
+  Since $B$ is a $J$-set, pick $m \in \bbN$, $a \in S^{m+1}$, and $t
+  \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) \in B$. 
+  By definition of $B$, this means that for all $f \in F$, $x(m, a, t,
+  f)^{-1} A \in q$.
+  Hence $\bigcap_{f \in F} x(m, a, t, f)^{-1} A \in q$ and so we may
+  pick $b \in \bigcap_{f \in F} x(m, a, t, f)^{-1} A$.
+  Define $c \in S^{m+1}$ by
+  \[
+    c(j) = 
+    \begin{cases}
+      a(j) & \mbox{if $j \in \{1, 2, \ldots, m\}$}, \\
+      a(m+1)b & \mbox{if $j = m+1$}.
+    \end{cases}
+  \]
+  Then for each $f \in F$, $x(m, c, t, f) \in A$. 
+
+  Now let $F \in \Pf(\calT)$, $A \in qp$, and let $B = \{\, x \in S :
+  x^{-1}A \in p \,\}$.
+  Then $B \in q$ and so we may pick $b \in B$ such that $b^{-1}A \in
+  p$. 
+  Since $b^{-1}A$ is a $J$-set, pick $m \in \bbN$, $a \in S^{m+1}$,
+  and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) \in
+  b^{-1}A$. 
+  Define $c \in S^{m+1}$ by
+  \[
+    c(j) = 
+    \begin{cases}
+      ba(1) & \mbox{if $j = 1$}, \\
+      a(j) & \mbox{if $j \in \{2, \ldots, m+1\}$}.
+    \end{cases}
+  \]
+  Then $x(m, c, t, f) \in A$ for all $f \in F$.
+\end{proof}
+
+In order to show that $J(S)$ is nonempty we now focus on showing that
+$J$-sets are partition regular. 
+
+\begin{thm}
+  Let $S$ be a semigroup, $A \subseteq S$ a $J$-set, and $A = A_1 \cup
+  A_2$. 
+  Then either $A_1$ is a $J$-set or $A_2$ is a $J$-set. 
+\end{thm}
+\begin{proof}
+  Let $F \in \Pf(\calT)$, $k = |F|$, and enumerate $F = \{ f_1, f_2,
+  \ldots, f_k \}$. 
+  By the Hales-Jewett Theorem, pick $n \in \bbN$, such that whenever
+  $[k]^n$ is 2-colored there exists a monochromatic combinatorial
+  line.
+  
+  Fix $b \in S$ and for each $w = (x_1, x_2, \ldots, x_n) \in [k]^n$
+  define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n
+  \bigr(f_{x_i}(nt+i)b\bigr)$.
+  Since $\{\, g_w : w \in [k]^n \,\} \in \Pf(\calT)$ and $A$ is a
+  $J$-set, pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$
+  such that for all $w \in [k]^n$, $x(m, a, t, g_w) \in A$.
+  Define $\varphi \colon [k]^n \to \{1, 2\}$ by $\varphi(w) = 1 $ if
+  $x(m, a, t, g_w) \in A_1$, and $\varphi(w) = 2$ otherwise.
+  Pick a variable word $w(\star)$ that begins and ends with a constant
+  such that $\bigl\{\, w(s) : s \in
+  \{1, 2, \ldots, k\} \,\bigr\}$ is a monochromatic combinatorial line
+  with respect to $\varphi$.
+  Without loss of generality we suppose that $\varphi\bigl(w(s)\bigr)
+  = 1$ for all $s \in \{1, 2, \ldots, k\}$. 
+
+  Let $w(\star) = (x_1, x_2, \ldots, x_n)$ where each $x_i \in \{1, 2,
+  \ldots, \} \cup \{\star\}$ and some $x_i = \star$. 
+  Let $r$ be the number of variable blocks in $w(\star)$, more
+  formally, let $r = \bigm|\bigl\{\, (i, i+1) \in \{1, 2, \ldots, n-1\} :
+  x_i = \star, x_{i+1} \in \{1, 2, \ldots, k\} \,\bigr\}\bigm|$.
+  Pick $L \in \calI_{r+1}$ and $M \in \calI_r$ such that for each $i
+  \in \{1, 2, \ldots, r\}$ , we have $\max L(i) < \min M(i)$, $\max
+  M(i) < \min L(i+1)$, and 
+  \begin{align*}
+    \bigcup_{i=1}^{r+1} L(i) &= \bigl\{\, i \in \{1, 2, \ldots, n \} :
+    x_i \in \{1, 2, \ldots, k\} \,\bigr\}, \\
+    \bigcup_{i=1}^r M(i) &= \bigl\{\, i \in \{1, 2, \ldots, n \} : x_i
+    = \star \,\bigr\}.
+  \end{align*}
+  (For example, if $k = 3$, $n = 8$, and $w(\star) = (2, \star, \star,
+  3, 1, \star, 1, 2)$, then $r = 2$, $L(1) = \{1\}$, $M(1) = \{2,
+  3\}$, $L(2) = \{4, 5\}$, $M(2) = \{6\}$, and $L(3) = \{7, 8\}$.)
+  
+  Looking at the expression of $x(m, a, t, g_w(s))$ it's intuitively
+  clear that there exists $p \in \bbN$, $c \in S^{p+1}$, and $u \in
+  \calJ_p$ such that $x(m, a, t, g_{w(s)}) = x(p, c, u, f_s)$ for all
+  $u \in \{1, 2, \ldots, k\}$. 
+  If $A_1$ was not a $J$-set, then  we can go back and select $F$ such
+  that $A_1$ fails the definitions of a $J$-set with this $F$. 
+  However, then would get a contradiction. 
+\end{proof}
+
+\section{Open Questions and Problems}
+
+% Notes section produced by the 'endnotes' package
+\theendnotes
+
+% Things referenced in the introduction. Eventually this will placed
+% in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+\end{document}
+
