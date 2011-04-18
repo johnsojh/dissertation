@@ -74,6 +74,44 @@ Let $S$ be a semigroup and put $\calT = \setfunc{\bbN}{S}$.
   Then there exists $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that $x(m, a, t, f) = \bigl(\prod_{i=1}^n ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n+1)$.
 \end{lem}
 \begin{proof}
+  Put $H(0) = \emptyset$, for $s \in \{0, 1, \ldots, n\}$ define $h_s = \sum_{i=0}^s |H(i)|$, put $m = h_n$, and enumerate $\bigcup_{i=1}^n H(i)$ as a strictly increasing sequence $t_1 < t_2 < \cdots < t_m$ in $\bbN$. 
+  We will adopt some temporary terminology and say that $\bigl(\prod_{i=1}^n ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n+1)$ has \textsl{proper representation} if and only if $\bigl(\prod_{i=1}^n ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n+1) = x(m, a, t, f)$ where $a \in S^{m+1}$ is defined as follows: 
+  \begin{quote}
+    For $j \in \{1, 2, \ldots, m+1\}$ put
+    \[
+      a(j) = 
+      \begin{cases}
+        c(j) & \mbox{if $j=1$;} \\
+        b    & \mbox{if $s \in \{0, 1, \ldots, n-1\}$ and $2+h_s \le j \le h_{s+1}$; and } \\
+        bc(s+1) & \mbox{if $s \in \{1, 2, \ldots, n\}$ and $j = 1+h_s$.}
+      \end{cases}
+    \]
+  \end{quote}
+  (To see how our $a$ was derived let's consider the example with $n = 3$, $H(1) = \{3, 5\}$, $H(2) = \{7\}$, and $H(3) = \{9, 11, 15\}$. 
+  In this example,
+  \[
+    \prod_{i=1}^n\bigl( c(i) \prod_{t \in H(i)} g(t) \bigr) c(n+1) = c(1)f(2)bf(3)b c(2) f(7)bc(3)f(9)bf(11)bf(15)bc(4).
+  \]
+  Therefore $m = 6$, $a(1) = c(1)$, $a(2) = b$, $a(3) = bc(2)$, $a(4) = bc(3)$, $a(5) = b$, $a(6) = b$, and $a(7) = bc(4)$.)
+  
+  We prove that $\bigl(\prod_{i=1}^n ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n+1)$ has proper representation by induction on $n$.
+
+  First suppose that $n=1$, then
+  \[
+    c(1)\prod_{t \in H(i)} g(t) c(2) = c(1)f(t_1)bf(t_2)b \cdots f(t_m)bc(2).
+  \]
+  In this case, $h_0 = 0$, $h_1 = m$, and $s$ can only be 0 or 1.
+  Now if $2+h_0 \le j \le h_1$, then by definition of $a$ we have $a(j) = b$ for all $j \in \{2, 3, \ldots, m\}$. 
+  Also since $1+h_1 = m+1$, we have $a(m+1) = bc(1+1)$.
+  Therefore
+  \[
+    c(1)f(t_1)bf(t_2)b \cdots f(t_m)bc(2) = a(1)f(t_1)a(2)f(t_2) \cdots f(t_m)a(m+1),
+  \]
+and so $c(1)\prod_{t \in H(i)} g(t) c(2)$ has proper representation. 
+
+  Let $n > 1$, put $m' = h_{n-1}$, and assume that $\bigl(\prod_{i=1}^{n-1} ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n)$ has proper representation with $\bigl(\prod_{i=1}^{n-1} ( c(i)\prod_{t \in H(i)} g(t)) \bigr) c(n) = x(m', a, t, f)$. 
+\end{proof}
+\begin{proof}
   Put $m = \sum_{i=1}^n |H(i)|$ and enumerate $\bigcup_{i=1}^n H(i)$ as a strictly increasing sequence $t_1 < t_2 < \cdots < t_m$ in $\bbN$.
   Put $H(0) = \emptyset$, and for notational convenience for each $s \in \{0, 1, \ldots, n\}$ put $h_s = \sum_{i = 0}^s |H(i)|$. 
   Define $a \in S^{m+1}$ as follows, for $j \in \{1, 2, \ldots, m+1\}$ put
@@ -349,7 +387,7 @@ $J$-sets are partition regular.
 \section{Open Questions and Problems}
 
 % Notes section produced by the 'endnotes' package
-\theendnotes
+%\theendnotes
 
 % Things referenced in the introduction. Eventually this will placed
 % in a separate file so the References appear at the end.
