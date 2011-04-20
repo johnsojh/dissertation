@@ -102,18 +102,18 @@ The point we wish to emphasize is that questions about relative sizes are often 
 Unfortunately, another peculiarity of cardinality is that the concept is a somewhat blunt tool to use in the study of relative sizes.
 Therefore in this chapter we start by introducing two different (but ultimately related) notions of largeness that are more amendable to answering certain interesting questions on relative sizes.
 
+To motivate the first two sections, let's start by considering a fixed set $X$ and a collection $\calF$ of ``large'' subsets of $X$. 
+We will perform a bit of intuitive reasoning to determine some reasonable properties of our collection $\calF$.
+Naturally we would like to consider $X$ be a large subset of itself.
+Therefore it seems reasonable to require that $X \in \calF$.
+If $A \in \calF$ and $A \subseteq B \subseteq X$, then again it appears reasonable to require that $B \in \calF$ also.
+(For this simply says that if $B$ contains a large subset, then $B$ must be large itself.)
+The requirement that $\calF$ be closed under supersets places some restrictions on any reasonable properties $\calF$ may have.
+For instance, if $\emptyset \in \calF$, then $\calF = \calP(X)$. 
+To avoid this undesirable situation we require that $\emptyset \not\in \calF$.
+Furthermore, since $X \in \calF$ and $\emptyset \not\in \calF$, it we must also require that $X$ be nonempty.
+
 \section{Filters and Ultrafilters}
-
-\section{Grills}
-\section{Partition Regularity}
-\section{Algebraic Semigroup Theory}
-\section{Stone-\v{C}ech Compactification of a Discrete Space}
-\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
-\section{Ramsey Theoretic Motivation}
-\section*{Open Problems}
-\section{Ultrafilters and Partition Regularity}
-
-\subsection{Filters, Filter Bases, Filter Subbases, and Ultrafilters}
 Since the material in this section is mostly standard and can be found in several places we choose to leave most of the proofs of our assertions to the reader.
 % TODO: Add some references to the results we state.
 \begin{defn}
@@ -127,12 +127,12 @@ Since the material in this section is mostly standard and can be found in severa
   \end{itemize}
 \end{defn}
 \begin{rmk}
-  Intuitively we may think of elements of a filter as simply a collection of relatively large subsets.
+  Intuitively we may think of elements of a filter as simply a collection of relatively large subsets of some fixed set.
   Conditions (1) and (3) of a filter nicely align with this intuition, but condition (2) may at first look a litte strange.
   This condition may be thought of as saying that we require our large sets to interlock in a highly nontrivial way.%
   \endnote{
     Filters, filter bases, and ultrafilters were introduced in two  notes of Cartan, \cite{Cartan:1937vn} and \cite{Cartan:1937ys}, as one way to generalize the use of arguments based on sequences in metric spaces to topological spaces. 
-    However, see Sundstr\"{o}m's paper \cite[Section 4.2]{Sundstrom:2010zr} for some history and references to others that discovered the concepts of filters and ultrafilters independently. 
+    However, see Sundstr\"{o}m's article \cite[Section 4.2]{Sundstrom:2010zr} for some history and references to others that discovered the concepts of filters and ultrafilters independently. 
   }
 \end{rmk}
 
@@ -146,17 +146,17 @@ Since the material in this section is mostly standard and can be found in severa
 Using condition (2) in Definition \ref{defn:filters}, a simple argument shows that every filter on a nonempty finite set is necessarily a principal filter.
 In this dissertation we wil adopt the bias that principal filters are essentially trivial or well-known objects.%
 \endnote{
-  Even though we adopt the bias that principal filters are trivial objects, the mathematical truth of the matter is that principal filters are in fact highly \textsl{non-trivial} objects.  
+  The mathematical truth of the matter is that in fact principal filters are highly \textsl{non-trivial} objects.
   The easiest way to see this is to observe that if $\calF$ is a filter on a discrete space $X$ and $\overline{\calF} = \{\, p \in \beta X : \calF \subseteq p \,\}$, then the set $\{\, \overline{\calF} : \mbox{$\calF$ is a principal filter} \,\}$ is a clopen basis for $\beta X$.
 }
-Our next example shows that there is at least one nonprincipal filter on every infinite set.
+Given this bias we shall primarily be concerned with filters on infinite sets.
+Accordingly, our next example shows that there is at least one nonprincipal filter on every infinite set.
 
 \begin{example}
   Let $X$ be an infinite set, then $\calC =\{\, A \subseteq X : \mbox{$X \setminus A$ is finite} \,\}$ is a nonprincipal filter on $X$.
   (To see that this filter is nonprincipal simply observe that for all $x \in X$, $X \setminus \{x\} \in \calC$ and hence $\bigcap\calC = \emptyset$.) 
   We call this filter the \textsl{cofinite filter} or \textsl{Fr\'{e}chet filter}.
 \end{example}
-% TODO: Enter in more examples of nonprincipal filters.
 
 The relation $\subseteq$ is a natural partial ordering on the collection on the set of all filters on a nonempty set. 
 In analogy with coarser and finer topologies on a set, we make the following definition about coarser and finer filters.
@@ -184,13 +184,63 @@ There is no largest filter (that is, there is no filter that contains every filt
   \end{defn}
   With this definition the only improper filter is $\calP(X)$ and this filter is also the largest filter in the poset of all filters on $X$.
   Of course if we consider the poset of all proper filters on $X$, then there is no largest proper filter.
-}
+}%
 , but the situation for the existence of maximal elements is mathematically interesting (or mathematically worrying depending on your point-of-view).
 To befit this added complication we give maximal filters a special name.
 
 \begin{defn}
   A filter $\calU$ on $X$ is called an \textsl{ultrafilter on $X$} if and only if $\calU$ is a \mbox{$\subseteq$-maximal} filter.
 \end{defn}
+
+To even show that any ultrafilters exists we take a small, but important, detour to show how various collections of sets can be used to generate filters.
+
+\begin{defn}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(a)] We call $\calB \subseteq \calP(X)$ a \textsl{filter base on $X$} if and only if $\calB$ satisfies the following two conditions:
+    \begin{itemize}
+      \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
+        
+      \item[(2)] If $A$ and $B$ are elements of $\calB$, then there exists $C \in \calB$ such that $C \subseteq A \cap B$.
+    \end{itemize}
+
+    \item[(b)] We call $\calS \subseteq \calP(X)$ a \textsl{filter subbase on $X$} or $\calS$ has the \textsl{finite intersection property} (abbreviated f.i.p.) if and only if for every nonempty finite subset $\calA \subseteq \calS$ we have $\bigcap \calA \ne \emptyset$.
+  \end{itemize}
+\end{defn}
+
+\begin{prop}
+  \label{prop:fltBase}
+  Let $\calB$ be a filter base on $X$, then the set
+  \[
+    \{\, A \subseteq X : \mbox{$B \subseteq A$ for some $B \in \calB$} \,\}
+  \]
+  is a filter on $X$.
+  Moreover, this is the coarsest filter that contains $\calB$.
+  We call this filter the \textsl{filter generated by the base $\calB$}.
+\end{prop}
+
+\begin{prop}
+  Let $\calS$ be a filter subbase on $X$, then the set
+  \[
+     \calB = \bigl\{\, \bigcap \calA : \mbox{$\emptyset \ne \calA \subseteq \calS$ is finite} \,\bigr\}
+  \]
+  is a filter base on $X$. 
+\end{prop}
+\begin{cor}
+  \label{cor:fltSubbase}
+  Let $\calS$ be a filter subbase on $X$, then the set
+  \[
+    \{\, A \subseteq X : \mbox{$\bigcap\calA \subseteq A$ for some finite $\emptyset \ne \calA \subseteq \calS$} \,\}
+  \]
+  is a filter on $X$.
+  Moreover, this is the coarsest filter that contains $\calS$.
+  We call this filter the \textsl{filter generated by the subbase $\calS$}.
+\end{cor}
+\begin{rmk}
+  Since a filter subbbase is often easier to describe than a filter base, we often only use Corollary \ref{cor:fltSubbase} directly when constructing new filters.
+\end{rmk}
+
+With this little detour done, we now resume our study of ultrafilters.
 
 \begin{thm}
   \label{thm:equivUf}
@@ -258,6 +308,26 @@ The stronger statement that every filter can be extended to an ultrafilter follo
   See \cite{Gottschalk:1951uq} for an easy proof of this selection lemma via Tychonoff's Theorem.)
 }
 
+
+\section{Grills}
+\section{Partition Regularity}
+\section{Algebraic Semigroup Theory}
+\section{Stone-\v{C}ech Compactification of a Discrete Space}
+\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
+\section{Ramsey Theoretic Motivation}
+\section*{Open Problems}
+\section{Ultrafilters and Partition Regularity}
+
+\subsection{Filters, Filter Bases, Filter Subbases, and Ultrafilters}
+
+
+Our 
+
+% TODO: Enter in more examples of nonprincipal filters.
+
+
+
+
 \begin{lem}
   \label{lem:chainFlt}
   Let $\Phi$ be a collection of filters on a set $X$.
@@ -284,47 +354,6 @@ The stronger statement that every filter can be extended to an ultrafilter follo
 Sometimes when working with topological spaces it is easier to describe a basis or subbasis for a topology instead of the full topology.
 Similarly we can define a filter in terms of a filter base or filter subbase.
 
-\begin{defn}
-  \begin{itemize}
-    \item[(a)] We call $\calB \subseteq \calP(X)$ a \textsl{filter base on $X$} if and only if $\calB$ satisfies the following two conditions:
-    \begin{itemize}
-      \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
-        
-      \item[(2)] If $A$ and $B$ are elements of $\calB$, then there exists $C \in \calB$ such that $C \subseteq A \cap B$.
-    \end{itemize}
-
-    \item[(b)] We call $\calS \subseteq \calP(X)$ a \textsl{filter subbase on $X$} or $\calS$ has the \textsl{finite intersection property} (abbreviated f.i.p.) if and only if for every nonempty finite subset $\calA \subseteq \calS$ we have $\bigcap \calA \ne \emptyset$.
-  \end{itemize}
-\end{defn}
-
-\begin{prop}
-  \label{prop:fltBase}
-  Let $\calB$ be a filter base on $X$, then the set
-  \[
-    \{\, A \subseteq X : \mbox{$B \subseteq A$ for some $B \in \calB$} \,\}
-  \]
-  is a filter on $X$.
-  Moreover, this is the coarsest filter that contains $\calB$.
-  We call this filter the \textsl{filter generated by the base $\calB$}.
-\end{prop}
-
-\begin{prop}
-  Let $\calS$ be a filter subbase on $X$, then the set
-  \[
-     \calB = \bigl\{\, \bigcap \calA : \mbox{$\emptyset \ne \calA \subseteq \calS$ is finite} \,\bigr\}
-  \]
-  is a filter base on $X$. 
-\end{prop}
-\begin{cor}
-  \label{cor:fltSubbase}
-  Let $\calS$ be a filter subbase on $X$, then the set
-  \[
-    \{\, A \subseteq X : \mbox{$\bigcap\calA \subseteq A$ for some finite $\emptyset \ne \calA \subseteq \calS$} \,\}
-  \]
-  is a filter on $X$.
-  Moreover, this is the coarsest filter that contains $\calS$.
-  We call this filter the \textsl{filter generated by the subbase $\calS$}.
-\end{cor}
 
 In order to produce a filter it is necessary and sufficient to produce a collection with f.i.p.
 However as a practical matter it may be inconvenient or difficult to verify that a collection of sets has f.i.p.
