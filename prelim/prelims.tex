@@ -335,44 +335,27 @@ The stronger statement that every filter can be extended to an ultrafilter follo
 
 In order to produce a filter it is necessary and sufficient to produce a collection with f.i.p.
 However as a practical matter it may be inconvenient or difficult to verify that a collection of sets has f.i.p.
-Therefore in the next subsection we give some of the basic definitions and results around a concept ``dual'' to the notion of filters that will essentially make producing filters trivial.
-
+Therefore in the next section we give some of the basic definitions and results around a concept ``dual'' to the notion of filters that will essentially make producing filters trivial.
 
 \section{Grills}
-\section{Partition Regularity}
-\section{Algebraic Semigroup Theory}
-\section{Stone-\v{C}ech Compactification of a Discrete Space}
-\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
-\section{Ramsey Theoretic Motivation}
-\section*{Open Problems}
-\section{Ultrafilters and Partition Regularity}
-
-\subsection{Grills, Grill Bases, and Grill Subbases}
 The dual concept to filters that we will introduce in this section is due to a note of Choquet in \cite{Choquet:1947uq}. 
-Since Choquet's note doesn't contain any proofs, and since the concepts he lays out appear to be slightly less well-known than the concept of a filter, in this subsection we choose to give complete proofs for (most of) Choquet's assertions.
+Since Choquet's note doesn't contain any proofs, and since the concepts he lays out appear to be slightly less well-known than the concept of a filter, in this subsection we choose to give complete proofs for (most of)%
+\endnote{
+  We have been unable to verify (or falsify!) the assertions in the sixth and seventh paragraphs of section II and the assertion in section IV.
+}
+Choquet's assertions.
 
 \begin{defn}
   \label{defn:grill}
   Let $X$ be a nonempty set.
-  \begin{itemize}
-    \item[(a)] We call $\calG \subseteq \calP(X)$ a \textsl{grill on $X$} if and only if $\calG$ satisfies the following three conditions:
+  We call $\calG \subseteq \calP(X)$ a \textsl{grill on $X$} if and only if $\calG$ satisfies the following three conditions:
       \begin{itemize}
         \item[(1)] $\emptyset \ne \calG$ and $\emptyset \not\in \calG$.
 
         \item[(2)] If $A \in \calG$ and $A \subseteq B \subseteq X$, then $B \in \calG$.
 
         \item[(3)] If $A \in \calG$ and $B \not\in \calG$, then $A \setminus B \in \calG$. 
-     \end{itemize}
-
-    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{grill base on $X$} if and only if $\calB$     satisfies the following two conditions:
-      \begin{itemize}
-        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
-
-        \item[(2)] If $A \in \calB$ and $A \subseteq B \subseteq X$, then $B \in \calB$.
       \end{itemize}
-
-    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{grill subbase} if and only if $\emptyset \ne \calS$ and $\emptyset \not\in \calS$. 
-  \end{itemize}
 \end{defn}
 
 Before connecting the concept of a grill with that of a filter, we first prove a convenient result that allows us to use an alternative third condition in Definition \ref{defn:grill}(a).
@@ -493,6 +476,36 @@ We now give an easy result that asserts that the functions $G$ and $F$ implicitl
   Let $\calF$ be a filter on $X$ and let $\calG$ be a grill on $X$.
   We say $\calF$ and $\calG$ are \textsl{associated} if and only if $\calF = F(\calG)$ or $\calG = G(\calF)$. 
 \end{defn}
+
+
+
+\begin{defn}
+  \begin{itemize}
+    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{grill base on $X$} if and only if $\calB$     satisfies the following two conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
+
+        \item[(2)] If $A \in \calB$ and $A \subseteq B \subseteq X$, then $B \in \calB$.
+      \end{itemize}
+
+    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{grill subbase} if and only if $\emptyset \ne \calS$ and $\emptyset \not\in \calS$. 
+  \end{itemize}
+\end{defn}
+
+
+
+
+\section{Partition Regularity}
+\section{Algebraic Semigroup Theory}
+\section{Stone-\v{C}ech Compactification of a Discrete Space}
+\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
+\section{Ramsey Theoretic Motivation}
+\section*{Open Problems}
+\section{Ultrafilters and Partition Regularity}
+
+\subsection{Grills, Grill Bases, and Grill Subbases}
+
+
 
 With the relation of association we have the following duality type result for filters and grills.
 
