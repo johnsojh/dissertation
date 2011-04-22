@@ -21,12 +21,12 @@
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{up}[thm]{Ultrafilter Principle}
 \newtheorem{radoSelect}[thm]{Rado's Selection Lemma}
-
+\newtheorem{php}[thm]{Pigeonhole Principle}
 
 % Unnumbered named theorems or results
 \newtheorem*{fact}{Fact}
 \newtheorem*{hj}{Hales-Jewett Theorem}
-\newtheorem*{php}{Pigeonhole Principle}
+
 \newtheorem*{ramsey}{Ramsey's Theorem}
 \newtheorem*{vdw}{Van der Waerden's Theorem}
 \newtheorem*{schur}{Schur's Theorem}
@@ -308,8 +308,6 @@ The stronger statement that every filter can be extended to an ultrafilter follo
   See \cite{Gottschalk:1951uq} for an easy proof of this selection lemma via Tychonoff's Theorem.)
 }
 
-
-
 \begin{lem}
   \label{lem:chainFlt}
   Let $\Phi$ be a collection of filters on a set $X$.
@@ -341,7 +339,8 @@ Therefore in the next section we give some of the basic definitions and results 
 The dual concept to filters that we will introduce in this section is due to a note of Choquet in \cite{Choquet:1947uq}. 
 Since Choquet's note doesn't contain any proofs, and since the concepts he lays out appear to be slightly less well-known than the concept of a filter, in this subsection we choose to give complete proofs for (most of)%
 \endnote{
-  We have been unable to verify (or falsify!) the assertions in the sixth and seventh paragraphs of section II and the assertion in section IV.
+  We have been unable to verify (or falsify!) the assertions in the sixth and seventh paragraphs of section II and the assertion in section IV in \cite{Choquet:1947uq}.
+  One of the assertions in section II is that $\calB = \bigcap\{\, \calG : \mbox{$\calG$ is a grill with $\calB \subseteq \calG$} \,\}$.
 }
 Choquet's assertions.
 
@@ -477,36 +476,6 @@ We now give an easy result that asserts that the functions $G$ and $F$ implicitl
   We say $\calF$ and $\calG$ are \textsl{associated} if and only if $\calF = F(\calG)$ or $\calG = G(\calF)$. 
 \end{defn}
 
-
-
-\begin{defn}
-  \begin{itemize}
-    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{grill base on $X$} if and only if $\calB$     satisfies the following two conditions:
-      \begin{itemize}
-        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
-
-        \item[(2)] If $A \in \calB$ and $A \subseteq B \subseteq X$, then $B \in \calB$.
-      \end{itemize}
-
-    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{grill subbase} if and only if $\emptyset \ne \calS$ and $\emptyset \not\in \calS$. 
-  \end{itemize}
-\end{defn}
-
-
-
-
-\section{Partition Regularity}
-\section{Algebraic Semigroup Theory}
-\section{Stone-\v{C}ech Compactification of a Discrete Space}
-\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
-\section{Ramsey Theoretic Motivation}
-\section*{Open Problems}
-\section{Ultrafilters and Partition Regularity}
-
-\subsection{Grills, Grill Bases, and Grill Subbases}
-
-
-
 With the relation of association we have the following duality type result for filters and grills.
 
 \begin{prop}
@@ -560,9 +529,23 @@ With the relation of association we have the following duality type result for f
 \end{proof}
 
 We now shift our attention to grill bases.
-While grill bases are easier to describe then grills we shall see that in Proposition % TODO: Put in proposition number
-that there is generally \textsl{no} coarsest grill that contains a given base.
+While grill bases are easier to describe then grills we shall see that in Proposition \ref{prop:GrillB}
 (This negative result is in contrast to the fact that there is a coarsest filter that contains a filter base).
+
+
+\begin{defn}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{grill base on $X$} if and only if $\calB$     satisfies the following two conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
+
+        \item[(2)] If $A \in \calB$ and $A \subseteq B \subseteq X$, then $B \in \calB$.
+      \end{itemize}
+
+    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{grill subbase} if and only if $\emptyset \ne \calS$ and $\emptyset \not\in \calS$. 
+  \end{itemize}
+\end{defn}
 
 \begin{prop}
   \label{prop:grlBasePhi}
@@ -597,6 +580,7 @@ that there is generally \textsl{no} coarsest grill that contains a given base.
 \end{cor}
 
 \begin{prop}
+  \label{prop:GrillB}
   Let $\calB$ be a grill base on $X$.
   \begin{itemize}
     \item[(a)] $F(\calB) = \{\, A \in \calB : \mbox{$A \cap B \in \calB$ for all $B \in \calB$} \,\}$.
@@ -634,6 +618,7 @@ that there is generally \textsl{no} coarsest grill that contains a given base.
   First note that $\Gamma \ne \emptyset$ since by (b) $G\bigl(F(\calB)\bigr) \in \Gamma$.
   The fact that $\calB \subseteq \bigcap\Gamma$ is clear.
 \end{proof}
+
 \begin{prop}
   The intersection of two grills may not be a grill.
 \end{prop}
@@ -644,7 +629,6 @@ that there is generally \textsl{no} coarsest grill that contains a given base.
   A straightforward check shows that $G(\calF_1) \cap G(\calF_2)$ is a grill base. 
   However $E \cup O = \bbN \in G(\calF_1) \cap G(\calF_2)$ but $E$ and $O$ are not members of $G(\calF_1) \cap G(\calF_2)$.
 \end{proof}
-
 
 \begin{prop}
   Let $\calS$ be a grill subbase on a set $X$.
@@ -680,174 +664,98 @@ With a grill subbase we have a simply and trivial way to generate filters.
 Our general produce shall be this: if we are trying to study a nonempty collection of sets that doesn't contain the empty set, it may be easier to study the associated filter.
 In the next section we give a definition for a special type of grill subbase for which this program has been successful.
 
-\subsection{Partition Regularity}
+
+\section{Partition Regularity}
+
 \begin{defn}
   Let $\calS$ be a grill subbase on some nonempty set.
   We say that the $\calS$ is \textsl{partition regular} if and only if whenever $\calA$ is a finite collection of sets with $\bigcup\calA \in \calS$, then there exist $A \in \calA$ and $B \in \calS$ such that $B \subseteq A$.
 \end{defn}
 
 \begin{prop}
+  \label{prop:ParRegUp}
   Let $\calS$ be a grill subbase on some nonempty set.
-  Put $\calB = \{\, B : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}$. 
+  Put 
+  \[
+    \calB = \calS^\uparrow =\{\, B : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}.
+  \]
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calS$ is partition regular.
+    \item[(b)] $\calB$ is a partition regular.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Clearly $\calB$ is a grill base. 
+  Let $\calA$ be a finite collection of sets with $\bigcup\calA \in \calB$.
+  Then there exists $A \in \calS$ such that $A \subseteq \bigcup\calA$.
+  Therefore $\bigcup_{B \in \calA} (A \cap B) = A \in \calS$ and so we may pick $B \in \calA$ and $C \in \calS$ such that $C \subseteq A \cap B$. 
+  Hence $A \cap B \in \calB$ and so $A \in \calB$.
+
+  ($\Leftarrow$)
+  Let $\calA$ be finite collection of sets with $\bigcup\calA \in \calS$, then $\calA \in \calB$.
+  Since $\calB$ is a partition regular pick $A \in \calA$ and $B \in \calB$ such that $B \subseteq A$.
+  Pick $C \in \calS$ such that $C \subseteq B$.
+  Therefore $C \subseteq A$ and this completes the proof.
+\end{proof}
+\begin{cor}
+  Let $\calS$ be a grill subbase on some nonempty set.
+  Put 
+  \[
+    \calB = \calS^\uparrow =\{\, B : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}.
+  \]
   The following statements are equivalent.
   \begin{itemize}
     \item[(a)] $\calS$ is partition regular.
     \item[(b)] $\calB$ is a grill.
   \end{itemize}
-\end{prop}
-\begin{proof}
-  ($\Rightarrow$)
-  Clearly, $\calB$ is a grill base. 
-  If $B \cup C \in \calB$, then there exists $A \in \calS$ such that $A \subseteq B \cup C$. 
-  Therefore $(B \cap A) \cup (C \cap A) = A \in \calS$. 
-  Since $\calS$ is partition regular, we have that there exists $D \in \calS$ such that either $D \subseteq B \cap A$ or $D \subseteq C \cap A$.
-  
-  Without loss of generality suppose $D \subseteq B \cap A \in \calS$, that is, $B \cap A \in \calB$.
-  This shows that $\calB$ is a grill.
-
-  ($\Leftarrow$)
-  Let $\calA$ be finite collection of sets with $\bigcup\calA \in \calS$, then $\calA \in \calB$.
-  Since $\calB$ is a grill pick $A \in \calA$ such that $A \in \calB$.
-  Therefore there exists $B \in \calS$ such that $D \subseteq A$, that is, $\calS$ is partition regular.
-\end{proof}
-
-\begin{defn}
-  Let $X$ be a nonempty set and $\calR$ a collection of sets with
-  $\emptyset\not\in \calR$. 
-  \begin{itemize}
-    \item[(a)] Let $r$ be a natural number. 
-      The pair $(X, \calR)$ is called \textsl{\mbox{$r$-partition}
-        regular} if and only if whenever $X = \bigcup_{i=1}^r
-      C_i$, there exist $i \in \{1, 2, \ldots, r\}$ and $A \in \calR$
-      such that $A \subseteq C_i$.
-
-    \item[(b)] We call the pair $(X, \calR)$ \textsl{partition
-        regular} if and only if $(X, \calR)$ is \mbox{$r$-partition}
-      regular for every $r \in \bbN$.
-  \end{itemize}
-\end{defn}
-
-% Say that we will only focus on partition regular statements and that
-% for κ>=ω is the domain for "infinite combinatorics.  Also mention
-% how this is used in modern set theory to investigate several notions
-% of large cardinals.
-
-Partition regularity roughly asserts that some property of $X$, here
-represented by members of $\calR$, occurs a ``large'' number of times
-in $X$.
-In fact so large, that no matter how we finitely divide up $X$, at
-least one cell in the division has our specified property. 
-One of the easiest partition regular property to observe is the
-infinite form of the pigeonhole principle.
-
-\begin{php}
-  Let $X$ be an infinite put $\calR = \{\, A \subseteq X : \mbox{$A$
-    is infinite} \,\}$.
-  Then $(X, \calR)$ is partition regular.
-\end{php}
-\begin{proof}
-  Let $r \in \bbN$ and $X = \bigcup_{i=1}^r C_i$.
-  Then $|X| \le \sum_{i=1}^r |C_i|$.
-  If $C_i$ is finite for each $i \in \{1, 2, \ldots, r\}$,
-  then $|X|$ is finite too, a contradiction.
-\end{proof}
-
-The Pigeonhole Principle is an easy result to prove. 
-However, a powerful generalization of this principle was discovered by
-Ramsey in \cite[Theorem A]{Ramsey:1930uq}. 
-
-\begin{ramsey}
-  Let $X$ be an infinite set, and let $k \in \bbN$.
-  Put $\calR = \bigl\{\, \{\, A \subseteq Y : |A| = k \,\} : \mbox{$Y
-    \subseteq X$ is infinite} \,\bigr\}$.
-  Then $\bigl(\{\, A \subseteq X : |A| = k \,\}, \calR\bigr)$ is
-  partition regular. 
-\end{ramsey}
-\begin{proof}[Proof Sketch]
-  Observe that when $k = 1$ the result follows from the Pigeonhole
-  Principle. 
-  We now suppose that $k=2$ and we show that $\bigl(\{\, A
-  \subseteq X : |A| = 2 \,\}, \calR\bigr)$ is \mbox{2-partition}
-  regular: that is, we show that if $\{\, A \subseteq X : |A| = 2 \,\}
-  = C_1 \cup C_2$, then there exist an infinite subset $Y \subseteq
-  X$ and $i \in \{1, 2\}$ such that $\{\, B \subseteq Y : |B| = 2 \,\}
-  \subseteq C_i$. 
-
-  To this end, we will recursively construct sequences $\la X_n
-  \ra_{n=0}^\infty$, $\la x_n \ra_{n=1}^\infty$, $\bigl\la (C_1^{(n)},
-  C_2^{(n)}) \bigr\ra_{n=1}^\infty$, and $\la r_n \ra_{n=1}^\infty$
-  satisfying the following hypotheses:
-  \begin{itemize}
-    \item[(0)] $X_0 = X$.
-    \item[(1)] $x_n \in X_{n-1}$ for all $n \in \bbN$.
-    \item[(2)] $X_n$ is an infinite subset of $X_{n-1} \setminus
-      \{x_n\}$ for each $n \in \bbN$.
-    \item[(3)] For all $i \in \{1, 2\}$ and $n \in \bbN$, 
-      \[
-        C_i^{(n)} = \{\, x \in X_{n-1} \setminus \{x_n\} : \{x, x_n\}
-        \in C_i \,\}.
-      \]
-    \item[(4)] $X_n \subseteq C_{r_n}^{(n)}$ for all $n \in \bbN$. 
-  \end{itemize}
-  We first show how these sequences prove our special case of Ramsey's
-  Theorem. 
-  By hypotheses (0), (1), and (2), the set $\la x_n \ra_{n=1}^\infty$
-  is a one-to-one sequence in $X$; and by the Pigeonhole Principle,
-  either $\{\, n \in \bbN : r_n = 1 \,\}$ is infinite or $\{\, n \in
-  \bbN : r_n = 2 \,\}$ is infinite. 
-  Without loss of generality suppose $\{\, n \in \bbN : r_n = 1 \,\}$
-  is infinite and put $Y = \{\, x_n : \mbox{$n \in \bbN$ and $r_n =
-    1$} \,\}$.
-  Then $Y \subseteq X$ is infinite and we claim that $\{\, A \subseteq
-  Y : |A| = 2\,\} \subseteq C_1$.
-  To see this claim, let $m$ and $n$ be natural numbers with $m < n$
-  and $r_m = r_n = 1$. 
-  By hypothesis (2), it follows that $X_{n-1} \subseteq X_m$. 
-  Hence $x_n \in X_m$ since $x_n \in X_{n-1}$. 
-  By hypotheses (3) and (4), it follows that $\{x_n , x_m \} \in
-  C_1$. 
-  This finishes the proof of our claim.
-
-  We now recursively construct our sequences to satisfy hypotheses
-  (0)-(4). 
-  Put $X_0 = X$ let $k > 1$ and assume we have constructed sequences
-  $\la X_n \ra_{n=0}^{k-1}$, $\la x_n \ra_{n=1}^{k-1}$, $\bigl\la
-  (C_1^{(n)}, C_2^{(n)}) \bigr\ra_{n=1}^{k-1}$, and $\la r_n
-  \ra_{n=1}^{k-1}$ satisfying hypotheses (0)-(4).
-  By hypothesis (2), $X_{k-1}$ is infinite so pick $x_k \in X_{k-1}$.  
-  For each $i \in \{1, 2\}$ define
-  \[
-    C_i^{(k)} = \bigl\{\, x \in X_{k-1} \setminus \{x_k\} : \{x, x_k\} \in
-    C_i \,\bigr\}.
-  \]
-  Then $X_{k-1} \setminus \{x_k\}= C_1^{(k)} \cup C_2^{(k)}$ and so by the Pigeonhole
-  Principle, we can pick an infinite subset $X_k \subseteq X_{k-1}
-  \setminus \{x_k\}$ and $r_k \in \{1, 2\}$ such that $X_k \subseteq
-  C_{r_k}^{(k)}$. 
-  By construction the sequences $\la X_n \ra_{n=0}^k$, $\la x_n
-  \ra_{n=1}^k$, $\bigl\la (C_1^{(n)}, C_2^{(n)})
-  \bigr\ra_{n=1}^k$, and $\la r_n \ra_{n=1}^k$ satisfying
-  hypotheses (0)-(4).
-  This completes our recursive construction.
-
-  To show that $\bigl(\{\, A \subseteq X : |A| = 2 \,\}, \calR\bigr)$
-  is \mbox{$r$-partition} regular follows by induction on $r$. 
-  Finally to show that for all $k \in \bbN$, $\bigl(\{\, A \subseteq X
-  : |A| = k \,\}, \calR\bigr)$ is partition regular follows by
-  induction on $k$.
-\end{proof}
+\end{cor}
 \begin{rmk}
-  The current proof sketch is essentially Ramsey's original
-  combinatorial proof is \cite[Theorem A]{Ramsey:1930uq}. 
-  A complete combinatorial proof, which is where the above is modeled
-  from, is in Hindman's survey paper \cite[Theorem
-  \textcolor{red}{??}]{Hindman:1979fk}.
+Partition regularity roughly asserts that some property of $X$, here represented by members of $\calR$, occurs a ``large'' number of times in $X$.
+In fact so large, that no matter how we finitely divide up $X$, at least one cell in the division has our specified property. 
+One of the easiest partition regular property to observe is the infinite form of the pigeonhole principle.
 \end{rmk}
 
-Notice that the above argument is simliar to a diagonal
-type-argument. 
-We will show that in fact that there is a close connection between a
-partition regular set $(X, \calR)$ an a ultrafilter on $X$. 
+The following theorem, taken from \cite[Theorem 3.11]{Hindman:1998fk} shows the intimate connection between partition regular sets and ultrafilters.
+
+\begin{thm}
+  Let $X$ be a set and $\calS$ a grill subbase on $X$.
+  Put $\calB = \calS^\uparrow$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calS$ is partition regular.
+    \item[(b)] $\calS^\uparrow$ is partition regular.
+    \item[(c)] $\calS^\uparrow$ is a grill.
+    \item[(d)] If $\calA \subseteq \calP(X)$ has the property that every finite nonempty subfamily of $\calA$ has an intersection in $\calS^\uparrow$, then there is an ultrafilter $\calU$ on $X$ with $\calA \subseteq \calU \subseteq \calS^\uparrow$.
+    \item[(e)] If $A \in \calS$, then there is some ultrafilter $\calU$ on $X$ such that $A \in \calU \subseteq \calS^\uparrow$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  $(a) \iff (b)$ and $(b) \iff (c)$ 
+  This is Proposition \ref{prop:ParRegUp}.
+
+  $(c) \Rightarrow (d)$ 
+  Since $\calA$ is a filter subbase, we let $\calF$ be the filter generated by $\calA$.
+  By construction we have that $\calF \subseteq \calS^\uparrow$. 
+  Since $\calS^\uparrow$ is a grill, there exists an ultrafilter $\calU$ on $X$ with $\calF \subseteq \calU \subseteq \calS^\uparrow$.
+
+  $(d) \Rightarrow (e)$
+  Put $\calA = \{A\}$.
+
+  $(d) \Rightarrow (c)$.
+  Let $A \cup B \in \calS^\uparrow$. 
+  Pick an ultrafilter on $X$ such that $A \cup B \in \calU \in \calS^\uparrow$.
+  Then either $A \in \calU$ or $B \in \calU$, that is, either $A \in \calU$ or $B \in \calU$.  
+\end{proof}
+
+
+\section{Algebraic Semigroup Theory}
+\section{Stone-\v{C}ech Compactification of a Discrete Space}
+\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
+\section{Ramsey Theoretic Motivation}
+\section*{Open Problems}
+\section{Ultrafilters and Partition Regularity}
 
 % While Ramsey's Theorem is important and provides a good example of a
 % partition regular pair $(X, \calR)$, in this dissertation we will
