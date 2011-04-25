@@ -359,8 +359,8 @@ Therefore in the next section we give some of the basic definitions and results 
 The dual concept to filters that we will introduce in this section is due to a note of Choquet in \cite{Choquet:1947uq}. 
 Since Choquet's note doesn't contain any proofs, and since the concepts he lays out appear to be slightly less well-known than the concept of a filter, in this subsection we choose to give complete proofs for (most of)%
 \endnote{
-  We have been unable to verify (or falsify!) the assertions in the sixth and seventh paragraphs of section II and the assertion in section IV in \cite{Choquet:1947uq}.
-  One of the assertions in section II is that $\calB = \bigcap\{\, \calG : \mbox{$\calG$ is a grill with $\calB \subseteq \calG$} \,\}$.
+  We have been unable to verify (or falsify!) two of Choquet's assertions.
+  One assertion is in the last paragraph of section II, and the other assertion is in section IV of \cite{Choquet:1947uq}.
 }
 Choquet's assertions.
 
@@ -376,8 +376,11 @@ Choquet's assertions.
         \item[(3)] If $A \in \calG$ and $B \not\in \calG$, then $A \setminus B \in \calG$. 
       \end{itemize}
 \end{defn}
-
-Before connecting the concept of a grill with that of a filter, we first prove a convenient result that allows us to use an alternative third condition in Definition \ref{defn:grill}(a).
+\begin{rmk}
+  Again we can regard a grill as a collection of relatively large subsets of $X$. 
+  Conditions (1) and (2) align with our intuition, but condition (3) can be thought of as stating that we can throw away a portion of a large set provided that the part we throw away is not large itself.
+  Proposition \ref{prop:alt3} shows that condition (3) is equivalent to saying that large sets cannot be finitely decomposed into a union of non-large sets.
+\end{rmk}
 
 \begin{prop}
   \label{prop:alt3}
@@ -420,21 +423,20 @@ Before connecting the concept of a grill with that of a filter, we first prove a
  
   (a)
   To see that $\emptyset \ne \calG$ observe that $\calF \subseteq \calG$.
-  Also $\emptyset \ne \calG$ since $X \setminus \emptyset = X \in \calF$.
+  Also $\emptyset \not\in \calG$ since $X \setminus \emptyset = X \in \calF$.
 
   Now let $A \in \calG$ and $A \subseteq B \subseteq X$.
   If $X \setminus B \in \calF$, then we would have $X \setminus A \in \calF$ too.
-  ($A \subseteq B$ implies $X \setminus B \subseteq X \setminus A$.)
   Therefore we have that $B \in \calG$.
 
   Instead of showing condition (3) of Definition \ref{defn:grill}(a) we prove that $\calG$ satisfies condition (3) of Proposition \ref{prop:alt3}.
-  Hence let $A \cup B \in \calG$, then $X \setminus (A \cup B) \not\in \calF$.
+  Let $A \cup B \in \calG$, then $X \setminus (A \cup B) \not\in \calF$.
   If $X \setminus A \in \calF$ and $X \setminus B \in \calF$, then $(X \setminus A) \cap (X \setminus B) \in \calF$.
   Therefore either $X \setminus A \not\in \calF$ or $X \setminus B \not\in \calF$, that is, either $A \in \calG$ or $B \in \calG$.
 
   (b)
   Let $A \in \calG$ and $B \in \calF$.
-  If $A \cap B = \emptyset$, then $B \subseteq X \setminus A$. 
+  If $A \cap B = \emptyset$, then $B \subseteq X \setminus A$ and so $X \setminus A \in \calF$, a contradiction. 
   Therefore $A \cap B \ne \emptyset$.
 
   Now let $A \subseteq X$ such that for all $B \in \calF$, $A \cap B \ne \emptyset$.
@@ -447,18 +449,23 @@ Before connecting the concept of a grill with that of a filter, we first prove a
   Since $\calF \subseteq \calF'$ and $\emptyset \ne \calF'$ we have that for all $B \in \calF$, $A \cap B \ne \emptyset$.
   Hence by applying (b) we are done.
 \end{proof}
+\begin{rmk}
+  From Proposition \ref{prop:FltGrl} (b) or (c) we see that the grill associated with a given filter is simply the collection of all sets we can use to form a filter finer than our given filter.
+  However it follows from Proposition \ref{prop:duality}, and working with simply examples shows, that as we generate finer and finer filters, the corresponding grills become coarser.
+\end{rmk}
 
 \begin{prop}
   \label{prop:GrlFlt}
   Let $\calG$ be grill on $X$ and put $F(\calG) = \{\, A \in \calG : X \setminus A \not\in \calG \,\}$.
   \begin{itemize}
     \item[(a)] Then $F(\calG)$ is a filter on $X$.
-      We call the filter $(F\calG)$ the \textsl{filter associated with the grill $\calG$}.
+      We call the filter $F(\calG)$ the \textsl{filter associated with the grill $\calG$}.
     \item[(b)] $F(\calG) = \{\, A \in \calG : \mbox{$A \cap B \in \calG$ for all $B \in \calG$} \,\}$.
   \end{itemize}
 \end{prop}
 \begin{proof}
   For notational convenience put $\calF = F(\calG)$.
+
   (a)
   Since $X \setminus X = \emptyset \not\in \calG$ we have that $X \in \calF$ and so $\emptyset \ne \calF$.
   Also since $X \setminus \emptyset = X \in \calG$, we have that $\emptyset \not\in \calF$.
@@ -472,12 +479,12 @@ Before connecting the concept of a grill with that of a filter, we first prove a
   (b)
   Let $A \in \calF$ and $B \in \calG$.
   Suppose that $A \cap B \not\in \calG$, then $X \setminus (A \cap B) \in \calF$.
-  Hence $X \setminus A \cup X \setminus B) \cap A \in \calF$, that is, $\emptyset \cup (X \setminus B \cap A) \in \calF$.
-  However $(X \setminus B) \cap A \in \calF$ if and only if $X \setminus (X \setminus B \cap A) \not\in \calG$, that is, $B \cup (X \setminus A) \not\in \calG$.
+  Hence $\bigl( (X \setminus A) \cup (X \setminus B) \bigr) \cap A \in \calF$, that is, $\emptyset \cup \bigl( (X \setminus B) \cap A) \bigr) \in \calF$.
+  However $(X \setminus B) \cap A \in \calF$ if and only if $X \setminus \bigl( X \setminus (B \cap A) \bigr) \not\in \calG$, that is, $B \cup (X \setminus A) \not\in \calG$.
   But this is a contradiction since $B \in \calG$ and $B \subseteq B \cup (X \setminus A)$.
   
   Now let $A \in \calG$ such that $A \cap B \in \calG$ for all $B \in \calG$.
-  Since $\emptyset \ne \calG$ it follows that $X \setminus A \not\in \calG$, that is, $A \in \calF$.
+  Since $\emptyset \not\in \calG$ it follows that $X \setminus A \not\in \calG$, that is, $A \in \calF$.
 \end{proof}
 
 We now give an easy result that asserts that the functions $G$ and $F$ implicitly defined in Propositions \ref{prop:FltGrl} and \ref{prop:GrlFlt} are one-to-one from the set of all filters onto the set of grills.
@@ -499,6 +506,7 @@ We now give an easy result that asserts that the functions $G$ and $F$ implicitl
 With the relation of association we have the following duality type result for filters and grills.
 
 \begin{prop}
+  \label{prop:duality}
   Let the filter $\calF_1$ be associated with the grill $\calG_1$, and let the filter $\calF_2$ be associated with the grill $\calG_2$.
   Then $\calF_1 \subseteq \calF_2$ if and only if $\calG_2 \subseteq \calG_1$.
 \end{prop}
@@ -506,11 +514,11 @@ With the relation of association we have the following duality type result for f
   ($\Rightarrow$)
   Let $A \in \calG_2$, that is, $X \setminus A \not\in \calF_2$.
   Since $\calF_1 \subseteq \calF_2$ we have $X \setminus A \not\in \calF_1$ too.
-  Therefore $A \in G_1$.
+  Therefore $A \in \calG_1$.
 
   ($\Leftarrow$)
   Let $A \in \calF_1$.
-  If $A \not\in \calF_2$, then $X \setminus A \in \calG_2$ and (by assumption) $X \setminus A \in \calG_1$, that is, $A \not\in \calF_1$.
+  If $A \not\in \calF_2$, then $X \setminus A \in \calG_2$ and (by assumption) $X \setminus A \in \calG_1$, that is, $A \not\in \calF_1$, a contradiction.
   Therefore $A \in \calF_2$.
 \end{proof}
 
@@ -522,7 +530,7 @@ With the relation of association we have the following duality type result for f
   Let $A \subseteq X$.
   We show that either $A \in F(\calG)$ or $X \setminus A \in F(\calG)$.
   Suppose that $A \not\in F(\calG)$, that is, assume that either $A \not\in \calG$ or $A \in \calG$ and $X \setminus A \in \calG$.
-  By hypothesis $\calG$ is a filter and so we cannot have both $A \in \calG$ and $X \setminus A \in \calG$.
+  However by hypothesis, $\calG$ is a filter and so we cannot have both $A \in \calG$ and $X \setminus A \in \calG$.
   Since $A \not\in \calG$ and $X \in \calG$ we have that $X \setminus A \in \calG$ and so $X \setminus A \in F(\calG)$.
 
   ($\Leftarrow$)
@@ -530,6 +538,7 @@ With the relation of association we have the following duality type result for f
   To this end let $A$ and $B$ be elements of $\calG$.
   However suppose that $A \cap B \not\in \calG$.
   If $A \cap B \in F(\calG)$, then $A \cap B \in \calG$.
+  Hence we can assume that $A \cap B \not\in F(\calG)$.
   Therefore since $F(\calG)$ is an ultrafilter we have that $(X \setminus A) \cup (X \setminus B) = X \setminus (A \cap B) \in F(\calG)$.
   Also since $F(\calG)$ is an ultrafilter either $X \setminus A \in F(\calG)$ or $X \setminus B \in F(\calG)$. 
   This last sentence implies that either $A \not\in \calG$ or $B \not\in \calG$, a contradiction.
@@ -549,9 +558,8 @@ With the relation of association we have the following duality type result for f
 \end{proof}
 
 We now shift our attention to grill bases.
-While grill bases are easier to describe then grills we shall see that in Proposition \ref{prop:GrillB}
+While grill bases are easier to describe then grills we shall see that in Proposition \ref{prop:GrillB}(c) that there is generally no coarsest grill that contains a grill base.
 (This negative result is in contrast to the fact that there is a coarsest filter that contains a filter base).
-
 
 \begin{defn}
   Let $X$ be a nonempty set.
@@ -569,11 +577,8 @@ While grill bases are easier to describe then grills we shall see that in Propos
 
 \begin{prop}
   \label{prop:grlBasePhi}
-  Let $\calB$ be a grill base on $X$ and put 
-  \[
-    \Phi = \{\, \calF : \mbox{$\calF \subseteq \calB$ is a filter} \,\}.
-  \]
-  Then $\Phi$ is a nonempty, partially ordered by $\subseteq$, and every \mbox{$\subseteq$-chain} in $\Phi$ has an upper bound in $\Phi$.
+  Let $\calB$ be a grill base on $X$ and put $\Phi = \{\, \calF : \mbox{$\calF \subseteq \calB$ is a filter} \,\}$.
+  Then $\Phi$ is nonempty, partially ordered by $\subseteq$, and every \mbox{$\subseteq$-chain} in $\Phi$ has an upper bound in $\Phi$.
 \end{prop}
 \begin{proof}
   Since $X \in \calB$ and $\{X\}$ is a filter contained in $\calB$ we have $\{X\} \in \Phi$.
@@ -612,7 +617,7 @@ While grill bases are easier to describe then grills we shall see that in Propos
 \end{prop}
 \begin{proof}
   (a) 
-  Let $A \in F(\calB$, then for every maximal filter $\calF \subseteq \calB$ we have $A \in \calF$. 
+  Let $A \in F(\calB)$, then for every maximal filter $\calF \subseteq \calB$ we have $A \in \calF$. 
   Let $B \in \calB$, then the set $\{\, C \in \calB : B \subseteq C \,\}$ is a (principal) filter contained in $\calB$.
   By applying Zorn's Lemma, it follows that this filter is contained in a maximal filter $\calF \subseteq \calB$.
   In particular, $A \cap B \in \calF$ and so $A \cap B \in \calB$.
@@ -621,7 +626,7 @@ While grill bases are easier to describe then grills we shall see that in Propos
   Suppose that there exists a maximal filter $\calF \subseteq \calB$ with $A \not\in \calF$. 
   If $A \cap C \ne \emptyset$ for all $C \in \calF$, then $\calF \cup \{A\}$ is a filter subbase contained in $\calB$ that strictly contains the maximal filter $\calF$ in $\calB$.
   Therefore there exists $C \in \calF$ such that $A \cap C = \emptyset$.
-  However in this case, $C \in \calB$, $A \cap C = \emptyset$, and $\emptyset \not\in \calB$.
+  However in this case, $C \in \calB$, $\emptyset = A \cap C \in \calB$, a contradiction since $\emptyset \not\in \calB$.
   Therefore we must have that $A$ is a member of every maximal filter contained in $\calB$.
 
   (b)
@@ -638,13 +643,13 @@ While grill bases are easier to describe then grills we shall see that in Propos
   First note that $\Gamma \ne \emptyset$ since by (b) $G\bigl(F(\calB)\bigr) \in \Gamma$.
   The fact that $\calB \subseteq \bigcap\Gamma$ is clear.
 
-  Now suppose that $\bigcap\Gamma \setminus \calB \ne \emptyset$ and let $A \in \bigcap\Gamma \setminus \calB$.
+  Now suppose that $(\bigcap\Gamma) \setminus \calB \ne \emptyset$ and let $A \in (\bigcap\Gamma) \setminus \calB$.
   Since $A \not\in \calB$, we have that $A \not\in F(\calB)$, and moreover $X \setminus A \in G\bigl(F(\calB)\bigr)$.
   Let $\calF$ be the filter generated by $F(\calB) \cup \{X \setminus A\}$. 
   Now $X \setminus A \in \calF$ and so $A \not\in G(\calF)$. 
   To arrive at a contradiction we prove that $\calB \subseteq G(\calF)$.
   To show that $\calB \subseteq G(\calF)$ it suffices to show that for every $B \in \calB$ and $C \in \calF$ we have $B \cap C \ne \emptyset$.
-  In order to show to it suffices to show that for every $B \in \calB$ and every finite nonempty set $\calA \subseteq F(\calB) \cup \{X \setminus A\}$ we have $B \cap \bigcap\calA \ne \emptyset$.
+  In order to show to this it suffices to show that for every $B \in \calB$ and every finite nonempty set $\calA \subseteq F(\calB) \cup \{X \setminus A\}$ we have $B \cap \bigcap\calA \ne \emptyset$.
   So let $\calA \subseteq F(\calB) \cup \{X \setminus A\}$ be a finite nonempty subset with $|\calA| = n$.
   Enumerate $\calA = \{D_1, D_2, \ldots, D_n\}$.
   If $D_i \in F(\calB)$ for each $i \in \{1, 2, \ldots, n\}$, then we have that $B \cap \bigcap_{i=1}^n D_i \ne \emptyset$. 
@@ -653,20 +658,21 @@ While grill bases are easier to describe then grills we shall see that in Propos
   Suppose that $B \cap D \cap (X \setminus A) = \emptyset$, then $B \cap D \subseteq A$.
   Since $D \in F(\calB)$ we have that $B \cap D \in \calB$ and hence $A \in \calB$, a contradiction.
   Therefore $B \cap D \cap (X \setminus A) \ne \emptyset$ and so $\calB \subseteq G(\calF)$.
-  However $G(\calF)$ is grill that contains $\calB$ with $A \in G(\calF)$ and $A \not\in G(\calF)$, a contradiction. 
+  However $G(\calF)$ is grill that contains $\calB$ with $A \not\in G(\calF)$, a contradiction. 
 \end{proof}
 
 \begin{prop}
   Let $\calS$ be a grill subbase on a set $X$.
-  Then
+  Then $\calS^\uparrow$ and
   \[
     B(\calS) = \bigcap\{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}
   \]
-  is a grill base on $X$.
-  We call $B(\calS)$ the \textsl{grill base associated with the grill subbase $\calS$}.
+  are both grill bases on $X$.
+  We call $\calS^\uparrow$ or $B(\calS)$ the \textsl{grill base associated with the grill subbase $\calS$}.
 \end{prop}
 \begin{proof}
-  Put $\Psi = \{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}$ and observe that $\Psi$ is nonempty since it has$\{\, B \subseteq X : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}$ as a member.
+  The fact that $\calS^\uparrow$ is a grill base is clear.
+  Put $\Psi = \{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}$ and observe that $\Psi$ is nonempty since it has $\{\, B \subseteq X : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}$ as a member.
   Hence let $B(\calS) = \bigcap\Psi$.
 
   Now $B(\calS)$ is nonempty since $X \in \calB$ for every grill base and so in particular $X \in B(\calS)$.
@@ -686,9 +692,9 @@ While grill bases are easier to describe then grills we shall see that in Propos
   To see that $\calS \subseteq G\Bigl(F\bigl(B(\calS)\bigr)\Bigr)$ observe that $\calS \subseteq B(\calS)$.
 \end{proof}
 
-With a grill subbase we have a simply and trivial way to generate filters.
-Our general produce shall be this: if we are trying to study a nonempty collection of sets that doesn't contain the empty set, it may be easier to study the associated filter.
-In the next section we give a definition for a special type of grill subbase for which this program has been successful.
+With a grill subbase we have a simple and trivial way to generate filters.
+Therefore if we are trying to study a nonempty collection of sets that doesn't contain the empty set, then it may be easier to study the associated filter.
+In the next section we give a definition for a special type of grill subbase for which studying the corresponding filters has been successful.
 
 
 \section{Partition Regularity}
