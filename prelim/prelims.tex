@@ -99,12 +99,12 @@ Of course by using the well-known diagonal argument of Cantor%
 }
 we can easily prove the weaker assertion that $|\bbR|$ is strictly greater than $|\bbN|$.
 The point we wish to emphasize is that questions about relative sizes are often easier to study than questions about absolute sizes.
-(We can summarize this observation into an elliptic misleading proverb that qualitative is easier than quantitive.)
+(We can summarize this observation into an elliptic misleading proverb: qualitative questions are easier to answer than quantitive questions.)
 Unfortunately, another peculiarity of cardinality is that the concept is a somewhat blunt tool to use in the study of relative sizes.
 Therefore in this chapter we start by introducing two different (but ultimately related) notions of largeness that are more amendable to answering certain interesting questions on relative sizes.
 
 To get an idea of what we will be studying in this chapter, let's start by considering some fixed set $X$.
-We want to produce a reasonable definition for a collection $\calF$ of subsets of $X$ such that members of $\calF$ are considered as ``large'' subsets of $X$.
+We want to produce a reasonable definition for a collection $\calF$ of subsets of $X$ such that members of $\calF$ are considered as ``relatively large'' subsets of $X$.
 We ask what properties should $\calF$ possess?
 To answer this question we perform a bit of intuitive reasoning.
 
@@ -171,7 +171,7 @@ on every infinite set.
 \begin{rmk}
   It is a fact that all nonprincipal filters contain the cofinite filter. 
   See \cite[Section 5.5(e), page 103]{Schechter:1997fk} for a collection of equivalent statements to this fact. 
-  (It's probably easier to prove $(B) \implies (A)$, $(A) \implies (C)$, $(C) \implies (D)$, and $(D) \implies (B)$.)
+  (In the referenced statements it's probably easier to prove $(B) \implies (A)$, $(A) \implies (C)$, $(C) \implies (D)$, and $(D) \implies (B)$.)
 \end{rmk}
 
 The relation $\subseteq$ is a natural partial ordering on the collection of all filters on a nonempty set. 
@@ -184,7 +184,7 @@ In analogy with coarser and finer topologies on a set, we make the following def
 
 Since the set of all filters on a set $X$ is partially ordered, it is natural to wonder about minimal and maximal elements with respect to this partial ordering.
 There is only one minimal filter, and happily it is contained in every filter, $\{X\}$.
-There is no largest filter that is, there is no filter that contains every filter%
+There is no largest filter, that is, there is no filter that contains every filter%
 \endnote{
   Some mathematicians define a filter as follows:
   \begin{defn}
@@ -201,7 +201,6 @@ There is no largest filter that is, there is no filter that contains every filte
   Of course if we consider the poset of all proper filters on $X$, then there is no largest proper filter.
 }%
 , but the situation for the existence of maximal filters is mathematically interesting (or mathematically worrying depending on your point-of-view).
-Without some reasonable strong version of the axiom of choice there may be no nontrivial maximal filters at all.
 To befit this added complication we give maximal filters a special name.
 
 \begin{defn}
@@ -221,6 +220,11 @@ To even show that any ultrafilters exist we take a small, but important, detour 
     \end{itemize}
 
     \item[(b)] We call $\calS \subseteq \calP(X)$ a \textsl{filter subbase on $X$} or $\calS$ has the \textsl{finite intersection property} (abbreviated f.i.p.) if and only if for every nonempty finite subset $\calA \subseteq \calS$ we have $\bigcap \calA \ne \emptyset$.
+
+    \item[(c)] Given a collection $\calA \subseteq \calP(X)$, put 
+      \[
+         \calA^\uparrow = \{\, B \subseteq X : \mbox{$A \subseteq B$ for some $A \in \calA$} \,\}.
+      \]
   \end{itemize}
 \end{defn}
 
@@ -228,7 +232,7 @@ To even show that any ultrafilters exist we take a small, but important, detour 
   \label{prop:fltBase}
   Let $\calB$ be a filter base on $X$, then the set
   \[
-    \{\, A \subseteq X : \mbox{$B \subseteq A$ for some $B \in \calB$} \,\}
+    \calB^\uparrow = \{\, A \subseteq X : \mbox{$B \subseteq A$ for some $B \in \calB$} \,\}
   \]
   is a filter on $X$.
   Moreover, this is the coarsest filter that contains $\calB$.
@@ -304,7 +308,7 @@ With this little detour done, we now resume our study of ultrafilters.
 
 \begin{example}
   Let $X$ be a nonempty set and $a \in X$.
-  Put $\calE(a) = \{\, A \subseteq X : a \in A \,\}$.
+  Recall that $\calE(a) = \{\, A \subseteq X : a \in A \,\}$.
   Then $\calE(a)$ is an ultrafilter on $X$.
   The fact that $\calE(a)$ is a filter was first mentioned in Example  \ref{ex:prinFilt}, and the fact that $\calE(a)$ is an ultrafilter
   follows easily from Theorem \ref{thm:equivUf}(b).
@@ -313,7 +317,7 @@ With this little detour done, we now resume our study of ultrafilters.
 
 We will also adopt the bias that principal ultrafilters are essentially trivial or well-known objects.
 In contrast to the situation with nonprincipal filters the existence of nonprincipal ultrafilters is sensitive to the underlying axioms of our particular set theory.
-(In particular to guarantee the existence of nonprincipal ultrafilters we need a weak form of the axiom of choice.)
+Without some reasonable strong version of the axiom of choice there may be no nontrivial ultrafilters at all.
 It is a fact that there are models of ZF where no nonprincipal ultrafilters exists \cite{Blass:1977fk}.
 The stronger statement that every filter can be extended to an ultrafilter follows from our next result and Zorn's Lemma.%
 \endnote{
