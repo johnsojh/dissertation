@@ -1,0 +1,881 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{color}
+\usepackage{endnotes}
+\usepackage{url}
+
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage[doublespacing]{setspace}
+\usepackage{url}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+
+% Numbered theorems 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{up}[thm]{Ultrafilter Principle}
+\newtheorem{radoSelect}[thm]{Rado's Selection Lemma}
+\newtheorem{php}[thm]{Pigeonhole Principle}
+
+% Unnumbered named theorems or results
+\newtheorem*{fact}{Fact}
+\newtheorem*{hj}{Hales-Jewett Theorem}
+
+\newtheorem*{ramsey}{Ramsey's Theorem}
+\newtheorem*{vdw}{Van der Waerden's Theorem}
+\newtheorem*{schur}{Schur's Theorem}
+
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+
+
+
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+
+
+\theoremstyle{definition}
+
+% Numbered "definition" style theorem environments
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\AP}{\mathcal{AP}}
+\newcommand{\AL}{\mathcal{AL}}
+
+% Short names for calligraphic math letters.
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+
+\newcommand{\Pf}{\mathcal{P}_f}
+
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+Cardinality is commonly thought of as a ``measure'' on the size of sets.
+Intuitively this ``notion of largeness'' provides a good mathematical formalization of size since every set has a unique cardinal number; and under ZFC (the usual Zermelo-Fraenkel axioms of set theory along with the axiom of choice) there is a fixed nontrivial order relation such that every set of cardinals is wellordered.
+However the concept of cardinality has its own mathematical peculiarities as a notion of largeness.
+One peculiarity is starkly illustrated by the formal independence of the Continuum Hypothesis from ZFC (provided ZFC is a consistent theory).
+Recall that the Continuum Hypothesis is the assertion that $|\bbR|$ is the first cardinal after $|\bbN|$.
+The independence of this statement means that, without adding extra set-theoretical axioms, we cannot determine the precise location of the cardinal $|\bbR|$ in the class of all cardinals.
+
+Of course by using the well-known diagonal argument of Cantor%
+\endnote{
+  Interestingly Grattan-Guinness's observation in \cite[page 134, footnote 1]{Grattan-Guinness:1978kx} implies that Paul de Bois-Reymond was the first to publish a diagonal-type argument. 
+}
+we can easily prove the weaker assertion that $|\bbR|$ is strictly greater than $|\bbN|$.
+The point we wish to emphasize is that questions about relative sizes are often easier to study than questions about absolute sizes.
+(We can summarize this observation into an elliptic misleading proverb: qualitative questions are easier to answer than quantitive questions.)
+Unfortunately, another peculiarity of cardinality is that the concept is a somewhat blunt tool to use in the study of relative sizes.
+Therefore in this chapter we start by introducing two different (but ultimately related) notions of largeness that are more amendable to answering certain interesting questions on relative sizes.
+
+To get an idea of what we will be studying in this chapter, let's start by considering some fixed set $X$.
+We want to produce a reasonable definition for a collection $\calF$ of subsets of $X$ such that members of $\calF$ are considered as ``relatively large'' subsets of $X$.
+We ask what properties should $\calF$ possess?
+To answer this question we perform a bit of intuitive reasoning.
+
+Naturally, we would like to consider $X$ to be a large subset of itself, and therefore it seems reasonable to require that $X \in \calF$.
+If a subset of $X$ contains a large subset, then we should also consider the containing subset as large itself.
+In terms of $\calF$ this says that if $A \in \calF$ and $A \subseteq B \subseteq X$, then $B \in \calF$. 
+The requirement that $\calF$ be closed under supersets places some restrictions on any reasonable properties $\calF$ may have.
+For instance, if $\emptyset \in \calF$, then $\calF = \calP(X)$. 
+($\calP(X)$ is the usual power set of $X$, that is, the collection of all subsets of $X$.)
+Since it seems slightly perverse to have a collection of large subsets of $X$ to potentially be equal to $\calP(X)$, we further require that $\emptyset \not\in \calF$. 
+Furthermore, since $X \in \calF$ and $\emptyset \not\in \calF$, we also require that $X$ be nonempty.
+
+The requirements that $\calF$ be nonempty, doesn't contain the empty set, and is closed under supersets forms the core of several definitions we shall consider throughout this chapter. 
+
+\section{Filters and Ultrafilters}
+Since the material in this section is mostly standard and can be found in several places (for instance see \cite[Chapter 5]{Schechter:1997fk} or \cite[Chapter 3]{Hindman:1998fk}) we choose to leave most of the proofs of our assertions to the reader.
+% TODO: Add some references to the results we state.
+\begin{defn}
+  \label{defn:filters}
+  Let $X$ be a nonempty set.
+  We call $\calF \subseteq \calP(X)$ a \textsl{filter on $X$} if and only if $\calF$ satisfies the following three conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \ne \calF$ and $\emptyset \not\in\calF$.
+    \item[(2)] If $A \in \calF$ and $A \subseteq B \subseteq X$, then $B \in \calF$.
+    \item[(3)] If $A$ and $B$ are elements of $\calF$, then $A \cap B \in \calF$.
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  Intuitively we may think of elements of a filter as simply a collection of relatively large subsets of some fixed set.
+  Conditions (1) and (2) of a filter nicely align with this intuition, but condition (3) may at first look a litte strange.
+  This condition may be thought of as saying that we require our large sets to interlock in a highly nontrivial way.%
+  \endnote{
+    Filters, filter bases, and ultrafilters were introduced in two notes of Cartan, \cite{Cartan:1937vn} and \cite{Cartan:1937ys}, as one way to generalize the use of arguments based on sequences in metric spaces to topological spaces. 
+    However, see Sundstr\"{o}m's article \cite[Section 4.2]{Sundstrom:2010zr} for some history and references to others that discovered the concepts of filters and ultrafilters independently. 
+  }
+\end{rmk}
+
+\begin{example}
+  \label{ex:prinFilt}
+  Let $X$ be a nonempty set.
+  If $\emptyset \ne A \subseteq X$, then the set $\calE(A) = \{\, B \subseteq X : A \subseteq B \,\}$ is a filter on $X$.
+  If $A$ is a singleton set, say $A = \{a\}$, then we write $\calE(A)$ as $\calE(a)$. 
+  We call such filters \textsl{principal filters}.
+\end{example}
+
+Using condition (3) in Definition \ref{defn:filters}, a simple argument shows that every filter on a nonempty finite set is necessarily a principal filter.
+In this dissertation we wil adopt the bias that principal filters are essentially trivial or well-known objects.%
+\endnote{
+  The mathematical truth of the matter is that in fact principal filters are highly \textsl{non-trivial} objects.
+  The easiest way to see this is to observe that if $\calF$ is a filter on a discrete space $X$ and $\overline{\calF} = \{\, p \in \beta X : \calF \subseteq p \,\}$, then the set $\{\, \overline{\calF} : \mbox{$\calF$ is a principal filter} \,\}$ is a clopen basis for $\beta X$.
+}
+Given this bias we shall primarily be concerned with filters on infinite sets.
+Accordingly, our next example shows that there is at least one nonprincipal filter%
+\endnote{
+  To avoid the negative adjective `nonprincipal' to filters some mathematicians call nonprincipal filters \textsl{free filters}.
+}
+on every infinite set.
+
+\begin{example}
+  Let $X$ be an infinite set, then $\calC =\{\, A \subseteq X : \mbox{$X \setminus A$ is finite} \,\}$ is a nonprincipal filter on $X$.
+  (To see that this filter is nonprincipal simply observe that for all $x \in X$, $X \setminus \{x\} \in \calC$ and hence $\bigcap\calC = \emptyset$.) 
+  We call this filter the \textsl{cofinite filter} or \textsl{Fr\'{e}chet filter}.
+\end{example}
+\begin{rmk}
+  It is a fact that all nonprincipal filters contain the cofinite filter. 
+  See \cite[Section 5.5(e), page 103]{Schechter:1997fk} for a collection of equivalent statements to this fact. 
+  (In the referenced statements it's probably easier to prove $(B) \implies (A)$, $(A) \implies (C)$, $(C) \implies (D)$, and $(D) \implies (B)$.)
+\end{rmk}
+
+The relation $\subseteq$ is a natural partial ordering on the collection of all filters on a nonempty set. 
+In analogy with coarser and finer topologies on a set, we make the following definition about coarser and finer filters.
+
+\begin{defn}
+  Let $\calF_1$ and $\calF_2$ be filters on $X$.
+  We say that $\calF_1$ is \textsl{coarser than} $\calF_1$ or $\calF_2$ is \textsl{finer than} $\calF_1$ if and only if $\calF_1 \subseteq \calF_2$.
+\end{defn}
+
+Since the set of all filters on a set $X$ is partially ordered, it is natural to wonder about minimal and maximal elements with respect to this partial ordering.
+There is only one minimal filter, and happily it is contained in every filter, $\{X\}$.
+There is no largest filter, that is, there is no filter that contains every filter%
+\endnote{
+  Some mathematicians define a filter as follows:
+  \begin{defn}
+    Let $X$ be a nonempty set and $\calF \subseteq \calP(X)$.
+    We call $\calF$ a \textsl{filter} if and only if $\calF$ satisfies the following three conditions:
+    \begin{itemize}
+      \item[(1)] $\emptyset \ne \calF$.
+      \item[(2)] If $A$ and $B$ are elements of $\calF$, then $A cap B \in \calF$.
+      \item[(3)] If $A \in \calF$ and $A \subseteq B \subseteq X$, then $B \in \calF$.
+    \end{itemize}
+    We call a filter $\calF$ \textsl{proper} if $\emptyset \in \calF$.
+  \end{defn}
+  With this definition the only improper filter is $\calP(X)$ and this filter is also the largest filter in the poset of all filters on $X$.
+  Of course if we consider the poset of all proper filters on $X$, then there is no largest proper filter.
+}%
+, but the situation for the existence of maximal filters is mathematically interesting (or mathematically worrying depending on your point-of-view).
+To befit this added complication we give maximal filters a special name.
+
+\begin{defn}
+  A filter $\calU$ on $X$ is called an \textsl{ultrafilter on $X$} if and only if $\calU$ is a \mbox{$\subseteq$-maximal} filter.
+\end{defn}
+
+To even show that any ultrafilters exist we take a small, but important, detour to show how various collections of sets can be used to generate filters.
+
+\begin{defn}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(a)] We call $\calB \subseteq \calP(X)$ a \textsl{filter base on $X$} if and only if $\calB$ satisfies the following two conditions:
+    \begin{itemize}
+      \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
+        
+      \item[(2)] If $A$ and $B$ are elements of $\calB$, then there exists $C \in \calB$ such that $C \subseteq A \cap B$.
+    \end{itemize}
+
+    \item[(b)] We call $\calS \subseteq \calP(X)$ a \textsl{filter subbase on $X$} or $\calS$ has the \textsl{finite intersection property} (abbreviated f.i.p.) if and only if for every nonempty finite subset $\calA \subseteq \calS$ we have $\bigcap \calA \ne \emptyset$.
+
+    \item[(c)] Given a collection $\calA \subseteq \calP(X)$, put 
+      \[
+         \calA^\uparrow = \{\, B \subseteq X : \mbox{$A \subseteq B$ for some $A \in \calA$} \,\}.
+      \]
+  \end{itemize}
+\end{defn}
+
+\begin{prop}
+  \label{prop:fltBase}
+  Let $\calB$ be a filter base on $X$, then the set
+  \[
+    \calB^\uparrow = \{\, A \subseteq X : \mbox{$B \subseteq A$ for some $B \in \calB$} \,\}
+  \]
+  is a filter on $X$.
+  Moreover, this is the coarsest filter that contains $\calB$.
+  We call this filter the \textsl{filter generated by the base $\calB$}.
+\end{prop}
+
+\begin{prop}
+  Let $\calS$ be a filter subbase on $X$, then the set
+  \[
+     \calB = \bigl\{\, \bigcap \calA : \mbox{$\emptyset \ne \calA \subseteq \calS$ is finite} \,\bigr\}
+  \]
+  is a filter base on $X$. 
+\end{prop}
+\begin{cor}
+  \label{cor:fltSubbase}
+  Let $\calS$ be a filter subbase on $X$, then the set
+  \[
+    \{\, A \subseteq X : \mbox{$\bigcap\calA \subseteq A$ for some finite $\emptyset \ne \calA \subseteq \calS$} \,\}
+  \]
+  is a filter on $X$.
+  Moreover, this is the coarsest filter that contains $\calS$.
+  We call this filter the \textsl{filter generated by the subbase $\calS$}.
+\end{cor}
+\begin{rmk}
+  Since a filter subbbase is often easier to describe than a filter base, we often only use Corollary \ref{cor:fltSubbase} directly when constructing new filters.
+\end{rmk}
+
+With this little detour done, we now resume our study of ultrafilters.
+
+\begin{thm}
+  \label{thm:equivUf}
+  Let $\calU$ be a filter on $X$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calU$ is an ultrafilter on $X$.
+    \item[(b)] For every $A \subseteq X$, either $A \in \calU$ or $X \setminus A \in \calU$.
+    \item[(c)] For every $A$, $B \subseteq X$, if $A \cup B \in \calU$, then either $A \in \calU$ or $B \in \calU$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  (a) $\Rightarrow$ (b)
+  Suppose that $A \not\in \calU$.
+  If $\calU \cup \{A\}$ is a filter subbase, then by Corollary
+  \ref{cor:fltSubbase} we can generate a filter that contains $\calU$
+  and $A$.
+  However since $\calU$ is maximal, this would imply that $A \in
+  \calU$, a contradiction.
+  Therefore $\calU \cup \{A\}$ is not a filter subbase and so there
+  must exists $B \in \calU$ such that $B \cap A = \emptyset$, that is,
+  $B \subseteq X \setminus A$.
+  It follows that $X \setminus A \in \calU$.
+  
+  (b) $\Rightarrow$ (c)
+  If $A \not\in \calU$ and $B \not\in \calU$, then by assumption $X
+  \setminus A \in \calU$ and $X \setminus B \in \calU$.
+  Then $X \setminus (A \cup B) = (X \setminus A) \cap (X \setminus B)$
+  would be an element of $\calU$.
+  However this implies that $\emptyset = \bigl(X \setminus (A \cup
+  B)\bigr) \cap (A \cup B) \in \calU$, a contradiction.
+
+  (c) $\Rightarrow$ (a)
+  Let $\calF$ be a filter on $X$ with $\calU \subseteq \calF$.
+  Let $A \in \calF$.
+  Since $\calU \subseteq \calF$, it follows that $X \setminus A
+  \not\in \calU$.
+  However, $A \cup (X \setminus A) = X \in \calU$ and by assumption it
+  follows that $A \in \calU$.
+  Therefore $\calU = \calF$ and hence $\calU$ is a maximal filter.
+\end{proof}
+\begin{rmk}
+  A more complete list of statements equivalent to the definition of an ultrafilter can be found in \cite[Theorem 3.6]{Hindman:1998fk}.
+\end{rmk}
+
+\begin{example}
+  Let $X$ be a nonempty set and $a \in X$.
+  Recall that $\calE(a) = \{\, A \subseteq X : a \in A \,\}$.
+  Then $\calE(a)$ is an ultrafilter on $X$.
+  The fact that $\calE(a)$ is a filter was first mentioned in Example  \ref{ex:prinFilt}, and the fact that $\calE(a)$ is an ultrafilter
+  follows easily from Theorem \ref{thm:equivUf}(b).
+  We call such ultrafilters \textsl{principal ultrafilters}.
+\end{example}
+
+We will also adopt the bias that principal ultrafilters are essentially trivial or well-known objects.
+In contrast to the situation with nonprincipal filters the existence of nonprincipal ultrafilters is sensitive to the underlying axioms of our particular set theory.
+Without some reasonable strong version of the axiom of choice there may be no nontrivial ultrafilters at all.
+It is a fact that there are models of ZF where no nonprincipal ultrafilters exists \cite{Blass:1977fk}.
+The stronger statement that every filter can be extended to an ultrafilter follows from our next result and Zorn's Lemma.%
+\endnote{
+  More precisely the Ultrafilter Principle is stronger than the statement that every infinite set has a nonprincipal ultrafilter. 
+  Rav's paper \cite[Section 2]{Rav:1977ys} contains several interesting collection of statements equivalent to the Ultrafilter Principle which are essentially combinatorial in character. 
+  All of these statements are variants of Rado's Selection Lemma.
+  (Rado's Selection Lemma is a combinatorial result used by Rado in \cite[Lemma 1]{Rado:1949fk}. 
+  See \cite{Gottschalk:1951uq} for an easy proof of this selection lemma via Tychonoff's Theorem.)
+}
+
+\begin{lem}
+  \label{lem:chainFlt}
+  Let $\Phi$ be a collection of filters on a set $X$.
+  \begin{itemize}
+    \item[(a)] $\bigcap\Phi$ is a filter on $X$.
+
+    \item[(b)] If $\Phi$ is a \mbox{$\subseteq$-chain}, then $\bigcup\Phi$ is a filter on $X$.
+  \end{itemize}
+\end{lem}
+
+\begin{up}
+  Every filter is contained in an ultrafilter.
+\end{up}
+\begin{proof}[Proof Sketch]
+  Let $X$ be a set and $\calF$ a filter on $X$.
+  Let $\Phi$ be the collection of all filters on $X$ that are finer than $\calF$.
+  By Lemma \ref{lem:chainFlt} and Zorn's Lemma, $\Phi$ contains a maximal element.
+\end{proof}
+\begin{rmk}
+  To produce a nonprincipal ultrafilters we simply apply the Ultrafilter Principle to the cofinite filter.
+  It is a fact that every ultrafilter is nonprincipal if and only if it contains the cofinite filter.
+\end{rmk}
+
+In order to produce a filter it is necessary and sufficient to produce a collection with f.i.p.
+However as a practical matter it may be inconvenient or difficult to verify that a collection of sets has f.i.p.
+Therefore in the next section we give some of the basic definitions and results around a concept ``dual'' to the notion of filters that will essentially make producing filters trivial.
+
+\section{Grills}
+The dual concept to filters that we will introduce in this section is due to a note of Choquet in \cite{Choquet:1947uq}. 
+Since Choquet's note doesn't contain any proofs, and since the concepts he lays out appear to be slightly less well-known than the concept of a filter, in this subsection we choose to give complete proofs for (most of)%
+\endnote{
+  We have been unable to verify (or falsify!) two of Choquet's assertions.
+  One assertion is in the last paragraph of section II, and the other assertion is in section IV of \cite{Choquet:1947uq}.
+}
+Choquet's assertions.
+
+\begin{defn}
+  \label{defn:grill}
+  Let $X$ be a nonempty set.
+  We call $\calG \subseteq \calP(X)$ a \textsl{grill on $X$} if and only if $\calG$ satisfies the following three conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calG$ and $\emptyset \not\in \calG$.
+
+        \item[(2)] If $A \in \calG$ and $A \subseteq B \subseteq X$, then $B \in \calG$.
+
+        \item[(3)] If $A \in \calG$ and $B \not\in \calG$, then $A \setminus B \in \calG$. 
+      \end{itemize}
+\end{defn}
+\begin{rmk}
+  Again we can regard a grill as a collection of relatively large subsets of $X$. 
+  Conditions (1) and (2) align with our intuition, but condition (3) can be thought of as stating that we can throw away a portion of a large set provided that the part we throw away is not large itself.
+  Proposition \ref{prop:alt3} shows that condition (3) is equivalent to saying that large sets cannot be finitely decomposed into a union of non-large sets.
+\end{rmk}
+
+\begin{prop}
+  \label{prop:alt3}
+  Let $X$ be a nonempty set and $\calG \subseteq \calP(X)$.
+  Then $\calG$ is a grill on $X$ if and only if $\calG$ satisfies the following three conditions:
+  \begin{itemize}
+    \item[(1)] $\emptyset \ne \calG$ and $\emptyset \not\in \calG$.
+
+    \item[(2)] If $A \in \calG$ and $A \subseteq B \subseteq X$, then $B \in \calG$.
+
+    \item[(3)] For all $A$, $B \subseteq X$, if $A \cup B \in \calG$, then either $A \in \calG$ or $B \in \calG$. 
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  We only focus on proving that condition (3) in our Proposition is equivalent to condition (3) in Definition \ref{defn:grill}(a).
+
+  ($\Rightarrow$)
+  Let $A$ and $B$ be subsets of $X$ with $A \cup B \in \calG$.
+  Suppose that $A \not\in \calG$, then by Definition \ref{defn:grill}(a) $(A \cup B) \setminus A \in \calG$.
+  Since $(A \cup B) \setminus A \subseteq B$, condition (2) of Definition \ref{defn:grill}(a) implies that $B \in \calG$.
+
+  ($\Leftarrow$)
+  Let $A$ and $B$ be subsets of $X$ with $A \in \calG$ and $B \not\in \calG$.
+  Observe that since $B \not\in \calG$ we have $A \cap B \not\in G$.
+  Now $(A \setminus B) \cup (A \cap B) = A \in \calG$ and so by assumption we must have $A \setminus B \in \calG$.
+\end{proof}
+
+\begin{prop}
+  \label{prop:FltGrl}
+  Let $\calF$ be a filter on a set $X$ and put $G(\calF) = \{\, A \subseteq X : X \setminus A \not\in \calF \,\}$.
+  \begin{itemize}
+    \item[(a)] $G(\calF)$ is a grill on $X$.
+      We call the grill $G(\calF)$ the grill \textsl{associated with the filter $\calF$}.
+    \item[(b)] $G(\calF) = \{\, A \subseteq X : A \cap B \ne \emptyset \mbox{ for all $B \in \calF$} \,\}$.
+    \item[(c)] $G(\calF) = \bigcup\{\, \calF' : \mbox{$\calF'$ is a finer filter than $\calF$} \,\}$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  For notational convenience put $\calG = G(\calF)$.
+ 
+  (a)
+  To see that $\emptyset \ne \calG$ observe that $\calF \subseteq \calG$.
+  Also $\emptyset \not\in \calG$ since $X \setminus \emptyset = X \in \calF$.
+
+  Now let $A \in \calG$ and $A \subseteq B \subseteq X$.
+  If $X \setminus B \in \calF$, then we would have $X \setminus A \in \calF$ too.
+  Therefore we have that $B \in \calG$.
+
+  Instead of showing condition (3) of Definition \ref{defn:grill}(a) we prove that $\calG$ satisfies condition (3) of Proposition \ref{prop:alt3}.
+  Let $A \cup B \in \calG$, then $X \setminus (A \cup B) \not\in \calF$.
+  If $X \setminus A \in \calF$ and $X \setminus B \in \calF$, then $(X \setminus A) \cap (X \setminus B) \in \calF$.
+  Therefore either $X \setminus A \not\in \calF$ or $X \setminus B \not\in \calF$, that is, either $A \in \calG$ or $B \in \calG$.
+
+  (b)
+  Let $A \in \calG$ and $B \in \calF$.
+  If $A \cap B = \emptyset$, then $B \subseteq X \setminus A$ and so $X \setminus A \in \calF$, a contradiction. 
+  Therefore $A \cap B \ne \emptyset$.
+
+  Now let $A \subseteq X$ such that for all $B \in \calF$, $A \cap B \ne \emptyset$.
+  Then it follows immediately that $X \setminus A \not\in \calF$, that is, $A \in \calG$.
+
+  (c)
+  Let $A \in \calG$, then by (b) $\calF \cup \{A\}$ has f.i.p. and so there exists a filter $\calF'$ that contains $\calF \cup \{A\}$.
+  
+  Now let $\calF'$ be a finer filter than $\calF$ and let $A \in \calF'$. 
+  Since $\calF \subseteq \calF'$ and $\emptyset \ne \calF'$ we have that for all $B \in \calF$, $A \cap B \ne \emptyset$.
+  Hence by applying (b) we are done.
+\end{proof}
+\begin{rmk}
+  From Proposition \ref{prop:FltGrl} (b) or (c) we see that the grill associated with a given filter is simply the collection of all sets we can use to form a filter finer than our given filter.
+  However it follows from Proposition \ref{prop:duality}, and working with simply examples shows, that as we generate finer and finer filters, the corresponding grills become coarser.
+\end{rmk}
+
+\begin{prop}
+  \label{prop:GrlFlt}
+  Let $\calG$ be grill on $X$ and put $F(\calG) = \{\, A \in \calG : X \setminus A \not\in \calG \,\}$.
+  \begin{itemize}
+    \item[(a)] Then $F(\calG)$ is a filter on $X$.
+      We call the filter $F(\calG)$ the \textsl{filter associated with the grill $\calG$}.
+    \item[(b)] $F(\calG) = \{\, A \in \calG : \mbox{$A \cap B \in \calG$ for all $B \in \calG$} \,\}$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  For notational convenience put $\calF = F(\calG)$.
+
+  (a)
+  Since $X \setminus X = \emptyset \not\in \calG$ we have that $X \in \calF$ and so $\emptyset \ne \calF$.
+  Also since $X \setminus \emptyset = X \in \calG$, we have that $\emptyset \not\in \calF$.
+
+  Now let $A$ and $B$ be elements of $\calF$, that is, $X \setminus A$ and $X \setminus B$ are not in $\calG$.
+  From Proposition \ref{prop:alt3} it follows that $X \setminus (A \cap B) \not\in \calG$, that is, $A \cap B \in \calF$. 
+
+  Let $A \in \calF$ and $A \subseteq B \subseteq X$.
+  Since $X \setminus B \subseteq X \setminus A$ and $X \setminus A \not\in \calG$, it follows from Definition \ref{defn:grill}(a) that $X \setminus B \not\in \calG$, that is, $B \in \calF$.
+
+  (b)
+  Let $A \in \calF$ and $B \in \calG$.
+  Suppose that $A \cap B \not\in \calG$, then $X \setminus (A \cap B) \in \calF$.
+  Hence $\bigl( (X \setminus A) \cup (X \setminus B) \bigr) \cap A \in \calF$, that is, $\emptyset \cup \bigl( (X \setminus B) \cap A) \bigr) \in \calF$.
+  However $(X \setminus B) \cap A \in \calF$ if and only if $X \setminus \bigl( X \setminus (B \cap A) \bigr) \not\in \calG$, that is, $B \cup (X \setminus A) \not\in \calG$.
+  But this is a contradiction since $B \in \calG$ and $B \subseteq B \cup (X \setminus A)$.
+  
+  Now let $A \in \calG$ such that $A \cap B \in \calG$ for all $B \in \calG$.
+  Since $\emptyset \not\in \calG$ it follows that $X \setminus A \not\in \calG$, that is, $A \in \calF$.
+\end{proof}
+
+We now give an easy result that asserts that the functions $G$ and $F$ implicitly defined in Propositions \ref{prop:FltGrl} and \ref{prop:GrlFlt} are one-to-one from the set of all filters onto the set of grills.
+
+\begin{prop}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(a)] If $\calG$ is a grill on $X$, then $\calG = G\bigl(F(\calG)\bigr)$.
+    
+    \item[(b)] If $\calF$ be a filter on $X$, then $\calF = F\bigl(G(\calF)\bigr)$.
+  \end{itemize}
+\end{prop}
+
+\begin{defn}
+  Let $\calF$ be a filter on $X$ and let $\calG$ be a grill on $X$.
+  We say $\calF$ and $\calG$ are \textsl{associated} if and only if $\calF = F(\calG)$ or $\calG = G(\calF)$. 
+\end{defn}
+
+With the relation of association we have the following duality type result for filters and grills.
+
+\begin{prop}
+  \label{prop:duality}
+  Let the filter $\calF_1$ be associated with the grill $\calG_1$, and let the filter $\calF_2$ be associated with the grill $\calG_2$.
+  Then $\calF_1 \subseteq \calF_2$ if and only if $\calG_2 \subseteq \calG_1$.
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $A \in \calG_2$, that is, $X \setminus A \not\in \calF_2$.
+  Since $\calF_1 \subseteq \calF_2$ we have $X \setminus A \not\in \calF_1$ too.
+  Therefore $A \in \calG_1$.
+
+  ($\Leftarrow$)
+  Let $A \in \calF_1$.
+  If $A \not\in \calF_2$, then $X \setminus A \in \calG_2$ and (by assumption) $X \setminus A \in \calG_1$, that is, $A \not\in \calF_1$, a contradiction.
+  Therefore $A \in \calF_2$.
+\end{proof}
+
+\begin{prop}
+  A grill $\calG$ is a filter if and only if $F(\calG)$ is an ultrafilter.
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $A \subseteq X$.
+  We show that either $A \in F(\calG)$ or $X \setminus A \in F(\calG)$.
+  Suppose that $A \not\in F(\calG)$, that is, assume that either $A \not\in \calG$ or $A \in \calG$ and $X \setminus A \in \calG$.
+  However by hypothesis, $\calG$ is a filter and so we cannot have both $A \in \calG$ and $X \setminus A \in \calG$.
+  Since $A \not\in \calG$ and $X \in \calG$ we have that $X \setminus A \in \calG$ and so $X \setminus A \in F(\calG)$.
+
+  ($\Leftarrow$)
+  It suffices to show that $\calG$ is closed under finite intersections.
+  To this end let $A$ and $B$ be elements of $\calG$.
+  However suppose that $A \cap B \not\in \calG$.
+  If $A \cap B \in F(\calG)$, then $A \cap B \in \calG$.
+  Hence we can assume that $A \cap B \not\in F(\calG)$.
+  Therefore since $F(\calG)$ is an ultrafilter we have that $(X \setminus A) \cup (X \setminus B) = X \setminus (A \cap B) \in F(\calG)$.
+  Also since $F(\calG)$ is an ultrafilter either $X \setminus A \in F(\calG)$ or $X \setminus B \in F(\calG)$. 
+  This last sentence implies that either $A \not\in \calG$ or $B \not\in \calG$, a contradiction.
+\end{proof}
+\begin{cor}
+  Let $\calU$ be a filter.
+  $\calU$ is an ultrafilter if and only if $\calU = G(\calU)$.
+\end{cor}
+\begin{proof}
+  Let $\calU$ be an ultrafilter.
+  It's immediate that $\calU \subseteq G(\calU)$.
+  Let $A \in G(\calU)$, that is, $X \setminus A \not\in \calU$. 
+  Since $X \setminus A \not\in \calU$ we must have $A \in \calU$.
+
+  Now suppose that $\calU$ is a filter with $\calU = G(\calU)$.
+  Then $\calU = F\bigl(G(\calU)\bigr)$ is an ultrafilter.
+\end{proof}
+
+We now shift our attention to grill bases.
+While grill bases are easier to describe then grills we shall see that in Proposition \ref{prop:GrillB}(c) that there is generally no coarsest grill that contains a grill base.
+(This negative result is in contrast to the fact that there is a coarsest filter that contains a filter base).
+
+\begin{defn}
+  Let $X$ be a nonempty set.
+  \begin{itemize}
+    \item[(b)] We call $\calB \subseteq \calP(X)$ a \textsl{grill base on $X$} if and only if $\calB$     satisfies the following two conditions:
+      \begin{itemize}
+        \item[(1)] $\emptyset \ne \calB$ and $\emptyset \not\in \calB$.
+
+        \item[(2)] If $A \in \calB$ and $A \subseteq B \subseteq X$, then $B \in \calB$.
+      \end{itemize}
+
+    \item[(c)] We call $\calS \subseteq \calP(X)$ a \textsl{grill subbase} if and only if $\emptyset \ne \calS$ and $\emptyset \not\in \calS$. 
+  \end{itemize}
+\end{defn}
+
+\begin{prop}
+  \label{prop:grlBasePhi}
+  Let $\calB$ be a grill base on $X$ and put $\Phi = \{\, \calF : \mbox{$\calF \subseteq \calB$ is a filter} \,\}$.
+  Then $\Phi$ is nonempty, partially ordered by $\subseteq$, and every \mbox{$\subseteq$-chain} in $\Phi$ has an upper bound in $\Phi$.
+\end{prop}
+\begin{proof}
+  Since $X \in \calB$ and $\{X\}$ is a filter contained in $\calB$ we have $\{X\} \in \Phi$.
+  $\Phi$ is obviously partially ordered by $\subseteq$.
+  Let $\calC$ be a chain in $\Phi$, then $\bigcup\calC$ is a filter by Lemma \ref{lem:chainFlt} and $\bigcup\calC \subseteq \calB$.
+\end{proof}
+
+\begin{prop}
+  Let $\calB$ be a grill base on $X$ and let $\Phi$ be as in Proposition \ref{prop:grlBasePhi}.
+  Put 
+  \[
+    F(\calB) = \bigcap\{\, \calF : \mbox{$\calF$ is a maximal filter in $\Phi$} \,\}.
+  \]
+  Then $F(\calB)$ is a filter on $X$.
+  We call the filter $F(\calB)$ the \textsl{filter associated with the base $\calB$}.
+\end{prop}
+\begin{proof}[Proof Sketch]
+  By Zorn's Lemma the set $\Phi$ has maximal elements, and by Lemma \ref{lem:chainFlt} $F(\calB)$ is a filter on $X$.
+\end{proof}
+
+\begin{cor}
+  $G\bigl(F(\calB)\bigr)$ is a grill on $X$.
+  We call the grill $G\bigl(F(\calB)\bigr)$ the \textsl{grill associated with the base $\calB$}.
+\end{cor}
+
+\begin{prop}
+  \label{prop:GrillB}
+  Let $\calB$ be a grill base on $X$.
+  \begin{itemize}
+    \item[(a)] $F(\calB) = \{\, A \in \calB : \mbox{$A \cap B \in \calB$ for all $B \in \calB$} \,\}$.
+
+    \item[(b)] $\calB \subseteq G\bigl(F(\calB)\bigr)$.
+
+    \item[(c)] $\calB = \bigcap\{\, \calG : \mbox{$\calB \subseteq \calG$ and $\calG$ is a grill} \,\}$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  (a) 
+  Let $A \in F(\calB)$, then for every maximal filter $\calF \subseteq \calB$ we have $A \in \calF$. 
+  Let $B \in \calB$, then the set $\{\, C \in \calB : B \subseteq C \,\}$ is a (principal) filter contained in $\calB$.
+  By applying Zorn's Lemma, it follows that this filter is contained in a maximal filter $\calF \subseteq \calB$.
+  In particular, $A \cap B \in \calF$ and so $A \cap B \in \calB$.
+
+  Now let $A \in \calB$ such that for all $B \in \calB$, $A \cap B \in \calB$.
+  Suppose that there exists a maximal filter $\calF \subseteq \calB$ with $A \not\in \calF$. 
+  If $A \cap C \ne \emptyset$ for all $C \in \calF$, then $\calF \cup \{A\}$ is a filter subbase contained in $\calB$ that strictly contains the maximal filter $\calF$ in $\calB$.
+  Therefore there exists $C \in \calF$ such that $A \cap C = \emptyset$.
+  However in this case, $C \in \calB$, $\emptyset = A \cap C \in \calB$, a contradiction since $\emptyset \not\in \calB$.
+  Therefore we must have that $A$ is a member of every maximal filter contained in $\calB$.
+
+  (b)
+  Observe that $A \in G\bigl(F(\calB)\bigr)$ if and only if $X \setminus A \not\in F(\calB)$ if and only if $X \setminus A \not\in \calB$ or $X \setminus A \in \calB$ and there exists $B \in \calB$ such that $(X \setminus A) \cap B \not\in \calB$.
+  Let $A \in \calB$. 
+  If $X \setminus A \not\in \calB$, then we're done.
+  If $X \setminus A \in \calB$, then $(X \setminus A) \cap A = \emptyset \not\in \calB$.
+
+  (c)
+  Put
+  \[
+    \Gamma = \{\, \calG : \mbox{$\calB \subseteq \calG$ and $\calG$ is a grill} \,\}.
+  \]
+  First note that $\Gamma \ne \emptyset$ since by (b) $G\bigl(F(\calB)\bigr) \in \Gamma$.
+  The fact that $\calB \subseteq \bigcap\Gamma$ is clear.
+
+  Now suppose that $(\bigcap\Gamma) \setminus \calB \ne \emptyset$ and let $A \in (\bigcap\Gamma) \setminus \calB$.
+  Since $A \not\in \calB$, we have that $A \not\in F(\calB)$, and moreover $X \setminus A \in G\bigl(F(\calB)\bigr)$.
+  Let $\calF$ be the filter generated by $F(\calB) \cup \{X \setminus A\}$. 
+  Now $X \setminus A \in \calF$ and so $A \not\in G(\calF)$. 
+  To arrive at a contradiction we prove that $\calB \subseteq G(\calF)$.
+  To show that $\calB \subseteq G(\calF)$ it suffices to show that for every $B \in \calB$ and $C \in \calF$ we have $B \cap C \ne \emptyset$.
+  In order to show to this it suffices to show that for every $B \in \calB$ and every finite nonempty set $\calA \subseteq F(\calB) \cup \{X \setminus A\}$ we have $B \cap \bigcap\calA \ne \emptyset$.
+  So let $\calA \subseteq F(\calB) \cup \{X \setminus A\}$ be a finite nonempty subset with $|\calA| = n$.
+  Enumerate $\calA = \{D_1, D_2, \ldots, D_n\}$.
+  If $D_i \in F(\calB)$ for each $i \in \{1, 2, \ldots, n\}$, then we have that $B \cap \bigcap_{i=1}^n D_i \ne \emptyset$. 
+  Now without loss of generality suppose $D_n = X \setminus A$ and $D_i \in F(\calB)$ for each $i \in \{1, 2, \ldots, n-1\}$. 
+  Put $D = \bigcap_{i=1}^{n-1} D_i \in F(\calB)$.
+  Suppose that $B \cap D \cap (X \setminus A) = \emptyset$, then $B \cap D \subseteq A$.
+  Since $D \in F(\calB)$ we have that $B \cap D \in \calB$ and hence $A \in \calB$, a contradiction.
+  Therefore $B \cap D \cap (X \setminus A) \ne \emptyset$ and so $\calB \subseteq G(\calF)$.
+  However $G(\calF)$ is grill that contains $\calB$ with $A \not\in G(\calF)$, a contradiction. 
+\end{proof}
+
+Recall that given a collection of sets $\calA$ we let $\calA^\uparrow$ represent the set $\{\, B : \mbox{$A \subseteq B$ for some $A \in \calA$} \,\}$.
+
+\begin{prop}
+  \label{prop:GrillSb}
+  Let $\calS$ be a grill subbase on a set $X$.
+  Then $\calS^\uparrow$ and
+  \[
+    B(\calS) = \bigcap\{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}
+  \]
+  are both grill bases on $X$ and $\calS^\uparrow = B(\calS)$.
+  We call or $B(\calS)$ the \textsl{grill base associated with the grill subbase $\calS$}.
+\end{prop}
+\begin{proof}
+  The fact that $\calS^\uparrow$ is a grill base is clear.
+  Put $\Psi = \{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}$ and observe that $\Psi$ is nonempty since $\calS^\uparrow \in \Psi$. 
+  Put $B(\calS) = \bigcap\Psi$.
+
+  Now $B(\calS)$ is nonempty since $X \in \calB$ for every grill base and so in particular $X \in B(\calS)$.
+  Also since the empty set is not an element of any grill base we have that $\emptyset \not\in B(\calS)$.
+
+  Let $A \in B(\calS)$ and $A \subseteq B \subseteq X$. 
+  For every grill base $\calB$ with $\calS \subseteq \calB$ we have $A \in \calB$ and hence $B \in \calB$.
+  Therefore $B \in B(\calS)$.
+
+  Finally, we show that $B(\calS) = \calS^\uparrow$.
+  By construction, $B(\calS) \subseteq \calS^\uparrow$.
+  Let $A \in \calS^\uparrow$ and pick $B \in \calS$ such that $B \subseteq A$. 
+  Let $\calB$ be a grill base with $\calS \subseteq \calB$.
+  Since $B \in \calB$, we have that $A \in \calB$.
+  Therefore $A \in B(\calS)$.
+\end{proof}
+
+\begin{cor}
+  Let $\calS$ be a grill subbase on a set $X$.
+  Then $F(S^\uparrow)$ is a filter on $X$ which we call the \textsl{filter associated with the grill subbase $\calS$}; and $G\bigl(F(\calS^\uparrow)\bigr)$ is a grill on $X$ with $\calS \subseteq G\bigl(F(\calS^\uparrow)\bigr)$ which we call the \textsl{grill associated with the grill subbase $\calS$}. 
+\end{cor}
+\begin{proof}
+  The assertions that $F(\calS^\uparrow)$ is a filter and $G\bigl(F(\calS^\uparrow)\bigr)$ is a grill is follows immediately.
+  To see that $\calS \subseteq G\bigl(F(\calS^\uparrow)\bigr)$ observe that $\calS \subseteq \calS^\uparrow$.
+\end{proof}
+
+With a grill subbase we have a simple and trivial way to generate filters.
+Therefore if we are trying to study a nonempty collection of sets that doesn't contain the empty set, then it may be easier to study the associated filter.
+In the next section we give a definition for a special type of grill subbase for which studying the corresponding filters has been successful.
+
+
+\section{Partition Regularity}
+
+\begin{defn}
+  Let $\calS$ be a grill subbase on some nonempty set.
+  We say that the $\calS$ is \textsl{partition regular} if and only if whenever $\calA$ is a finite collection of sets with $\bigcup\calA \in \calS$, then there exist $A \in \calA$ and $B \in \calS$ such that $B \subseteq A$.
+\end{defn}
+\begin{rmk}
+Partition regularity roughly asserts that some property of some set $X$, here represented by members of $\calS$, occurs a ``large'' number of times in $X$.
+In fact so large, that no matter how we finitely divide up $X$, at least one cell in the division has our specified property. 
+\end{rmk}
+
+The following important theorem, taken from \cite[Theorem 3.11]{Hindman:1998fk}, shows the intimate connection between partition regular sets and ultrafilters.
+
+\begin{thm}
+  Let $X$ be a set and $\calS$ a grill subbase on $X$.
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $\calS$ is partition regular.
+    \item[(b)] $\calS^\uparrow$ is partition regular.
+    \item[(c)] $\calS^\uparrow$ is a grill.
+    \item[(d)] If $\emptyset \ne\calA \subseteq \calP(X)$ has the property that every finite nonempty subfamily of $\calA$ has an intersection in $\calS^\uparrow$, then there is an ultrafilter $\calU$ on $X$ with $\calA \subseteq \calU \subseteq \calS^\uparrow$.
+    \item[(e)] If $A \in \calS$, then there is some ultrafilter $\calU$ on $X$ such that $A \in \calU \subseteq \calS^\uparrow$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  $(a) \Rightarrow (b)$
+  Clearly $\calS^\uparrow$ is a grill subbase since $\calS$ is one.
+  Let $\calA$ be a finite collection of sets with $\bigcup\calA \in \calS^\uparrow$.
+  Pick $B \in \calS$ such that $B \subseteq \bigcup\calA$. 
+  Since $\bigcup_{A \in \calA} (A \cap B) = B \in \calS$ and $\calS$ is partition regular, we may pick $C \in \calS$ and $A \in \calA$ such that $C \subseteq A \cap B$. 
+  By definition of $\calS^\uparrow$ we have that $A \cap B \in \calS^\uparrow$ and $A \in \calS^\uparrow$.
+
+  $(b) \Rightarrow (c)$
+  By Proposition \ref{prop:GrillSb}, $\calS^\uparrow$ is a grill base.
+  To see that $\calS^\uparrow$ is a grill let $A$ and $B$ be subsets of $X$ with $A \cup B \in \calS^\uparrow$.
+  Since $\calS^\uparrow$ is partition regular, we may, without loss of generality, assume that there exists $C \in \calS^\uparrow$ with $C \subseteq A$.
+  Hence $A \in \calS^\uparrow$.
+  Therefore $\calS^\uparrow$ is a grill.
+
+  $(c) \Rightarrow (d)$
+  By hypothesis $\calS^\uparrow$ is a grill and so $F(\calS^\uparrow)$ is a filter with $F(\calS^\uparrow) \subseteq G\bigl(F(\calS^\uparrow)\bigr) = \calS^\uparrow$.
+  By assumption it follows that $F(\calS^\uparrow) \cup \calA$ has f.i.p. so let $\calF$ be the filter generated by $F(\calS^\uparrow) \cup \calA$. 
+  Since $\calF$ is a finer filter than $F(\calS^\uparrow)$ we have that $G(\calF) \subseteq \calS^\uparrow$. 
+  Therefore there exists an ultrafilter $\calU$ with $\calA \subseteq \calU \subseteq \calS^\uparrow$.
+
+  $(d) \Rightarrow (e)$
+  Put $\calA = \{A\}$.
+
+  $(e) \Rightarrow (a)$
+  Let $\calA$ be a finite nonempty family of sets with $\bigcup\calA \in \calS$. 
+  By hypothesis, there exists some ultrafilter $\calU$ on $X$ with $\bigcup\calA \in \calU \subseteq \calS^\uparrow$.
+  Since $\calU$ is an ultrafilter, we may pick $A \in \calA$ such that $A \in \calU$. 
+  Then since $\calU \subseteq \calS^\uparrow$, pick $B \in \calS$ such that $B \subseteq A$.
+  Therefore $\calS$ is partition regular.
+\end{proof}
+
+In this dissertation, we shall mainly be concerned with a pair $(S, \calS)$, where $S$ is a semigroup, $\calS$ is partition regular, and elements of $\calS$ are defined in terms of the algebraic structure of $S$.
+
+\section{Algebraic and Topological Semigroup Theory}
+Given our algebraic point-of-view we now give a introduction to algebraic semigroup theory.
+Since most of the material in this section is standard, we choose to omit the proofs.
+The interested reader can consult the article \cite{Hollings:2007uq} for a brief introduction or the monographs \cite{Clifford:1961fk} and \cite{Clifford:1967fk} for more extensive information. 
+For our purposes the semigroup theory contained in \cite[Chapters 1 and 2]{Hindman:1998fk} will suffice. 
+
+\begin{defn}
+  Let $S$ be a nonempty set, let $\cdot \colon S \times S \to S$ be
+  a binary operation on $S$, and let $J \subseteq S$ be a nonempty
+  subset of $S$.
+  \begin{itemize}
+    \item[(a)] We call the pair $(S, \cdot)$ a \textsl{semigroup} if
+      and only if for all $x$, $y$, and $z \in S$, $(x \cdot y) \cdot
+      z = x \cdot (y \cdot z)$.
+    \item[(b)] For each $x \in S$ define the functions $\lambda_x
+      \colon S \to S$ and $\rho_x \colon S \to S$ by $\lambda_x(y) = x
+      \cdot y$ and $\rho_x(y) = y \cdot x$, respectively.
+    \item[(c)] We call an element $x \in S$ \textsl{idempotent} if and
+      only if $x\cdot x = x$. 
+    \item[(d)] We say $J$ is a \textsl{left ideal (of S)} if and only
+      if $S \cdot J \subseteq J$.
+      A left ideal is a \textsl{minimal left ideal} if and only if the
+      only left ideal it contains is itself.
+    \item[(e)] We say $J$ is a \textsl{right ideal (of S)} if and only
+      if $J \cdot S \subseteq J$.
+      A right ideal is a \textsl{minimal right ideal} if and only if the
+      only right ideal it contains is itself.
+    \item[(f)] We say $J$ is a \textsl{(two-sided) ideal (of S)} if and only
+      if $J$ is both a left ideal and right ideal.
+      An ideal is a \textsl{minimal ideal} if and only if the only
+      ideal it contains is itself.
+  \end{itemize}
+\end{defn}
+
+
+The following two easy results show that a semigroup contains at most one minimal ideal, and that if a semigroup those has a minimal ideal, then this ideal is contained in every ideal of our semigroup.
+
+\begin{thm}
+  Let $S$ be a semigroup.
+  If $J_1$ and $J_2$ are minimal ideals of $S$, then $J_1 = J_2$.
+\end{thm}
+\begin{proof}
+  Follows from \cite[Lemma 1.29]{Hindman:1998fk}.
+\end{proof}
+\begin{thm}
+  Let $S$ be a semigroup with the minimal ideal $J$. 
+  If $I$ is an ideal of $S$, then $J \subseteq I$.
+\end{thm}
+\begin{proof}
+  \cite[Lemma 1.49]{Hindman:1998fk}
+\end{proof}
+
+With these results we are justified in making the following important definition.
+\begin{defn}
+  Let $(S,\cdot)$ be a semigroup. 
+  We call the minimal ideal of $S$ the \textsl{smallest ideal} and denote it by $K(S)$.%
+  \endnote{
+    The notation of $K(S)$ denoting the smallest ideal comes from the Russian mathematician Suschkewitsch.
+    He called the smallest ideal the \textsl{kernel} of the semigroup.
+    Suschkewitsch, based off of the description given in \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
+  }
+\end{defn}
+Unfortunately not all semigroups have a smallest ideal or idempotents. 
+However, we will only be concerned with a certain class of topological semigroups that has both of these objects.
+
+\begin{defn}
+  A \textsl{compact right-topological semigroup} is a triple $(S,\calT, \cdot)$ such that $(S, \calT)$ is a compact Hausdorff space, $(S, \cdot)$ is a semigroup, and for every $x \in S$, $\rho_x \colon S \to S$ is continuous. 
+\end{defn}
+
+\begin{thm}
+  Compact right-topological semigroups contains idempotents and the smallest ideal.
+\end{thm}
+\begin{proof}
+  The existence of idempotents and the smallest ideal is proved in \cite[Theorem 2.5]{Hindman:1998fk} and \cite[Theorem 2.8]{Hindman:1998fk}, respectively.
+\end{proof}
+
+
+
+
+
+\section{Stone-\v{C}ech Compactification of a Discrete Space}
+\section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
+\section{Ramsey Theoretic Motivation}
+\section*{Open Problems}
+\section{Ultrafilters and Partition Regularity}
+
+% While Ramsey's Theorem is important and provides a good example of a
+% partition regular pair $(X, \calR)$, in this dissertation we will
+% mainly be considering partition regular sets where the underlying set
+% $X$ has an algebraic structure of a semigroup and elements in $\calR$
+% are defined in terms of this structure. 
+
+\begin{schur}
+  Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
+  Then there exist $i \in \{1, 2, \ldots, r\}$ and $x$, $y$, and $z
+  \in \bbN$ such that $\{\, x, y, x+y \,\} \subseteq C_i$.
+\end{schur}
+
+\begin{vdw}
+  Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
+  Then for every $\ell \in \bbN$, there exist $i \in \{1, 2, \ldots,
+  r\}$ and $a$, $d \in \bbN$ such that $\{\, a, a+d, \ldots, a+\ell d
+  \,\} \subseteq C_i$.
+\end{vdw}
+
+% Endnotes 
+\theendnotes
+
+% Things referenced in the preliminaries chapter. Eventually this will
+% placed in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+
+\end{document}
