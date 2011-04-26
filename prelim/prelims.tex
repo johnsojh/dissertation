@@ -661,35 +661,45 @@ While grill bases are easier to describe then grills we shall see that in Propos
   However $G(\calF)$ is grill that contains $\calB$ with $A \not\in G(\calF)$, a contradiction. 
 \end{proof}
 
+Recall that given a collection of sets $\calA$ we let $\calA^\uparrow$ represent the set $\{\, B : \mbox{$A \subseteq B$ for some $A \in \calA$} \,\}$.
+
 \begin{prop}
+  \label{prop:GrillSb}
   Let $\calS$ be a grill subbase on a set $X$.
   Then $\calS^\uparrow$ and
   \[
     B(\calS) = \bigcap\{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}
   \]
-  are both grill bases on $X$.
-  We call $\calS^\uparrow$ or $B(\calS)$ the \textsl{grill base associated with the grill subbase $\calS$}.
+  are both grill bases on $X$ and $\calS^\uparrow = B(\calS)$.
+  We call or $B(\calS)$ the \textsl{grill base associated with the grill subbase $\calS$}.
 \end{prop}
 \begin{proof}
   The fact that $\calS^\uparrow$ is a grill base is clear.
-  Put $\Psi = \{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}$ and observe that $\Psi$ is nonempty since it has $\{\, B \subseteq X : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}$ as a member.
-  Hence let $B(\calS) = \bigcap\Psi$.
+  Put $\Psi = \{\, \calB : \mbox{$\calS \subseteq \calB$ and $\calB$ is a grill base} \,\}$ and observe that $\Psi$ is nonempty since $\calS^\uparrow \in \Psi$. 
+  Put $B(\calS) = \bigcap\Psi$.
 
   Now $B(\calS)$ is nonempty since $X \in \calB$ for every grill base and so in particular $X \in B(\calS)$.
-  Also since the empty set is not an element of any grill base we have that $\emptyset \not\in \calB$ for every grill base we have $\emptyset \not\in B(\calS)$.
+  Also since the empty set is not an element of any grill base we have that $\emptyset \not\in B(\calS)$.
 
   Let $A \in B(\calS)$ and $A \subseteq B \subseteq X$. 
   For every grill base $\calB$ with $\calS \subseteq \calB$ we have $A \in \calB$ and hence $B \in \calB$.
   Therefore $B \in B(\calS)$.
+
+  Finally, we show that $B(\calS) = \calS^\uparrow$.
+  By construction, $B(\calS) \subseteq \calS^\uparrow$.
+  Let $A \in \calS^\uparrow$ and pick $B \in \calS$ such that $B \subseteq A$. 
+  Let $\calB$ be a grill base with $\calS \subseteq \calB$.
+  Since $B \in \calB$, we have that $A \in \calB$.
+  Therefore $A \in B(\calS)$.
 \end{proof}
 
 \begin{cor}
   Let $\calS$ be a grill subbase on a set $X$.
-  Then $F\bigl(B(\calS)\bigr)$ is a filter on $X$ which we call the \textsl{filter associated with the grill subbase $\calS$}; and $G\Bigl(F\bigl(B(\calS)\bigr)\Bigr)$ with $\calS \subseteq G\Bigl(F\bigl(B(\calS)\bigr)\Bigr)$ is a grill on $X$ which we call the \textsl{grill associated with the grill subbase $\calS$}. 
+  Then $F(S^\uparrow)$ is a filter on $X$ which we call the \textsl{filter associated with the grill subbase $\calS$}; and $G\bigl(F(\calS^\uparrow)\bigr)$ is a grill on $X$ with $\calS \subseteq G\bigl(F(\calS^\uparrow)\bigr)$ which we call the \textsl{grill associated with the grill subbase $\calS$}. 
 \end{cor}
 \begin{proof}
-  The assertions that $F\bigl(B(\calS)\bigr)$ is a filter and $G\Bigl(F\bigl(B(\calS)\bigr)\Bigr)$ is a grill is follows immediately.
-  To see that $\calS \subseteq G\Bigl(F\bigl(B(\calS)\bigr)\Bigr)$ observe that $\calS \subseteq B(\calS)$.
+  The assertions that $F(\calS^\uparrow)$ is a filter and $G\bigl(F(\calS^\uparrow)\bigr)$ is a grill is follows immediately.
+  To see that $\calS \subseteq G\bigl(F(\calS^\uparrow)\bigr)$ observe that $\calS \subseteq \calS^\uparrow$.
 \end{proof}
 
 With a grill subbase we have a simple and trivial way to generate filters.
@@ -703,86 +713,61 @@ In the next section we give a definition for a special type of grill subbase for
   Let $\calS$ be a grill subbase on some nonempty set.
   We say that the $\calS$ is \textsl{partition regular} if and only if whenever $\calA$ is a finite collection of sets with $\bigcup\calA \in \calS$, then there exist $A \in \calA$ and $B \in \calS$ such that $B \subseteq A$.
 \end{defn}
-
-\begin{prop}
-  \label{prop:ParRegUp}
-  Let $\calS$ be a grill subbase on some nonempty set.
-  Put 
-  \[
-    \calB = \calS^\uparrow =\{\, B : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}.
-  \]
-  The following statements are equivalent.
-  \begin{itemize}
-    \item[(a)] $\calS$ is partition regular.
-    \item[(b)] $\calB$ is a partition regular.
-  \end{itemize}
-\end{prop}
-\begin{proof}
-  ($\Rightarrow$)
-  Clearly $\calB$ is a grill base. 
-  Let $\calA$ be a finite collection of sets with $\bigcup\calA \in \calB$.
-  Then there exists $A \in \calS$ such that $A \subseteq \bigcup\calA$.
-  Therefore $\bigcup_{B \in \calA} (A \cap B) = A \in \calS$ and so we may pick $B \in \calA$ and $C \in \calS$ such that $C \subseteq A \cap B$. 
-  Hence $A \cap B \in \calB$ and so $A \in \calB$.
-
-  ($\Leftarrow$)
-  Let $\calA$ be finite collection of sets with $\bigcup\calA \in \calS$, then $\calA \in \calB$.
-  Since $\calB$ is a partition regular pick $A \in \calA$ and $B \in \calB$ such that $B \subseteq A$.
-  Pick $C \in \calS$ such that $C \subseteq B$.
-  Therefore $C \subseteq A$ and this completes the proof.
-\end{proof}
-\begin{cor}
-  Let $\calS$ be a grill subbase on some nonempty set.
-  Put 
-  \[
-    \calB = \calS^\uparrow =\{\, B : \mbox{$A \subseteq B$ for some $A \in \calS$} \,\}.
-  \]
-  The following statements are equivalent.
-  \begin{itemize}
-    \item[(a)] $\calS$ is partition regular.
-    \item[(b)] $\calB$ is a grill.
-  \end{itemize}
-\end{cor}
 \begin{rmk}
-Partition regularity roughly asserts that some property of $X$, here represented by members of $\calR$, occurs a ``large'' number of times in $X$.
+Partition regularity roughly asserts that some property of some set $X$, here represented by members of $\calS$, occurs a ``large'' number of times in $X$.
 In fact so large, that no matter how we finitely divide up $X$, at least one cell in the division has our specified property. 
-One of the easiest partition regular property to observe is the infinite form of the pigeonhole principle.
 \end{rmk}
 
-The following theorem, taken from \cite[Theorem 3.11]{Hindman:1998fk} shows the intimate connection between partition regular sets and ultrafilters.
+The following important theorem, taken from \cite[Theorem 3.11]{Hindman:1998fk}, shows the intimate connection between partition regular sets and ultrafilters.
 
 \begin{thm}
   Let $X$ be a set and $\calS$ a grill subbase on $X$.
-  Put $\calB = \calS^\uparrow$.
   The following statements are equivalent.
   \begin{itemize}
     \item[(a)] $\calS$ is partition regular.
     \item[(b)] $\calS^\uparrow$ is partition regular.
     \item[(c)] $\calS^\uparrow$ is a grill.
-    \item[(d)] If $\calA \subseteq \calP(X)$ has the property that every finite nonempty subfamily of $\calA$ has an intersection in $\calS^\uparrow$, then there is an ultrafilter $\calU$ on $X$ with $\calA \subseteq \calU \subseteq \calS^\uparrow$.
+    \item[(d)] If $\emptyset \ne\calA \subseteq \calP(X)$ has the property that every finite nonempty subfamily of $\calA$ has an intersection in $\calS^\uparrow$, then there is an ultrafilter $\calU$ on $X$ with $\calA \subseteq \calU \subseteq \calS^\uparrow$.
     \item[(e)] If $A \in \calS$, then there is some ultrafilter $\calU$ on $X$ such that $A \in \calU \subseteq \calS^\uparrow$.
   \end{itemize}
 \end{thm}
 \begin{proof}
-  $(a) \iff (b)$ and $(b) \iff (c)$ 
-  This is Proposition \ref{prop:ParRegUp}.
+  $(a) \Rightarrow (b)$
+  Clearly $\calS^\uparrow$ is a grill subbase since $\calS$ is one.
+  Let $\calA$ be a finite collection of sets with $\bigcup\calA \in \calS^\uparrow$.
+  Pick $B \in \calS$ such that $B \subseteq \bigcup\calA$. 
+  Since $\bigcup_{A \in \calA} (A \cap B) = B \in \calS$ and $\calS$ is partition regular, we may pick $C \in \calS$ and $A \in \calA$ such that $C \subseteq A \cap B$. 
+  By definition of $\calS^\uparrow$ we have that $A \cap B \in \calS^\uparrow$ and $A \in \calS^\uparrow$.
 
-  $(c) \Rightarrow (d)$ 
-  Since $\calA$ is a filter subbase, we let $\calF$ be the filter generated by $\calA$.
-  By construction we have that $\calF \subseteq \calS^\uparrow$. 
-  Since $\calS^\uparrow$ is a grill, there exists an ultrafilter $\calU$ on $X$ with $\calF \subseteq \calU \subseteq \calS^\uparrow$.
+  $(b) \Rightarrow (c)$
+  By Proposition \ref{prop:GrillSb}, $\calS^\uparrow$ is a grill base.
+  To see that $\calS^\uparrow$ is a grill let $A$ and $B$ be subsets of $X$ with $A \cup B \in \calS^\uparrow$.
+  Since $\calS^\uparrow$ is partition regular, we may, without loss of generality, assume that there exists $C \in \calS^\uparrow$ with $C \subseteq A$.
+  Hence $A \in \calS^\uparrow$.
+  Therefore $\calS^\uparrow$ is a grill.
+
+  $(c) \Rightarrow (d)$
+  By hypothesis $\calS^\uparrow$ is a grill and so $F(\calS^\uparrow)$ is a filter with $F(\calS^\uparrow) \subseteq G\bigl(F(\calS^\uparrow)\bigr) = \calS^\uparrow$.
+  By assumption it follows that $F(\calS^\uparrow) \cup \calA$ has f.i.p. so let $\calF$ be the filter generated by $F(\calS^\uparrow) \cup \calA$. 
+  Since $\calF$ is a finer filter than $F(\calS^\uparrow)$ we have that $G(\calF) \subseteq \calS^\uparrow$. 
+  Therefore there exists an ultrafilter $\calU$ with $\calA \subseteq \calU \subseteq \calS^\uparrow$.
 
   $(d) \Rightarrow (e)$
   Put $\calA = \{A\}$.
 
-  $(d) \Rightarrow (c)$.
-  Let $A \cup B \in \calS^\uparrow$. 
-  Pick an ultrafilter on $X$ such that $A \cup B \in \calU \in \calS^\uparrow$.
-  Then either $A \in \calU$ or $B \in \calU$, that is, either $A \in \calU$ or $B \in \calU$.  
+  $(e) \Rightarrow (a)$
+  Let $\calA$ be a finite nonempty family of sets with $\bigcup\calA \in \calS$. 
+  By hypothesis, there exists some ultrafilter $\calU$ on $X$ with $\bigcup\calA \in \calU \subseteq \calS^\uparrow$.
+  Since $\calU$ is an ultrafilter, we may pick $A \in \calA$ such that $A \in \calU$. 
+  Then since $\calU \subseteq \calS^\uparrow$, pick $B \in \calS$ such that $B \subseteq A$.
+  Therefore $\calS$ is partition regular.
 \end{proof}
 
+In this dissertation, we shall mainly be concerned with a pair $(S, \calS)$, where $S$ is a semigroup, $\calS$ is partition regular, and elements of $\calS$ are defined in terms of the algebraic structure of $S$.
 
 \section{Algebraic Semigroup Theory}
+Given our algebraic point-of-view we now give a brief overview of algebraic semigroup theory.
+
 \section{Stone-\v{C}ech Compactification of a Discrete Space}
 \section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
 \section{Ramsey Theoretic Motivation}
