@@ -782,23 +782,25 @@ For our purposes the semigroup theory contained in \cite[Chapters 1 and 2]{Hindm
     \item[(b)] For each $x \in S$ define the functions $\lambda_x
       \colon S \to S$ and $\rho_x \colon S \to S$ by $\lambda_x(y) = x
       \cdot y$ and $\rho_x(y) = y \cdot x$, respectively.
-    \item[(c)] We call an element $x \in S$ \textsl{idempotent} if and
+
+    \item[(c)] Given $A \subseteq S$ and $x \in S$ we put $x^{-1}A = \lambda_x^{-1}[A]$, that is, $x^{-1}A = \{\, y \in S : xy \in A \,\}$; and we put $Ax^{-1} = \rho_x^{-1}[A]$, that is, $Ax^{-1} = \{\, y \in S : yx \in A \,\}$.
+
+    \item[(d)] We call an element $x \in S$ \textsl{idempotent} if and
       only if $x\cdot x = x$. 
-    \item[(d)] We say $J$ is a \textsl{left ideal (of S)} if and only
+    \item[(e)] We say $J$ is a \textsl{left ideal (of S)} if and only
       if $S \cdot J \subseteq J$.
       A left ideal is a \textsl{minimal left ideal} if and only if the
       only left ideal it contains is itself.
-    \item[(e)] We say $J$ is a \textsl{right ideal (of S)} if and only
+    \item[(f)] We say $J$ is a \textsl{right ideal (of S)} if and only
       if $J \cdot S \subseteq J$.
       A right ideal is a \textsl{minimal right ideal} if and only if the
       only right ideal it contains is itself.
-    \item[(f)] We say $J$ is a \textsl{(two-sided) ideal (of S)} if and only
+    \item[(g)] We say $J$ is a \textsl{(two-sided) ideal (of S)} if and only
       if $J$ is both a left ideal and right ideal.
       An ideal is a \textsl{minimal ideal} if and only if the only
       ideal it contains is itself.
   \end{itemize}
 \end{defn}
-
 
 The following two easy results show that a semigroup contains at most one minimal ideal, and that if a semigroup those has a minimal ideal, then this ideal is contained in every ideal of our semigroup.
 
@@ -843,29 +845,34 @@ However, we will only be concerned with a certain class of topological semigroup
 
 
 \section{Stone-\v{C}ech Compactification of a Discrete Space}
+
+\begin{defn}
+  Given a nonempty set $S$ with the discrete topology we let $\beta S$ be the collection of all ultrafilters on $S$. 
+\end{defn}
+
 \section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
+
+As stated earlier we are primarily interested in pairs $(S, \calS)$ where $S$ is a semigroup and $\calS$ is a partition regular set with elements of $\calS$ defined in terms of the algebraic structure of $S$.
+In practice it usually requires a great deal of ingenuity to prove, using the traditional combinatorial tools, anything of interest about $(S, \calS)$. 
+Therefore in this section we show how we can transform the essentially combinatorial problems of $(S, \calS)$ into algebraic-topological problems. 
+As well shall see this transformation has been remarkable successful.
+For instance the most well-known success of this transformation is the easy of proof of Hindman's Theorem \cite[Corollary 5.9]{Hindman:1998fk}.
+
+We now give a brief review of algebraic structure of the Stone-\v{C}ech compactification of a discrete semigroup.  
+Given a discrete semigroup $S$, that is, a semigroup with the discrete topology, we let $\beta S$ be the collection of all ultrafilters on $S$ and identify the principal ultrafilters with the points of $S$.
+More precisely, we define the injective function $e \colon S \to \beta S$ by $e(a) = \{\, A \subseteq S : a \in A \,\}$.
+For each $A \subseteq S$, we let $\overline{A} = \{\, p \in \beta S : A \in p \,\}$.
+Then $\{\, \overline{A} : A \subseteq S \,\}$ is a basis for a compact Hausdorff topology on $\beta S$ \cite[Theorem 3.18(a)]{Hindman:1998fk}. 
+Moreover with this topology $(e, \beta S)$ is the Stone-\v{C}ech compactification for the discrete space $S$ \cite[Theorem 3.27]{Hindman:1998fk}. 
+
+We can now extend the semigroup operation of $S$ to its Stone-\v{C}ech compactification in the following manner:  For all $p$, $q \in \beta S$, define $p \cdot q$ by $A \in p \cdot q$ if and only if $\{\, x \in S : x^{-1}A \in q \,\} \in p$. 
+This extension turns $\beta S$ into a semigroup \cite[Theorem 4.1, Theorem 4.4, and Theorem 4.12]{Hindman:1998fk}. 
+Moreover, this extension turns $\beta S$ into a compact right-topological semigroup \cite[Theorem 4.1(b)]{Hindman:1998fk}.
+
+In this dissertation, we shall focus on partition regular sets $\calS$ that transform into closed ideals of $\beta S$. 
+
 \section{Ramsey Theoretic Motivation}
 \section*{Open Problems}
-\section{Ultrafilters and Partition Regularity}
-
-% While Ramsey's Theorem is important and provides a good example of a
-% partition regular pair $(X, \calR)$, in this dissertation we will
-% mainly be considering partition regular sets where the underlying set
-% $X$ has an algebraic structure of a semigroup and elements in $\calR$
-% are defined in terms of this structure. 
-
-\begin{schur}
-  Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
-  Then there exist $i \in \{1, 2, \ldots, r\}$ and $x$, $y$, and $z
-  \in \bbN$ such that $\{\, x, y, x+y \,\} \subseteq C_i$.
-\end{schur}
-
-\begin{vdw}
-  Let $r \in \bbN$ and $\bbN = \bigcup_{i=1}^r C_i$.
-  Then for every $\ell \in \bbN$, there exist $i \in \{1, 2, \ldots,
-  r\}$ and $a$, $d \in \bbN$ such that $\{\, a, a+d, \ldots, a+\ell d
-  \,\} \subseteq C_i$.
-\end{vdw}
 
 % Endnotes 
 \theendnotes
