@@ -765,8 +765,82 @@ The following important theorem, taken from \cite[Theorem 3.11]{Hindman:1998fk},
 
 In this dissertation, we shall mainly be concerned with a pair $(S, \calS)$, where $S$ is a semigroup, $\calS$ is partition regular, and elements of $\calS$ are defined in terms of the algebraic structure of $S$.
 
-\section{Algebraic Semigroup Theory}
-Given our algebraic point-of-view we now give a brief overview of algebraic semigroup theory.
+\section{Algebraic and Topological Semigroup Theory}
+Given our algebraic point-of-view we now give a introduction to algebraic semigroup theory.
+Since most of the material in this section is standard, we choose to omit the proofs.
+The interested reader can consult the article \cite{Hollings:2007uq} for a brief introduction or the monographs \cite{Clifford:1961fk} and \cite{Clifford:1967fk} for more extensive information. 
+For our purposes the semigroup theory contained in \cite[Chapters 1 and 2]{Hindman:1998fk} will suffice. 
+
+\begin{defn}
+  Let $S$ be a nonempty set, let $\cdot \colon S \times S \to S$ be
+  a binary operation on $S$, and let $J \subseteq S$ be a nonempty
+  subset of $S$.
+  \begin{itemize}
+    \item[(a)] We call the pair $(S, \cdot)$ a \textsl{semigroup} if
+      and only if for all $x$, $y$, and $z \in S$, $(x \cdot y) \cdot
+      z = x \cdot (y \cdot z)$.
+    \item[(b)] For each $x \in S$ define the functions $\lambda_x
+      \colon S \to S$ and $\rho_x \colon S \to S$ by $\lambda_x(y) = x
+      \cdot y$ and $\rho_x(y) = y \cdot x$, respectively.
+    \item[(c)] We call an element $x \in S$ \textsl{idempotent} if and
+      only if $x\cdot x = x$. 
+    \item[(d)] We say $J$ is a \textsl{left ideal (of S)} if and only
+      if $S \cdot J \subseteq J$.
+      A left ideal is a \textsl{minimal left ideal} if and only if the
+      only left ideal it contains is itself.
+    \item[(e)] We say $J$ is a \textsl{right ideal (of S)} if and only
+      if $J \cdot S \subseteq J$.
+      A right ideal is a \textsl{minimal right ideal} if and only if the
+      only right ideal it contains is itself.
+    \item[(f)] We say $J$ is a \textsl{(two-sided) ideal (of S)} if and only
+      if $J$ is both a left ideal and right ideal.
+      An ideal is a \textsl{minimal ideal} if and only if the only
+      ideal it contains is itself.
+  \end{itemize}
+\end{defn}
+
+
+The following two easy results show that a semigroup contains at most one minimal ideal, and that if a semigroup those has a minimal ideal, then this ideal is contained in every ideal of our semigroup.
+
+\begin{thm}
+  Let $S$ be a semigroup.
+  If $J_1$ and $J_2$ are minimal ideals of $S$, then $J_1 = J_2$.
+\end{thm}
+\begin{proof}
+  Follows from \cite[Lemma 1.29]{Hindman:1998fk}.
+\end{proof}
+\begin{thm}
+  Let $S$ be a semigroup with the minimal ideal $J$. 
+  If $I$ is an ideal of $S$, then $J \subseteq I$.
+\end{thm}
+\begin{proof}
+  \cite[Lemma 1.49]{Hindman:1998fk}
+\end{proof}
+
+With these results we are justified in making the following important definition.
+\begin{defn}
+  Let $(S,\cdot)$ be a semigroup. 
+  We call the minimal ideal of $S$ the \textsl{smallest ideal} and denote it by $K(S)$.%
+  \endnote{
+    The notation of $K(S)$ denoting the smallest ideal comes from the Russian mathematician Suschkewitsch.
+    He called the smallest ideal the \textsl{kernel} of the semigroup.
+    Suschkewitsch, based off of the description given in \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
+  }
+\end{defn}
+Unfortunately not all semigroups have a smallest ideal or idempotents. 
+However, we will only be concerned with a certain class of topological semigroups that has both of these objects.
+
+\begin{defn}
+  A \textsl{compact right-topological semigroup} is a triple $(S,\calT, \cdot)$ such that $(S, \calT)$ is a compact Hausdorff space, $(S, \cdot)$ is a semigroup, and for every $x \in S$, $\rho_x \colon S \to S$ is continuous. 
+\end{defn}
+
+\begin{thm}
+  Compact right-topological semigroups contains idempotents and the smallest ideal.
+\end{thm}
+\begin{proof}
+  The existence of idempotents and the smallest ideal is proved in \cite[Theorem 2.5]{Hindman:1998fk} and \cite[Theorem 2.8]{Hindman:1998fk}, respectively.
+\end{proof}
+
 
 \section{Stone-\v{C}ech Compactification of a Discrete Space}
 \section{Algebra in the Stone-\v{C}ech Compactification of a Discrete Semigroup}
