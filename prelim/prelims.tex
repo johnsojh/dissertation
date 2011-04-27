@@ -22,13 +22,14 @@
 \newtheorem{up}[thm]{Ultrafilter Principle}
 \newtheorem{radoSelect}[thm]{Rado's Selection Lemma}
 \newtheorem{php}[thm]{Pigeonhole Principle}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
 
 % Unnumbered named theorems or results
 \newtheorem*{fact}{Fact}
 \newtheorem*{hj}{Hales-Jewett Theorem}
 
 \newtheorem*{ramsey}{Ramsey's Theorem}
-\newtheorem*{vdw}{Van der Waerden's Theorem}
+
 \newtheorem*{schur}{Schur's Theorem}
 
 \newtheorem{FST}[thm]{Hindman's Theorem}
@@ -868,10 +869,22 @@ Moreover with this topology $(e, \beta S)$ is the Stone-\v{C}ech compactificatio
 We can now extend the semigroup operation of $S$ to its Stone-\v{C}ech compactification in the following manner:  For all $p$, $q \in \beta S$, define $p \cdot q$ by $A \in p \cdot q$ if and only if $\{\, x \in S : x^{-1}A \in q \,\} \in p$. 
 This extension turns $\beta S$ into a semigroup \cite[Theorem 4.1, Theorem 4.4, and Theorem 4.12]{Hindman:1998fk}. 
 Moreover, this extension turns $\beta S$ into a compact right-topological semigroup \cite[Theorem 4.1(b)]{Hindman:1998fk}.
+Since $\beta S$ is a compact right-topological semigroup 
 
 In this dissertation, we shall focus on partition regular sets $\calS$ that transform into closed ideals of $\beta S$. 
 
-\section{Ramsey Theoretic Motivation}
+\section{Piecewise Syndetic Sets}
+One of the earliest Ramsey Theoretic result that still forms the basis for much of the contemporary research in the field is van der Waerden's Theorem.
+
+\begin{vdw}
+  Let $r \in \bbN$. 
+  If $\bbN = \bigcup_{i=1}^r C_i$, then for every $\ell \in \bbN$, there exists $i \in \{1, 2, \ldots, r\}$ and $a$, $d \in \bbN$ such that $\{a, a+d, \ldots, a+\ell d \,\} \subseteq C_i$.
+\end{vdw}
+\begin{rmk}
+  Van der Waerden's proof of his theorem in \cite{Van-der-Waerden:1927fk} uses a complicated, but elementary, combinatorial argument based on the pigeonhole principle and ``double induction.''
+  See \cite[Theorem 14.1 and Corollary 14.2]{Hindman:1998fk} for an algebraic proof of van der Waerden's Theorem.
+\end{rmk}
+
 \section*{Open Problems}
 
 % Endnotes 
