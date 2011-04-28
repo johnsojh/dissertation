@@ -1,0 +1,215 @@
+% Author: John H. Johnson
+% email: john.j.jr@gmail.com
+%
+% Brief description of file
+% -------------------------
+%
+% This is a chapter in my dissertation tentatively entitled "A New and
+% Simpler Central Sets Theorem".  The new and simpler part is due to a
+% different definition of J-sets, which in turns leads to a different
+% definition of C-sets.  Happily the new definition is equivalent to
+% the old definition.  Therefore no proofs need to be rewritten; but
+% there is value in rewriting the proofs, since as this chapter shows,
+% the rewritten proofs are often simpler than the old proofs.
+%
+% N.B. The new definition of J-sets essentially first appears in an
+% article, "Ramsey Theory in Noncommutative Semigroups", by Bergelson
+% and Hindman in their Theorem 2.6.
+
+\documentclass[12pt]{article}
+
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{color}
+\usepackage{endnotes}
+\usepackage{url}
+
+
+\usepackage[margin=1in]{geometry}
+
+\usepackage[doublespacing]{setspace}
+\usepackage{url}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+
+% Numbered theorems 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{up}[thm]{Ultrafilter Principle}
+\newtheorem{radoSelect}[thm]{Rado's Selection Lemma}
+\newtheorem{php}[thm]{Pigeonhole Principle}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem{hj}[thm]{Hales-Jewett Theorem}
+\newtheorem{shj}[thm]{Special Hales-Jewett Theorem}
+
+
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+
+
+
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+
+
+\theoremstyle{definition}
+
+% Numbered "definition" style theorem environments
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\AP}{\mathcal{AP}}
+\newcommand{\AL}{\mathcal{AL}}
+
+% Short names for calligraphic math letters.
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+
+\newcommand{\Pf}{\mathcal{P}_f}
+
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\section{$J$-sets}
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup.
+  \begin{itemize}
+    \item[(b)] For each $m \in \bbN$, define
+      \[
+        \calJ_m = \{\, (t_1, t_2, \ldots, t_m) \in \bbN^m : t_1 < t_2 < \cdots < t_m \,\}.
+      \]
+
+    \item[(b)] Put $\calT(S) = \setfunc{\bbN}{S}$.
+      If the semigroup is clear from context, we write $\calT$ instead of $\calT(S)$.
+
+    \item[(c)] For each $m \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$, and $f \in \calT$, put
+      \[
+        \textstyle
+        x(m, a, t, f) = \Bigl( \prod_{i=1}^m \bigl( a(i)f(t_i) \bigr) \Bigr)a(m+1).
+      \]
+
+    \item[(d)] We call a subset $A \subseteq S$ a \textsl{$J$-set (in $S$)} if and only if for every $F \in \Pf(\calT)$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for each $f \in F$ we have $x(m, a, t, f) \in A$.
+
+    \item[(d)] Put
+      \[
+        J(S) = \{\, p \in \beta S : \mbox{$A$ is a $J$-set for every $A \in p$} \,\}.
+      \]
+  \end{itemize}
+\end{defn}
+\begin{rmk}
+  Despite appearances to the contrary, I must point out that $J$-sets are \textsl{not} named after the author!
+\end{rmk}
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup.
+  If $J(S)$ is nonempty, then $J(S)$ is a compact two-sided ideal of $\beta S$.
+\end{thm}
+\begin{proof}
+  To show that $J(S)$ is compact it suffices to show that $J(S)$ is topologically closed in $\beta S$.
+  Let $p \not\in J(S)$ and pick $A \in p$ such that $A$ is not a $J$-set.
+  By definition of $J(S)$ we must have $\overline{A} \cap J(S) = \emptyset$.
+  Since $\overline{A}$ is a (basic) open neighborhood of $p$, it follows that $J(S)$ is topologically closed in $\beta S$.
+
+  Now let $p \in J(S)$ and $q \in \beta S$.
+  To see that $J(S)$ is an ideal, we show that $pq \in J(S)$ and $qp \in J(S)$. 
+
+  We first show that $pq \in J(S)$.
+  Let $F \in \Pf(\calT)$, let $A \in pq$, and put $B = \{\, x \in S : x^{-1}A \in q \,\}$.
+  Then $B \in p$ and so $B$ is a $J$-set.
+  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$ we have $x(m, a, t, f) \in B$.
+  By definition of $B$ this means that for all $f \in F$, $x(m, a, t, f)^{-1}A \in q$. 
+  Since $q$ is an ultrafilter and $F$ is finite, we have $\bigcap_{f \in F} x(m, a, t, f)^{-1}A \in q$, and moreover, $\bigcap_{f \in F} x(m, a, t, f)^{-1}A \ne \emptyset$.
+  Pick $b \in \bigcap_{f \in F} x(m, a, t, f)^{-1}A$ and define $c \in S^{m+1}$ by
+  \[
+    c =
+    \begin{cases}
+      a(j) & \mbox{if $j \in \{1, 2, \ldots, m\}$,} \\
+      a(m+1)b & \mbox{if $j = m+1$.}
+    \end{cases}
+  \]
+  Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $pq \in J(S)$.
+
+  Now we show that $qp \in J(S)$.
+  Again let $F \in \Pf(\calT)$, let $A \in qp$, and put $B = \{\, x \in S : x^{-1}A \in p \,\}$.
+  Then $B \in q$, and moreover $B \ne \emptyset$.
+  Pick $b \in B$, then $b^{-1}A \in p$ implies $b^{-1}A$ is a $J$-set.
+  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, we have $x(m, a, t, f) \in b^{-1}A$.
+  Define $c \in S^{m+1}$ by
+  \[
+    c =
+    \begin{cases}
+      ba(1) & \mbox{if $j =1$,} \\
+      a(j) & \mbox{if $j \in \{2, \ldots, m, m+1\}$.}
+    \end{cases}
+  \]
+  Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $qp \in J(S)$.
+\end{proof}
+
+Even though it is clear that every semigroup $S$ is a $J$-set, this easy fact doesn't imply that $J(S) \ne \emptyset$. 
+By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it suffices to show that $J$-sets are partition regular.
+
+\begin{lem}
+  Let $(S, \cdot)$ be a semigroup with $A_1 \subseteq S$ and $A_2 \subseteq S$.
+  If $A_1 \cup A_2$ is a $J$-set, then either $A_1$ is a $J$-set or $A_2$ is a $J$-set.
+\end{lem}
+\begin{proof}
+  Let $F \in \Pf(\calT)$, put $k = |F|$, and enumerate $F = \{f_1, f_2, \ldots, f_k\}$.
+  By the Hales-Jewett Theorem pick $n \in \bbN$, such that whenever $[k]^n$ is 2-colored there exists a variable word $w(\star)$ which begins and ends with a constant letter and there are no adjacent variable letters such that the combinatorial line $\bigl\{\, w(s) : s \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
+  (For instance, if $k = 4$ and $n = 12$, then $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1, \star, 2)$ is a variable word that begins and ends with a constant letter with no two adjacent variable letters.)
+
+  Fix $b \in S$ and for each $w = (x_1, x_2, \ldots, x_n) \in [k]^n$ define $g_w \in \calT$ by $g_w(t) = prod_{i=1}^m \bigl( f_{x_i}(nt + i) b\bigr)$ for each natural number $t$.
+  Since $[k]^n$ is finite we also have that $\{\, g_w : w \in [k]^n \,\} \in \Pf(\calT)$. 
+  By hypothesis $A_1 \cup A_2$ is a $J$-set, so we may pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $w \in [k]^n$, $x(m, a, t, g_w) \in A_1 \cup A_2$.
+  Define the function $\varphi \colon [k]^n \to \{1, 2\}$ as follows:
+  \[
+    \varphi(w) = 
+    \begin{cases}
+      1 & \mbox{if $x(m, a, t, g_w) \in A_1$, and}\\
+      2 & \mbox{otherwise.}
+    \end{cases}
+  \]
+  
+\end{proof}
+
+
+\section{Central Sets Theorem}
+
+% Endnotes 
+%\theendnotes
+
+% Things referenced in the preliminaries chapter. Eventually this will
+% placed in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+
+\end{document}
