@@ -199,6 +199,28 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
     \end{cases}
   \]
   
+  Since $\varphi$ is a 2-coloring of $[k]^n$, by the Hales-Jewett Theorem, there exists a variable word $w(\star)$ which begins and ends with a constant letter and there are no adjacent variable letters such that the combinatorial line $\bigl\{\, w(s) : s \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
+  Without loss of generality we may suppose that $\varphi\bigl( w(s) \bigr) = 1$ for all $s \in \{1, 2, \ldots, k\}$.
+  Let $w(\star) = (x_1, x_2, \ldots, x_n)$ where each $x_i \in \{1, 2, \ldots, k\} \cup \{\star\}$ and some $x_i = \star$.
+  Let $r$ be the number of variable letters in $w(\star)$.
+  (For instance, if $k = 3$, $n = 12$, and $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1, \star, 2)$, then $r = 4$.)
+  Pick $L \in \calI_{r+1}$ and $M \in \calI_r$ such that for each $i \in \{1, 2, \ldots, r\}$ we have $\max L(i) < \min M(i)$, $\max M(i) < \min L(i+1)$, and 
+  \begin{align*}
+    \bigcup_{i=1}^{r+1} L(i) &= \bigl\{\, i \in \{1, 2, \ldots, n\} : x_i \in \{1, 2, \ldots, k\} \,\bigr\}, \\
+    \bigcup_{i=1}^r M(i) &= \bigl\{\, i \in \{1, 2, \ldots, n\} : x_i = \star \,\}.
+  \end{align*}
+  (For instance, if $k = 3$, $n = 12$, and $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1, \star, 2)$, then $L(1) = \{1\}$, $M(1) = \{2\}$, $L(2) = \{3, 4\}$, $M(2) = \{5\}$, $L(3) = \{6\}$, $M(3) = \{7\}$, $L(4) = \{8, 9, 10\}$, $M(4) = \{11\}$, and $L(12) = \{12\}$.)
+  We now define $c \in S^{r+1}$ as follows:
+  \[
+    c(j) =
+    \begin{cases}
+      \prod_{t \in L(1)} \bigl( f_{x_i}(nt+i)b \bigr) & \mbox{if $j = 1$,} \\
+      b\prod_{t \in L(j)} \bigl( f_{x_i}(nt+i)b \bigr) & \mbox{if $j \in \{2, 3, \ldots, r+1\}$.}
+    \end{cases}
+  \]
+  And, define $u \in \calJ_r$ by $u_i = $
+  
+  Since for each $s \in \{1, 2, \ldots, k\}$ have $\varphi\bigl( w(s) \bigr) = 1$, we have that $x(m, a, t, g_{w(s)}) \in A_1$ for each $s \in \{1, 2, \ldots, k\}$.
 \end{proof}
 
 
