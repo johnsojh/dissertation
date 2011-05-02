@@ -179,6 +179,11 @@ Even though it is clear that every semigroup $S$ is a $J$-set, this easy fact do
 By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it suffices to show that $J$-sets are partition regular.
 
 \begin{lem}
+  Let $(S, \cdot)$ be a semigroup, $m$,$r \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$, and for each $y \in \bbN$ 
+
+\end{lem}
+
+\begin{lem}
   Let $(S, \cdot)$ be a semigroup with $A_1 \subseteq S$ and $A_2 \subseteq S$.
   If $A_1 \cup A_2$ is a $J$-set, then either $A_1$ is a $J$-set or $A_2$ is a $J$-set.
 \end{lem}
@@ -191,11 +196,7 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
   By the Hales-Jewett Theorem, pick $n \in \bbN$, such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ with no two adjacent variable letters such that $w(\star)$ begins and ends with a constant and the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
   (For instance, if $k = 4$ and $n = 10$, then $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$ is a variable word with no two adjacent variable letters such that it begins and ends with a constant letter.)
   
-  Fix $b \in S$.
-  For each $w = (x_1, x_2, \ldots, x_n) \in \{1, 2, \ldots, k\}^n$ define $g_w \in \calT$ by 
-  \[
-    g_w(t) = \prod_{i=1}^n \bigl( f_{x_i}(nt + i)b \bigr).
-  \]
+  For each $w = (x_1, x_2, \ldots, x_n) \in \{1, 2, \ldots, k\}^n$ define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n f_{x_i}(nt + i)$.
   Of course $\{1, 2, \ldots, k\}^n$ is finite and $A$ is a $J$-set, so we may pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $w \in \{1, 2, \ldots, k\}^n$ we have $x(m, a, t, g_w) \in A$.
 
   Define the function $\varphi \colon \{1, 2, \ldots, k\} \to \{1, 2\}$ as follows:
@@ -209,18 +210,14 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
   Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply the Hales-Jewett Theorem to pick a variable word $w(\star)$ with no two adjacent variable letters such that $w(\star)$ begins and ends with a constant letter and the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
   Without loss of generality we may suppose that $\varphi \bigl( w(\ell) \bigr) = 1$ for every $\ell \in \{1, 2, \ldots, k\}$.
 
-  In order to arrive at our contradiction, we show that there exist $p \in \bbN$, $c \in S^{p+1}$, and $s \in \calJ_p$ such that for all $\ell \in \{1, 2, \ldots, k\}$, $ x(p, c, s, f_\ell) = x(m, a, t, g_w(\ell)) \in A_1$. 
+  In order to arrive at our contradiction, we show that there exist $p \in \bbN$, $c \in S^{p+1}$, and $s \in \calJ_p$ such that for all $\ell \in \{1, 2, \ldots, k\}$, $ x(p, c, s, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
   To this end, for the rest of the proof, we focus on rewriting $x(m, a, t, g_{w(\star)})$ into the appropriate form. 
 
   Let $w(\star) = (x_1, x_2, \ldots, x_n)$, where each $x_i \in \{1, 2, \ldots, k\} \cup \{\star\}$. 
-  Let $r$ be the number of variable letters in $w(\star)$, and for each $i \in \{1, 2, \ldots, r\}$, let $b_i$ be the position of the \mbox{$i$th} variable letter in $w(\star)$.
-  (For instance, if $k = 4$ and $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $r = 3$, $b_1 = 2$, $b_2 = 5$, and $b_3 = 7$.)
+  Let $r$ be the number of variable letters in $w(\star)$, and for each $i \in \{1, 2, \ldots, r-1\}$, let $b_i$ be the position of the \mbox{$i$th} variable letter in $w(\star)$ and let $b_0$ be the position of the \mbox{$r$th} variable letter.
+  (For instance, if $k = 4$ and $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $r = 3$, $b_1 = 2$, $b_2 = 5$, and $b_0 = 7$.)
 
-  Put $p = mr$ and for each $i \in \{1, 2, \ldots, p\}$ define $s_i$ by
-  \[
-    s_i = nt_{\lceil i/r \rceil} + b_{i \bmod r},    
-  \]
-where we take $qr \equiv r \pmod r$ for $q \in \bbN$.
+  Put $p = mr$ and for each $i \in \{1, 2, \ldots, p\}$ define $s_i$ by $s_i = nt_{\lceil i/r \rceil} + b_{i \bmod r}$.
   We show that $s = (s_1, s_2, \ldots, s_p) \in \calJ_p$.
   Let $i \in \{1, 2, \ldots, p-1\}$.
   If $\lceil i/r \rceil = \lceil (i+1)/r \rceil$, then $b_{i \bmod r} < b_{(i+1) \bmod r}$ and so $s_i < s_{i+1}$.
