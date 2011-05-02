@@ -188,18 +188,17 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
   If $A_1 \cup A_2$ is a $J$-set, then either $A_1$ is a $J$-set or $A_2$ is a $J$-set.
 \end{lem}
 \begin{proof}
-  Put $A = A_1 \cup A_2$ and suppose that both $A_1$ and $A_2$ are \textsl{not} $J$-sets. 
-  Then pick $F_1 \in \Pf(\calT)$ such that for all $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, there exists $f \in F_1$ such that $x(m, a, t, f) \not\in A_1$; and also pick $F_2 \in \Pf(\calT)$ such that for all $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, there exists $f \in F_1$ such that $x(m, a, t, f) \not\in A_2$.
-  With $F_1$ and $F_2$ we will arrive at a contradiction that proves the lemma.
+  Suppose, to the contrary, that both $A_1$ and $A_2$ are \textsl{not} $J$-sets.
+  Pick $F_1$ and $F_2$ in $\Pf(\calT)$ such that for all $m \in \bbN$, every $a \in S^{m+1}$, and every $t \in \calJ_m$, there exist $f \in F_1$ and $g \in F_2$ such that $x(m, a, t, f) \not\in A_1$ and $x(m, a, t, g) \not\in A_2$.
+  Let $F = F_1 \cup F_2$, put $k = |F|$, and enumerate $F$ as $\{f_1, f_2, \ldots, f_k\}$.
 
-  Let $F = F_1 \cup F_2$, put $k = |F|$, and enumerate $F = \{f_1, f_2, \ldots, f_k\}$.
-  By the Hales-Jewett Theorem, pick $n \in \bbN$, such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ with no two adjacent variable letters such that $w(\star)$ begins and ends with a constant and the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
-  (For instance, if $k = 4$ and $n = 10$, then $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$ is a variable word with no two adjacent variable letters such that it begins and ends with a constant letter.)
-  
-  For each $w = (x_1, x_2, \ldots, x_n) \in \{1, 2, \ldots, k\}^n$ define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n f_{x_i}(nt + i)$.
-  Of course $\{1, 2, \ldots, k\}^n$ is finite and $A$ is a $J$-set, so we may pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $w \in \{1, 2, \ldots, k\}^n$ we have $x(m, a, t, g_w) \in A$.
+  By the Hales-Jewett Theorem pick $n \in \bbN$ such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable words, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
+  (For instance, if $k = 4$ and $n = 10$, then $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$ is a suitable variable word.)
 
-  Define the function $\varphi \colon \{1, 2, \ldots, k\} \to \{1, 2\}$ as follows:
+  Now for each $w = (x_1, x_2, \ldots, x_n) \in \{1, 2, \ldots, k\}^n$ define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n f_{x_i}(nt + i)$.
+  We have, by hypothesis, that $A_1 \cup A_2$ is a $J$-set and since $\{1, 2, \ldots, k\}^n$ is finite, we may pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $w \in \{1, 2, \ldots, k\}^n$, $x(m, a, t, g_w) \in A$.
+
+  Define the function $\varphi \colon \{1, 2, \ldots, k\}^n \to \{1, 2\}$ as follows:
   \[
     \varphi(w) = 
     \begin{cases}
@@ -207,54 +206,39 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
       2 & \mbox{otherwise.}
     \end{cases}
   \]
-  Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply the Hales-Jewett Theorem to pick a variable word $w(\star)$ with no two adjacent variable letters such that $w(\star)$ begins and ends with a constant letter and the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
+  Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply the Hales-Jewett Theorem to pick a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable letters, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
   Without loss of generality we may suppose that $\varphi \bigl( w(\ell) \bigr) = 1$ for every $\ell \in \{1, 2, \ldots, k\}$.
 
-  In order to arrive at our contradiction, we show that there exist $p \in \bbN$, $c \in S^{p+1}$, and $s \in \calJ_p$ such that for all $\ell \in \{1, 2, \ldots, k\}$, $ x(p, c, s, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
-  To this end, for the rest of the proof, we focus on rewriting $x(m, a, t, g_{w(\star)})$ into the appropriate form. 
+  We claim that there exists $c \in S^{mr+1}$ and $u \in \calJ_{mr}$ such that for all $\ell \in \{1, 2, \ldots, k\}$ we have $x(mr, c, u, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
+  Observe that if we prove our claim, then we will have arrived at a contradiction. 
+  Therefore for the rest of the proof we focus only on rewriting $x(m, a, t, g_{w(\ell)})$ into the appropriate form.
 
-  Let $w(\star) = (x_1, x_2, \ldots, x_n)$, where each $x_i \in \{1, 2, \ldots, k\} \cup \{\star\}$. 
+  Let $w(\star) = (x_1, x_2, \ldots, x_n)$ with each $x_i \in \{1, 2, \ldots, k\} \cup \{\star\}$. 
   Let $r$ be the number of variable letters in $w(\star)$, and for each $i \in \{1, 2, \ldots, r-1\}$, let $b_i$ be the position of the \mbox{$i$th} variable letter in $w(\star)$ and let $b_0$ be the position of the \mbox{$r$th} variable letter.
-  (For instance, if $k = 4$ and $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $r = 3$, $b_1 = 2$, $b_2 = 5$, and $b_0 = 7$.)
+  (For instance, if $k = 4$ and $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $r = 3$, $b_1 = 2$, $b_2 = 5$, and $b_0 = 7$.
+  The reason we let $b_0$ represent the position of the \mbox{$r$th} variable letter is because we will be performing modulo arithmetic on the index of the $b_i$'s.)
 
-  Put $p = mr$ and for each $i \in \{1, 2, \ldots, p\}$ define $s_i$ by $s_i = nt_{\lceil i/r \rceil} + b_{i \bmod r}$.
-  We show that $s = (s_1, s_2, \ldots, s_p) \in \calJ_p$.
-  Let $i \in \{1, 2, \ldots, p-1\}$.
-  If $\lceil i/r \rceil = \lceil (i+1)/r \rceil$, then $b_{i \bmod r} < b_{(i+1) \bmod r}$ and so $s_i < s_{i+1}$.
-  If $\lceil i/r \rceil < \lceil (i+1)/r \rceil$, then it follows that $s_i < s_{i+1}$ also.
+  For each $i \in \{1, 2, \ldots, mr\}$ define $s_i = nt_{\lceil i/r \rceil} + b_{i \bmod r}$.
+  Observe that $r \le n/2$, and since $t_1 < t_2 < \cdots < t_m$, it follows that $s = (s_1, s_2, \ldots, s_{mr}) \in \calJ_{mr}$.
 
-  Let $\bigl\{\, L(i) \in \Pf(\{1, 2, \ldots, n\} \setminus \{b_1, b_2, \ldots, b_r\}) : i \in \{1, 2, \ldots, r+1\} \,\bigr\}$ be a partition of $\{1, 2, \ldots, n\} \setminus \{b_1, b_2, \ldots, b_r\}$ such that $\max L(i) < \min L(i+1)$ for all $i \in \{1, 2, \ldots, r\}$.
-  (For instance, if $k = 4$, $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $L(1) = \{1\}$, $L(2) = \{2\}$, $L(3) = \{6\}$, and $L(4) = \{8, 9, 10\}$.)
-  Define $c \in S^{p+1}$ as follows:
+  To define $c \in S^{mr+1}$ we will need to define some further helpful notation. 
+  Let $L = \bigl( L(1), L(2), \ldots, L(r+1) \bigr)$ be a partition of $\{1, 2, \ldots, n\} \setminus \{b_1, b_2, \ldots, b_r\}$ such that each $L(i)$ is nonempty and $\max L(i) < \min L(i+1)$ for every $i \in \{1, 2, \ldots, r\}$. 
+  For arithmetical convenience put $L(0) = L(r)$. 
+  (For instance, if $k = 4$, $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $L(1) = \{1\}$, $L(2) = \{2\}$, $L(3) = \{6\}$, $L(4) = \{8, 9, 10\}$, and $L(0) = \{6\}$.)
+
+  Now we define $c \in S^{mr+1}$ as follows:
   \[
     c(i) = 
     \begin{cases}
-      
+      a(1)\prod_{j \in L(1)} f_j(nt_1 + j) & \mbox{if $i = 1$,} \\
+      \prod_{j \in L(i \bmod r)}  f_j(nt_{\lceil i/(r+1) \rceil} + j) & \mbox{if $i \not\equiv 1 \pmod r$, }\\
+      \prod_{j \in L(r+1)} \bigl( f_j(nt_{\lceil i/(r+1) \rceil} + j) \bigr) a\bigl( \lceil (i+1)/(r+1) \rceil \bigr) & \\
+      \hspace{2em} \cdot\prod_{j \in L(1)} f_j(nt_{\lceil (i+1)/(r+1) \rceil} + j) & \mbox{if $i \bmod r \equiv 1$ and $i \ne mr +1$, }\\
+      \prod_{j \in L(r+1)} \bigr( f_i(nt_m + j) \bigr) a(m+1) & \mbox{if $i = mr + 1$.}
     \end{cases}
   \]
-  
-  Since $\varphi$ is a 2-coloring of $[k]^n$, by the Hales-Jewett Theorem, there exists a variable word $w(\star)$ which begins and ends with a constant letter and there are no adjacent variable letters such that the combinatorial line $\bigl\{\, w(s) : s \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
-  Without loss of generality we may suppose that $\varphi\bigl( w(s) \bigr) = 1$ for all $s \in \{1, 2, \ldots, k\}$.
-  Let $w(\star) = (x_1, x_2, \ldots, x_n)$ where each $x_i \in \{1, 2, \ldots, k\} \cup \{\star\}$ and some $x_i = \star$.
-  Let $r$ be the number of variable letters in $w(\star)$.
-  (For instance, if $k = 3$, $n = 12$, and $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1, \star, 2)$, then $r = 4$.)
-  Pick $L \in \calI_{r+1}$ and $M \in \calI_r$ such that for each $i \in \{1, 2, \ldots, r\}$ we have $\max L(i) < \min M(i)$, $\max M(i) < \min L(i+1)$, and 
-  \begin{align*}
-    \bigcup_{i=1}^{r+1} L(i) &= \bigl\{\, i \in \{1, 2, \ldots, n\} : x_i \in \{1, 2, \ldots, k\} \,\bigr\}, \\
-    \bigcup_{i=1}^r M(i) &= \bigl\{\, i \in \{1, 2, \ldots, n\} : x_i = \star \,\}.
-  \end{align*}
-  (For instance, if $k = 3$, $n = 12$, and $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1, \star, 2)$, then $L(1) = \{1\}$, $M(1) = \{2\}$, $L(2) = \{3, 4\}$, $M(2) = \{5\}$, $L(3) = \{6\}$, $M(3) = \{7\}$, $L(4) = \{8, 9, 10\}$, $M(4) = \{11\}$, and $L(12) = \{12\}$.)
-  We now define $c \in S^{r+1}$ as follows:
-  \[
-    c(j) =
-    \begin{cases}
-      \prod_{t \in L(1)} \bigl( f_{x_i}(nt+i)b \bigr) & \mbox{if $j = 1$,} \\
-      b\prod_{t \in L(j)} \bigl( f_{x_i}(nt+i)b \bigr) & \mbox{if $j \in \{2, 3, \ldots, r+1\}$.}
-    \end{cases}
-  \]
-  And, define $u \in \calJ_r$ by $u_i = $
-  
-  Since for each $s \in \{1, 2, \ldots, k\}$ have $\varphi\bigl( w(s) \bigr) = 1$, we have that $x(m, a, t, g_{w(s)}) \in A_1$ for each $s \in \{1, 2, \ldots, k\}$.
+
+  Then we have that $x(mr, c, s, f_\ell) = x(m, a, t, g_{w(\ell)})$ for all $\ell \in \{1, 2, \ldots, k\}$.
 \end{proof}
 
 
