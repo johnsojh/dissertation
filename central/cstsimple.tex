@@ -226,51 +226,6 @@ To show that our definition of a $J$-set is equivalent to \cite[Definition 2.2(a
   Therefore $A$ is a $J$-set.
 \end{proof}
 
-\begin{thm}
-  Let $(S, \cdot)$ be a semigroup.
-  If $J(S)$ is nonempty, then $J(S)$ is a compact two-sided ideal of $\beta S$.
-\end{thm}
-\begin{proof}
-  To show that $J(S)$ is compact it suffices to show that $J(S)$ is topologically closed in $\beta S$.
-  Let $p \not\in J(S)$ and pick $A \in p$ such that $A$ is not a $J$-set.
-  By definition of $J(S)$ we must have $\overline{A} \cap J(S) = \emptyset$.
-  Since $\overline{A}$ is a (basic) open neighborhood of $p$, it follows that $J(S)$ is topologically closed in $\beta S$.
-
-  Now let $p \in J(S)$ and $q \in \beta S$.
-  To see that $J(S)$ is an ideal, we show that $pq \in J(S)$ and $qp \in J(S)$. 
-
-  We first show that $pq \in J(S)$.
-  Let $F \in \Pf(\calT)$, let $A \in pq$, and put $B = \{\, x \in S : x^{-1}A \in q \,\}$.
-  Then $B \in p$ and so $B$ is a $J$-set.
-  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$ we have $x(m, a, t, f) \in B$.
-  By definition of $B$ this means that for all $f \in F$, $x(m, a, t, f)^{-1}A \in q$. 
-  Since $q$ is an ultrafilter and $F$ is finite, we have $\bigcap_{f \in F} x(m, a, t, f)^{-1}A \in q$, and moreover, $\bigcap_{f \in F} x(m, a, t, f)^{-1}A \ne \emptyset$.
-  Pick $b \in \bigcap_{f \in F} x(m, a, t, f)^{-1}A$ and define $c \in S^{m+1}$ by
-  \[
-    c =
-    \begin{cases}
-      a(j) & \mbox{if $j \in \{1, 2, \ldots, m\}$,} \\
-      a(m+1)b & \mbox{if $j = m+1$.}
-    \end{cases}
-  \]
-  Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $pq \in J(S)$.
-
-  Now we show that $qp \in J(S)$.
-  Again let $F \in \Pf(\calT)$, let $A \in qp$, and put $B = \{\, x \in S : x^{-1}A \in p \,\}$.
-  Then $B \in q$, and moreover $B \ne \emptyset$.
-  Pick $b \in B$, then $b^{-1}A \in p$ implies $b^{-1}A$ is a $J$-set.
-  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, we have $x(m, a, t, f) \in b^{-1}A$.
-  Define $c \in S^{m+1}$ by
-  \[
-    c =
-    \begin{cases}
-      ba(1) & \mbox{if $j =1$,} \\
-      a(j) & \mbox{if $j \in \{2, \ldots, m, m+1\}$.}
-    \end{cases}
-  \]
-  Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $qp \in J(S)$.
-\end{proof}
-
 With this theorem all of the results previously proved about $J$-sets apply  with our definition.
 However in this chapter, we choose to reprove these results primarily to show how the proofs can be simplified with the ``new'' definition of $J$-set.
 
@@ -310,10 +265,119 @@ We next show that $J$-sets satisfy a superficially stronger condition.
   Then $x(m, a, u, f) = x(m, a, t, g_f) \in A$ for every $f \in F$.
 \end{proof}
 
-Even though it is clear that every semigroup $S$ is a $J$-set, this easy fact doesn't imply that $J(S) \ne \emptyset$. 
+The next result we reprove is \cite[Theorem 3.4]{De:2008uq} which states that the set of all ultrafilters on a semigroup, each of whose member is a $J$-set, is a closed ideal.
+To state this result we introduce the following notation.
+
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup. 
+  Define
+  \[
+    J(S) = \{\, p \in \beta S : \mbox{for every $A \in p$, $A$ is a $J$-set} \,\}.
+  \]
+\end{defn}
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup.
+  If $J(S)$ is nonempty, then $J(S)$ is a closed two-sided ideal of $\beta S$.
+\end{thm}
+\begin{proof}
+  Let $p \not\in J(S)$ and pick $A \in p$ such that $A$ is not a $J$-set.
+  By definition of $J(S)$ we must have $\overline{A} \cap J(S) = \emptyset$.
+  Since $\overline{A}$ is a (basic) open neighborhood of $p$, it follows that $J(S)$ is topologically closed in $\beta S$.
+
+  Now let $p \in J(S)$ and $q \in \beta S$.
+  To see that $J(S)$ is an ideal, we show that $pq \in J(S)$ and $qp \in J(S)$. 
+
+  We first show that $pq \in J(S)$.
+  Let $F \in \Pf(\calT)$, let $A \in pq$, and put $B = \{\, x \in S : x^{-1}A \in q \,\}$.
+  Then $B \in p$ and so $B$ is a $J$-set.
+  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$ we have $x(m, a, t, f) \in B$.
+  By definition of $B$ this means that for all $f \in F$, $x(m, a, t, f)^{-1}A \in q$. 
+  Since $q$ is an ultrafilter and $F$ is finite, we have $\bigcap_{f \in F} x(m, a, t, f)^{-1}A \in q$, and moreover, $\bigcap_{f \in F} x(m, a, t, f)^{-1}A \ne \emptyset$.
+  Pick $b \in \bigcap_{f \in F} x(m, a, t, f)^{-1}A$ and define $c \in S^{m+1}$ by
+  \[
+    c =
+    \begin{cases}
+      a(j) & \mbox{if $j \in \{1, 2, \ldots, m\}$,} \\
+      a(m+1)b & \mbox{if $j = m+1$.}
+    \end{cases}
+  \]
+  Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $pq \in J(S)$.
+
+  Now we show that $qp \in J(S)$.
+  Again let $F \in \Pf(\calT)$, let $A \in qp$, and put $B = \{\, x \in S : x^{-1}A \in p \,\}$.
+  Then $B \in q$, and moreover $B \ne \emptyset$.
+  Pick $b \in B$, then $b^{-1}A \in p$ implies $b^{-1}A$ is a $J$-set.
+  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, we have $x(m, a, t, f) \in b^{-1}A$.
+  Define $c \in S^{m+1}$ by
+  \[
+    c =
+    \begin{cases}
+      ba(1) & \mbox{if $j =1$,} \\
+      a(j) & \mbox{if $j \in \{2, \ldots, m, m+1\}$.}
+    \end{cases}
+  \]
+  Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $qp \in J(S)$.
+\end{proof}
+
+Even though it is clear that every semigroup $S$ is a $J$-set, this easy fact doesn't necessarily imply that $J(S) \ne \emptyset$.
+It's true that $J(S)$ \textsl{is} nonempty but this nontrivial fact follows either from the fact that piecewise syndetic sets are $J$-sets, Lemma \ref{lem:pr-jsets} and \cite[Theorem 3.11]{Hindman:1998fk}, or the Central Sets Theorem. 
+
+We start by proving that piecewise syndetic sets are $J$-sets.
+The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998fk}. 
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$ piecewise syndetic.
+  Then $A$ is also a $J$-set.
+\end{thm}
+\begin{proof}
+  Let $F \in \calT$, put $k = |F|$, and enumerate $F$ as $\{f_1, f_2, \ldots, f_k\}$.
+  Put $Y = \bigtimes_{t=1}^k \beta S$, then with the product topology $Y$ is a compact right-topological semigroup by \cite[Theorem 2.22]{Hindman:1998fk}
+  For each $i \in \bbN$ define
+  \begin{align*}
+    I_i = &= \Bigl\{\, \bigl( x(m, a, t, f_1), x(m, a, t, f_2), \ldots,
+    x(m, a, t, f_k) \bigr) : \mbox{$m \in \bbN$, $a \in S^{m+1}$,} \\
+    &\hspace{5em} \mbox{$t \in \calJ_m$, and $t_1 > i$}
+    \,\Bigr\},
+  \end{align*}
+  and put $E_i = I_i \cup \{\, (a, a, \ldots, a) : a \in S \,\}$.
+  Put $I = \bigcap_{i=1}^\infty \overline{I_i}$ and $E = \bigcap_{i=1}^\infty \overline{E_i}$.
+
+  Observe that $I$ and $E$ are nonempty closed subsets of $Y$.
+  (Since each $I_i \ne \emptyset$ and $I_{i+1} \subseteq I_i$.)
+
+  We claim that $E$ is a subsemigroup of $Y$ and $I$ is an ideal of $E$.
+  Let $p$, $q \in E$, $U$ be an open neighborhood of $pq$, and let $i \in \bbN$. 
+  Since $\rho_q$ is continuous, pick $V$ a neighborhood of $p$ such that $Vq \subseteq U$. 
+  If $p \in I$, then pick $\vec{x} \in I_i \cap V$ otherwise pick $\vec{x} \in E_i \cap V$.
+  If $\vec{x} \in I_i$, then pick $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_{m,k}$ with $\min H(1) > i$ such that
+  \[
+    \vec{x} = \bigl( x(m, a, H, f_1), x(m, a, H, f_2), \ldots, x(m,
+    a, H, f_l) \bigr)
+  \]
+  In this case put $j = \max H(m)$, otherwise put $j=i$. 
+
+  Since $\lambda_{\vec{x}}$ is continuous, pick $W$ a neighborhood of $q$ such that $xW \subseteq U$. 
+  If $q \in I$, then pick $\vec{y} \in I_j \cap W$, otherwise pick $\vec{y} \in E_j \cap W$.
+  Then $\vec{x} \vec{y} \in E_i \cap U$, and if $p \in I$ or $q \in I$, then $\vec{x} \vec{y} \in I_i \cap U$. 
+  Hence, it follows that $E$ is a subsemigroup of $Y$ and $I$ is an ideal of $E$.
+
+  Pick $p \in K(\beta S) \cap \overline{A}$ and put $\overline{p} = (p, p, \ldots, p)$. 
+  Since $K(Y) = \bigtimes_{t=1}^l K(\beta S)$, we have that $\overline{p} \in K(Y)$. 
+  We show that $\overline{p} \in E$.
+  Let $U$ be a neighborhood of $\overline{p}$ and pick $B_1$, $B_2$, \dots, $B_l \in p$ such that $\bigtimes_{t=1}^l \overline{B_t} \subseteq U$. 
+  Pick $a \in \bigcap_{t=1}^l B_t$, then $(a, a, \ldots, a) \in U \cap E_i$ for all $i \in \bbN$. 
+  Hence $\overline{p} \in E$ and moreover $\overline{p} \in K(Y) \cap E$.
+
+  Since $K(Y) \cap E \ne \emptyset$, we know that $K(E) = K(Y) \cap E$.
+  Therefore $\overline{p} \in K(E) \subseteq I$.
+  Hence $I_i \cap \bigtimes_{i=1}^l A \ne \emptyset$ for all $i \in \bbN$ and so our conclusion follows.
+\end{proof}
+
 By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it suffices to show that $J$-sets are partition regular.
 
 \begin{lem}
+  \label{lem:pr-jsets}
   Let $(S, \cdot)$ be a semigroup with $A_1 \subseteq S$ and $A_2 \subseteq S$.
   If $A_1 \cup A_2$ is a $J$-set, then either $A_1$ is a $J$-set or $A_2$ is a $J$-set.
 \end{lem}
