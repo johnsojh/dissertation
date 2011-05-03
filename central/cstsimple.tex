@@ -119,16 +119,112 @@
       \]
 
     \item[(d)] We call a subset $A \subseteq S$ a \textsl{$J$-set (in $S$)} if and only if for every $F \in \Pf(\calT)$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for each $f \in F$ we have $x(m, a, t, f) \in A$.
-
-    \item[(d)] Put
-      \[
-        J(S) = \{\, p \in \beta S : \mbox{$A$ is a $J$-set for every $A \in p$} \,\}.
-      \]
   \end{itemize}
 \end{defn}
 \begin{rmk}
   Despite appearances to the contrary, I must point out that $J$-sets are \textsl{not} named after the author!
+  In particular, the term $J$-set is derived from the term $J_Y$ set which first appeared as a definition in \cite[Definition 2.4(b)]{Hindman:1996fk}.
 \end{rmk}
+
+Our definition of a $J$-set looks different from the definitions given in \cite[Definition 2.2(a)]{Hindman:2009vn} and \cite[Definition 3.3(d)]{De:2008uq}.
+The first result we prove shall be that differences between these two definitions are only superficial. 
+However before proving this result we introduce some temporary notation that is analogous to $\calJ_m$.
+
+\begin{defn}
+  For each $m \in \bbN$ define
+  \begin{align*}
+    \calI_m &= \Bigl\{\, \bigl( H(1), H(2), \ldots, H(m) \bigr) : \hbox{$H(i) \in \mathcal{P}_f(\bbN)$ for all $i \in \{1, 2, \ldots, m\}$} \\
+        &\hspace{3em} \hbox{ and $\max H(i) < \min H(i+1)$ for all $i \in \{1, 2, \ldots, m-1\}$} \Bigr\}.
+  \end{align*}
+\end{defn}
+
+Given a $A$ a subset of some semigroup $S$, in \cite[Definition 2.2(a)]{Hindman:2009vn} $A$ is considered a $J$-set if and only if for every $F \in \calT$, there exists $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$, $\prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) a(m+1) \in A$.
+To show that our definition of a $J$-set is equivalent to \cite[Definition 2.2(a)]{Hindman:2009vn} we will use the following technical ``rewriting'' lemma and its corollary.
+
+\begin{lem}
+  \label{lem:rewrite-jset}
+  Let $(S, \cdot)$ be a semigroup, $m \in \bbN$, $a \in S^{m+1}$, $H \in \calI_m$, and $f \in \calT$. 
+  Fix $b \in S$ and define $g \in \calT$ by $g(t) = f(t)b$. 
+  Then there exists $n \in \bbN$, $c \in S^{n+1}$, and $t \in \calJ_n$ such that $x(n, c, t, f) = \prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g(t)\big) a(m+1)$.
+\end{lem}
+\begin{proof}
+  Put $H(0) = \emptyset$ and for each $s \in \{0, 1, \ldots, m\}$ define $h_s = \sum_{i=0}^s |H(i)|$.
+  Put $n = h_m$ and enumerate $\bigcup_{i=1}^m H(i)$ as a strictly increasing sequence $t_1 < t_2 < \cdots < t_n$ in $\bbN$. 
+  We will adopt some temporary terminology and say that $\prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m+1)$ has \textsl{proper representation} if and only if $\prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m+1) = x(n, c, t, f)$ where $c \in S^{n+1}$ is defined as follows:
+  \[
+    c(j) = 
+    \begin{cases}
+      a(j) & \mbox{if $j = 1$;} \\
+      b & \mbox{if $s \in \{0, 1, \ldots, m-1\}$ and} \\
+      &   \hspace{2em}\mbox{$2+h_s \le j \le h_s$; and} \\
+      ba(s+1) & \mbox{if $s \in \{1, 2, \ldots, m\}$ and $j = 1+h_s$.}
+    \end{cases}
+  \]
+  {
+    \small
+    (To see how our $c$ was derived let's consider a reasonable small example with $m = 3$, $H(1) = \{3, 5\}$, $H(2) = \{7\}$, and $H(3) = \{9, 11, 15\}$.
+    With these numbers we have
+    \begin{align*}
+      \textstyle
+      \prod_{i=1}^3 \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(4) &=
+      a(1) g(3)g(5) a(2) g(7) a(3) g(9)g(11)g(15) a(4) \\
+      &= a(1) f(3)bf(5)b a(2) f(7)b a(3) f(9)bf(11)bf(15)b a(4).
+    \end{align*}
+    Therefore $n = 6$, $c(1) = a(1)$, $c(2) = b$, $c(3) = ba(2)$, $c(4) = ba(3)$, $c(5) = b$,  $c(6) = b$, and $c(7) = ba(4)$.)
+  }
+
+  We prove that $\prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m+1)$ has proper representation by induction on $m$. 
+  First suppose that $m = 1$, then 
+  \[
+    \textstyle
+    \prod_{i=1}^1 \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(2) = a(1) f(t_1)b  f(t_2)b \cdots f(t_n)b a(2).
+  \]
+  In this case $h_0 = 0$, $h_1 = n$, and so $s$ can only be 0 or 1.
+  If $2+h_0 = 2 \le j \le h_1 = n$, then by definition of $c$ we have $c(j) = b$ for all $j \in \{2, 3, \ldots, n\}$. 
+  Also since $1 + h_1 = n+1$, we have $c(n+1) = ba(2)$. 
+  Therefore
+  \[
+    \textstyle
+    a(1) f(t_1)b  f(t_2)b \cdots f(t_n)b a(2) = c(1) f(t_1) c(2) f(t_2) c(3) \cdots f(t_n) c(n+1),
+  \]
+  and so $\prod_{i=1}^1 \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(2)$ has proper representation. 
+
+  Now let $m > 1$ and assume that $\prod_{i=1}^{m-1} \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m)$ has proper representation with $\prod_{i=1}^{m-1} \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m) = x(n, c, t, f)$. 
+  Then we have 
+  \begin{align*}
+    \textstyle
+    \prod_{i=1}^{m} \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m+1) &= \textstyle
+    \prod_{i=1}^{m-1} \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m) \prod_{t \in H(m)} g(t) a(m+1), \\
+    &= \textstyle 
+    x(n, c, t, f) \prod_{t \in H(m)} g(t) a(m+1).
+  \end{align*}
+  Now $c(n+1) \prod_{t \in H(m)} g(t) a(m+1)$ has proper representation, say with, $\prod_{t \in H(m)} g(t) a(m+1) = x(p, d, u, f)$.
+  By translating the indices for $u$ and $d$ it follows that $\prod_{i=1}^{m} \bigl( a(i) \prod_{t \in H(i)} g(t) \bigr) a(m+1)$ has proper representation.
+\end{proof}
+
+\begin{cor}
+  \label{cor:strong-jsets}
+  Let $(S, \cdot)$ be a semigroup, $m \in \bbN$, $a \in S^{m+1}$, $H \in \calI_m$, and $F \in \Pf(\calT)$. 
+  Fix $b \in S$ and for each $f \in F$ define $g_f \in \calT$ by $g_f(t) = f(t)b$. 
+  Then there exists $n \in \bbN$, $c \in S^{n+1}$, and $t \in \calJ_n$ such that for all $f \in F$, $x(n, c, t, f) = \prod_{i=1}^m \bigl( a(i) \prod_{t \in H(i)} g_f(t)\big) a(m+1)$.
+\end{cor}
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and $A$ a subset of $S$.
+  The following are equivalent. 
+  \begin{itemize}
+    \item[(a)] $A$ is a $J$-set.
+    \item[(b)] For all $F \in \calT$, there exist $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$ we have $\prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) a(m+1) \in A$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  \textsl{(a) $\Rightarrow$ (b)}
+  This direction should be obvious after a bit of thought. 
+
+  \textsl{(b) $\Rightarrow$ (a)}
+  For all $F \in \calT$ by Corollary \ref{cor:strong-jsets} there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
+  Therefore $A$ is a $J$-set.
+\end{proof}
 
 \begin{thm}
   Let $(S, \cdot)$ be a semigroup.
@@ -175,13 +271,47 @@
   Therefore, for each $f \in F$, $x(m, c, t, f) \in A$, that is, $A$ is a $J$-set and so $qp \in J(S)$.
 \end{proof}
 
-Even though it is clear that every semigroup $S$ is a $J$-set, this easy fact doesn't imply that $J(S) \ne \emptyset$. 
-By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it suffices to show that $J$-sets are partition regular.
+With this theorem all of the results previously proved about $J$-sets apply  with our definition.
+However in this chapter, we choose to reprove these results primarily to show how the proofs can be simplified with the ``new'' definition of $J$-set.
+
+The first result we (re)prove is \cite[Lemma 2.4]{Hindman:2010fk} which shows that when the underlying semigroup is commutative the definition of a $J$-set is considerably simplified. 
 
 \begin{lem}
-  Let $(S, \cdot)$ be a semigroup, $m$,$r \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$, and for each $y \in \bbN$ 
-
+  Let $(S, +)$ be a commutative semigroup and let $A \subseteq S$. 
+  Then $A$ is a $J$-set if and only if for every $F \in \calT$, there exist $a \in S$ and $H \in \Pf(\bbN)$ such that for all $f \in F$, $a + \sum_{t \in H} f(t) \in A$.
 \end{lem}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $F \in \calT$.
+  Pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that $x(m, a, t, f) \in A$.
+  Put $b = \sum_{i=1}^{m+1} a(i)$ and $H = \{t_1, t_2, \ldots, t_m\}$.
+  Since $S$ is commutative we have that $b + \sum_{t \in H} f(t) = x(m, t, a, f) \in A$.
+
+  ($\Leftarrow$)
+  Let $F \in \Pf(\calT)$ and fix $b \in S$.
+  For each $f \in F$ define $g_f \in \calT$ by $g_f(t) = f(t)+b$. 
+  Pick $a \in S$ and $H \in \Pf(\bbN)$ such that for all $f \in F$, $a + \sum_{t \in H} g_f(t) \in A$. 
+  Put $m = |H|$ and enumerate $H$ as a strictly increasing sequence $t_1 < t_2 < \cdots < t_m$. 
+  Define $c \in S^{m+1}$ by $c(1) = a$ and $c(i) = b$ for every $i \in \{2, 3, \ldots, m+1\}$.
+  Then $x(m, c, t, f) = a + \sum_{t \in H} g_f(t) \in A$.
+\end{proof}
+
+We next show that $J$-sets satisfy a superficially stronger condition. 
+(In \cite[Definition 3.3(e)]{De:2008uq} this superficially stronger condition was used to define a $J$-set.)
+
+\begin{lem}
+  Let $(S, \cdot)$ be a semigroup and $A$ a $J$-set in $S$.
+  Then for every $F \in \Pf(\calT)$ and each $n \in \bbN$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, with $t_1 > n$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
+\end{lem}
+\begin{proof}
+  For each $f \in F$ define $g_f \in \calT$ by $g_f(t) = f(n+t)$.
+  Since $A$ is a $J$-set, pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, g_f) \in A$. 
+  Define $u \in \calJ_m$ by $u_i =  n + t_i$.
+  Then $x(m, a, u, f) = x(m, a, t, g_f) \in A$ for every $f \in F$.
+\end{proof}
+
+Even though it is clear that every semigroup $S$ is a $J$-set, this easy fact doesn't imply that $J(S) \ne \emptyset$. 
+By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it suffices to show that $J$-sets are partition regular.
 
 \begin{lem}
   Let $(S, \cdot)$ be a semigroup with $A_1 \subseteq S$ and $A_2 \subseteq S$.
