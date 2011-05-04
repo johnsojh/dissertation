@@ -374,7 +374,16 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
   Hence $I_i \cap \bigtimes_{i=1}^l A \ne \emptyset$ for all $i \in \bbN$ and so our conclusion follows.
 \end{proof}
 
-By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it suffices to show that $J$-sets are partition regular.
+\begin{cor}
+  Let $(S, \cdot)$ be a semigroup, then $c\ell\bigl( K(\beta S) \bigr) \subseteq J(S)$.
+\end{cor}
+\begin{proof}
+  Let $p \in c\ell\bigl( K(\beta S) \bigr)$ and $A \in p$.
+  By \cite[Corollary 4.41]{Hindman:1998fk}, $A$ is a piecewise syndetic set and so $A$ is a $J$-set.
+  Therefore $p \in J(S)$.
+\end{proof}
+
+We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindman:1998fk}, proves that $J(S)$ is nonempty.
 
 \begin{lem}
   \label{lem:pr-jsets}
@@ -403,7 +412,7 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
   Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply the Hales-Jewett Theorem to pick a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable letters, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
   Without loss of generality we may suppose that $\varphi \bigl( w(\ell) \bigr) = 1$ for every $\ell \in \{1, 2, \ldots, k\}$.
 
-  We claim that there exists $c \in S^{mr+1}$ and $u \in \calJ_{mr}$ such that for all $\ell \in \{1, 2, \ldots, k\}$ we have $x(mr, c, u, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
+  We claim that there exists $c \in S^{mr+1}$ and $s \in \calJ_{mr}$ such that for all $\ell \in \{1, 2, \ldots, k\}$ we have $x(mr, c, s, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
   Observe that if we prove our claim, then we will have arrived at a contradiction. 
   Therefore for the rest of the proof we focus only on rewriting $x(m, a, t, g_{w(\ell)})$ into the appropriate form.
 
@@ -435,8 +444,35 @@ By our work in the Preliminaries Chapter, to show that $J(S)$ is nonempty, it su
   Then we have that $x(mr, c, s, f_\ell) = x(m, a, t, g_{w(\ell)})$ for all $\ell \in \{1, 2, \ldots, k\}$.
 \end{proof}
 
+With Lemma \ref{lem:pr-jsets} we prove a stronger relationship between $J$-sets and $J(S)$.
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  Then $J(S) \cap \overline{A} \ne \emptyset$ if and only if $A$ is a $J$-set.
+\end{thm}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $p \in J(S) \cap \overline{A}$. 
+  Since $p \in J(S)$, every member of $p$ is a $J$-set.
+  Hence $A$ is a $J$-set.
+
+  ($\Leftarrow$)
+  Suppose $A$ is a $J$-set. 
+  By Lemma \ref{lem:pr-jsets} and \cite[Theorem 3.11]{Hindman:1998fk}, there exists an ultrafilter $p \in \beta S$ such that $A \in p$ and every member of $p$ is a $J$-set. 
+  Therefore $p \in J(S)$.
+\end{proof}
+
 
 \section{Central Sets Theorem}
+The final proof that $J(S)$ is nonempty follows from the Central Sets Theorem.
+\begin{defn}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  We call $A$ a \textsl{$C$-set} if and only if there exist $m \colon \Pf(\calT) \to \bbN$, $\alpha \colon \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ such that 
+  \begin{itemize}
+    \item[(1)] if $F$, $G \in \Pf(\calT)$ with $F \subsetneq G$, then $\tau(F)\bigl( m(F) \bigr) < \tau(G)(1)$, and
+    \item[(2)] whenever $n \in \bbN$, $G_1$,$G_2$, \dots, $G_n \in \Pf(\calT)$  with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n$, and for each $i \in \{1, 2, \ldots, n\}$, $f_i \in G_i$, then we have $\prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i) \in A$.
+  \end{itemize}
+\end{defn}
 
 % Endnotes 
 %\theendnotes
