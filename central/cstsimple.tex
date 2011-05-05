@@ -255,6 +255,7 @@ We next show that $J$-sets satisfy a superficially stronger condition.
 (In \cite[Definition 3.3(e)]{De:2008uq} this superficially stronger condition was used to define a $J$-set.)
 
 \begin{lem}
+  \label{lem:jset-start}
   Let $(S, \cdot)$ be a semigroup and $A$ a $J$-set in $S$.
   Then for every $F \in \Pf(\calT)$ and each $n \in \bbN$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, with $t_1 > n$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
 \end{lem}
@@ -335,7 +336,7 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
   Put $Y = \bigtimes_{t=1}^k \beta S$, then with the product topology $Y$ is a compact right-topological semigroup by \cite[Theorem 2.22]{Hindman:1998fk}
   For each $i \in \bbN$ define
   \begin{align*}
-    I_i = &= \Bigl\{\, \bigl( x(m, a, t, f_1), x(m, a, t, f_2), \ldots,
+    I_i &= \Bigl\{\, \bigl( x(m, a, t, f_1), x(m, a, t, f_2), \ldots,
     x(m, a, t, f_k) \bigr) : \mbox{$m \in \bbN$, $a \in S^{m+1}$,} \\
     &\hspace{5em} \mbox{$t \in \calJ_m$, and $t_1 > i$}
     \,\Bigr\},
@@ -473,6 +474,64 @@ The final proof that $J(S)$ is nonempty follows from the Central Sets Theorem.
     \item[(2)] whenever $n \in \bbN$, $G_1$,$G_2$, \dots, $G_n \in \Pf(\calT)$  with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n$, and for each $i \in \{1, 2, \ldots, n\}$, $f_i \in G_i$, then we have $\prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i) \in A$.
   \end{itemize}
 \end{defn}
+
+We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and let $A \subseteq S$. 
+  Then $A$ is a $C$-set if and only if there exists an idempotent in $p \in \overline{A} \cap J(S)$.
+\end{thm}
+\begin{proof}
+  ($\Rightarrow$)
+  Pick $m \colon \Pf(\calT) \to \bbN$, $\alpha \colon \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as guaranteed by the definition of a $C$-set. 
+  For each $F \in \Pf(\calT)$ define 
+  \begin{align*}
+    T(F) &= \bigl\{\, \textstyle \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i) : \mbox{$n \in \bbN$, each $F_i \in \calT$,}\\
+ &\hspace{12em}\mbox{$F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$} \,\bigr\}
+  \end{align*}
+
+  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has f.i.p. since $T_{F \cup G} \subseteq T_F \cap F_G$ for all $F$, $G \in \Pf(\calT)$. 
+  Therefore $\mathbf{Q} = \bigcap_{F \in \Pf(\calT)} \overline{T(F)}$ is a closed nonempty subset of $\beta S$. 
+  We show that $\mathbf{Q}$ is in fact a subsemigroup of $\beta S$.
+  We can either verify this directly or apply \cite[Theorem 4.20]{Hindman:1998fk}.
+
+  ($\Leftarrow$)
+  Let $p = p \cdot p \in \overline{A} \cap J(S)$.
+  Since $A \in p$ and $p$ is an idempotent we have, by \cite[Lemma 4.14]{Hindman:1998fk}, that $x^{-1}A^\star \in p$ for all $x \in A^\star$ where $A^\star = \{\, x \in A : x^{-1}A \in p\}$. 
+  We will recursively define our functions $m$, $\alpha$, and $\tau$ by the size of $F \in \Pf(\calT)$ such that we satisfy, for $F \in \Pf(\calT)$, the following hypothesis:
+  \begin{itemize}
+    \item[(1)] If $\emptyset \ne G \subsetneq F$, then $\tau(G)\bigl( m(G) \bigr) < \tau(F)(1)$.
+    
+    \item[(2)] If $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n = F$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$, then \[\textstyle \prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i)) \in A^\star.\]
+  \end{itemize}
+
+  Let $F \in \Pf(\calT)$.
+  First, assume that $|F| = 1$, that is $F = \{f\}$ for some sequence $f \in \calT$.
+  Since $A^\star$ is a $J$-set, pick $m(F) \in \bbN$, $\alpha(F) \in S^{m(F)+1}$, and $\tau(F) \in \calJ_{m(F)}$ such that $x(m(F), \alpha(F), \tau(F), f) \in A^\star$. 
+
+  Now assume that $|F| > 1$ and for all $\emptyset \ne G \subsetneq F$ we have defined $m(G)$, $\alpha(G)$, and $\tau(G)$ so that hypotheses (1) and (2) hold.
+  Put 
+  \begin{align*}
+    M &= \bigl\{\, \textstyle \prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i) : \mbox{$n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n \subsetneq F$} \\
+    &\hspace{12em} \mbox{and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$} \,\bigr\}.
+  \end{align*}
+  Observe that since $F$ is finite, $M$ is also finite.
+  By hypothesis (2) we have that $M \subseteq A^\star$.
+  Put $B = A^\star \cap \bigcap_{x \in M} x^{-1}A^\star$, then $B \in p$ and so $B$ is a $J$-set. 
+
+  For each $\emptyset \ne G \subsetneq F$, put $l(G) = \tau(G)\bigl( m(G) \bigr)$ and put $k = \max\{\, l(G) : \emptyset \ne G \subsetneq F \,\}$.
+  By Lemma \ref{lem:jset-start}, pick $m(F) \in \bbN$, $\alpha(F) \in S^{m(F)+1}$, and $\tau(F) \in \calJ_{m(F)}$ such that $\tau(F)(1) > k$ and for every $f \in F$, $x(m(F), \alpha(F), \tau(F), f) \in B$.
+  Hypothesis (1) is satisfied, since $\tau(F)(1) > k \le \max l(G)$ for all $\emptyset \ne G \subsetneq F$.
+  We show that hypothesis (2) is also satisfied.
+  Let $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_{n-1} \subsetneq G_n = F$, and $\la f_i \ra_{i=1}^n \bigtimes_{i=1}^n G_i$. 
+  If $n = 1$, then $x(m(G_1), \alpha(G_1), \tau(G_1), f) \in B \subseteq A^\star$.
+  Now assume that $n > 1$ and put $y = \prod_{i=1}^{n-1} x(m(G_i), \alpha(G_i), \tau(G_i), f_i)$. 
+  By definition $y \in M$ and since $x(m(G_n), \alpha(G_n), \tau(G_n), f_n) = x(m(F), \alpha(F), \tau(F), f_n) \in B \subseteq y^{-1}A^\star$ we have
+  \[
+    \textstyle
+    \prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i) = y \cdot x(m(F), \alpha(F), \tau(F), f_n) \in A^\star.
+  \]
+  Hence hypotheses (1) and (2) are satisfied and this completes the proof for this direction.
+\end{proof}
 
 % Endnotes 
 %\theendnotes
