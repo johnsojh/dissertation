@@ -485,31 +485,49 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
   Pick $m \colon \Pf(\calT) \to \bbN$, $\alpha \colon \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as guaranteed by the definition of a $C$-set. 
   For each $F \in \Pf(\calT)$ define 
   \begin{align*}
-    T(F) &= \bigl\{\, \textstyle \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i) : \mbox{$n \in \bbN$, each $F_i \in \calT$,}\\
- &\hspace{12em}\mbox{$F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$} \,\bigr\}
+    T(F) &= \bigl\{\, \textstyle \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i) : \mbox{$n \in \bbN$ with $n \ge |F|$, each $F_i \in \calT$,}\\
+ &\hspace{12em}\mbox{$F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$,} \\
+ &\hspace{12em} \mbox{and $F \subseteq \{f_1, f_2, \ldots, f_n\}$} \,\bigr\}.
   \end{align*}
 
-  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has f.i.p. since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$. 
+  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has f.i.p. since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$.
+  (In fact the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ is a filterbase on $S$.)
   Therefore $\mathbf{Q} = \bigcap_{F \in \Pf(\calT)} \overline{T(F)}$ is a closed nonempty subset of $\beta S$. 
   We show that $\mathbf{Q}$ is in fact a subsemigroup of $\beta S$.
   We can either verify this directly or apply \cite[Theorem 4.20]{Hindman:1998fk}.
   Let $F \in \Pf(\calT)$ and $y \in T(F)$.
   By \cite[Theorem 4.20]{Hindman:1998fk} it suffices to show that there exists $G \in \Pf(\calT)$ such that $yT(G) \subseteq T(F)$. 
-  Pick $n \in T$ such that for every $i \in \{1, 2, \ldots, n\}$, $F_i \in \calT$ with $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and pick $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$ such that $y = \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i)$. 
+  Pick $n \in \bbN$ with $n \ge |F|$ and such that for every $i \in \{1, 2, \ldots, n\}$, $F_i \in \calT$ with $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and pick $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$ with $F \subseteq \{f_1, f_2, \ldots, f_n\}$ and such that $y = \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i)$. 
   We show that $yT(F_n) \subseteq T(F)$. 
-  Let $m \in \bbN$, for each $i \in \{1, 2, \ldots, m\}$, $G_i \in \calT$ with $F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$, and $\la g_i \ra_{i=1}^m \in \bigtimes_{i=1}^m G_i$. 
-  Then $y \prod_{i=1}^m x(m(G_i), \alpha(G_i), \tau(G_i), g_i) \in T(F)$ since $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$ and $(f_1, f_2, \ldots, f_n, g_1, g_2, \ldots, g_m) \in \bigtimes_{i=1}^{n+m} H_i$ where $H_i = F_i$ if $i \in \{1, 2, \ldots, n\}$ and $H_i = G_{i-n}$ if $i \in \{n+1, n+2, \ldots, n+m\}$. 
+  Let $m \in \bbN$ with $m \ge |F_n|$, for each $i \in \{1, 2, \ldots, m\}$, $G_i \in \calT$ with $F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$, and $\la g_i \ra_{i=1}^m \in \bigtimes_{i=1}^m G_i$ with $F_n \subseteq \{g_1, g_2, \ldots, g_n\}$. 
+  Then $y \prod_{i=1}^m x(m(G_i), \alpha(G_i), \tau(G_i), g_i) \in T(F)$ since $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$ and $(f_1, f_2, \ldots, f_n, g_1, g_2, \ldots, g_m) \in \bigtimes_{i=1}^{n+m} H_i$ where $H_i = F_i$ if $i \in \{1, 2, \ldots, n\}$ and $H_i = G_{i-n}$ if $i \in \{n+1, n+2, \ldots, n+m\}$, $n+m \ge |F|$, and $F \subseteq \{f_1, f_2, \ldots, f_n, g_1, g_2, \ldots, g_m\}$. 
   Hence by \cite[Theorem 4.20]{Hindman:1998fk} $\mathbf{Q}$ is a subsemigroup of $\beta S$. 
 
   We claim that $K(\mathbf{Q}) \subseteq \overline{A} \cap J(S)$. 
-  If this claim is true, then we are done since idempotent in $K(\mathbf{Q})$ will establish the theorem. 
+  If this claim is true, then we are done since any idempotent in $K(\mathbf{Q})$ will establish the theorem. 
   By definition, for each $F \in \Pf(\calT)$, we have $T(F) \subseteq A$ and moreover $\overline{T(F)} \subseteq \overline{A}$.
   In particular, $\mathbf{Q} \subseteq \overline{A}$. 
   Let $p \in K(\mathbf{Q})$.
   To show that $p \in J(S)$ it suffices to show that $B$ is a $J$-set for all $B \in p$. 
-  So let $B \in p$ and $F \in \Pf(\calT)$.  
 
-  Put $D = \{\, G \in \Pf(\calT) : F \subseteq G \,\}$ and direct $D$ by set inclusion. 
+  Suppose to the contrary that there exists $B \in p$ such that $B$ is \textsl{not} a $J$-set. 
+  Pick $F \in \Pf(\calT)$ such that for all $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, there exists $f \in F$ such that $x(m, a, t, f) \not\in B$. 
+  Since $p \in \mathbf{Q}$ we have that $B \cap T(\{f\}) \in p$. 
+  
+  Let $y \in B \cap T(\{f\})$, then there exists $n \in \bbN$ with $n \ge 1$, each $F_i \in \calT$ and $\{f\} \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$, and $f \in \{f_1, f_2, \ldots, f_n\}$ with $y = \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i)$.
+  Suppose that $f = f_{i_0}$, then we show that there exist $p \in \bbN$, $a \in S^{p+1}$, and $t \in \calJ_p$ such that $x(p, a, t, f) \in B$, obviously a contradiction. 
+  Put $p = m(F_{i_0})$ and $t = \tau(F_{i_0})$. 
+  Define $a \in S^{p+1}$ as
+  \[
+    a(j) =
+    \begin{cases}
+      \bigl( \prod_{i=1}^{i_0-1} x(m(F_i), \alpha(F_i), \tau(F_i), f_i) \bigr) \cdot \alpha(F_{i_0})(1) & \mbox{if $j = 1$,} \\
+      \alpha(F_{i_0})(j) & \mbox{if $j \in \{2, 3, \ldots, p\}$,} \\
+      \alpha(F_{i_0})(p+1) \cdot \bigl( \prod_{i=i_0+1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_n) \bigr) & \mbox{if $j = p+1$.}
+    \end{cases}
+  \]
+  Then $x(p, a, t, f) = y \in B$, a contradiction.
+  Hence $B$ is a $J$-set and so $p \in J(S)$.
 
   ($\Leftarrow$)
   Let $p = p \cdot p \in \overline{A} \cap J(S)$.
