@@ -489,10 +489,27 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
  &\hspace{12em}\mbox{$F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$} \,\bigr\}
   \end{align*}
 
-  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has f.i.p. since $T_{F \cup G} \subseteq T_F \cap F_G$ for all $F$, $G \in \Pf(\calT)$. 
+  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has f.i.p. since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$. 
   Therefore $\mathbf{Q} = \bigcap_{F \in \Pf(\calT)} \overline{T(F)}$ is a closed nonempty subset of $\beta S$. 
   We show that $\mathbf{Q}$ is in fact a subsemigroup of $\beta S$.
   We can either verify this directly or apply \cite[Theorem 4.20]{Hindman:1998fk}.
+  Let $F \in \Pf(\calT)$ and $y \in T(F)$.
+  By \cite[Theorem 4.20]{Hindman:1998fk} it suffices to show that there exists $G \in \Pf(\calT)$ such that $yT(G) \subseteq T(F)$. 
+  Pick $n \in T$ such that for every $i \in \{1, 2, \ldots, n\}$, $F_i \in \calT$ with $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and pick $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$ such that $y = \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i)$. 
+  We show that $yT(F_n) \subseteq T(F)$. 
+  Let $m \in \bbN$, for each $i \in \{1, 2, \ldots, m\}$, $G_i \in \calT$ with $F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$, and $\la g_i \ra_{i=1}^m \in \bigtimes_{i=1}^m G_i$. 
+  Then $y \prod_{i=1}^m x(m(G_i), \alpha(G_i), \tau(G_i), g_i) \in T(F)$ since $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$ and $(f_1, f_2, \ldots, f_n, g_1, g_2, \ldots, g_m) \in \bigtimes_{i=1}^{n+m} H_i$ where $H_i = F_i$ if $i \in \{1, 2, \ldots, n\}$ and $H_i = G_{i-n}$ if $i \in \{n+1, n+2, \ldots, n+m\}$. 
+  Hence by \cite[Theorem 4.20]{Hindman:1998fk} $\mathbf{Q}$ is a subsemigroup of $\beta S$. 
+
+  We claim that $K(\mathbf{Q}) \subseteq \overline{A} \cap J(S)$. 
+  If this claim is true, then we are done since idempotent in $K(\mathbf{Q})$ will establish the theorem. 
+  By definition, for each $F \in \Pf(\calT)$, we have $T(F) \subseteq A$ and moreover $\overline{T(F)} \subseteq \overline{A}$.
+  In particular, $\mathbf{Q} \subseteq \overline{A}$. 
+  Let $p \in K(\mathbf{Q})$.
+  To show that $p \in J(S)$ it suffices to show that $B$ is a $J$-set for all $B \in p$. 
+  So let $B \in p$ and $F \in \Pf(\calT)$.  
+
+  Put $D = \{\, G \in \Pf(\calT) : F \subseteq G \,\}$ and direct $D$ by set inclusion. 
 
   ($\Leftarrow$)
   Let $p = p \cdot p \in \overline{A} \cap J(S)$.
