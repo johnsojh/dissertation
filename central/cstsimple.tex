@@ -477,6 +477,7 @@ The final proof that $J(S)$ is nonempty follows from the Central Sets Theorem.
 
 We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
 \begin{thm}
+  \label{thm:csets}
   Let $(S, \cdot)$ be a semigroup and let $A \subseteq S$. 
   Then $A$ is a $C$-set if and only if there exists an idempotent in $p \in \overline{A} \cap J(S)$.
 \end{thm}
@@ -566,6 +567,65 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
     \prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i) = y \cdot x(m(F), \alpha(F), \tau(F), f_n) \in A^\star.
   \]
   Hence hypotheses (1) and (2) are satisfied and this completes the proof for this direction.
+\end{proof}
+
+\begin{cor}[Central Sets Theorem]
+  Every central set in a semigroup is a $C$-set.
+\end{cor}
+\begin{proof}
+  Let $(S, \cdot)$ be a semigroup with $A \subseteq S$ a central set. 
+  Since $A$ is a central set, there exists an idempotent $p \in K(\beta S)$ with $A \in p$.
+  Since $K(S) \subseteq J(S)$, we have that $A$ is also a $C$-set.
+\end{proof}
+
+Similar to how the definition of a $J$-set is simpler when the underlying semigroup is commutative we have the following result which shows that $C$-sets also have a simpler characterization when the underlying semigroup is commutative. 
+
+\begin{lem}
+  Let $(S, +)$ be a commutative semigroup and $A \subseteq S$.
+  Then $A$ is a $C$-set if and only if there exist functions $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ such that
+  \begin{itemize}
+    \item[(1)] if $F$, $G \in \Pf(\calT)$ with $F \subsetneq G$, then $\max H(F) < \min H(G)$, and
+    
+    \item[(2)] whenever $m \in \bbN$, $G_1$, $G_2$, \dots, $G_m \in \Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$, and for each $i \in \{1, 2, \ldots, m\}$, $f_i \in G_i$, we have $\sum_{i=1}^m\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr) \in A$.
+  \end{itemize}
+\end{lem}
+\begin{proof}
+  ($\Rightarrow$)
+  Since $A$ is a $C$-set, we also have that $A$ is a $J$-set in a commutative semigroup.
+  By Theorem \ref{thm:csets} we also know that $A \in p$ for some idempotent $p \in J(S)$. 
+  We will recursively define our functions $\alpha$ and $H$ by the size of $F \in \Pf(\calT)$ such that we satisfy, for $F \in \Pf(\calT)$, following hypotheses:
+  \begin{itemize}
+    \item[(i)] If $\emptyset \ne G \subsetneq F$, then $\max H(G) < \min H(F)$.
+      
+    \item[(ii)] If $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n = F$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$, then $\sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr) \in A^\star$. 
+  \end{itemize}
+  
+  Let $F \in \Pf(\calT)$.
+  First, assume that $|F| = 1$, that is, $F = \{f\}$ for some sequence $f \in \calT$.
+  Since $A^\star$ is a $J$-set (in a commutative semigroup), we may pick $\alpha(F) \in S$ and $H(F) \in \Pf(\bbN)$ such that $\alpha(F) + \sum_{t \in H(F)} f(t) \in A^\star$.
+
+  Now assume that $|F| > 1$ and for all $\emptyset \ne G \subsetneq F$ we have defined $\alpha(G)$ and $H(G)$ so that hypotheses (i) and (ii) hold.
+  Put
+  \begin{align*}
+    M &= \bigl\{\, \sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in G_i} f_i(t) \bigr) : \mbox{$n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n \subsetneq F$,} \\
+    &\hspace{12em} \mbox{and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$} \,\bigr\}.
+  \end{align*}
+  Since $F$ is finite, $M$ is also finite and by hypothesis (ii) we have that $M \subseteq A^\star$.
+  Put $B = A^\star \cap \bigcap_{x \in M} -x+A^\star$, then $B \in p$ and so $B$ is also a $J$-set.
+
+  Put $k = \max \bigl( \bigcup\{\, H(G) : \emptyset \ne G \subsetneq F\,\} \bigr)$.
+  Since $B$ is a $J$-set, pick $\alpha(F) \in S$ and $H(F) \in \Pf(\bbN)$ with $\min H(F) > k$ such that for all $f \in F$, $\alpha(F) + \sum_{t \in H(F)} f(t) \in B$. 
+
+  Now hypothesis (i) is satisfied since $\min H(F) > k \ge \max H(G)$ for all $\emptyset G \subsetneq F$. 
+  We show that hypothesis (ii) is also satisfied.
+  Let $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n = F$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$. 
+  If $n = 1$, then $\sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr) = \alpha(F) + \sum_{t \in H(F)} f_1(t) \in B \subseteq A^\star$. 
+  Now assume that $n > 1$ and let $y = \sum_{i=1}^{n-1}\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t) \bigr)$.
+  Then $y \in M$ and so $\alpha(G_n) + \sum_{t \in H(G_n)} f_n(t) = \alpha(F) + \sum_{t \in H(F)} f_n(t) \in B \subseteq -y + A^\star$. 
+  Hence $\sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t) \bigr) \in A^\star$.
+
+  ($Leftarrow$)
+  Clearly $A$ is a $J$-set in a commutative semigroup and so we can rewrite the terms $\alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)$ as $x(m(G_i), \beta(G_i), \tau(G_i), f_i)$. 
 \end{proof}
 
 % Endnotes 
