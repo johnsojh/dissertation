@@ -82,6 +82,113 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+
+\section{Piecewise Syndetic Sets}
+We begin by examining one of the earliest Ramsey Theoretic result that still forms the basis for much of the contemporary research in the field.
+
+\begin{vdw}
+  Let $r \in \bbN$.
+  If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for every $\ell \in \bbN$, there exist $a$, $d \in \bbN$ with $\{ a, a+d, \ldots, a+\ell d \} \subseteq C_i$.
+\end{vdw}
+
+Van der Waerden's Theorem can be rewritten so as to apply to any semigroup, and, as observed in the Introduction of \cite{Bergelson:1992fk}, this fact follows directly from van der Waerden's Theorem itself.
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup and $r \in \bbN$.
+  If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for every $\ell \in \bbN$, there exist $a$, $d \in S$ with $\{ a, ad, \ldots, ad^\ell \} \subseteq C_i$.
+\end{thm}
+\begin{proof}
+  Fix $x \in S$.
+  We shall consider the set $\{\, x^n : n \in \bbN \,\}$.
+  For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN : x^n \in C_i \,\}$. 
+  Then $\bbN = \bigcup_{i=1}^r B_i$ and we can apply van der Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ such that for every $\ell \in \bbN$, there exist $b$, $c \in \bbN$ such that $\{ b, b+c, \ldots, b+ \ell c \} \subseteq B_i$. 
+  By definition of $B_i$ we have $\{ x^b, x^{b+c}, \ldots, x^{b + \ell c} \} \subseteq C_i$.
+  To complete the proof, simply put $a = x^b$ and $d = x^c$.
+\end{proof}
+
+There are two potential problems with such a straightforward approach: Our increment $d$ may be a right identity element of our semigroup; and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{ a, ad, \ldots, ad^\ell \}$ are distinct.
+(See the Introduction of \cite{Bergelson:1992fk} for an example of each problem.) 
+More serious than either of these problems however is the fact that such a straightforward generalization doesn't interact nicely with the algebraic structure of $\beta S$ when $S$ is a noncommutative semigroup. 
+To precisely spell this `hidden' algebraic problem we make a brief, but important, detour to quickly review some basic algebraic definitions.
+
+\subsection{Semigroup Theory}
+In this subsection let $(S, \cdot)$ be some fixed semigroup. 
+For each $x \in S$ we define the functions $\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by $\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
+For $A \subseteq S$ and $x \in S$, we use the special notations $x^{-1}A$ and $Ax^{-1}$ to refer to $\lambda_x^{-1}[A]$ and $\rho_x^{-1}[A]$, respectively. 
+(Equivalently, $x^{-1}A = \{\, y \in S : xy \in A \,\}$ and $Ax^{-1} = \{\, y \in S : yx \in A \,\}$.
+If $S$ is commutative, we will denote its binary operation by $+$ and write $x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A-x$, respectively. 
+
+We call $\emptyset \ne L \subseteq S$ a \textsl{left ideal of $S$} if and only if for all $x \in S$, $\lambda_x[L] \subseteq L$. 
+We call $\emptyset \ne R \subseteq S$ a \textsl{right ideal of $S$} if and only if for all $x \in S$, $\rho_x[R] \subseteq R$. 
+Finally, we call $\emptyset \ne I \subseteq S$ a \textsl{(two-sided) ideal of $S$} if and only if $I$ is both a left and right ideal.
+A semigroup can contain, at most one, \textsl{smallest ideal} (that is, an ideal contained in every ideal). 
+We denote this smallest ideal of $S$, if it exists, by $K(S)$.
+We have the following important fact about the smallest ideal of a semigroup.
+
+\begin{thm}
+  Let $\la S_i : i \in I \ra$ be a family of semigroups such that each $S_i$ has a smallest ideal.
+  Put $S = \bigtimes_{i \in I} S_i$ and define an associative binary operation on $S$ coordinate-wise.
+  Then $S$ has a smallest ideal and $K(S) = \bigtimes_{i \in I} K(S_i)$.
+\end{thm}
+\begin{proof}
+  A proof of this fact is in \cite[Theorem 2.23]{Hindman:1998fk}.
+\end{proof}
+
+The existence of the smallest ideal essentially depends on what may be regarded as `boundedness' condition on the underlying semigroup. 
+For instance it is a classical result in semigroup theory that every finite semigroup has a smallest ideal.
+Another example of a `boundedness' condition that implies the existence of a smallest ideal is the existence of a minimal (with respect to set inclusion) left ideal with an idempotent element \cite[Theorem 1.59]{Hindman:1998fk}. 
+Using this `boundedness' condition we have the following important result.
+
+\begin{thm}
+  Let $(S, \cdot)$ be a semigroup with a minimal left ideal of $S$ that has an idempotent. 
+  Let $T$ be a subsemigroup of $S$ and assume that $T$ has a minimal left ideal of $T$ with an idempotent.
+  Then $K(T) = K(S) \cap T$.
+\end{thm}
+\begin{proof}
+  A proof of this fact is in \cite[Theorem 1.65]{Hindman:1998fk}.
+\end{proof}
+
+Another `boundedness' condition occurs when we give $S$ the structure of a compact topological Hausdorff space that interacts appropriately with the algebraic structure of $S$. 
+We call $S$ a \textsl{compact right-topological semigroup} if and only if $S$ is a compact Hausdorff topological space and a semigroup such that for every $x \in S$, $\rho_x$ is continuous. 
+Every compact right-topological semigroup contains an idempotent and the smallest ideal.
+(The existence of idempotents is proved in \cite[Theorem 2.5]{Hindman:1998fk}, while the existence of the smallest ideal is proved in \cite[Theorem 2.8]{Hindman:1998fk}.)
+
+\subsection{Algebra in the Stone-\v{C}ech Compactification}
+Given a discrete semigroup $(S, \cdot)$ we put $\beta S = \{\, p : \mbox{$p$ is an ultrafilter on $S$} \,\}$.
+We topologize $\beta S$ as follows: For each $A \subseteq S$ define $\overline{A} = \{\, p \in \beta S : p \in A \,\}$.
+Then $\{\, \overline{A} : A \subseteq S \,\}$ forms a basis for a compact Hausdorff topology on $\beta S$ which is the Stone-\v{C}ech Compactification \cite[Theorem 3.27]{Hindman:1998fk} of the discrete space $S$.
+
+We can extend the semigroup operation of $S$ to $\beta S$ \cite[Theorem 4.1]{Hindman:1998fk} such that for all $p$, $q \in \beta S$, we have $A \in p \cdot q$ if and only if $\{\, x \in S : x^{-1}A \in q \,\} \in p$ \cite[Theorem 4.12(b)]{Hindman:1998fk}.
+Moreover, this extension turns $\beta S$ into a compact right-topological semigroup with the property that for all $s \in S$, $\lambda_s$ is continuous. 
+Therefore $\beta S$ has at least one idempotent (it typically has many more) and the smallest ideal $K(\beta S)$ exists. 
+
+\subsection{Arithmetic Progressions and Algebraic Lines}
+
+\begin{defn}
+  \begin{itemize}
+    \item[(a)] We call $A \subseteq \bbN$ an \mbox{\textsl{$AP$-set}} if and only if for every $\ell \in \bbN$ there exist $a$, $b \in \bbN$ such that $\{a, a+d, \ldots, a+\ell d \} \subseteq A$.
+
+    \item[(b)] Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+      We call $A$ an \mbox{\textsl{$AL$-set}} (`$AL$' for \textsl{algebraic line}) if and only if $\ell \in \bbN$ there exist $a$, $b \in S$ such that $\{a, ad, \ldots, ad^\ell \} \subseteq A$.
+
+  \end{itemize}
+
+\end{defn}
+
+The following theorem is a consequence of van der Waerden's Theorem.
+
+\begin{thm}
+  \begin{itemize}
+    \item[(a)] Let $A \subseteq \bbN$ be an \mbox{$AP$-set} and $r \in \bbN$.
+      If $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is an \mbox{$AP$-set}. 
+
+    \item[(b)] Let $(S, \cdot)$ be a semigroup, $A \subseteq S$ an \mbox{$AL$-set}, and $r \in \bbN$. 
+      If $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is an \mbox{$AL$-set}.
+  \end{itemize}
+\end{thm}
+
+
+
 Cardinality is commonly thought of as a ``measure'' on the size of sets.
 Intuitively this ``notion of largeness'' provides a good mathematical formalization of size since every set has a unique cardinal number; and under ZFC (the usual Zermelo-Fraenkel axioms of set theory along with the axiom of choice) there is a fixed nontrivial order relation such that every set of cardinals is wellordered.
 However the concept of cardinality has its own mathematical peculiarities as a notion of largeness.
