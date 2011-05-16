@@ -84,18 +84,21 @@
 \begin{document}
 
 \section{Van der Waerden's Theorem and Semigroup Theory}
-Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved (the remarkable assertion) that if the natural numbers are divided into finitely many classes, then at least one class contains a $k$-term arithmetic progression for every natural number $k$.
-An equivalent way to state this theorem is as follows:  
-Pick any finite number of colors and give each natural number a particular color.
-Then for each natural number $k$ there is a monochromatic $k$-term arithmetic progression, that is, there is a $k$-term arithmetic progression such that each of the $k$ terms share the same color.%
+Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved the following remarkable assertion about arithmetic progressions in the positive integers.
+
+\begin{vdw}
+  Let $r$ and $k$ be positive integers.
+  Then there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression, that is, there exist positive integers $a$ and $d$ with $\{a, a+d, \ldots, a + (k-1)d\} \subseteq C_i$.
+\end{vdw}
+ 
+Van der Waerden's proof of this theorem uses a complicated, but elementary, combinatorial argument based on the pigeonhole principle and `double induction'.% 
 \endnote{
-  A more careful reading shows that our first formulation and second formulation, using the `color terminology', of van der Waerden's Theorem are slightly different.
-  In the first formulation, we assert that one class in our division of $\bbN$ contains a $k$-term arithmetic progression for every natural number $k$.
-  While in the second formulation, we assert that for every natural number $k$ there is a class which contains a $k$-term arithmetic progression.
-  These two formulations, despite the interchange between the quantifiers `there exists' and `for all', are equivalent.
-  One direction in this equivalence is easy, and the other direction follows from the pigeonhole principle. 
+  I'm not sure of the exact form of van der Waerden's argument since I have never read the paper \cite{Van-der-Waerden:1927fk}. 
+  This statement is based on my opinion that all known combinatorial proofs of van der Waerden's Theorem are not simple, Khinchin's opinion on the difficulty of the original proof \cite[expressed in Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's description on how he found his proof in \cite{Van-der-Waerden:1971fk}. 
+  (Van der Waerden's description in \cite{Van-der-Waerden:1971fk} seems to imply that his proof is similar to the one in \cite[Chapter 1]{Khinchin:1998fk}.)
+  The interested reader can find a combinatorial proof of van der Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or \cite[Chapter 1]{Khinchin:1998fk}.
 }
-This theorem still forms the basis for much of the contemporary research in the field of Ramsey Theory%
+Despite being such an old result, van der Waerden's Theorem still forms the basis for much of the contemporary research in the field of Ramsey Theory%
 \endnote{
   Almost a decade after van der Waerden published his proof, Paul Erd\H{o}s and Paul Tur\'{a}n in \cite{Erdos:1936fk} started investigating when a finite set of natural numbers would contain a 3-term arithmetic progression.
   One of their conjectures contained in this paper is the following: For every $\delta > 0$ there exists a natural number $N$ such that if $A \subseteq \{1, 2, \ldots, N\}$ with $|A| \ge \delta N$, then $A$ contains a 3-term arithmetic progression. 
@@ -110,24 +113,24 @@ This theorem still forms the basis for much of the contemporary research in the 
 },
 and in this dissertation it will play a similar foundational role. 
 
-Van der Waerden's Theorem can be rewritten to apply to any semigroup, and, as observed in the Introduction of \cite{Bergelson:1992fk}, this result follows directly from van der Waerden's Theorem itself.
+This theorem can be rewritten to apply to any semigroup, where we replace the arithmetic progression $\{a, a+d, ..., a+(k-1)d\}$ by $\{a, ad, ..., ad^{k-1}\}$, and as observed in the Introduction of \cite{Bergelson:1992fk},this `generalization' follows directly from van der Waerden's Theorem itself. 
 
 \begin{thm}
   \label{thm:semigrp-vdw}
-  Let $(S, \cdot)$ be a semigroup and $r \in \bbN$.
-  If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for every $k \in \bbN$, there exist $a$, $d \in S$ with $\{ a, ad, \ldots, ad^k \} \subseteq C_i$.
+  Let $(S, \cdot)$ be a semigroup, and let $r$ and $k$ be positive integers.
+  If $b$ and $c$ are elements of $S$, then there exists a positive integer $N$ such that whenever $\{bc, bc^2, \ldots, bc^N\} = \bigcup_{i=1}^r C_i$, there exist $i \in \{1, 2, \ldots, r\}$ and $a$, $d \in S$ with $\{a, ad, \ldots, ad^{k-1}\} \subseteq C_i$.
 \end{thm}
 \begin{proof}
-  Fix $x \in S$.
-  We shall consider the set $\{\, x^n : n \in \bbN \,\}$.
-  For each $i \in \{1, 2, \ldots, r\}$, define $B_i = \{\, n \in \bbN : x^n \in C_i \,\}$. 
-  Then $\bbN = \bigcup_{i=1}^r B_i$, and we can apply van der Waerden's Theorem to pick $i \in \{1, 2, \ldots, r\}$ such that for every $k \in \bbN$, there exist $b$, $c \in \bbN$ such that $\{ b, b+c, \ldots, b+ k c \} \subseteq B_i$. 
-  By definition of $B_i$ we have $\{ x^b, x^{b+c}, \ldots, x^{b + k c} \} \subseteq C_i$.
-  To complete the proof, simply put $a = x^b$ and $d = x^c$.
+  Pick a positive integer number $N$ as guaranteed by van der Waerden's Theorem for $r$ and $k$.
+  For each $i \in \{1, 2, \ldots r\}$ define $B_i = \bigl\{\, j \in \{1, 2, \ldots, N\} : bc^j \in C_i \,\bigr\}$.
+  Then $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r B_i$, and by van der Waerden's Theorem we may pick $i \in \{1, 2, \ldots, r\}$ and $e$, $f \in \bbN$ with $\{e, e+f, \ldots, e+(k-1)f\} \subseteq B_i$.
+  
+  By definition of $B_i$ we have that $bc^{e+jf} \in C_i$ for all $j \in \{0, 1, \ldots, k-1\}$.
+  To finish the proof simply put $a = bc^e$ and $d = c$.
 \end{proof}
 
-Despite the fact that we get Theorem \ref{thm:semigrp-vdw} for free from van der Waerden's Theorem there are three potential problems with such a straightforward approach:
-Our increment $d$ may be a right identity in our underlying semigroup; and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^k\}$ are distinct.
+While we get Theorem \ref{thm:semigrp-vdw} for free from van der Waerden's Theorem there are three potential problems with such a straightforward approach:
+Our increment $d$ may be a right identity in our underlying semigroup; and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^{k-1}\}$ are distinct.
 (The Introduction of \cite{Bergelson:1992fk} contains an example for both of these problems.)
 The last potential problem is the most subtle and can only occur when the underlying semigroup is noncommutative.
 To precisely formulate this `hidden' problem we make a brief detour to quickly review some needed algebraic definitions and results.
@@ -172,7 +175,7 @@ Using this boundedness condition we have the following important result.
   A proof of this fact is in \cite[Theorem 1.65]{Hindman:1998fk}.
 \end{proof}
 
-The final `boundedness' condition that we shall be interested in occurs when $S$ has a compact Hausdorff topology that interacts appropriately with the algebraic structure of $S$.
+The final boundedness condition that we shall be interested in occurs when $S$ has a compact Hausdorff topology that interacts appropriately with the algebraic structure of $S$.
 
 We call $S$ a \textsl{compact right-topological semigroup} if and only if $S$ is a compact Hausdorff topological space and a semigroup such that for every $x \in S$, $\rho_x$ is continuous. 
 Every compact right-topological semigroup contains an idempotent and the smallest ideal.
@@ -191,6 +194,36 @@ Moreover, this extension turns $\beta S$ into a compact right-topological semigr
 Therefore $\beta S$ has at least one idempotent (it typically has many more) and the smallest ideal $K(\beta S)$ exists. 
 
 \subsection{Arithmetic Progression and Algebraic Lines}
+The arithmetic progressions of positive integers interact nicely with the algebraic structure of $(\beta \bbN, +)$ (and also, $(\beta \bbN, \cdot)$). 
+To see this interaction we define a special subset of $\bbN$ and prove, via Theorem \ref{thm:semigrp-vdw}, that this special subset is partition regular.%
+\endnote{
+  Let $S$ be a nonempty set and let $\Phi$ be some `property' of $S$.
+  We call $\Phi$ \textsl{partition regular} if and only if whenever $A \subseteq S$ with property $\Phi$, $r$ is a positive integer, and $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ has property $\Phi$. 
+  It's a fact that partition regular properties interacts nontrivially with $\beta S$, see \cite[Theorem 3.11]{Hindman:1998fk} and \cite[Theorem 5.7]{Hindman:1998fk}.
+  In this dissertation we are typically only interested in the case when $S$ is a semigroup and $\Phi$ is defined in terms of the algebraic structure of $S$.
+
+  The close connection between partition regularity (although not using this terminology) and ultrafilters was first noticed by Choquet in \cite{Choquet:1947uq}. 
+}
+
+\begin{defn}
+  We call $A \subseteq \bbN$ an \textsl{$AP$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term arithmetic progression.
+\end{defn}
+
+\begin{thm}
+  \label{thm:ap-partition-reg}
+  Let $A \subseteq \bbN$ be an $AP$-set and $r \in \bbN$.
+  If $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is an $AP$-set.
+\end{thm}
+\begin{proof}
+  Observe that it suffices to show that for each positive integer $k$, there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
+
+  So let $k \in \bbN$ and pick a positive integer $N$ as guaranteed by Theorem \ref{thm:semigrp-vdw} for $k$ and $r$.
+  Since $A$ is an $AP$-set, pick positive integers $b$ and $c$ with $\{b+c, b+2c, \ldots, b+Nc\} \subseteq A$. 
+  Since $\{b+c, b+2c, \ldots, b+Nc \} \subseteq A = \bigcup_{i=1}^r C_i$ we may pick $i \in \{1, 2, \ldots, r\}$ and $a$, $d \in \bbN$ such that $\{a, a+d, \ldots, a+(k-1)d\} \subseteq C_i$.
+\end{proof}
+
+With Theorem \ref{thm:ap-partition-reg} and \cite[Theorem 3.11]{Hindman:1998fk} we have that the following subset of $\beta \bbN$ is nonempty.
+
 We are now in a position to formulate our `hidden' problem mentioned earlier. 
 
 \begin{defn}
