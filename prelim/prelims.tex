@@ -87,7 +87,7 @@
 Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved (the remarkable assertion) that if the natural numbers are divided into finitely many classes, then at least one class contains a $k$-term arithmetic progression for every natural number $k$.
 An equivalent way to state this theorem is as follows:  
 Pick any finite number of colors and give each natural number a particular color.
-Then for each natural number $k$ there is a monochromatic $k$-term arithmetic progression, that is, there is a $k$-term arithmetic progression such that each of the k terms share the same color.%
+Then for each natural number $k$ there is a monochromatic $k$-term arithmetic progression, that is, there is a $k$-term arithmetic progression such that each of the $k$ terms share the same color.%
 \endnote{
   A more careful reading shows that our first formulation and second formulation, using the `color terminology', of van der Waerden's Theorem are slightly different.
   In the first formulation, we assert that one class in our division of $\bbN$ contains a $k$-term arithmetic progression for every natural number $k$.
@@ -97,8 +97,8 @@ Then for each natural number $k$ there is a monochromatic $k$-term arithmetic pr
 }
 This theorem still forms the basis for much of the contemporary research in the field of Ramsey Theory%
 \endnote{
-  Almost a decade after van der Waerden published his proof, Paul Erd\H{o}s and Paul Tur\'{a}n in \cite{Erdos:1936fk} started investigating when a finite set of natural numbers contain would contain a 3-term arithmetic progression.
-  One of their conjectures contained in this paper is the following result: For every $\delta > 0$ there exists a natural number $N$ such that if $A \subseteq \{1, 2, \ldots, N\}$ with $|A| \ge \delta N$, then $A$ contains a 3-term arithmetic progression. 
+  Almost a decade after van der Waerden published his proof, Paul Erd\H{o}s and Paul Tur\'{a}n in \cite{Erdos:1936fk} started investigating when a finite set of natural numbers would contain a 3-term arithmetic progression.
+  One of their conjectures contained in this paper is the following: For every $\delta > 0$ there exists a natural number $N$ such that if $A \subseteq \{1, 2, \ldots, N\}$ with $|A| \ge \delta N$, then $A$ contains a 3-term arithmetic progression. 
   This conjecture turned out to be correct and hard to prove.
 
   The first proof of the conjecture came from Klaus Roth in \cite{Roth:1952uq} and \cite{Roth:1953kx} using ``an adaptation of the Hardy-Littlewood [circle] method'' \cite[page 106]{Roth:1953kx}.  
@@ -140,18 +140,18 @@ Throughout this subsection we let $(S, \cdot)$ be some fixed semigroup.
 
 For each $x \in S$ we define the functions $\lambda_x \colon S \to S$ and $\rho_x \colon S \to S$ by $\lambda_x(y) = xy$ and $\rho_x(y) = yx$. 
 For $A \subseteq S$ and $x \in S$, we use the special notations $x^{-1}A$ and $Ax^{-1}$ to refer to $\lambda_x^{-1}[A]$ and $\rho_x^{-1}[A]$, respectively. 
-(Equivalently, $x^{-1}A = \{\, y \in S : xy \in A \,\}$ and $Ax^{-1} = \{\, y \in S : yx \in A \,\}$.)
-If $S$ is commutative, we usually denote its binary operation by $+$ instead of $\cdot$ and write $x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A-x$, respectively. 
+Equivalently, $x^{-1}A = \{\, y \in S : xy \in A \,\}$ and $Ax^{-1} = \{\, y \in S : yx \in A \,\}$.
+(If $S$ is commutative, we usually denote its binary operation by $+$ instead of $\cdot$ and write $x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A-x$, respectively.)
+We call an element $e \in S$ an \textsl{idempotent} if and only if $ee = e$.
 
 We call $\emptyset \ne L \subseteq S$ a \textsl{left ideal of $S$} if and only if for all $x \in S$, $\lambda_x[L] \subseteq L$. 
 We call $\emptyset \ne R \subseteq S$ a \textsl{right ideal of $S$} if and only if for all $x \in S$, $\rho_x[R] \subseteq R$. 
 Finally, we call $\emptyset \ne I \subseteq S$ a \textsl{(two-sided) ideal of $S$} if and only if $I$ is both a left and right ideal.
-A semigroup can contain, at most one, \textsl{smallest ideal} (that is, an ideal contained in every ideal). 
 
-We call a left ideal a \textsl{minimal left ideal} if and only if the only ideal it contains is itself.
+We call a left ideal a \textsl{minimal left ideal} if and only if the only left ideal it contains is itself.
 We define a \textsl{minimal right ideal} and \textsl{minimal two-sided ideal} similarly.
 There can be at most one minimal two-sided ideal in a semigroup, and if this minimal ideal exists, then it is contained in every ideal of our semigroup.
-We denote this \textsl{smallest ideal}, if it exists, $K(S)$.%
+We denote this \textsl{smallest ideal}, if it exists, by $K(S)$.%
 \endnote{
   The notation of $K(S)$ denoting the smallest ideal comes from the Russian mathematician Suschkewitsch.
   He called the smallest ideal the \textsl{kernel} of the semigroup.
@@ -160,8 +160,8 @@ We denote this \textsl{smallest ideal}, if it exists, $K(S)$.%
 
 The existence of the smallest ideal essentially depends on what may be regarded as certain `boundedness' conditions on the semigroup.
 For instance it is a classical result in algebraic semigroup theory that every finite semigroup contains a smallest ideal.
-Another example of a `boundedness' condition that implies the existence of a smallest ideal is the existence of a minimal left ideal with an idempotent element \cite[Theorem 1.59]{Hindman:1998fk}. 
-Using this `boundedness' condition we have the following important result.
+Another example of a boundedness condition that implies the existence of a smallest ideal is the existence of a minimal left ideal with an idempotent element \cite[Theorem 1.59]{Hindman:1998fk}. 
+Using this boundedness condition we have the following important result.
 
 \begin{thm}
   Let $(S, \cdot)$ be a semigroup with a minimal left ideal of $S$ that has an idempotent. 
@@ -178,12 +178,11 @@ We call $S$ a \textsl{compact right-topological semigroup} if and only if $S$ is
 Every compact right-topological semigroup contains an idempotent and the smallest ideal.
 (The existence of idempotents is proved in \cite[Theorem 2.5]{Hindman:1998fk}, while the existence of the smallest ideal is proved in \cite[Theorem 2.8]{Hindman:1998fk}.)
 
-
-
-\section{Piecewise Syndetic Sets}
-
 \subsection{Algebra in the Stone-\v{C}ech Compactification}
-Given a discrete semigroup $(S, \cdot)$ we put $\beta S = \{\, p : \mbox{$p$ is an ultrafilter on $S$} \,\}$.
+Let $(S, \cdot)$ be a fixed discrete semigroup, that is, $S$ is a semigroup with the discrete topology. 
+In this subsection we describe how we can densely embed $S$, and extend its semigroup operation, into a compact right-topological semigroup.
+
+Put $\beta S = \{\, p : \mbox{$p$ is an ultrafilter on $S$} \,\}$.
 We topologize $\beta S$ as follows: For each $A \subseteq S$ define $\overline{A} = \{\, p \in \beta S : p \in A \,\}$.
 Then $\{\, \overline{A} : A \subseteq S \,\}$ forms a basis for a compact Hausdorff topology on $\beta S$ which is the Stone-\v{C}ech Compactification \cite[Theorem 3.27]{Hindman:1998fk} of the discrete space $S$.
 
@@ -191,7 +190,39 @@ We can extend the semigroup operation of $S$ to $\beta S$ \cite[Theorem 4.1]{Hin
 Moreover, this extension turns $\beta S$ into a compact right-topological semigroup with the property that for all $s \in S$, $\lambda_s$ is continuous. 
 Therefore $\beta S$ has at least one idempotent (it typically has many more) and the smallest ideal $K(\beta S)$ exists. 
 
-\subsection{Arithmetic Progressions and Algebraic Lines}
+\subsection{Arithmetic Progression and Algebraic Lines}
+We are now in a position to formulate our `hidden' problem mentioned earlier. 
+
+\begin{defn}
+  We call $A \subseteq \bbN$ an \textsl{$AP$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term arithmetic progression. 
+\end{defn}
+
+With this definition we can formulate van der Waerden's theorem as the assertion that if $\bbN$ is divided into finitely many classes, then at least one class is an $AP$-set. 
+We wish to show the superficially stronger result that if an $AP$-sets is divided into finitely many classes, then at least one class is an $AP$-set. 
+The standard proof, and the one we give, follows from yet another equivalent form of van der Werden's Theorem. 
+
+\begin{vdw}
+  For every $r$, $k \in \bbN$, there exists a natural number $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
+\end{vdw}
+
+\begin{thm}
+  Let $A \subseteq \bbN$ be an $AP$-set and $r \in \bbN$.
+  If $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is an $AP$-set.
+\end{thm}
+\begin{proof}
+  By the pigeonhole principle it suffices to show that for each $k \in \bbN$, there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression. 
+
+  By van der Waerden's Theorem, pick a natural number $N$ such that if $\{1, 2, \ldots, N\}$ is divided into $r$ pieces, then at least one piece contains a $k$-term arithmetic progression. 
+  Pick $a$, $d \in \bbN$ such that $\{a, a+d, \ldots, a+Nd\} \subseteq A$. 
+  For each $i \in \{1, 2, \ldots, r\}$ define $B_i = \bigl\{\, j \in \{1, 2, \ldots, N\} : a+jd \in C_i  \,\bigr\}$.
+  Then $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r B_i$. 
+  Pick $i \in \{1, 2, \ldots, r\}$ and $c$, $b \in \bbN$ such that $\{c, c+b, \ldots, c+(k-1)b\} \subseteq B_i$. 
+
+  We claim that $C_i$ has a $k$-term arithmetic progression. 
+  By definition of $B_i$ we have that for all $j \in \{0, 1, \ldots, k-1\}$, $a + cd + jbd = a + (c + jb)d \in C_i$, that is, $C_i$ contains a $k$-term arithmetic progression.
+\end{proof}
+
+\section{Piecewise Syndetic Sets}
 
 \begin{defn}
   \begin{itemize}
