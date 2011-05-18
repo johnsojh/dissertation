@@ -113,7 +113,7 @@ Despite being such an old result, van der Waerden's Theorem still forms the basi
 },
 and in this dissertation it will play a similar foundational role. 
 
-This theorem can be rewritten to apply to any semigroup, where we replace the arithmetic progression $\{a, a+d, ..., a+(k-1)d\}$ by $\{a, ad, ..., ad^{k-1}\}$, and as observed in the Introduction of \cite{Bergelson:1992fk},this `generalization' follows directly from van der Waerden's Theorem itself. 
+This theorem can be rewritten to apply to any semigroup, where we replace an arithmetic progression $\{a, a+d, ..., a+(k-1)d\}$ by an `algebraic line' $\{a, ad, ..., ad^{k-1}\}$, and as observed in the Introduction of \cite{Bergelson:1992fk},this `generalization' follows directly from van der Waerden's Theorem itself. 
 
 \begin{thm}
   \label{thm:semigrp-vdw}
@@ -121,8 +121,8 @@ This theorem can be rewritten to apply to any semigroup, where we replace the ar
   If $b$ and $c$ are elements of $S$, then there exists a positive integer $N$ such that whenever $\{bc, bc^2, \ldots, bc^N\} = \bigcup_{i=1}^r C_i$, there exist $i \in \{1, 2, \ldots, r\}$ and $a$, $d \in S$ with $\{a, ad, \ldots, ad^{k-1}\} \subseteq C_i$.
 \end{thm}
 \begin{proof}
-  Pick a positive integer number $N$ as guaranteed by van der Waerden's Theorem for $r$ and $k$.
-  For each $i \in \{1, 2, \ldots r\}$ define $B_i = \bigl\{\, j \in \{1, 2, \ldots, N\} : bc^j \in C_i \,\bigr\}$.
+  Pick a positive integer $N$ as guaranteed by van der Waerden's Theorem for $r$ and $k$.
+  For each $i \in \{1, 2, \ldots, r\}$ define $B_i = \bigl\{\, j \in \{1, 2, \ldots, N\} : bc^j \in C_i \,\bigr\}$.
   Then $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r B_i$, and by van der Waerden's Theorem we may pick $i \in \{1, 2, \ldots, r\}$ and $e$, $f \in \bbN$ with $\{e, e+f, \ldots, e+(k-1)f\} \subseteq B_i$.
   
   By definition of $B_i$ we have that $bc^{e+jf} \in C_i$ for all $j \in \{0, 1, \ldots, k-1\}$.
@@ -130,7 +130,7 @@ This theorem can be rewritten to apply to any semigroup, where we replace the ar
 \end{proof}
 
 While we get Theorem \ref{thm:semigrp-vdw} for free from van der Waerden's Theorem there are three potential problems with such a straightforward approach:
-Our increment $d$ may be a right identity in our underlying semigroup; and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^{k-1}\}$ are distinct.
+Our increment $d$ may be a right identity in our underlying semigroup, and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^{k-1}\}$ are distinct.
 (The Introduction of \cite{Bergelson:1992fk} contains an example for both of these problems.)
 The last potential problem is the most subtle and can only occur when the underlying semigroup is noncommutative.
 To precisely formulate this `hidden' problem we make a brief detour to quickly review some needed algebraic definitions and results.
@@ -151,7 +151,7 @@ We call $\emptyset \ne L \subseteq S$ a \textsl{left ideal of $S$} if and only i
 We call $\emptyset \ne R \subseteq S$ a \textsl{right ideal of $S$} if and only if for all $x \in S$, $\rho_x[R] \subseteq R$. 
 Finally, we call $\emptyset \ne I \subseteq S$ a \textsl{(two-sided) ideal of $S$} if and only if $I$ is both a left and right ideal.
 
-We call a left ideal a \textsl{minimal left ideal} if and only if the only left ideal it contains is itself.
+We call a left ideal a \textsl{minimal left ideal} if and only if it does not properly contain a left ideal.
 We define a \textsl{minimal right ideal} and \textsl{minimal two-sided ideal} similarly.
 There can be at most one minimal two-sided ideal in a semigroup, and if this minimal ideal exists, then it is contained in every ideal of our semigroup.
 We denote this \textsl{smallest ideal}, if it exists, by $K(S)$.%
@@ -233,12 +233,13 @@ By Theorem \ref{thm:ap-partition-reg} and \cite[Theorem 3.11]{Hindman:1998fk} we
 \end{thm}
 \begin{proof}
   The fact that $\AP$ is an ideal in $(\beta \bbN, +)$ and $(\beta \bbN, \cdot)$ is proved in \cite[Theorem 14.5]{Hindman:1998fk}. 
-  The fact $\AP$ is easy to see using the following common technique.
+  The fact that $\AP$ is closed is easy to see using the following common technique.
   Let $p \not\in \AP$ and pick $A \in p$ such that $A$ is not an $AP$-set.
   Then $\overline{A} \cap \AP = \emptyset$, that is, a (basic open) neighborhood of $p$ is contained in the complement of $\AP$.
 \end{proof}
 
-We are now in a position to formulate our `hidden' problem mentioned earlier, and we start by simply modifying the definition of an $AP$-set, Theorem \ref{thm:ap-partition-reg}, and the definition of $\AP$ to be applicable to a semigroup.
+We are now in a position to formulate our `hidden' problem mentioned earlier.
+Therefore we start by simply modifying the definition of an $AP$-set, Theorem \ref{thm:ap-partition-reg}, and the definition of $\AP$ to be applicable to a semigroup.
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup.
@@ -250,9 +251,6 @@ We are now in a position to formulate our `hidden' problem mentioned earlier, an
     \item[(c)] $\AL(S) = \{\, p \in \beta S : \mbox{for every $A \in p$, $A$ is an $AL$-set} \,\}$.
   \end{itemize}
 \end{defn}
-\begin{rmk}
-  The reason we don't call an algebraic line by the perhaps more fitting name of `algebraic progression' is because we shall soon see that algebraic lines are not as nice as arithmetic progressions.
-\end{rmk}
 
 \begin{thm}
   \label{thm:al-partition-reg}
@@ -278,8 +276,7 @@ We are now in a position to formulate our `hidden' problem mentioned earlier, an
   Then $\overline{A} \cap \AL(S) = \emptyset$, that is, a (basic open) neighborhood of $p$ is contained in the complement of $\AL(S)$.
 
   Finally to see that $\AL(S)$ is a left ideal, let $p \in \beta S$ and $q \in \AL(S)$. 
-  Let $A \in pq$, then $\{\, x \in S : x^{-1}A \in q \,\} \in p$. 
-  Pick $x \in S$ such that $x^{-1}A \in q$. 
+  Let $A \in pq$, then $\{\, x \in S : x^{-1}A \in q \,\} \in p$ and so we may pick $x \in S$ such that $x^{-1}A \in q$. 
   We show that $A$ is an $AL$-set.
   Let $k$ be a positive integer.
   Pick elements $b$ and $d$ in $S$ such that $\{b, bd, \ldots, bd^{k-1}\} \in x^{-1}A$.
@@ -298,21 +295,23 @@ While $\AL(S)$ and $\AP$ are both closed left ideals of $\beta S$ and $\beta \bb
   Put $B = \{\, b^n : n \in \bbN \,\}$. and pick $p \in \AL(S)$ with $B \in p$. 
   (Such a $p$ exists since $B$ is a $AL$-set and by \cite[Theorem 3.11]{Hindman:1998fk}.)
   By \cite[Exercise 4.1.8(b)]{Hindman:1998fk}, $Ba \in pa$. 
-  We show that $Ba$ is not an $AL$-set by showing that $Ba$ doesn't contain even a 2-term algebraic lines. 
+  We show that $Ba$ is not an $AL$-set by showing that $Ba$ doesn't contain even a 2-term algebraic line. 
   Suppose there exists $c$, $d \in S$ with $\{c, cd\} \subseteq Ba$. 
   Pick positive integers $i$ and $j$ such that $c = b^ia$ and $cd = b^ja$.
   Then $b^ja = cd = b^iad$.
-  If $i < j$, then $b^{j-1}a = ad$, a contraction.
+  If $i < j$, then $b^{j-i}a = ad$, a contraction.
   If $i = j$, then $a = ad$, a contraction.
   If $i > j$, then $b^{i-j}ad = a$, a contradiction.
   Hence $Ba$ is not an $AL$-set and we have $\overline{Ba} \cap \AL(S) = \emptyset$, that is, $pa \not\in \AL(S)$. 
 \end{proof}
 
-\section{Piecewise Syndetic Sets}
+\section{Piecewise Syndetic and Central Sets}
 The result embodied in Theorem \ref{thm:AL-not-left-ideal} is aesthetically disturbing since $\AL(S)$ may not be a right ideal when $S$ is noncommutative. 
-To recover this property in $\beta S$ we shall specialize and drastically modify the definition of an $AP$-set when we have a noncommutative semigroup.
-One of these modifications is the notion of a piecewise syndetic set.
-However sine the definition of a piecewise syndetic set is, initially, somewhat difficult to understand, we choose to give some motivation on how this concept can be `naturally' derived before explicitly defining it.
+To recover this property in $\beta S$ we shall specialize and drastically modify the definition of an $AP$-set when we have a (noncommutative) semigroup.
+The two modifications we mention in this section are piecewise syndetic sets and central sets.
+We start by giving the definition of a piecewise syndetic set. 
+However since the definition of a piecewise syndetic set is, initially, somewhat difficult to understand, we choose to give some motivation on how this concept can be `naturally' derived before explicitly defining it.
+
 
 \subsection{Syndetic Sets}
 We start by proving that a certain statement is equivalent to van der Waerden's Theorem.
@@ -334,7 +333,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
   We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
   Suppose temporarily that this claim is true.
-  We can then apply (a) to pick $i \in \{1, 2, \ldots, b\}$ such that for all $\ell \in \bbN$, the set $-i + A$ contains a $k$-term arithmetic progression. 
+  We can then apply (a) to pick $i \in \{1, 2, \ldots, b\}$ such that the set $-i + A$ is an $AP$-set. 
   From this situation it follows that $A$ contains a $k$-term arithmetic progression for every $k \in \bbN$. 
   We now prove our claim.
   
@@ -351,7 +350,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   By the pigeonhole principle, we can pick $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is infinite.
   Without loss of generality suppose that $C_1$ is infinite. 
   Enumerate $C_1$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
-  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are done by (b). 
+  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are done. 
   Hence suppose instead that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite, that is, for all $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k + 2$. 
   Therefore, for all $k \in \bbN$, there exists $n \in \bbN$ such that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (k + 1) \,\} \subseteq \bigcup_{i=2}^r C_i$. 
   This means that $\bigcup_{i=2}^r C_i$ contains a \mbox{$k$-term} arithmetic progression for every $k \in \bbN$.
@@ -359,7 +358,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Without loss of generality, suppose that $C_2$ is infinite.
 
   Enumerate $C_2$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
-  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are done by (b).
+  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then again we are done.
   Suppose that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite, then, as above, for every $k \in \bbN$, there exists $n \in \bbN$, such that $\{\, x_n +1, x_n + 2, \ldots, x_n + (k +1) \,\}  \subseteq \bigcup_{i=3}^r C_i$. 
   Since $\bigcup_{i=3}^r C_i$ is an $AP$-set, we may continue as before.
   Eventually, we will stop at a set with bounded gaps or a set that contains arbitrarily long arithmetic progressions.
@@ -367,7 +366,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
 \begin{rmk}
   Theorem \ref{thm:vdwEqSyn}(a) is equivalent to van der Waerden's Theorem.
   One direction in this equivalence is easy, while the other direction essentially depends on what have been termed `compactness arguments'. 
-  \cite[Theorem 2.5]{Landman:2004qf} contains a more complete list of statements equivalent to van der Waerden's Theorem with proofs.
+  \cite[Theorem 2.5]{Landman:2004qf} contains a more complete list of statements equivalent to van der Waerden's Theorem.
 \end{rmk}
 
 We wish to translate statement Theorem \ref{thm:vdwEqSyn} (b) into the language of semigroups.
@@ -389,7 +388,7 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
 \end{prop}
 \begin{proof}
   \textsl{(a) $\implies$ (b).}
-  Let $b = \max\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}$ and put $G = \{1, 2, \ldots, b\}$. 
+  Let $b = \max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and put $G = \{1, 2, \ldots, b\}$. 
   Clearly, $\bigcup_{t \in G} -t + A \subseteq \bbN$ so let $x \in \bbN$. 
   First, assume that $x < x_1$, then since $x_1 \le b$, we can pick $t \in G$ such that $t + x = x_1$, that is $x \in -t + A$.
   Now assume that $x_1 \le x$.
@@ -404,22 +403,22 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
 
   Let $n \in \bbN$.
   Since $\bbN = \bigcup_{t \in G} -t+A$ and $x_n \in \bbN$, pick $t \in G$ such that $t + x_n \in A$.
-  Hence pick $m \in \bbN$ such that $x_m = t + x_n$, that is, $x_m - x_m = t \le b$. 
+  Hence pick $m \in \bbN$ such that $x_m = t + x_n$, that is, $x_m - x_n = t \le b$. 
   Observe that $x_{n+1} \le x_m$.
   Therefore it follows that $x_{n+1} - x_n \le x_m - x_n \le b$, and this completes the proof of the reverse direction.
 \end{proof}
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
-  We call $A$ a \textsl{syndetic (set in $S$)} if and only if there exist $G \in \Pf(S)$ such that for all $S = \bigcup_{t \in G} t^{-1}A$. 
+  We call $A$ a \textsl{syndetic (set in $S$)} if and only if there exist $G \in \Pf(S)$ such that $S = \bigcup_{t \in G} t^{-1}A$. 
 \end{defn}
 
-Even though we have successfully translated Theorem \ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact that the notion of syndetic set is \textsl{not} partition regular. 
+Even though we have successfully translated Theorem \ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact that the notion of a syndetic set is \textsl{not} partition regular. 
 See the Introduction in \cite{Bergelson:2001ve} for an example in $\bbN$.
 (Although syndetic sets do intereact nicely with smallest ideal of $\beta S$, see \cite[Theorems 4.39 and 4.43]{Hindman:1998fk}.)
 In order to recover partition regularity, we weaken the definition of a syndetic set to obtain a piecewise syndetic set.
 
-\subsection{Piecewise Syndetic Sets and Central Sets}
+\subsection{Piecewise Syndetic Sets}
 For a first definition of a piecewise syndetic set we introduce some temporary terminology and notation.
 Given $F \in \Pf(\bbN)$ with $|F| = n$, enumerate $F$ as a strictly increasing sequence $x_1 < x_2 < \cdots < x_n$. 
 We define the \textsl{gap size of $F$} as $g(F) = \max\bigr\{\, x_{j+1} - x_j : j \in \{1, 2, \ldots, n-1\} \,\bigl\}$.
@@ -445,12 +444,12 @@ It's is the purpose of this next result to show that we can dispense with the po
   We show that for all $F \in \Pf(\bbN)$, there exists $x \in \bbN$ such that $F+x \subseteq \bigcup_{t \in G} -t + A$.
 
   Let $F \in \Pf(\bbN)$ and put $N = 3 |F| \max F$. 
-  Pick $B \in \Pf(A)$ with $|B| \le N$ and $g(B) \le b$. 
-  Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots  < x_N$.
+  Pick $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$. 
+  Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots  < x_n$.
   It suffices to show that there exists $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t + B$.
   (Since $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
   Pick $x \in \bbN$ such that $\{1, 2, \ldots, |F| \max F, |F| \max F + 1, \ldots, 2|F| \max F\} + x \subseteq \{x_1, x_1 + 1, \ldots, x_n\}$.
-  (We can do this since $n = |B| \le 3 |F| \max F$.)
+  (We can do this since $n = |B| \ge 3 |F| \max F$.)
   Let $f \in F$, then $f + x \in \{x_1, x_1 + 1, \ldots, x_n \}$ and we can pick $m \in \{1, 2, \ldots, n\}$ with $x_m \le f+x < x_{m+1}$. 
   Since $x_{m+1} - x_m \le b$, there exists $t \in G$ such that $t + f + x = x_{m+1}$. 
   This completes the forward direction of the proof.  
@@ -479,25 +478,25 @@ Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets a
   We say $A$ is \textsl{piecewise syndetic (set in S)} if and only if there exists $G \in \Pf(S)$ such that for all $F \in \Pf(S)$ there exists $x \in S$ with $Fx \subseteq \bigcup_{t \in G} t^{-1}A$.
 \end{defn}
 
-\begin{prop}
+\begin{thm}
   \label{prop:psReg}
   Let $S$ be a semigroup and $A \subseteq S$ piecewise syndetic.
   If $A = C_1 \cup C_2$, then either $C_1$ is piecewise syndetic or $C_2$ is piecewise syndetic.
-\end{prop}
+\end{thm}
 \begin{proof}
   Pick $G \in \Pf(S)$ such that for all $F \in \Pf(S)$, there exists $x \in S$ such that $Fx \subseteq \bigcup_{t \in G} t^{-1}A$. 
   Suppose, to the contrary, that $C_1$ is not piecewise syndetic and $C_2$ is not piecewise syndetic. 
   Since $C_1$ is not piecewise syndetic, we can pick $F \in \Pf(S)$ such that for all $x \in S$, $Fx \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset$. 
-  Since $C_2$ is not piecewise syndetic, we can pick $H \in \Pf(S)$ such that for all $x \in S$, $Hx \setminus (\bigcup_{t \in GF} t^{-1}C_1) \ne emptyset$.
+  Since $C_2$ is not piecewise syndetic, we can pick $H \in \Pf(S)$ such that for all $x \in S$, $Hx \setminus (\bigcup_{t \in GF} t^{-1}C_1) \ne \emptyset$.
   Since $FH \in \Pf(S)$ pick $x \in S$ such that 
   \[
     FHx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2). 
   \]
   
-  Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}B$. 
+  Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}C_1$. 
   Now $Fyx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, $yx \in S$, and $C_1$ is not piecewise syndetic, so we have that 
   \[
-    Fyz \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset. 
+    Fyx \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset. 
   \]
   Pick $z \in F$ such that $zyx \not\in \bigcup_{t \in G} t^{-1}C_1$. 
   Now $zyx \in \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, so pick $t \in G$ such that $tzyx \in C_1 \cup C_2$. 
@@ -510,45 +509,17 @@ Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets a
 
 \subsection{Central Sets}
 
-
-
-
-There is another statement, which implies van der Waerden's Theorem, we can import into a general semigroup, the Hales-Jewett Theorem.
-To state this theorem we require some terminology. 
+In contrast to our definition of a piecewise syndetic set trying to describe a central subset of a semigroup using only the algebraic structure of our semigroup is shockingly complicated. 
+(The curious reader can consult \cite[Section 14.5]{Hindman:1998fk} for the details.)
+By using the algebraic structure of the Stone-\v{C}ech compactification we can give a very simple definition of central sets.
 
 \begin{defn}
-  Let $S$ be the free semigroup on the finite alphabet $A$, and let
-  $\star$ denote an element not in $A$.
-  \begin{itemize}
-    \item[(a)] A \textsl{variable word (on $A$)} $w(\star)$ is a word in the  free semigroup on the alphabet $A \cup \{\star\}$ in which $\star$ occurs.
-
-    \item[(b)] Given a variable word $w(\star)$ on $A$ and $a \in A$, we let $w(a)$ denote the word in $S$ where each occurrence of $\star$ in $w(\star)$ is replaced by $a$.
-
-    \item[(c)] Given a variable word $w(\star)$ on $A$ we call the set $\{\, w(a) : a \in A \,\}$ a \textsl{combinatorial line}.
-  \end{itemize}
+  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  We call $A$ \textsl{central} if and only if there exists an idempotent $p = pp \in K(\beta S)$ such that $A \in p$.
 \end{defn}
 
-\begin{hj}
-  Let $A$ be a finite nonempty alphabet, $S$ be a free semigroup on $A$, and let $r \in \bbN$.
-  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a combinatorial line. 
-\end{hj}
+In the next chapter we shall prove that central sets do enjoy a powerful combinatorial structure embodied by the Central Sets Theorem.
 
-Latter on we shall need to use a specialized form of the Hale's Jewett Theorem in which our combinatorial line is formed by a variable word that begins and ends with a constant and there are no adjacent variables in the variabel word.
-
-\begin{shj}
-  Let $A$ be a finite nonempty alphabet, $S$ be a free semigroup on $A$, and let $r \in \bbN$.
-  If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2, \ldots, r\}$ and there exists a variable word $w(\star)$ such that $w(\star)$ begins and ends with a constant, there are no two adjacent variable words, and $\{\, w(a) : a \in A \,\} \subseteq C_i$.
-\end{shj}
-\begin{proof}
-  Define the function $\varphi \colon S \to \{1, 2, \ldots, r\}$ by if $w \in C_i$, then $\varphi(w) = \min\{i : w \in C_i\}$. 
-  Fix $b \in A$ and define $\psi \colon S \to S$ as follows: if $w = a_1a_2 \cdots a_n$ with each $a_i \in A$, then $\psi(w) = ba_1ba_2b\cdots a_nb$.
-  We have that $\varphi \circ \psi \colon S \to \{1, 2, \ldots, r\}$.
-  By the Hales-Jewett Theorem, pick $i \in \{1, 2, \ldots, r\}$ and a variable word $w(\star)$ such that $\{\, w(a) : a \in A \,\} \subseteq (\varphi \circ \psi)^{-1}[i]$.
-  Observe that $\psi\bigl(w(\star)\bigr)$ is a variable word that begins and ends with a constant, doesn't have any adjacent variables, and $\{\, \psi\bigl(w(a)\bigr) : a \in A \} \subseteq C_i$.
-\end{proof}
-
-
-\section*{Open Problems}
 
 % Endnotes 
 \theendnotes
