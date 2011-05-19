@@ -137,22 +137,23 @@ To actually perform this task we shall use a the following specialized form the 
   Observe that $\psi\bigl(w(\star)\bigr)$ is a variable word that begins and ends with a constant, doesn't have any adjacent variables, and $\{\, \psi\bigl(w(a)\bigr) : a \in A \} \subseteq C_i$.
 \end{proof}
 
-\begin{cor}
+\begin{thm}
+  \label{thm:finitary-shj}
   For each $k$ and $r$ in $\bbN$ there exists $n \in \bbN$ such that whenever $\{1, 2, \ldots, k\}^n$ is $r$-colored, that is, $\varphi \colon \{1, 2, \ldots, k\}^n \to \{1, 2, \ldots, r\}$, there exists a variable word $w(\star)$ which begins and ends with a constant letter and has no two adjacent variable letters such that $\bigl\{\, w(i) : i \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic, that is, $\varphi$ is constant on $\bigl\{\, w(i) : i \in \{1, 2, \ldots, k\} \,\bigr\}$.
-\end{cor}
+\end{thm}
 % The following proof doesn't seem right since I didn't use compactness.
 \begin{proof}
   Let $k$ and $r$ be given and suppose that the conclusion fails.
   That is for each $n \in \bbN$ choose an $r$-coloring $\varphi_n \colon \{1, 2, \ldots, k\}^n \to \{1, 2, \ldots, r\}$ such that no variable word which begins and ends with a constant and has no two adjacent variable letters is monochromatic for $\varphi_n$.
   
-  Put $S = \bigcup_{n=1}^\infty \{1, 2, \ldots, k\}^n$ and define $\varphi \colon S \to \{1, 2, \ldots, r\}$ by $\varphi(x_1, x_2, \ldots, x_n) = \varphi_n(x_1, x_2, \ldots, x_n)$.
+  Put $S = \bigcup_{n=1}^\infty \{1, 2, \ldots, k\}^n$ and define $\varphi \colon S \to \{1, 2, \ldots, r\}$ as follows: If $w$ is a length $n$ word with $w = (x_1, x_2, \ldots, x_n)$ and each $x_i \in \{1, 2, \ldots, k\}$, then $\varphi(w) = \varphi_n(w)$.
   By Theorem \ref{thm:special-hj} pick $i \in \{1, 2, \ldots, r\}$ and a variable word $w(\star)$ which beings and ends with a constant letter and has no two adjacent variable letters with $\bigl\{\, w(i) : i \in \{1, 2, \ldots, k\} \,\bigr\} \subseteq \varphi^{-1}[\{i\}]$.
   Suppose that the length of $w(\star)$ is $n$, then, $\varphi_n$ is constant on $\bigl\{\, w(i) : i \in \{1, 2, \ldots, k\} \,\bigr\}$, a contradiction. 
 \end{proof}
 
-
-
 \section{$J$-sets}
+The way we shall import combinatorial lines into our semigroup is through the notion of a $J$-set. 
+
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup.
   \begin{itemize}
@@ -191,7 +192,7 @@ However before proving this result we introduce some temporary notation that is 
 \end{defn}
 
 Given a $A$ a subset of some semigroup $S$, in \cite[Definition 2.2(a)]{Hindman:2009vn} $A$ is considered a $J$-set if and only if for every $F \in \calT$, there exists $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$, $\prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) a(m+1) \in A$.
-To show that our definition of a $J$-set is equivalent to \cite[Definition 2.2(a)]{Hindman:2009vn} we will use the following technical ``rewriting'' lemma and its corollary.
+To show that our definition of a $J$-set is equivalent to \cite[Definition 2.2(a)]{Hindman:2009vn} we will use the following technical `rewriting' lemma and its immediate corollary.
 
 \begin{lem}
   \label{lem:rewrite-jset}
@@ -448,7 +449,7 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
   Pick $F_1$ and $F_2$ in $\Pf(\calT)$ such that for all $m \in \bbN$, every $a \in S^{m+1}$, and every $t \in \calJ_m$, there exist $f \in F_1$ and $g \in F_2$ such that $x(m, a, t, f) \not\in A_1$ and $x(m, a, t, g) \not\in A_2$.
   Let $F = F_1 \cup F_2$, put $k = |F|$, and enumerate $F$ as $\{f_1, f_2, \ldots, f_k\}$.
 
-  By the Hales-Jewett Theorem pick $n \in \bbN$ such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable words, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
+  By Theorem \ref{thm:finitary-shj} pick $n \in \bbN$ such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable words, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
   (For instance, if $k = 4$ and $n = 10$, then $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$ is a suitable variable word.)
 
   Now for each $w = (x_1, x_2, \ldots, x_n) \in \{1, 2, \ldots, k\}^n$ define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n f_{x_i}(nt + i)$.
@@ -676,7 +677,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   Then $y \in M$ and so $\alpha(G_n) + \sum_{t \in H(G_n)} f_n(t) = \alpha(F) + \sum_{t \in H(F)} f_n(t) \in B \subseteq -y + A^\star$. 
   Hence $\sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t) \bigr) \in A^\star$.
 
-  ($Leftarrow$)
+  ($\Leftarrow$)
   Clearly $A$ is a $J$-set in a commutative semigroup and so we can rewrite the terms $\alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)$ as $x(m(G_i), \beta(G_i), \tau(G_i), f_i)$. 
 \end{proof}
 
