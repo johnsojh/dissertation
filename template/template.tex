@@ -1,0 +1,137 @@
+% The following is a dissertation template that meets the Howard
+% University specifications.
+
+% Howard University requires a 12 point type Times New Roman (or
+% Helvetica) font. Before submitting a final draft, change the DRAFT
+% option to FINAL and remove the SHOWTRIMS option.
+
+\documentclass[letterpaper, 12pt, oneside, showtrims, draft]{memoir}
+
+% Top, right, bottom, and left margins must be 1 inch each from the
+% edge. Using the geometry package with the options 'margin=1in' is a
+% convenient way to accomplish this.
+\usepackage[margin=1in]{geometry}  
+
+% The amsthm package is used to provide the theorem-type and proof
+% environments that make typesetting theorems and definitions easy.
+\usepackage{amsthm}
+
+% This modification of the plain theorem style template uses slanted
+% fonts instead of italic fonts in the theorem statement. I prefer
+% this style since in the older style you can confuse the variables
+% with the "regular" text.
+\newtheoremstyle{plain}
+  {3mm}                         % Space above theorem and previous line.
+  {3mm}                         % Space below theorem box and next line.
+  {\slshape}                    % Use slanted font in body of theorem.
+  {}                            % Indent amount from margin. (Here no indent.)
+  {\bfseries}                   % Theorem head font.
+  {.}                           % Punctation after theorem head.
+  {.5em}                        % Space after theorem head.
+  {}                            % Theorem head specification. 
+
+\theoremstyle{plain}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+% Short name for the angle bracket symbols.
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\usepackage{hu}
+
+\begin{document}
+
+% Howard University requires dissertations to be double-spaced. In
+% (La)TeX this looks bad and wastes paper. The following spacing using
+% a baselineskip value of 1.7pt is a good compromise. 
+\addtolength{\baselineskip}{1.7pt}
+
+\renewcommand{\title}{A new and simpler Central Sets Theorem} 
+\renewcommand{\author}{John H.~Johnson}
+\newcommand{\monthyear}{July 2011}
+
+\pagenumbering{roman}
+% The following is the title page as required by the Graduate School.
+\newcommand{\thetitlepage}{
+  \clearpage
+  \begin{center}
+    HOWARD UNIVERSITY \\ \vspace{1em}
+    \textbf{\title} \\ \vspace{4em}
+
+    A Dissertation \\
+    Submitted to the Faculty of the \\
+    Graduate School \\ \vspace{4em}
+    
+    of \\ \vspace{4em}
+
+    \textbf{HOWARD UNIVERSITY} \\ \vspace{4em}
+    
+    in partial fulfillment of \\
+    the requirements for the \\
+    degree of \\ \vspace{4em}
+
+    \textbf{DOCTOR OF PHILOSOPHY} \\ \vspace{4em}
+
+    Department of Mathematics \\ \vspace{2em}
+    
+    by \\ \vspace{2em}
+
+    \textbf{\author} \\ \vspace{1em}
+    
+    Washington, DC \\
+    \monthyear
+    \vfill
+  \end{center}
+}
+
+% This is a template for the Committee Approval Form.
+\newcommand{\approval}{
+  \clearpage
+  \begin{center}
+    \textbf{HOWARD UNIVERSITY} \\
+    \textbf{GRADUATE SCHOOL} \\
+    \textbf{DEPARTMENT OF MATHEMATICS} \\ \vspace{1em}
+    
+    DISSERTATION COMMITTEE
+  \end{center}
+
+  % Code copied to produced a horizontal line for signatures. 
+  \newcommand{\sigline}{\makebox[3in]{\hrulefill}}
+
+  \vspace{4em}
+  
+  \begin{tabular}{@{}l @{}l}
+    \hspace{15em} & \sigline \\
+    \hspace{15em} & Toka Diagana, Ph.D. \\
+    \hspace{15em} & Chairperson \vspace{4em} \\
+    \hspace{15em} & \sigline \\
+    \hspace{15em} & Alexander Burstein, Ph.D.  \vspace{4em} \\
+    \hspace{15em} & \sigline \\
+    \hspace{15em} & Neil Hindman, Ph.D.  \vspace{4em} \\
+    \hspace{15em} & \sigline \\
+    \hspace{15em} & Arthur Grainger, Ph.D. \vspace{4em} \\
+    \hspace{15em} & \sigline \\
+    \hspace{15em} & Paul Peart, Ph.D. \\
+  \end{tabular}
+  
+  
+  \vfill
+}
+
+\thetitlepage
+\approval
+
+
+Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved the following remarkable assertion about arithmetic progressions in the positive integers.
+
+
+  Let $r$ and $k$ be positive integers.
+  Then there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression, that is, there exist positive integers $a$ and $d$ with $\{a, a+d, \ldots, a + (k-1)d\} \subseteq C_i$.
+
+
+
+\end{document}
+
