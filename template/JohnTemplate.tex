@@ -1,0 +1,493 @@
+\documentclass[12pt]{report}
+\usepackage{amsfonts}
+\usepackage{amsthm} % needed for \begin{proof}
+\usepackage{graphicx}% needed to insert pictures with yap
+
+
+%\usepackage{sectsty}
+%\usepackage{amsthm}
+%\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{latexsym}
+\usepackage{longtable}    % may not have to use this package
+\usepackage{graphpap}     % may not have to use this package
+
+\textheight=7.968 in
+\textwidth=5.5 in
+\hoffset=-.06 in
+\voffset=-.3125 in
+
+\newfont{\bb}{msbm10 at 12pt} %Blackboard characters outside of equations
+\font\sf=cmss10 scaled \magstep 1
+\font\bext=cmex10 scaled\magstep 1
+\newcommand{\NN}{{\bb N}}
+\newcommand{\QQ}{{\bb Q}}
+\newcommand{\RR}{{\bb R}}
+\newcommand{\DD}{{\bb D}}
+\newcommand{\mod}{{\rm \ mod\ }}
+\newcommand{\pf}{{\mathcal P}_f}
+\def\onerp{\hbox{\vtop{\vskip -10 pt\hbox{\bext\char'001}}}}
+\def\onelp{\hbox{\vtop{\vskip -10 pt\hbox{\bext\char'000}}}}
+\def\bigrp{\hbox{\vtop{\vskip -10 pt\hbox{\bext\char'001}}}}
+\def\biglp{\hbox{\vtop{\vskip -10 pt\hbox{\bext\char'000}}}}
+\def\biglb{\hbox{\vtop{\vskip -10 pt\hbox{\bext\char'010}}}}
+\def\bigrb{\hbox{\vtop{\vskip -10 pt\hbox{\bext\char'011}}}}
+\overfullrule=5pt
+%\newcounter{theorem}[chapter]
+%\newtheorem{thm}[theorem]{Theorem}
+%\newtheorem{lemma}[theorem]{Lemma}
+%\newtheorem{cor}[theorem]{Corollary}
+%\newtheorem{pro}[theorem]{Proposition}
+%\theoremstyle{definition}
+%\newtheorem{defin}[theorem]{Definition}
+%\newcommand{\supp}{\hbox{\rm supp}}
+%\newcommand{\subsupp}{\hbox{\scriptsize\rm supp}}
+%\newcounter{parno}
+
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{pro}[thm]{Proposition}
+\theoremstyle{definition}
+\newtheorem{defin}[thm]{Definition}
+\newcommand{\supp}{\hbox{\rm supp}}
+\newcommand{\subsupp}{\hbox{\scriptsize\rm supp}}
+\newcounter{parno}
+
+
+
+
+
+\addtolength{\voffset}{-.5in} %- .75in is what you use for grad school margins!
+\addtolength{\textheight}{1in} %1.25in is what you use for grad school margins!
+\addtolength{\textwidth}{.5in}
+\renewcommand{\baselinestretch}{1.5}\small\normalsize
+
+\begin{document}
+
+\renewcommand{\baselinestretch}{1}\small\normalsize\bigskip
+
+\pagenumbering{roman}
+
+\begin{titlepage}
+\begin{center}
+HOWARD UNIVERSITY\\\ \\
+{\bf Separating Milliken-Taylor Systems and Variations 
+Thereof in the Dyadics and the Stone-\v Cech Compactification 
+of ${\bf\mathbb{N}}$}\\\
+\\\ \\\ \\A Dissertation\\ Submitted to the Faculty of the\\
+Graduate School\\\ \\\ \\\ \\ of \\\ \\\ \\{\bf HOWARD UNIVERSITY}\\\
+\\\ \\\  \\in partial fulfillment of\\ the requirements for the \\degree of\\\ \\\ \\\ \\{\bf DOCTOR OF
+PHILOSOPHY}\\\ \\\ \\\ \\Department of Mathematics\\\ \\\ \\by\\\ \\\ \\{\bf Kendall Williams}\\\ \\Washington, D.C.\\July 2010
+\end{center}
+\end{titlepage}
+
+
+
+
+
+\setcounter{page}{2}
+
+\thispagestyle{plain}
+
+
+
+
+\begin{center}
+
+{\bf HOWARD UNIVERSITY\\GRADUATE SCHOOL\\DEPARTMENT OF MATHEMATICS}\\\ \\DISSERTATION COMMITTEE
+
+\end{center}
+
+\vspace{.5in}
+
+\begin{tabular}{@{}l @{}l}
+
+\hspace{2.5in} & \hspace{2.5in}\ \\ \cline{2-2}
+
+\hspace{2.5in} & Toka Diagana, Ph.D.\\
+
+\hspace{2.5in} & Chairperson\\[.55in] \cline{2-2}
+
+\hspace{2.5in} & Alexander Burstein, Ph.D.\\[.55in]\cline{2-2}
+
+\hspace{2.5in} & Neil Hindman, Ph.D.\\[.55in]\cline{2-2}
+
+\hspace{2.5in} & Paul Peart, Ph.D.\\[.55in]\cline{2-2}
+
+\hspace{2.5in} & Arthur Grainger, Ph.D.\\
+
+\hspace{2.5in} & Associate Professor\\
+
+\hspace{2.5in} & Morgan State University\\[.55in] \cline{1-1}
+
+
+
+Neil Hindman, Ph.D.\\
+
+Dissertation Advisor\\
+
+\ \\
+
+Candidate:  Kendall Williams\\
+
+\ \\
+
+Date of Defense:  July 8, 2010
+
+\end{tabular}
+
+\renewcommand{\baselinestretch}{1.5}\small\normalsize\bigskip
+
+\newpage
+\begin{center}
+{\bf ACKNOWLEDGEMENTS}
+\end{center}
+
+I cannot begin to thank Professor Neil Hindman enough for 
+all of the contributions that he has made towards my receipt
+of my Ph.D. in Mathematics.  Oftentimes, he effortlessly 
+bestowed both his mathematical genius and general knowledge 
+of life upon me; nonetheless, even when it took him a great
+deal of effort, he never failed or hesitated to do so.  Dr.
+Hindman has been nothing but patient with me and I will be 
+thankful for this as long as I have a Ph.D.  Even when I 
+did not understand the simplest things and could not bear to
+ask him the same question for the tenth time, he patiently 
+waited days, weeks, or even months for me to figure it out on my
+own.  He gave a 
+speech at his self-proclaimed ``obituary" conference where
+he not-so-subtly encouraged his flock of Ph.D. students to
+hurry up with our research and finish up our degrees.  (Of
+course, anyone who knows Dr. Hindman knows that he pays close
+attention to detail and no matter how quickly something was
+done, once he puts his stamp on it, it is certified correct.)     
+Of all the math I should have been writing down at that 
+conference, his comment about our timeliness was the one 
+thing I took note of.  Both he and I know that while I may 
+not be the brightest crayon in the box, although it did not 
+take me long, I could have finished my Ph.D. before I did.  But, 
+Dr. Hindman's words did not fall upon deaf ears.  They did 
+help me ``get my butt in gear" as he would so eloquently 
+put it.  Please do not misconstrue my comments:  Dr. Hindman 
+never once seemed especially bothered or even impatient 
+about the matriculation time of his students (or anything
+else for that matter).
+      
+The fact that Dr. Hindman takes so many students under his 
+wing and provides us with the guidance that we need in so
+many aspects of our lives speaks volumes towards his character.
+
+So, I would like to extend my sincerest apologies for my
+tardiness (even to classes) and my most heartfelt 
+gratitude for Dr. Neil Hindman's patience and most of all 
+for his kindness and help.
+
+I would also like to acknowledge the National Science Foundation's
+Bridge to the Doctorate Program, the Alfred P. Sloan Foundation's
+Scholarship Program, and the GAANN Fellowship for the funding
+provided in order for me to complete my degree.
+
+
+\newpage
+\begin{center}
+{\bf ABSTRACT}
+\end{center}
+
+Given a discrete topological space $S$, we define $\beta S$
+to be the set of ultrafilters on $S$.  In this dissertation, we will
+be working with the set of dyadic rational numbers.  
+Using the notation $\omega = \{0,1,2,\ldots\}$, the set of 
+dyadic rationals is defined as follows $\mathbb{D}
+=\{{m \over 2^t}:m \in \mathbb{Z} \hbox{ and } t \in \omega\}$.
+We shall consider $\mathbb{D}$ as a discrete topological space.  
+Namely, we will be considering $\mathbb{D}^+$,
+the set of positive numbers contained in $\mathbb{D}$. Note
+that $\mathbb{N} = \{1,2,3,...\} \subseteq \mathbb{D}^+$. 
+Any number in $\mathbb{D}^+$ (and in turn
+in $\mathbb{N}$) has a terminating binary expansion.  Thus,
+for any $x \in \mathbb{D}^+$, there exists a unique finite 
+nonempty subset $F$ of the integers
+such that $x=\sum_{t \in F} {2^t}$.  We will investigate the
+algebraic structure of $\beta\mathbb{D}^+$ and also derive
+several partition results in $\mathbb{D}^+$.
+
+
+There is a close knit relationship between the algebraic 
+structure of $\beta\mathbb{N}$ and combinatorial or Ramsey 
+theoretical partition results in $\mathbb{N}$.  Our focus 
+will lie on Milliken-Taylor systems (and variations thereof) 
+with respect to both their combinatorial structure and 
+algebraic structure in $\beta\mathbb{D}^+$.  Namely, we will
+prove results similar to that used in the algebraic proof of
+the Finite Sums Theorem.  The difference being that in this
+dissertation our ultrafilters will be sums and products of
+idempotents and we will be dealing with multiple sequences.  
+We will begin with the subsets of elements of our ultrafilters 
+being variations of Milliken-Taylor Systems.  As we progress
+with our results, these subsets will be progressively more complex.
+Further, as Hindman used idempotent results in his algebraic 
+proof of the Finite Sums Theorem, we shall use our idempotent 
+results (as well as others) to prove analogues of the Finite 
+Sums Theorem. 
+
+    
+
+
+
+\newpage
+%\tableofcontents
+
+\hrule height 0 pt depth 0 pt
+\vskip 1 in
+\begin{center}
+{\bf \Large CONTENTS}
+\end{center}
+\vskip 1 in
+\hbox to \hsize {{\bf Dissertation Committee}\dotfill {\bf ii}}
+\bigskip
+\hbox to \hsize {{\bf Acknowledgements}\dotfill {\bf iii}}
+\bigskip
+\hbox to \hsize {{\bf Abstract}\dotfill {\bf iv}}
+\bigskip
+\hbox to \hsize {{\bf List of Figures}\dotfill {\bf vi}}
+\bigskip
+\hbox to \hsize {{\bf 1 Introduction}\dotfill {\bf 1}}
+\bigskip
+\hbox to \hsize {{\bf 2 Separating Milliken-Taylor Systems in ${\mathbb D}$}\dotfill {\bf 10}}
+\bigskip
+\hbox to \hsize {{\bf 3 Polynomials in $\beta{\mathbb N}$}\dotfill {\bf 28}}
+\bigskip
+\hbox to \hsize {{\bf Bibliography}\dotfill {\bf 53}}
+
+\newpage
+
+
+\hrule height 0 pt depth 0 pt
+\vskip 1 in
+\begin{center}
+{\bf \Large List of Figures}
+\end{center}
+\vskip 1 in
+\hbox to \hsize {{\bf Figure 2.1}\dotfill {\bf 15}}
+
+\newpage
+\pagenumbering{arabic}
+
+\chapter{Introduction}
+
+\indent
+
+The foundation for the work herein lies in Ramsey
+Theory.  Namely, the motivation came from the notion of
+finite sums and the Finite Sums Theorems proven by N. Hindman.
+There are two versions: the finite Finite Sums Theorem and 
+the infinite Finite Sums Theorem better known as Hindman's
+Theorem.  Our direct motivation was the infinite version 
+which we shall state later.  But, the infinite version was 
+motivated by the finite version \cite[Corollary 2.4]{H} 
+whose proof relied upon R. Rado's famous results on kernel 
+partition regularity.  A 
+matrix $A$ is said to be kernel partition regular over a
+semigroup $S$ if and only if whenever $S\setminus \{0\}$ is
+finitely colored, there exists a monochromatic solution $\vec x$
+such that $A\vec x=\vec 0$.  Rado characterized the kernel 
+partition regularity of a matrix $A$ by a condition known 
+as the columns condition.  See \cite{H} for more detail on 
+the finite Finite Sums Theorem and \cite{R} and \cite{R2}
+for more detail on Rado's Theorem.
+
+From here on, when referring to the Finite Sums Theorem, we
+will be considering the infinite version.  Hindman's original
+proof was combinatorial in nature and while elementary
+techniques were utilized, the combinatorial proof is quite 
+complicated.  There is a much simpler algebraic proof which 
+uses the fact that given an element $A$ of an idempotent 
+ultrafilter $p$, there exists a sequence whose finite sums
+are contained in $A$.  The 
+Finite Sums Theorem was utilized by both K. Milliken and A. 
+Taylor in proving their separate versions of what is known
+as the Milliken-Taylor Theorem.  We are especially interested 
+in these results due to the fact that they both were 
+motivation for and used in the proofs of some of our results.  
+Further, they inspired sets known as Milliken-Taylor Systems,
+which we shall utilize in our results. 
+
+Below, we introduce several crucial definitions and
+results of \cite{HS} which will be used throughout this dissertation.  
+One may refer to \cite{HS} for any necessary supplemental 
+information.
+
+ %Define $f: \mathbb{D}^+
+%\to \mathbb{D}^+$ by $f(x)=f(\sum_{t \in
+%\subsupp(x)}{2^t})=\sum_{t \in -\subsupp(x)}{2^{t}}$.  
+%We are especially interested in the fact that $f=f^{-1}$,
+%$f[\mathbb{N}]=\mathbb{D} \cap (0,2)$, and $f[\mathbb{D} 
+%\cap (0,2)]=\mathbb{N}$.  
+%It is easily seen that for each 
+%$x_{1},x_{2} \in \mathbb{D}^+$ such that $\min\supp(x_1)>\max\supp(x_2)$,
+%$f(x_{1}+x_{2})=f(x_1)+f(x_2)$.  
+%We will frequently be working with
+%sequences that converge to $0$.  Thus the requirement that
+%there is no carrying when adding two terms of a sequence can easily be met by 
+%``thinning" our original sequence by passing to a subsequence.  
+%Our function $f$ will be utilized in the proofs of some of our
+%combinatorial results.  
+
+
+
+%A finite compressed sequence $\vec {a}=\langle a_{1},a_{2},
+%...,a_{\ell(\vec a)}\rangle$ in $\mathbb{R}$ is a sequence
+%where no two consecutive terms are equal.  For a set $A$,
+%we will let $\pf(A)$ denote the finite nonempty subsets of
+%$A$.  Given a finite compressed sequence $\vec a$ in 
+%$\mathbb{R}$ and a sequence $\langle x_t \rangle_{t=1}^\infty$
+%in $\mathbb{R}$, the Milliken-Taylor system generated by
+%$\vec a$ and $\langle x_t \rangle_{t=1}^\infty$, denoted by
+%$MT(\vec {a}, \langle x_t \rangle_{t=1}^\infty)$ is 
+%$\{\sum_{i=1}^{\ell(\vec a)}{a_i}\sum_{t \in F_i}{x_t}:
+%F_{1}<F_{2}<\ldots<F_{\ell(\vec a)}\}$.
+
+%Let $\vec a$ and $\vec b$ be finite compressed sequences 
+%in $\mathbb{N}$ and assume that there is an $s \in \mathbb{Q}^+$
+%such that $\vec {a}=s\vec {b}$.  Then, by \cite[Theorem 17.34]{HS},
+%whenever $r \in \mathbb{N}$ and $\mathbb{N}=\bigcup_{i=1}^{r}{A_i}$, 
+%there exist $i \in \{1,2,...,r\}$ and sequences $\langle x_t \rangle_{t=1}^\infty$
+%and $\langle y_t \rangle_{t=1}^\infty$ such that $MT(\vec {a},
+%\langle x_t \rangle_{t=1}^\infty) \subseteq A_i$ and $MT(\vec
+%{b}, \langle y_t \rangle_{t=1}^\infty) \subseteq A_i$.
+%Also, let $\vec a$ and $\vec b$ be finite compressed
+%sequences with entries from $\mathbb{Z}\setminus\{0\}$.  Then, 
+%by \cite[Theorem 3.1]{HLS}, the following statements are equivalent:
+%whenever $r \in \mathbb{N}$ and $\mathbb{Z}=
+%\bigcup_{i=1}^{r}{B_i}$, there exists $i \in \{1,2,...,r\}$
+%and sequences $\langle x_n \rangle_{n=1}^\infty$ and
+%$\langle y_n \rangle_{n=1}^\infty$ in $\mathbb{N}$ with
+%$MT(\vec {a}, \langle x_n \rangle_{n=1}^\infty) \cup MT
+%(\vec {b}, \langle y_n \rangle_{n=1}^\infty) \subseteq B_i;$ 
+%and there is a positive rational $\alpha$ such that
+%$\vec {a}=\alpha\vec {b}$.  
+
+
+%By \cite[Theorems 4.10a, 4.12b, 4.13, 4.14, 5.11]{HS}, respectively,
+%the following results hold.
+%Let $(S,+)$ be a semigroup.   
+%with $A \subseteq S$.  For $s \in
+%S$, we define $s^{-1}A$ as $\{t \in S:s+t \in A\}$.
+%For any $p,q \in \beta S$, $A \in p+q$ if and only if $\{t
+%\in S:t^{-1}A \in q\} \in p$.  For $p \in \beta S$,
+%$A^{\star}(p)=\{t \in A:t^{-1}A \in p\}$.  Now let
+%$p+p=p \in \beta S$.  Then for every $A \in p$, $A^{\star}
+%(p) \in p$.  Further, for each $s \in A^{\star}(p)$, 
+%$s^{-1}A^{\star}(p) \in p$.  
+%Given a sequence 
+%$\langle x_n \rangle_{n=1}^\infty$ in $S$, the finite sums
+%of $\langle x_n \rangle_{n=1}^\infty$ is $FS(\langle x_n
+%\rangle_{n=1}^\infty)=\{\sum_{t \in F}{x_t}:F \in 
+%\pf(\mathbb{N})\}$.  We know that given a semigroup $S$, if
+%we let $\langle x_n \rangle_{n=1}^\infty$ be a sequence in
+%$S$, there exists an idempotent $p \in \beta S$ such that
+%for each $m \in \mathbb{N}$, $FS(\langle x_n 
+%\rangle_{n=1}^\infty) \in p$, i.e. $p \in \bigcap_{m=1}^{\infty}
+%\overline{FS(\langle x_n \rangle_{n=m}^\infty)}$.  
+
+%From \cite[Theorem 17.31]{HS}, we have the following result: Let $\vec a$ be a
+%finite compressed sequence and $\ell(\vec a)$ be the length
+%of $\vec a$.  Let $\langle y_t \rangle_{t=1}^\infty$
+%be a sequence in $\mathbb{N}$, $p+p=p \in \bigcap_{k=1}^{\infty}
+%FS(\langle y_t \rangle_{t=k}^\infty)$, and $A \in a_{1}p+
+%a_{2}p+...+a_{\ell(\vec a)}p;$ then there is a sum 
+%subsystem $\langle x_t \rangle_{t=1}^\infty$ of $\langle 
+%y_t \rangle_{t=1}^\infty$ such that $MT(\vec{a}, \langle 
+%x_t \rangle_{t=1}^\infty) \subseteq A$.  
+
+
+
+%\begin{defin}\label{HS 17.30}{}\hfill\break
+%\begin{itemize}
+%\item[(a)] 
+%\item[(b)] Given $\vec a\in\mathbb{A}$ with length $m$ and a 
+%sequence $\langle x_t\rangle_{t=1}^\infty$ in $\mathbb{N}$, 
+%$MT(\vec a,\langle x_t\rangle_{t=1}^\infty)=$
+%\begin{eqnarray*}
+%\textstyle\{\sum_{i=1}^ma_i\sum_{t\in F_i}~x_t:
+%F_1,F_2,\ldots,F_m\in\pf(\mathbb{N})
+%\hbox{ and } F_1<F_2<\ldots<F_m\}\ .
+%\end{eqnarray*}
+%\end{itemize}
+%\end{defin}
+
+ 
+
+\begin{defin}\label{HS 3.1}
+Let $D$ be any set.  A filter on $D$ is a nonempty set $\mathcal U$ 
+of subsets of $D$ with the following properties:
+\begin{itemize}
+\item[(a)] If $A,B \in \mathcal U$, then $A\cap B \in 
+\mathcal U$.
+\item[(b)] If $A\in\mathcal U$ and $A\subseteq B\subseteq D$,
+then $B\in\mathcal U$.
+\item[(c)] $\emptyset\notin\mathcal U$.
+\end{itemize} 
+\end{defin}
+
+An ultrafilter on a set $D$ is a maximal filter on $D$.  A 
+topology can be defined on $\beta D$, the set of all 
+ultrafilters on a discrete topological space $D$.
+
+\begin{defin}\label{HS 3.15}
+Let $D$ be a discrete topological space.
+\begin{itemize}
+\item[(a)] $\beta{D}=\{p:p \hbox{ is an ultrafilter on } D\}$.
+\item[(b)] Given $A\subseteq D$, $\bar{A}=\{p\in\beta{D}:A
+\in p\}$
+\end{itemize}
+\end{defin}
+
+\begin{thebibliography}{9}
+
+\smallskip
+\renewcommand{\baselinestretch}{1}\small\normalsize\bigskip
+
+\bibitem{BH} N. Hindman and V. Bergelson, {\it Quotient sets
+and density recurrent sets}, preprint.
+
+%\bibitem{DH} D. De, N. Hindman, {\it Image partition regularity
+%near zero}, Discrete Math. {\bf 309} (2009), 3219-3232.
+
+\bibitem{DHLL} W. Deuber, N. Hindman, I. Leader, and H. Lefmann, 
+{\it Infinite partition regular
+matrices}, Combinatorica {\bf 15} (1995), 333-355.
+
+\bibitem{E} R. Ellis, {\it Distal transformation groups},
+Pacific J. Math. {\bf 8} (1958), 401-405.
+
+\bibitem{GJ} L. Gillman, M. Jerison, {\it Rings of continuous
+functions}, D. Van Nostrand Co., Inc., Princeton, 1960.
+
+\bibitem{H} N. Hindman, {\it Partition regularity of matrices},
+Integers {\bf 7(2)} (2007), A-18.
+
+\bibitem{HLS} N. Hindman, I. Leader, D. Strauss, {\it Separating 
+Milliken-Taylor Systems with Negative Entries\/}, Proc. Edinburgh Math. 
+Soc. {\bf 46} (2003), 45-61.
+
+\bibitem{HS} N. Hindman and D. Strauss, {\it Algebra in the Stone-\v Cech
+compactification\/}, De Gruyter, Berlin, 1998.
+
+\bibitem{M} K. Milliken, {\it Ramsey's Theorem with sums or unions},
+J. Combin. Theory Ser. A {\bf 18} (1975), 276-290.
+
+\bibitem{R} R. Rado, {\it Studien zur Kombinatorik}, Math. Zeit.
+{\bf 36} (1933), 242-280.
+
+\bibitem{R2} R. Rado, {\it Note on combinatorial analysis}, Proc.
+London Math. Soc. {\bf 48} (1943), 122-160.
+
+\bibitem{T} A. Taylor, {\it A canonical partition relation for finite
+subsets of $\omega$}, J.Combin. Theory Ser. A {\bf 21} (1976), 137-146.
+
+\end{thebibliography}
+
+
+\end{document}
