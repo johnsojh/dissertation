@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[12pt,showtrims]{memoir}
 
 \usepackage{amsthm, amssymb, amsmath}
 \usepackage{color}
@@ -8,8 +8,8 @@
 
 \usepackage[margin=1in]{geometry}
 
-\usepackage[doublespacing]{setspace}
-\usepackage{url}
+% \usepackage[doublespacing]{setspace}
+% \usepackage{url}
 
 \newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
 \theoremstyle{plain}
@@ -82,6 +82,8 @@
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 \begin{document}
+
+\addtolength{\baselineskip}{1.7pt}
 
 \section{Van der Waerden's Theorem and Semigroup Theory}
 Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved the following remarkable assertion about arithmetic progressions in the positive integers.
