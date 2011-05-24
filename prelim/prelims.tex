@@ -115,7 +115,7 @@ Despite being such an old result, van der Waerden's Theorem still forms the basi
 },
 and in this dissertation it will play a similar foundational role. 
 
-This theorem can be rewritten to apply to any semigroup, where we replace an arithmetic progression $\{a, a+d, ..., a+(k-1)d\}$ by an `algebraic line' $\{a, ad, ..., ad^{k-1}\}$. As observed in the Introduction of \cite{Bergelson:1992fk},this `generalization' follows directly from van der Waerden's Theorem itself. 
+This theorem can be rewritten to apply to any semigroup, where we replace an arithmetic progression $\{a, a+d, ..., a+(k-1)d\}$ by an `algebraic line' $\{a, ad, ..., ad^{k-1}\}$. As observed in the introduction of \cite{Bergelson:1992fk}, this `generalization' follows directly from van der Waerden's Theorem itself. 
 
 \begin{thm}
   \label{thm:semigrp-vdw}
@@ -133,7 +133,7 @@ This theorem can be rewritten to apply to any semigroup, where we replace an ari
 
 While we get Theorem \ref{thm:semigrp-vdw} for free from van der Waerden's Theorem there are three potential problems with such a straightforward approach:
 Our increment $d$ may be a right identity in our underlying semigroup, and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^{k-1}\}$ are distinct.
-(The Introduction of \cite{Bergelson:1992fk} contains an example for both of these problems.)
+(The introduction of \cite{Bergelson:1992fk} contains an example for both of these problems.)
 The last potential problem is the most subtle and can only occur when the underlying semigroup is noncommutative.
 To precisely formulate this obscure problem we make a brief detour to quickly review some needed algebraic definitions and results.
 
@@ -149,8 +149,8 @@ Equivalently, $x^{-1}A = \{\, y \in S : xy \in A \,\}$ and $Ax^{-1} = \{\, y \in
 (If $S$ is commutative, we usually denote its binary operation by $+$ instead of $\cdot$ and write $x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A-x$, respectively.)
 We call an element $e \in S$ an \textsl{idempotent} if and only if $ee = e$.
 
-We call $\emptyset \ne L \subseteq S$ a \textsl{left ideal of $S$} if and only if for all $x \in S$, $\lambda_x[L] \subseteq L$. 
-We call $\emptyset \ne R \subseteq S$ a \textsl{right ideal of $S$} if and only if for all $x \in S$, $\rho_x[R] \subseteq R$. 
+We call $L \subseteq S$ a \textsl{left ideal of $S$} if and only if $L$ is nonempty and for all $x \in S$, $\lambda_x[L] \subseteq L$. 
+We call $R \subseteq S$ a \textsl{right ideal of $S$} if and only if $R$ is nonempty and for all $x \in S$, $\rho_x[R] \subseteq R$. 
 Finally, we call $\emptyset \ne I \subseteq S$ a \textsl{(two-sided) ideal of $S$} if and only if $I$ is both a left and right ideal.
 
 We call a left ideal a \textsl{minimal left ideal} if and only if it does not properly contain a left ideal.
@@ -160,7 +160,7 @@ We denote this \textsl{smallest ideal}, if it exists, by $K(S)$.%
 \endnote{
   The notation of $K(S)$ denoting the smallest ideal comes from the Russian mathematician Suschkewitsch.
   He called the smallest ideal the \textsl{kernel} of the semigroup.
-  Suschkewitsch, based off of the description given by \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
+  Suschkewitsch,according to the description given by \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
 }
 
 The existence of the smallest ideal essentially depends on what may be regarded as certain `boundedness' conditions on the semigroup.
@@ -199,13 +199,18 @@ Therefore $\beta S$ has at least one idempotent (it typically has many more) and
 The arithmetic progressions of positive integers interact nicely with the algebraic structure of $(\beta \bbN, +)$ (and also, $(\beta \bbN, \cdot)$). 
 To see this interaction we define a special subset of $\bbN$ and prove, via Theorem \ref{thm:semigrp-vdw}, that this special subset is partition regular.%
 \endnote{
-  Let $S$ be a nonempty set and let $\Phi$ be some `property' of $S$.
-  We call $\Phi$ \textsl{partition regular} if and only if whenever $A \subseteq S$ with property $\Phi$, $r$ is a positive integer, and $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ has property $\Phi$. 
-  It's a fact that partition regular properties interacts nontrivially with $\beta S$, see \cite[Theorem 3.11]{Hindman:1998fk} and \cite[Theorem 5.7]{Hindman:1998fk}.
-  In this dissertation we are typically only interested in the case when $S$ is a semigroup and $\Phi$ is defined in terms of the algebraic structure of $S$.
+ 
 
   The close connection between partition regularity (although not using this terminology) and ultrafilters was first noticed by Choquet in \cite{Choquet:1947uq}. 
 }
+
+\begin{defn}
+  Let $\calR$ be a nonempty family of sets.
+  We say $\calR$ is \emph{partition regular} if and only if whenever $\calF$ is a finite family of sets and $\bigcup \calF \in \calR$, there exists $A \in \calF$ and $B \in \calR$ with $B \subseteq A$.
+\end{defn}
+\begin{rmk}
+  Given some `property' $\Phi$ of a nonempty set $S$, we call $\Phi$ \emph{partition regular} if and only if whenever $A \subseteq S$ has property $\Phi$, $r$ is a positive integer, and $A = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ has property $\Phi$.
+\end{rmk}
 
 \begin{defn}
   We call $A \subseteq \bbN$ an \textsl{$AP$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term arithmetic progression.
@@ -231,10 +236,10 @@ By Theorem \ref{thm:ap-partition-reg} and \cite[Theorem 3.11]{Hindman:1998fk} we
 \end{defn}
 
 \begin{thm}
-  $\AP$ is a closed ideal in $(\beta \bbN, +)$ and $(\beta \bbN, \cdot)$.
+  $\AP$ is a closed ideal of $(\beta \bbN, +)$ and $(\beta \bbN, \cdot)$.
 \end{thm}
 \begin{proof}
-  The fact that $\AP$ is an ideal in $(\beta \bbN, +)$ and $(\beta \bbN, \cdot)$ is proved in \cite[Theorem 14.5]{Hindman:1998fk}. 
+  The fact that $\AP$ is an ideal of $(\beta \bbN, +)$ and $(\beta \bbN, \cdot)$ is proved in \cite[Theorem 14.5]{Hindman:1998fk}. 
   The fact that $\AP$ is closed is easy to see using the following common technique.
   Let $p \not\in \AP$ and pick $A \in p$ such that $A$ is not an $AP$-set.
   Then $\overline{A} \cap \AP = \emptyset$, that is, a (basic open) neighborhood of $p$ is contained in the complement of $\AP$.
@@ -297,13 +302,16 @@ While $\AL(S)$ and $\AP$ are both closed left ideals of $\beta S$ and $\beta \bb
   Put $B = \{\, b^n : n \in \bbN \,\}$. and pick $p \in \AL(S)$ with $B \in p$. 
   (Such a $p$ exists since $B$ is a $AL$-set and by \cite[Theorem 3.11]{Hindman:1998fk}.)
   By \cite[Exercise 4.1.8(b)]{Hindman:1998fk}, $Ba \in pa$. 
+
   We show that $Ba$ is not an $AL$-set by showing that $Ba$ doesn't contain even a 2-term algebraic line. 
   Suppose there exists $c$, $d \in S$ with $\{c, cd\} \subseteq Ba$. 
   Pick positive integers $i$ and $j$ such that $c = b^ia$ and $cd = b^ja$.
   Then $b^ja = cd = b^iad$.
-  If $i < j$, then $b^{j-i}a = ad$, a contraction.
-  If $i = j$, then $a = ad$, a contraction.
-  If $i > j$, then $b^{i-j}ad = a$, a contradiction.
+  If $i < j$, then $b^{j-i}a = ad$.
+  If $i > j$, then $b^{i-j}ad = a$.
+  However, both of these implications produces a contradiction since $b$ is the leftmost letter of $b^{j-i}a$ and $b^{i-j}a$.
+  If $i = j$, then $a = ad$, that is, $d$ must be the empty word.
+  This is also a contradiction since the empty word is not in the free semigroup.
   Hence $Ba$ is not an $AL$-set and we have $\overline{Ba} \cap \AL(S) = \emptyset$, that is, $pa \not\in \AL(S)$. 
 \end{proof}
 
@@ -327,6 +335,9 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
 
     \item[(b)] Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite.
       Then for all $k \in \bbN$, the set $\{\, x_n : n \in \bbN \,\}$ contains a $k$-term arithmetic progression.
+      
+    \item[(c)] Let $r$ be a positive integers.
+      If $\bigcup_{i=1}^r C_i \subseteq \bbN$ is an $AP$-set, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is an $AP$-set.
   \end{itemize}
 \end{thm}
 \begin{proof}
@@ -335,7 +346,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
   We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
   Suppose temporarily that this claim is true.
-  We can then apply (a) to pick $i \in \{1, 2, \ldots, b\}$ such that the set $-i + A$ is an $AP$-set. 
+  We can then apply \textsl{(a)} to pick $i \in \{1, 2, \ldots, b\}$ such that the set $-i + A$ is an $AP$-set. 
   From this situation it follows that $A$ contains a $k$-term arithmetic progression for every $k \in \bbN$. 
   We now prove our claim.
   
@@ -346,6 +357,17 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Since $\la x_n \ra_{n=1}^\infty$ is a strictly increasing sequence, we can pick $n \in \bbN$ such that $x_n \le x < x_{n+1}$.
   Moreover, since $x_{n+1} - x_n \le b$, we can pick $t \in \{1, 2, \ldots, b\}$ such that $t + x = x_{n+1}$, that is, $x \in -t + A$. 
   This completes the proof for this direction. 
+
+  \textsl{(b) $\implies$ (c).}
+  We proceed by induction on $r$. 
+  If $r = 1$, then \textsl{(c)} is trivially true.
+  Now let $r > 1$ and assume that \textsl{(c)} is true for $r-1$.
+
+  Let $\bigcup_{i=1}^r C_i$ be an $AP$-set, in particular, $\bigcup_{i=1}^r C_i$ is infinite. 
+  Without loss of generality suppose that $C_r$ is infinite and enumerate $C_r$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
+  If $\max\{x_{n+1} - x_n : n \in \bbN\}$ is finite, then by \textsl{(b)} we are done. 
+  Hence suppose instead that $\max\{x_{n+1} - x_n : n \in \bbN\}$ is infinite, that is, for every $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k+2$. 
+  Therefore for every $k \in \bbN$, there exists $n \in \bbN$ with $\{x_n + 1, x_n + 2, \ldots, x_n +(k+1) \} \subseteq \bbN \setminus C_r$. 
 
   \textsl{(b) $\implies$ (a).}
   Let $r \in \bbN$, and $\bbN = \bigcup_{i=1}^r C_i$. 
@@ -364,6 +386,9 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Suppose that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite, then, as above, for every $k \in \bbN$, there exists $n \in \bbN$, such that $\{\, x_n +1, x_n + 2, \ldots, x_n + (k +1) \,\}  \subseteq \bigcup_{i=3}^r C_i$. 
   Since $\bigcup_{i=3}^r C_i$ is an $AP$-set, we may continue as before.
   Eventually, we will stop at a set with bounded gaps or a set that contains arbitrarily long arithmetic progressions.
+
+  \textsl{(c) $\implies$ (a).}
+  This implication is trivial.
 \end{proof}
 \begin{rmk}
   Theorem \ref{thm:vdwEqSyn}(a) is equivalent to van der Waerden's Theorem.
