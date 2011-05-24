@@ -48,81 +48,34 @@
 % (La)TeX this looks bad and wastes paper. The following spacing using
 % a baselineskip value of 1.7pt is a good compromise. 
 \addtolength{\baselineskip}{1.7pt}
-
-\renewcommand{\title}{A new and simpler Central Sets Theorem} 
-\renewcommand{\author}{John H.~Johnson}
-\newcommand{\monthyear}{July 2011}
-
 \pagenumbering{roman}
-% The following is the title page as required by the Graduate School.
-\newcommand{\thetitlepage}{
-  \clearpage
-  \begin{center}
-    HOWARD UNIVERSITY \\ \vspace{1em}
-    \textbf{\title} \\ \vspace{4em}
+\pagestyle{plain}
 
-    A Dissertation \\
-    Submitted to the Faculty of the \\
-    Graduate School \\ \vspace{4em}
-    
-    of \\ \vspace{4em}
+% Includes title page and committee approval form.
+\include{frontmatter}
 
-    \textbf{HOWARD UNIVERSITY} \\ \vspace{4em}
-    
-    in partial fulfillment of \\
-    the requirements for the \\
-    degree of \\ \vspace{4em}
+\include{dedication}
+\include{acknowledgments}
+\include{abstract}
 
-    \textbf{DOCTOR OF PHILOSOPHY} \\ \vspace{4em}
+% Include table of contents
+\include{toc}
 
-    Department of Mathematics \\ \vspace{2em}
-    
-    by \\ \vspace{2em}
+% Include list of figures.
+\include{lofig}
 
-    \textbf{\author} \\ \vspace{1em}
-    
-    Washington, DC \\
-    \monthyear
-    \vfill
-  \end{center}
-}
+% Include list of abbreviations.
+\include{loabbr}
 
-% This is a template for the Committee Approval Form.
-\newcommand{\approval}{
-  \clearpage
-  \begin{center}
-    \textbf{HOWARD UNIVERSITY} \\
-    \textbf{GRADUATE SCHOOL} \\
-    \textbf{DEPARTMENT OF MATHEMATICS} \\ \vspace{1em}
-    
-    DISSERTATION COMMITTEE
-  \end{center}
+% Include list of symbols.
+\include{losym}
 
-  % Code copied to produced a horizontal line for signatures. 
-  \newcommand{\sigline}{\makebox[3in]{\hrulefill}}
-
-  \vspace{4em}
-  
-  \begin{tabular}{@{}l @{}l}
-    \hspace{15em} & \sigline \\
-    \hspace{15em} & Toka Diagana, Ph.D. \\
-    \hspace{15em} & Chairperson \vspace{4em} \\
-    \hspace{15em} & \sigline \\
-    \hspace{15em} & Alexander Burstein, Ph.D.  \vspace{4em} \\
-    \hspace{15em} & \sigline \\
-    \hspace{15em} & Neil Hindman, Ph.D.  \vspace{4em} \\
-    \hspace{15em} & \sigline \\
-    \hspace{15em} & Arthur Grainger, Ph.D. \vspace{4em} \\
-    \hspace{15em} & \sigline \\
-    \hspace{15em} & Paul Peart, Ph.D. \\
-  \end{tabular}
-  
-  
-  \vfill
-}
-
-\thetitlepage
-\approval
+\pagenumbering{arabic}
+% \include{prelims}
+% \include{newcst}
+% \include{dyncsets}
+% \include{ideal}
+% \include{backmatter}
 
 
 Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved the following remarkable assertion about arithmetic progressions in the positive integers.
