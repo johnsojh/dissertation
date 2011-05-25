@@ -147,19 +147,19 @@ For each $x \in S$ we define the functions $\lambda_x \colon S \to S$ and $\rho_
 For $A \subseteq S$ and $x \in S$, we use the special notations $x^{-1}A$ and $Ax^{-1}$ to refer to $\lambda_x^{-1}[A]$ and $\rho_x^{-1}[A]$, respectively. 
 Equivalently, $x^{-1}A = \{\, y \in S : xy \in A \,\}$ and $Ax^{-1} = \{\, y \in S : yx \in A \,\}$.
 (If $S$ is commutative, we usually denote its binary operation by $+$ instead of $\cdot$ and write $x^{-1}A$ and $Ax^{-1}$ as $-x+A$ and $A-x$, respectively.)
-We call an element $e \in S$ an \textsl{idempotent} if and only if $ee = e$.
+We call an element $e \in S$ an \emph{idempotent} if and only if $ee = e$.
 
-We call $L \subseteq S$ a \textsl{left ideal of $S$} if and only if $L$ is nonempty and for all $x \in S$, $\lambda_x[L] \subseteq L$. 
-We call $R \subseteq S$ a \textsl{right ideal of $S$} if and only if $R$ is nonempty and for all $x \in S$, $\rho_x[R] \subseteq R$. 
-Finally, we call $\emptyset \ne I \subseteq S$ a \textsl{(two-sided) ideal of $S$} if and only if $I$ is both a left and right ideal.
+We call $L \subseteq S$ a \emph{left ideal of $S$} if and only if $L$ is nonempty and for all $x \in S$, $\lambda_x[L] \subseteq L$. 
+We call $R \subseteq S$ a \emph{right ideal of $S$} if and only if $R$ is nonempty and for all $x \in S$, $\rho_x[R] \subseteq R$. 
+Finally, we call $\emptyset \ne I \subseteq S$ a \emph{(two-sided) ideal of $S$} if and only if $I$ is both a left and right ideal.
 
-We call a left ideal a \textsl{minimal left ideal} if and only if it does not properly contain a left ideal.
-We define a \textsl{minimal right ideal} and \textsl{minimal two-sided ideal} similarly.
+We call a left ideal a \emph{minimal left ideal} if and only if it does not properly contain a left ideal.
+We define a \emph{minimal right ideal} and \emph{minimal two-sided ideal} similarly.
 There can be at most one minimal two-sided ideal in a semigroup, and if this minimal ideal exists, then it is contained in every ideal of our semigroup.
-We denote this \textsl{smallest ideal}, if it exists, by $K(S)$.%
+We denote this \emph{smallest ideal}, if it exists, by $K(S)$.%
 \endnote{
   The notation of $K(S)$ denoting the smallest ideal comes from the Russian mathematician Suschkewitsch.
-  He called the smallest ideal the \textsl{kernel} of the semigroup.
+  He called the smallest ideal the \emph{kernel} of the semigroup.
   Suschkewitsch,according to the description given by \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
 }
 
@@ -179,7 +179,7 @@ Using this boundedness condition we have the following important result.
 
 The final boundedness condition that we shall be interested in occurs when $S$ has a compact Hausdorff topology that interacts appropriately with the algebraic structure of $S$.
 
-We call $S$ a \textsl{compact right-topological semigroup} if and only if $S$ is a compact Hausdorff topological space and a semigroup such that for every $x \in S$, $\rho_x$ is continuous. 
+We call $S$ a \emph{compact right-topological semigroup} if and only if $S$ is a compact Hausdorff topological space and a semigroup such that for every $x \in S$, $\rho_x$ is continuous. 
 Every compact right-topological semigroup contains an idempotent and the smallest ideal.
 (The existence of idempotents is proved in \cite[Theorem 2.5]{Hindman:1998fk}, while the existence of the smallest ideal is proved in \cite[Theorem 2.8]{Hindman:1998fk}.)
 
@@ -213,7 +213,7 @@ To see this interaction we define a special subset of $\bbN$ and prove, via Theo
 \end{rmk}
 
 \begin{defn}
-  We call $A \subseteq \bbN$ an \textsl{$AP$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term arithmetic progression.
+  We call $A \subseteq \bbN$ an \emph{$AP$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term arithmetic progression.
 \end{defn}
 
 \begin{thm}
@@ -251,9 +251,9 @@ Therefore we start by simply modifying the definition of an $AP$-set, Theorem \r
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup.
   \begin{itemize}
-    \item[(a)] Given $a$, $d \in S$ and a positive integer $k$ we call the set $\{a, ad, \ldots, ad^{k-1}\}$ a \textsl{$k$-term algebraic line}. 
+    \item[(a)] Given $a$, $d \in S$ and a positive integer $k$ we call the set $\{a, ad, \ldots, ad^{k-1}\}$ a \emph{$k$-term algebraic line}. 
 
-    \item[(b)] We call $A \subseteq S$ an \textsl{$AL$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term algebraic line.
+    \item[(b)] We call $A \subseteq S$ an \emph{$AL$-set} if and only if for every $k \in \bbN$, $A$ contains a $k$-term algebraic line.
 
     \item[(c)] $\AL(S) = \{\, p \in \beta S : \mbox{for every $A \in p$, $A$ is an $AL$-set} \,\}$.
   \end{itemize}
@@ -363,11 +363,11 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   If $r = 1$, then \textsl{(c)} is trivially true.
   Now let $r > 1$ and assume that \textsl{(c)} is true for $r-1$.
 
-  Let $\bigcup_{i=1}^r C_i$ be an $AP$-set, in particular, $\bigcup_{i=1}^r C_i$ is infinite. 
+  Let $\bigcup_{i=1}^r C_i$ be an $AP$-set and observe that $\bigcup_{i=1}^r C_i$ is infinite. 
   Without loss of generality suppose that $C_r$ is infinite and enumerate $C_r$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
   If $\max\{x_{n+1} - x_n : n \in \bbN\}$ is finite, then by \textsl{(b)} we are done. 
-  Hence suppose instead that $\max\{x_{n+1} - x_n : n \in \bbN\}$ is infinite, that is, for every $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k+2$. 
-  Therefore for every $k \in \bbN$, there exists $n \in \bbN$ with $\{x_n + 1, x_n + 2, \ldots, x_n +(k+1) \} \subseteq \bbN \setminus C_r$. 
+  On the other hand suppose instead that $\max\{x_{n+1} - x_n : n \in \bbN\}$ is infinite, that is, for every $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k+2$. 
+  Therefore for every $k \in \bbN$, there exists $n \in \bbN$ with $\{x_n + 1, x_n + 2, \ldots, x_n +(k+1) \} \subseteq \bbN \setminus C_r$, that is, $\bbN \setminus C_r$ is an $AP$-set. 
 
   \textsl{(b) $\implies$ (a).}
   Let $r \in \bbN$, and $\bbN = \bigcup_{i=1}^r C_i$. 
@@ -437,22 +437,22 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
-  We call $A$ a \textsl{syndetic (set in $S$)} if and only if there exist $G \in \Pf(S)$ such that $S = \bigcup_{t \in G} t^{-1}A$. 
+  We call $A$ a \emph{syndetic (set in $S$)} if and only if there exist $G \in \Pf(S)$ such that $S = \bigcup_{t \in G} t^{-1}A$. 
 \end{defn}
 
-Even though we have successfully translated Theorem \ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact that the notion of a syndetic set is \textsl{not} partition regular. 
+Even though we have successfully translated Theorem \ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact that the notion of a syndetic set is \emph{not} partition regular. 
 See the Introduction in \cite{Bergelson:2001ve} for an example in $\bbN$.
-(Although syndetic sets do intereact nicely with smallest ideal of $\beta S$, see \cite[Theorems 4.39 and 4.43]{Hindman:1998fk}.)
+(Although syndetic sets do intereact nicely with smallest ideal of $\beta S$; see \cite[Theorems 4.39 and 4.43]{Hindman:1998fk}.)
 In order to recover partition regularity, we weaken the definition of a syndetic set to obtain a piecewise syndetic set.
 
 \subsection{Piecewise Syndetic Sets}
 For a first definition of a piecewise syndetic set we introduce some temporary terminology and notation.
 Given $F \in \Pf(\bbN)$ with $|F| = n$, enumerate $F$ as a strictly increasing sequence $x_1 < x_2 < \cdots < x_n$. 
-We define the \textsl{gap size of $F$} as $g(F) = \max\bigr\{\, x_{j+1} - x_j : j \in \{1, 2, \ldots, n-1\} \,\bigl\}$.
-We call a set $A \subseteq \bbN$ \textsl{piecewise syndetic} if and only if there exists $b \in \bbN$ such that for all $N \in \bbN$, there exists $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$.
+We define the \emph{gap size of $F$} as $g(F) = \max\bigr\{\, x_{j+1} - x_j : j \in \{1, 2, \ldots, n-1\} \,\bigl\}$.
+We call a set $A \subseteq \bbN$ \emph{piecewise syndetic} if and only if there exists $b \in \bbN$ such that for all $N \in \bbN$, there exists $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$.
 
 It's clear that a syndetic set in $\bbN$ is a piecewise syndetic set in $\bbN$.
-It's also clear that  parts of this definition may not make since for arbitrarily semigroups.
+It's also clear that  parts of this definition may not make sense for arbitrarily semigroups.
 It's is the purpose of this next result to show that we can dispense with the potentially troublesome parts.
 
 \begin{prop}
@@ -470,23 +470,30 @@ It's is the purpose of this next result to show that we can dispense with the po
   Put $G = \{1, 2, \ldots, b\}$.
   We show that for all $F \in \Pf(\bbN)$, there exists $x \in \bbN$ such that $F+x \subseteq \bigcup_{t \in G} -t + A$.
 
-  Let $F \in \Pf(\bbN)$ and put $N = 3 |F| \max F$. 
+  Let $F \in \Pf(\bbN)$ and put $N =  \max F + 2$. 
   Pick $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$. 
   Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots  < x_n$.
-  It suffices to show that there exists $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t + B$.
-  (Since $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
-  Pick $x \in \bbN$ such that $\{1, 2, \ldots, |F| \max F, |F| \max F + 1, \ldots, 2|F| \max F\} + x \subseteq \{x_1, x_1 + 1, \ldots, x_n\}$.
-  (We can do this since $n = |B| \ge 3 |F| \max F$.)
-  Let $f \in F$, then $f + x \in \{x_1, x_1 + 1, \ldots, x_n \}$ and we can pick $m \in \{1, 2, \ldots, n\}$ with $x_m \le f+x < x_{m+1}$. 
-  Since $x_{m+1} - x_m \le b$, there exists $t \in G$ such that $t + f + x = x_{m+1}$. 
-  This completes the forward direction of the proof.  
+  It suffices to show that $F + x_1 \subseteq \bigcup_{t \in G} -t + B$.
+  (Observe that $B \subseteq A$ implies $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
+  Let $f \in F$, then $f + x_1 \le \max F + x_1$. 
+  Now $n \ge \max F + 2$ and so $f + x_1 \le (n-2) + x_1 < x_n$. 
+  So pick $m \in \{1, 2, \ldots, n-1\}$ such that $x_m \le f+x_1  < x_{m+1}$. 
+  Put $t = x_{m+1} - x_1 - f_1$, then $t + f + x_1 = x_{m+1} \in B$ and $t \in G$ since $1 \le t = x_{m+1}- (f_1 + x_1) < x_{m+1} - x_m \le b$. 
+  This completes this direction of the proof.  
   
   \textsl{(b) $\implies$ (a).}
   Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
-  Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$. that $|F| \ge N$. 
+  Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$.
   Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t + A$. 
   For each $i \in \{1, 2, \ldots, 2bN\}$, pick $t_i \in G$ such that $t_i + i + x \in A$. 
-  Put $B = \bigl\{\, t_i + i + x : f \in \{1, 2, \ldots, 2bN\} \,\bigr\}$. 
+  Put $B = \bigl\{\, t_i + i + x : i \in \{1, 2, \ldots, 2bN\} \,\bigr\}$. 
+  We first claim that $|B| \ge N$. 
+
+  % An induction or pigeonhole argument should be useful here.
+  Consider the collection of ordered pairs $H = \bigl\{\, (i,j) : \mbox{$i \in \{1, 2, \ldots, b\}$ and $j \in \{1, 2, \ldots, 2bN\}$} \,\bigr\}$.
+  To show that $|B| \ge N$ observe that it suffices to show that for any $(i,j) \in H$ we have $|\{\, (s,t) \in H : s+t = i+j \,\}| \le b$. 
+
+  % Not sure how to fix this yet.
   We show that $g(B) \le b$. 
   For $i \in \{1, 2, \ldots, 2bN-1\}$ we have that $t_{i+1} + (i+1) + x - (t_i + i + x) = t_{i+1} - t_i + 1 \le b - 1 + 1 = b$.
   This completes the reverse direction of the proof.
@@ -502,7 +509,7 @@ Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets a
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
-  We say $A$ is \textsl{piecewise syndetic (set in S)} if and only if there exists $G \in \Pf(S)$ such that for all $F \in \Pf(S)$ there exists $x \in S$ with $Fx \subseteq \bigcup_{t \in G} t^{-1}A$.
+  We say $A$ is \emph{piecewise syndetic (set in S)} if and only if there exists $G \in \Pf(S)$ such that for all $F \in \Pf(S)$ there exists $x \in S$ with $Fx \subseteq \bigcup_{t \in G} t^{-1}A$.
 \end{defn}
 
 \begin{thm}
@@ -542,7 +549,7 @@ By using the algebraic structure of the Stone-\v{C}ech compactification we can g
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
-  We call $A$ \textsl{central} if and only if there exists an idempotent $p = pp \in K(\beta S)$ such that $A \in p$.
+  We call $A$ \emph{central} if and only if there exists an idempotent $p = pp \in K(\beta S)$ such that $A \in p$.
 \end{defn}
 
 In the next chapter we shall prove that central sets do enjoy a powerful combinatorial structure embodied by the Central Sets Theorem.
