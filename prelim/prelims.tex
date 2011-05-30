@@ -330,18 +330,93 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   \label{thm:vdwEqSyn}
   The following statements are equivalent.
   \begin{itemize}
-    \item[(a)] Let $r$ be a positive integer.
-      If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for all $k \in \bbN$, there exist $a$, $d \in \bbN$ with $\{\, a, a+d, \ldots, a+k d \,\} \subseteq C_i$. 
+    \item[(a)]
+      For every positive integer $k$, if $\bbN = C_1 \cup C_2$, then either $C_1$ or $C_2$ contains a $k$-term arithmetic progression. 
 
-    \item[(b)] Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite.
-      Then for all $k \in \bbN$, the set $\{\, x_n : n \in \bbN \,\}$ contains a $k$-term arithmetic progression.
+    \item[(b)]
+      For every positive integer $k$ there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = C_1 \cup C_2$, then either $C_1$ contains a $k$-term arithmetic progression or $C_2$ contains a $k$-term arithmetic progression.
+
+    \item[(c)]
+      For every positive integers $b$, $c$, and $k$, there exists a positive integer $N$ such that if $\{b+c, b+2c, \ldots, b+Nc\} = C_1 \cup C_2$, then either $C_1$ or $C_2$ contains a $k$-term arithmetic progression.
+
+    \item[(d)]
+      For every positive integers $r$ and $k$, there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
+
+    \item[(e)]
+      Let $r$ be a positive integer.
+      If $\bbN = \bigcup_{i=1}^r C_i$, then for all $k \in \bbN$, there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
+
+    \item[(f)]
+      Let $r$ be a positive integer.
+      If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for all $k \in \bbN$, there exist $a$, $d \in \bbN$ with $\{\, a, a+d, \ldots, a+k d \,\} \subseteq C_i$. 
       
-    \item[(c)] Let $r$ be a positive integers.
-      If $\bigcup_{i=1}^r C_i \subseteq \bbN$ is an $AP$-set, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is an $AP$-set.
+    \item[(g)] 
+      Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite.
+      Then for all $k \in \bbN$, the set $\{\, x_n : n \in \bbN \,\}$ contains a $k$-term arithmetic progression.
   \end{itemize}
 \end{thm}
 \begin{proof}
   \textsl{(a) $\implies$ (b).}
+  Suppose that the statement \textsl{(b)} is false, that is, suppose there exists a positive integer $k$ such that for every $N \in \bbN$ there exist sets $C_{1,N}$ and $C_{2,N}$ with $\{1, 2, \ldots, N\} = C_{1, N} \cup C_{2, N}$ but neither $C_{1,N}$ or $C_{2,N}$ contains a $k$-term arithmetic progression. 
+
+  We shall recursively construct sequences $\la r_i \ra_{i=1}^\infty$ and $\la \bbN_i \ra_{i=0}^\infty$ satisfying the following hypotheses:
+  \begin{itemize}
+    \item[(1)]
+      $\bbN_0 = \bbN$.
+
+    \item[(2)]
+      For all positive integers $i$, $\bbN_i = \{\, N \in \bbN_{i-1} : i \in C_{r_i, N} \,\}$.
+
+    \item[(3)]
+      For all positive integers $i$, $\bbN_i$ is infinite.
+
+    \item[(4)] 
+      For all nonnegative integers $i$, $\bbN_{i+1} \subseteq \bbN_i$.
+  \end{itemize}
+
+  Put $\bbN_0 = \bbN$ and by the pigeonhole principle, pick $r_1 \in \{1, 2 \}$ such that $\{\, N \in \bbN_0 : 1 \in C_{r_1, N} \,\}$ is infinite, and put $\bbN_1 = \{\, N \in \bbN_0 : 1 \in C_{r_1, N} \,\}$.
+  Then hypotheses (1) through (4) are satisfied by $\la r_i \ra_{i=1}^1$ and $\la \bbN_i \ra_{i=0}^1$.
+  Now let $m > 1$, and assume that the sequences $\la r_i \ra_{i=1}^{m-1}$ and $\la \bbN_i \ra_{i=0}^{m-1}$ have been chosen to satisfy hypotheses (1) through (4).
+  
+  Since $\bbN_{m-1}$ is infinite, by the pigeonhole principle we may pick $r_m \in \{1, 2\}$ such that $\{\, N \in \bbN_{m-1} : m \in C_{r_m, N} \,\}$ is infinite. 
+  Put $\bbN_m = \{\, N \in \bbN_{m-1} : m \in C_{r_m, N} \,\}$.
+  Then it is routine to verify that the sequences $\la r_i \ra_{i=1}^m$ and $\la \bbN_i \ra_{i=0}^m$ satisfy hypotheses (1) through (4).
+
+  Observe that, by hypothesis (2), for each $i \in \bbN$, $i \in C_{r_i, N}$ for every $N \in \bbN_i$.
+  Therefore for each $j \in \{1, 2\}$ we define $C_j = \{\, i \in \bbN : \mbox{$i \in C_{r_i, N}$ where $r_i = j$ and $N \in \bbN_i$} \,\}$.
+  By hypothesis (4), this definition is well-defined.
+  We have that $\bbN = C_1 \cup C_2$, but we claim that $C_1$ and $C_2$ does not contain a $k$-term arithmetic progression. 
+  If this claim is true, then we have reached a contradiction that proves our implication.
+
+  Suppose that there exist positive integers $a$ and $d$ with $\{a, a+d, \ldots, a+(k-1)d \,\} \subseteq C_1$. 
+  Pick $N \in \bbN_{a+(k-1)d}$, and observe by hypothesis (4) and the definition of $C_1$, we have that $\{a, a+d, \ldots, a+(k-1)d\} \subseteq C_{1,N}$. 
+  However, by choice $C_{1,N}$ doesn't contain any $k$-term arithmetic progressions. 
+  Hence $C_1$ doesn't contain a $k$-term arithmetic progression and similarly we can show that $C_2$ doesn't contain a $k$-term arithmetic progression either. 
+
+  \textsl{(b) $\implies$ (c).}
+  This proof is similar to Theorem \ref{thm:semigrp-vdw}. 
+
+  \textsl{(c) $\implies$ (d).}
+  Let $k$ and $r$ be a positive integers.
+  If $r=1$, then \textsl{(d)} is trivially true.
+  If $r=2$, then \textsl{(d)} is true by assumption.
+  So we may assume that $r>2$. 
+
+  By assumption for each $b$,$c \in \bbN$ pick $N(b,c) \in \bbN$ such that if $\{b, b+c, \ldots, b+(N(b,c) - 1)c\} = C_1 \cup C_2$, then either $C_1$ or $C_2$ contains a $k$-term arithmetic progression.
+
+  By assumption pick $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then either $C_1$ or $\bigcup_{i=2}^r C_i$ contains a $k$-term arithmetic progression.
+  If $C_1$ contains a $k$-term arithmetic progression, then we are done.
+  If $C_1$ does not contain a $k$-term arithmetic progression, then pick $b$ and $c$ such that $\{b, b+c, \ldots, b+(k-1)c\} \subseteq \bigcup_{i=2}^r C_i$. 
+
+  \textsl{(d) $\implies$ (e).}
+  This assertion is trivially true.
+
+  \textsl{(e) $\implies$ (f).}
+  For each $k \in \bbN$ pick $i_k \in \{1, 2, \ldots, r\}$ such that $C_{i_k}$ contains a $k$-term arithmetic progression. 
+  By the pigeonhole principle, there exists $i \in \{1, 2, \ldots, r\}$ such that $\{\,k \in \bbN : i_k = i\,\}$ is infinite.
+  Therefore it follows that $C_i$ is an $AP$-set.
+
+  \textsl{(f) $\implies$ (g).}
   Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite. 
   Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
   We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
@@ -358,45 +433,21 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Moreover, since $x_{n+1} - x_n \le b$, we can pick $t \in \{1, 2, \ldots, b\}$ such that $t + x = x_{n+1}$, that is, $x \in -t + A$. 
   This completes the proof for this direction. 
 
-  \textsl{(b) $\implies$ (c).}
-  We proceed by induction on $r$. 
-  If $r = 1$, then \textsl{(c)} is trivially true.
-  Now let $r > 1$ and assume that \textsl{(c)} is true for $r-1$.
-
-  Let $\bigcup_{i=1}^r C_i$ be an $AP$-set and observe that $\bigcup_{i=1}^r C_i$ is infinite. 
-  Without loss of generality suppose that $C_r$ is infinite and enumerate $C_r$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
-  If $\max\{x_{n+1} - x_n : n \in \bbN\}$ is finite, then by \textsl{(b)} we are done. 
-  On the other hand suppose instead that $\max\{x_{n+1} - x_n : n \in \bbN\}$ is infinite, that is, for every $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k+2$. 
-  Therefore for every $k \in \bbN$, there exists $n \in \bbN$ with $\{x_n + 1, x_n + 2, \ldots, x_n +(k+1) \} \subseteq \bbN \setminus C_r$, that is, $\bbN \setminus C_r$ is an $AP$-set. 
-
-  \textsl{(b) $\implies$ (a).}
-  Let $r \in \bbN$, and $\bbN = \bigcup_{i=1}^r C_i$. 
-  By the pigeonhole principle, we can pick $i \in \{1, 2, \ldots, r\}$ such that $C_i$ is infinite.
-  Without loss of generality suppose that $C_1$ is infinite. 
-  Enumerate $C_1$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
+  \textsl{(g) $\implies$ (a).}
+  Without loss of generality suppose that $C_1$ is infinite.
+  Enumerate $C_1$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$. 
   If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are done. 
   Hence suppose instead that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite, that is, for all $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k + 2$. 
-  Therefore, for all $k \in \bbN$, there exists $n \in \bbN$ such that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (k + 1) \,\} \subseteq \bigcup_{i=2}^r C_i$. 
-  This means that $\bigcup_{i=2}^r C_i$ contains a \mbox{$k$-term} arithmetic progression for every $k \in \bbN$.
-  In particular, $\bigcup_{i=2}^r C_i$ is infinite and so by the pigeonhole principle, we may pick $i \in \{2, 3, \ldots, r\}$ such that $C_i$ is infinite.
-  Without loss of generality, suppose that $C_2$ is infinite.
-
-  Enumerate $C_2$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$.
-  If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then again we are done.
-  Suppose that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite, then, as above, for every $k \in \bbN$, there exists $n \in \bbN$, such that $\{\, x_n +1, x_n + 2, \ldots, x_n + (k +1) \,\}  \subseteq \bigcup_{i=3}^r C_i$. 
-  Since $\bigcup_{i=3}^r C_i$ is an $AP$-set, we may continue as before.
-  Eventually, we will stop at a set with bounded gaps or a set that contains arbitrarily long arithmetic progressions.
-
-  \textsl{(c) $\implies$ (a).}
-  This implication is trivial.
+  Therefore, for all $k \in \bbN$, there exists $n \in \bbN$ such that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (k + 1) \,\} \subseteq \bbN \setminus C_1 = C_2$, that is, $C_2$ is an $AP$-set.
 \end{proof}
 \begin{rmk}
-  Theorem \ref{thm:vdwEqSyn}(a) is equivalent to van der Waerden's Theorem.
-  One direction in this equivalence is easy, while the other direction essentially depends on what have been termed `compactness arguments'. 
-  \cite[Theorem 2.5]{Landman:2004qf} contains a more complete list of statements equivalent to van der Waerden's Theorem.
+  The technique used to prove the implication \textsl{(a) $\implies$ (b)} is commonly called a `compactness argument'. 
+  This particular name comes from the Compactness Theorem in first-order logic which states that any set of first-order sentences has a model if and only if every finite subset has a model. 
+  The Compactness Theorem itself is closely related to the Ultrafilter Principle. 
+  Recall that the Ultrafilter Principle states that every filter can be extended to an ultrafilter.
 \end{rmk}
 
-We wish to translate statement Theorem \ref{thm:vdwEqSyn} (b) into the language of semigroups.
+We wish to translate statement Theorem \ref{thm:vdwEqSyn} (g) into the language of semigroups.
 Of course, given an arbitrary semigroup, there is no guarantee that the terms ``strictly increasing'' and ``distance between two elements'' makes sense.
 It is the goal of the next result to show that we can forgo these terms.
 
