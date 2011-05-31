@@ -337,20 +337,17 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
       For every positive integer $k$ there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = C_1 \cup C_2$, then either $C_1$ contains a $k$-term arithmetic progression or $C_2$ contains a $k$-term arithmetic progression.
 
     \item[(c)]
-      For every positive integers $b$, $c$, and $k$, there exists a positive integer $N$ such that if $\{b+c, b+2c, \ldots, b+Nc\} = C_1 \cup C_2$, then either $C_1$ or $C_2$ contains a $k$-term arithmetic progression.
-
-    \item[(d)]
       For every positive integers $r$ and $k$, there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
 
-    \item[(e)]
+    \item[(d)]
       Let $r$ be a positive integer.
       If $\bbN = \bigcup_{i=1}^r C_i$, then for all $k \in \bbN$, there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
 
-    \item[(f)]
+    \item[(e)]
       Let $r$ be a positive integer.
       If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for all $k \in \bbN$, there exist $a$, $d \in \bbN$ with $\{\, a, a+d, \ldots, a+k d \,\} \subseteq C_i$. 
       
-    \item[(g)] 
+    \item[(f)] 
       Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite.
       Then for all $k \in \bbN$, the set $\{\, x_n : n \in \bbN \,\}$ contains a $k$-term arithmetic progression.
   \end{itemize}
@@ -394,29 +391,33 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Hence $C_1$ doesn't contain a $k$-term arithmetic progression and similarly we can show that $C_2$ doesn't contain a $k$-term arithmetic progression either. 
 
   \textsl{(b) $\implies$ (c).}
-  This proof is similar to Theorem \ref{thm:semigrp-vdw}. 
+  We start by introducing some temporary notation.
+  For all positive integers $k$ and $r$ we let $W(k,r)$ be the least positive integer such that if $\{1, 2, \ldots, W(k,r)\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
 
+  For all $k \in \bbN$, $W(k, 1)$ trivially exists, and $W(k, 2)$ exists by assumption.
+  Let $r > 2$ and assume that for all $k \in \bbN$, $W(k, r-1)$ exists. 
+  Put $N = W\bigl( W(k, r-1)+1, 2 \bigr)$ and let $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$. 
+  Put $D_1 = \bigcup_{i=1}^r-1 C_i$ and $D_2 = C_r$.
+  Then by assumption either $D_1$ or $D_2$ contains a $W(k,r-1)+1$-term arithmetic progression.
+  If $D_2$ contains a $W(k,r-1)+1$-term arithmetic progression, then we're done. 
+  (Observe that $W(k,r-1) \ge k$.)
+
+  Suppose that $D_1$ contains a $W(k,r-1)$-term arithmetic progression, that is, pick positive integers $b$ and $c$ such that $\{b, b+c, \ldots, b+W(k,r-1)c\} \subseteq \bigcup_{i=1}^{r-1} C_i$. 
+  For each $i \in \{1, 2, \ldots, r-1\}$ define $E_i = \bigl\{\, j \in \{1, 2, \ldots, W(k,r-1) : b+jc \in C_i \,\bigr\}$.
+  Then $\{1, 2, \ldots, W(k, r-1)\} = \bigcup_{i=1}^{r-1} E_i$ and by our inductive hypothesis there exists $i \in \{1, 2, \ldots, r-1\}$ such that $E_i$ contains a $k$-term arithmetic progression, that is, there exists $e$, $f \in bbN$ such that $\{e, e+f, \ldots, e+(k-1)f\} \subseteq E_i$. 
+
+  Put $a = b+ec$ and $d = fc$, then by definition of $E_i$ we have that for every $j \in \{0, 1, \ldots, k-1\}$, $a + jd = b + ec + jfc = b+(e+jf)c \in C_i$.
+  
+  
   \textsl{(c) $\implies$ (d).}
-  Let $k$ and $r$ be a positive integers.
-  If $r=1$, then \textsl{(d)} is trivially true.
-  If $r=2$, then \textsl{(d)} is true by assumption.
-  So we may assume that $r>2$. 
-
-  By assumption for each $b$,$c \in \bbN$ pick $N(b,c) \in \bbN$ such that if $\{b, b+c, \ldots, b+(N(b,c) - 1)c\} = C_1 \cup C_2$, then either $C_1$ or $C_2$ contains a $k$-term arithmetic progression.
-
-  By assumption pick $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then either $C_1$ or $\bigcup_{i=2}^r C_i$ contains a $k$-term arithmetic progression.
-  If $C_1$ contains a $k$-term arithmetic progression, then we are done.
-  If $C_1$ does not contain a $k$-term arithmetic progression, then pick $b$ and $c$ such that $\{b, b+c, \ldots, b+(k-1)c\} \subseteq \bigcup_{i=2}^r C_i$. 
-
-  \textsl{(d) $\implies$ (e).}
   This assertion is trivially true.
 
-  \textsl{(e) $\implies$ (f).}
+  \textsl{(d) $\implies$ (e).}
   For each $k \in \bbN$ pick $i_k \in \{1, 2, \ldots, r\}$ such that $C_{i_k}$ contains a $k$-term arithmetic progression. 
   By the pigeonhole principle, there exists $i \in \{1, 2, \ldots, r\}$ such that $\{\,k \in \bbN : i_k = i\,\}$ is infinite.
   Therefore it follows that $C_i$ is an $AP$-set.
 
-  \textsl{(f) $\implies$ (g).}
+  \textsl{(e) $\implies$ (f).}
   Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite. 
   Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
   We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
@@ -433,7 +434,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Moreover, since $x_{n+1} - x_n \le b$, we can pick $t \in \{1, 2, \ldots, b\}$ such that $t + x = x_{n+1}$, that is, $x \in -t + A$. 
   This completes the proof for this direction. 
 
-  \textsl{(g) $\implies$ (a).}
+  \textsl{(f) $\implies$ (a).}
   Without loss of generality suppose that $C_1$ is infinite.
   Enumerate $C_1$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$. 
   If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are done. 
@@ -447,7 +448,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Recall that the Ultrafilter Principle states that every filter can be extended to an ultrafilter.
 \end{rmk}
 
-We wish to translate statement Theorem \ref{thm:vdwEqSyn} (g) into the language of semigroups.
+We wish to translate statement Theorem \ref{thm:vdwEqSyn} (f) into the language of semigroups.
 Of course, given an arbitrary semigroup, there is no guarantee that the terms ``strictly increasing'' and ``distance between two elements'' makes sense.
 It is the goal of the next result to show that we can forgo these terms.
 
@@ -579,10 +580,6 @@ Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets a
   \]
   
   Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}C_1$. 
-  Now $Fyx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, $yx \in S$, and $C_1$ is not piecewise syndetic, so we have that 
-  \[
-    Fyx \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset. 
-  \]
   Pick $z \in F$ such that $zyx \not\in \bigcup_{t \in G} t^{-1}C_1$. 
   Now $zyx \in \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, so pick $t \in G$ such that $tzyx \in C_1 \cup C_2$. 
   If $tzyx \in C_1$, then $zyx \in t^{-1}C_1$, a contradiction.
