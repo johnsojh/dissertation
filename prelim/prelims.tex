@@ -534,6 +534,28 @@ It's is the purpose of this next result to show that we can dispense with the po
   This completes this direction of the proof.  
   
   \textsl{(b) $\implies$ (a).}
+  Suppose that for every positive integer $b$ there exists a positive integer $N_b$ such that for all $B \in \Pf(A)$ we have $|B| \ge N_b$ but $g(B) > b$. 
+  Pick $G \in \Pf(\bbN)$ as guaranteed by assumption, and pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
+  Observe that since $\bigcup_{t \in G} -t+A \subseteq \bigcup_{t=1}^b -t +A$ we may assume that $G = \{1, 2, \ldots, b\}$.
+  Put $N = \max\{b, N_b} + 1$ and $F = \{N, 2N, 3N, \ldots, N^2\}$. 
+
+  Pick $x \in \bbN$ such that $F+x \subseteq \bigcup_{t=1}^b -t+A$. 
+  For every $i \in \{1, 2, 3, \ldots, N\}$ pick $t_i \in \{1, 2, \ldots, b\}$ such that $t_i + iN + x \in A$.
+  Put $B = \{\, t_i + iN + x : i \in \{1, 2, \ldots, N\} \,\}$.
+  We claim that $|B| \ge N_b$ and $g(B) \le b$. 
+  This claim produces a contradiction which proves this direction. 
+
+
+  To prove this direction, we shall prove the contrapositive, that is, we assume that for every positive integer $b$ there exists a positive integer $N_b$ such that for all $B \in \Pf(A)$ with $|B| \ge N_b$ we have $g(B) > b$, and prove that for every $G \in \Pf(\bbN)$ there exists $F \in \Pf(\bbN)$ such that for all $x \in \bbN$ we have $F + x \not\subseteq \bigcup_{t \in G} -t+A$.
+
+  Let $G \in \Pf(\bbN)$ and pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
+  Since $\bigcup_{t \in G} -t+A \subseteq \bigcup_{t=1}^b -t+A$, we may assume that $G = \{1, 2, \ldots, b\}$. 
+  Put $F = \{1, 2, \ldots, N_b\}$. 
+  Let $x \in \bbN$ and pick $B \in \Pf(A)$ such that $b + N_b + x < \max B$ and $|B| \ge N_b$. 
+  We show that there exists $f \in F$ such that for all $t \in \{1, 2, \ldots, b\}$, $t+f+x \not\in A$. 
+
+  Let $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \ldots < x_n$. 
+
   Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
   Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$.
   Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t + A$. 
