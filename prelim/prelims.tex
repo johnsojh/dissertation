@@ -534,43 +534,31 @@ It's is the purpose of this next result to show that we can dispense with the po
   This completes this direction of the proof.  
   
   \textsl{(b) $\implies$ (a).}
-  Suppose that for every positive integer $b$ there exists a positive integer $N_b$ such that for all $B \in \Pf(A)$ we have $|B| \ge N_b$ but $g(B) > b$. 
-  Pick $G \in \Pf(\bbN)$ as guaranteed by assumption, and pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
-  Observe that since $\bigcup_{t \in G} -t+A \subseteq \bigcup_{t=1}^b -t +A$ we may assume that $G = \{1, 2, \ldots, b\}$.
-  Put $N = \max\{b, N_b} + 1$ and $F = \{N, 2N, 3N, \ldots, N^2\}$. 
+  Pick $G \in \Pf(\bbN)$ as guaranteed, and pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
+  Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$. 
+  Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t+A$. 
+  For every $i \in F$ pick the smallest $t_i \in G$ such that $t_i + f + x \in A$. 
+  Let $B = \{\, t_i + f + x : i \in F \,\}$.
+  We show that $g(B) \le b$ and $|B| \ge N$.
 
-  Pick $x \in \bbN$ such that $F+x \subseteq \bigcup_{t=1}^b -t+A$. 
-  For every $i \in \{1, 2, 3, \ldots, N\}$ pick $t_i \in \{1, 2, \ldots, b\}$ such that $t_i + iN + x \in A$.
-  Put $B = \{\, t_i + iN + x : i \in \{1, 2, \ldots, N\} \,\}$.
-  We claim that $|B| \ge N_b$ and $g(B) \le b$. 
-  This claim produces a contradiction which proves this direction. 
+  To see that $g(B) \le b$ it suffices to show that $\{\, t_i + f : i \in F\}$ has gap size less than or equal to $b$.
+  To this end arrange the sums in $\{1, 2, \ldots, b\} + F$ into the following array:
+  \[
+    \begin{array}[t]{ccccc}
+      1+1 & 1+2 & 1+3 & \cdots & 1+2bN \\
+      2+1 & 2+2 & 2+3 & \cdots & 2+2bN \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      b+1 & b+2 & b+3 & \cdots & b+2bN 
+    \end{array}
+  \]
+% The following bits are not completely rigorous, but I think the reasoning is sound. 
+  Observe that numbers along a diagonal in the array share the same sum. 
+  (For instance, $\{3+1, 2+2, 1+3\}$ have the same sum of 4.)
+  Also observe that for each $i \in \{1, 2, \ldots, 2bN - 1\}$, $b + (i+1) - (1 +i) = b$ is the maximum distance between any two numbers from adjacent columns. 
+  With our choice of $t_i$'s we pick exactly one number from each column of our array.
+  Hence it follows that $g(B) \ge b$.
 
-
-  To prove this direction, we shall prove the contrapositive, that is, we assume that for every positive integer $b$ there exists a positive integer $N_b$ such that for all $B \in \Pf(A)$ with $|B| \ge N_b$ we have $g(B) > b$, and prove that for every $G \in \Pf(\bbN)$ there exists $F \in \Pf(\bbN)$ such that for all $x \in \bbN$ we have $F + x \not\subseteq \bigcup_{t \in G} -t+A$.
-
-  Let $G \in \Pf(\bbN)$ and pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
-  Since $\bigcup_{t \in G} -t+A \subseteq \bigcup_{t=1}^b -t+A$, we may assume that $G = \{1, 2, \ldots, b\}$. 
-  Put $F = \{1, 2, \ldots, N_b\}$. 
-  Let $x \in \bbN$ and pick $B \in \Pf(A)$ such that $b + N_b + x < \max B$ and $|B| \ge N_b$. 
-  We show that there exists $f \in F$ such that for all $t \in \{1, 2, \ldots, b\}$, $t+f+x \not\in A$. 
-
-  Let $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \ldots < x_n$. 
-
-  Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
-  Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$.
-  Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t + A$. 
-  For each $i \in \{1, 2, \ldots, 2bN\}$, pick $t_i \in G$ such that $t_i + i + x \in A$. 
-  Put $B = \bigl\{\, t_i + i + x : i \in \{1, 2, \ldots, 2bN\} \,\bigr\}$. 
-  We first claim that $|B| \ge N$. 
-
-  % An induction or pigeonhole argument should be useful here.
-  Consider the collection of ordered pairs $H = \bigl\{\, (i,j) : \mbox{$i \in \{1, 2, \ldots, b\}$ and $j \in \{1, 2, \ldots, 2bN\}$} \,\bigr\}$.
-  To show that $|B| \ge N$ observe that it suffices to show that for any $(i,j) \in H$ we have $|\{\, (s,t) \in H : s+t = i+j \,\}| \le b$. 
-
-  % Not sure how to fix this yet.
-  We show that $g(B) \le b$. 
-  For $i \in \{1, 2, \ldots, 2bN-1\}$ we have that $t_{i+1} + (i+1) + x - (t_i + i + x) = t_{i+1} - t_i + 1 \le b - 1 + 1 = b$.
-  This completes the reverse direction of the proof.
+  We have that $|B| = 2N > N$.
 \end{proof}
 
 With this equivalence we now can define the notion of a piecewise
