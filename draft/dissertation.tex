@@ -5,12 +5,18 @@
 % Helvetica) font. Before submitting a final draft, change the DRAFT
 % option to FINAL and remove the SHOWTRIMS option.
 
-\documentclass[letterpaper, 12pt, oneside, showtrims, draft]{memoir}
+\documentclass[letterpaper, 12pt, oneside, draft]{memoir}
 
 % Top, right, bottom, and left margins must be 1 inch each from the
 % edge. Using the geometry package with the options 'margin=1in' is a
 % convenient way to accomplish this.
 \usepackage[margin=1in]{geometry}  
+
+\usepackage{endnotes}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
 
 % The amsthm package is used to provide the theorem-type and proof
 % environments that make typesetting theorems and definitions easy.
@@ -31,14 +37,71 @@
   {}                            % Theorem head specification. 
 
 \theoremstyle{plain}
+% Numbered theorems 
+\newtheorem{thm}{Theorem}[chapter]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{up}[thm]{Ultrafilter Principle}
+\newtheorem{radoSelect}[thm]{Rado's Selection Lemma}
+\newtheorem{php}[thm]{Pigeonhole Principle}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem{hj}[thm]{Hales-Jewett Theorem}
+\newtheorem{shj}[thm]{Special Hales-Jewett Theorem}
 
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsfonts}
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
 
-% Short name for the angle bracket symbols.
+
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+
+
+\theoremstyle{definition}
+
+% Numbered "definition" style theorem environments
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+
 \newcommand{\la}{\langle}
 \newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\AP}{\mathcal{AP}}
+\newcommand{\AL}{\mathcal{AL}}
+
+% Short names for calligraphic math letters.
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+
+\newcommand{\Pf}{\mathcal{P}_f}
+
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
 
 \begin{document}
 
@@ -69,20 +132,16 @@
 \include{losym}
 
 \pagenumbering{arabic}
-% \include{prelims}
+
+\include{prelims}
+
 % \include{newcst}
 % \include{dyncsets}
 % \include{ideal}
 % \include{backmatter}
 
 
-Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved the following remarkable assertion about arithmetic progressions in the positive integers.
-
-
-  Let $r$ and $k$ be positive integers.
-  Then there exists a positive integer $N$ such that if $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression, that is, there exist positive integers $a$ and $d$ with $\{a, a+d, \ldots, a + (k-1)d\} \subseteq C_i$.
-
-
-
+\bibliographystyle{amsplain}
+\bibliography{references}
 \end{document}
 
