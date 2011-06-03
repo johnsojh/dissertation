@@ -85,6 +85,8 @@
 
 \addtolength{\baselineskip}{1.7pt}
 
+\chapter{Preliminaries}
+
 \section{Van der Waerden's Theorem and Semigroup Theory}
 Bartel Leendert van der Waerden in \cite{Van-der-Waerden:1927fk} proved the following remarkable assertion about arithmetic progressions in the positive integers.
 
@@ -104,7 +106,7 @@ Despite being such an old result, van der Waerden's Theorem still forms the basi
 \endnote{
   Almost a decade after van der Waerden published his proof, Paul Erd\H{o}s and Paul Tur\'{a}n in \cite{Erdos:1936fk} started investigating when a finite set of natural numbers would contain a 3-term arithmetic progression.
   One of their conjectures contained in this paper is the following: For every $\delta > 0$ there exists a natural number $N$ such that if $A \subseteq \{1, 2, \ldots, N\}$ with $|A| \ge \delta N$, then $A$ contains a 3-term arithmetic progression. 
-  This conjecture turned out to be correct and hard to prove.
+  This conjecture turned out to be both correct and hard to prove.
 
   The first proof of the conjecture came from Klaus Roth in \cite{Roth:1952uq} and \cite{Roth:1953kx} using ``an adaptation of the Hardy-Littlewood [circle] method'' \cite[page 106]{Roth:1953kx}.  
   Over a decade later, Endre Szemer\'{e}di was able to extend this result by using a combinatorial argument in \cite{Szemeredi:1969vn} by replacing `3-term arithmetic progression' by `4-term arithmetic progression'. 
@@ -134,7 +136,7 @@ This theorem can be rewritten to apply to any semigroup, where we replace an ari
 While we get Theorem \ref{thm:semigrp-vdw} for free from van der Waerden's Theorem there are three potential problems with such a straightforward approach:
 Our increment $d$ may be a right identity in our underlying semigroup, and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^{k-1}\}$ are distinct.
 (The introduction of \cite{Bergelson:1992fk} contains an example for both of these problems.)
-The last potential problem is the most subtle and can only occur when the underlying semigroup is noncommutative.
+The last potential problem is more subtle and can only occur when the underlying semigroup is noncommutative.
 To precisely formulate this obscure problem we make a brief detour to quickly review some needed algebraic definitions and results.
 
 \subsection{Semigroup Theory}
@@ -158,9 +160,9 @@ We define a \emph{minimal right ideal} and \emph{minimal two-sided ideal} simila
 There can be at most one minimal two-sided ideal in a semigroup, and if this minimal ideal exists, then it is contained in every ideal of our semigroup.
 We denote this \emph{smallest ideal}, if it exists, by $K(S)$.%
 \endnote{
-  The notation of $K(S)$ denoting the smallest ideal comes from the Russian mathematician Suschkewitsch.
+  The use of $K(S)$ to denote the smallest ideal comes from the Russian mathematician Suschkewitsch.
   He called the smallest ideal the \emph{kernel} of the semigroup.
-  Suschkewitsch,according to the description given by \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
+  Suschkewitsch, according to the description given by \cite{Hollings:2009uq}, in \cite{Suschkewitsch:1928kx} proved that all finite semigroups have a smallest ideal and using this fact was able to produce a structure theorem for finite semigroups. 
 }
 
 The existence of the smallest ideal essentially depends on what may be regarded as certain `boundedness' conditions on the semigroup.
@@ -187,7 +189,7 @@ Every compact right-topological semigroup contains an idempotent and the smalles
 Let $(S, \cdot)$ be a fixed discrete semigroup, that is, $S$ is a semigroup with the discrete topology. 
 In this subsection we describe how we can densely embed $S$, and extend its semigroup operation, into a compact right-topological semigroup.
 
-Put $\beta S = \{\, p : \mbox{$p$ is an ultrafilter on $S$} \,\}$.
+Put $\beta S = \{\, p : \mbox{$p$ is an ultrafilter on $S$} \,\}$ and identify the elements of $S$ with the principal ultrafilters.
 We topologize $\beta S$ as follows: For each $A \subseteq S$ define $\overline{A} = \{\, p \in \beta S : p \in A \,\}$.
 Then $\{\, \overline{A} : A \subseteq S \,\}$ forms a basis for a compact Hausdorff topology on $\beta S$ which is the Stone-\v{C}ech Compactification \cite[Theorem 3.27]{Hindman:1998fk} of the discrete space $S$.
 
@@ -199,8 +201,6 @@ Therefore $\beta S$ has at least one idempotent (it typically has many more) and
 The arithmetic progressions of positive integers interact nicely with the algebraic structure of $(\beta \bbN, +)$ (and also, $(\beta \bbN, \cdot)$). 
 To see this interaction we define a special subset of $\bbN$ and prove, via Theorem \ref{thm:semigrp-vdw}, that this special subset is partition regular.%
 \endnote{
- 
-
   The close connection between partition regularity (although not using this terminology) and ultrafilters was first noticed by Choquet in \cite{Choquet:1947uq}. 
 }
 
@@ -245,7 +245,7 @@ By Theorem \ref{thm:ap-partition-reg} and \cite[Theorem 3.11]{Hindman:1998fk} we
   Then $\overline{A} \cap \AP = \emptyset$, that is, a (basic open) neighborhood of $p$ is contained in the complement of $\AP$.
 \end{proof}
 
-We are now in a position to formulate our obscure problem mentioned earlier.
+We are now in a position to formulate our subtle problem mentioned earlier.
 Therefore we start by simply modifying the definition of an $AP$-set, Theorem \ref{thm:ap-partition-reg}, and the definition of $\AP$ to be applicable to a semigroup.
 
 \begin{defn}
@@ -279,7 +279,7 @@ Therefore we start by simply modifying the definition of an $AP$-set, Theorem \r
 \begin{proof}
   The fact that $\AL(S)$ is nonempty follows from Theorem \ref{thm:al-partition-reg} and \cite[Theorem 3.11]{Hindman:1998fk}. 
 
-  To see that $\AL(S)$ is closed let $p \not\in AL(S)$ and pick $A \in p$ such that $A$ is not an $AL$-set.
+  To see that $\AL(S)$ is closed let $p \not\in \AL(S)$ and pick $A \in p$ such that $A$ is not an $AL$-set.
   Then $\overline{A} \cap \AL(S) = \emptyset$, that is, a (basic open) neighborhood of $p$ is contained in the complement of $\AL(S)$.
 
   Finally to see that $\AL(S)$ is a left ideal, let $p \in \beta S$ and $q \in \AL(S)$. 
@@ -319,8 +319,7 @@ While $\AL(S)$ and $\AP$ are both closed left ideals of $\beta S$ and $\beta \bb
 The result embodied in Theorem \ref{thm:AL-not-left-ideal} is aesthetically disturbing since $\AL(S)$ may not be a right ideal when $S$ is noncommutative. 
 To recover this property in $\beta S$ we shall specialize and drastically modify the definition of an $AP$-set when we have a (noncommutative) semigroup.
 The two modifications we mention in this section are piecewise syndetic sets and central sets.
-We start by giving the definition of a piecewise syndetic set. 
-However since the definition of a piecewise syndetic set is, initially, somewhat difficult to understand, we choose to give some motivation on how this concept can be `naturally' derived before explicitly defining it.
+Since the definition of a piecewise syndetic set is, initially, somewhat difficult to understand, we choose to give some motivation on how this concept can be `naturally' derived before explicitly defining it.
 
 
 \subsection{Syndetic Sets}
@@ -397,14 +396,14 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   For all $k \in \bbN$, $W(k, 1)$ trivially exists, and $W(k, 2)$ exists by assumption.
   Let $r > 2$ and assume that for all $k \in \bbN$, $W(k, r-1)$ exists. 
   Put $N = W\bigl( W(k, r-1)+1, 2 \bigr)$ and let $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$. 
-  Put $D_1 = \bigcup_{i=1}^r-1 C_i$ and $D_2 = C_r$.
+  Put $D_1 = \bigcup_{i=1}^{r-1} C_i$ and $D_2 = C_r$.
   Then by assumption either $D_1$ or $D_2$ contains a $W(k,r-1)+1$-term arithmetic progression.
-  If $D_2$ contains a $W(k,r-1)+1$-term arithmetic progression, then we're done. 
+  If $D_2$ contains a $W(k,r-1)+1$ term arithmetic progression, then we're done. 
   (Observe that $W(k,r-1) \ge k$.)
 
   Suppose that $D_1$ contains a $W(k,r-1)$-term arithmetic progression, that is, pick positive integers $b$ and $c$ such that $\{b, b+c, \ldots, b+W(k,r-1)c\} \subseteq \bigcup_{i=1}^{r-1} C_i$. 
-  For each $i \in \{1, 2, \ldots, r-1\}$ define $E_i = \bigl\{\, j \in \{1, 2, \ldots, W(k,r-1) : b+jc \in C_i \,\bigr\}$.
-  Then $\{1, 2, \ldots, W(k, r-1)\} = \bigcup_{i=1}^{r-1} E_i$ and by our inductive hypothesis there exists $i \in \{1, 2, \ldots, r-1\}$ such that $E_i$ contains a $k$-term arithmetic progression, that is, there exists $e$, $f \in bbN$ such that $\{e, e+f, \ldots, e+(k-1)f\} \subseteq E_i$. 
+  For each $i \in \{1, 2, \ldots, r-1\}$ define $E_i = \bigl\{\, j \in \{1, 2, \ldots, W(k,r-1) \} : b+jc \in C_i \,\bigr\}$.
+  Then $\{1, 2, \ldots, W(k, r-1)\} = \bigcup_{i=1}^{r-1} E_i$ and by our inductive hypothesis there exists $i \in \{1, 2, \ldots, r-1\}$ such that $E_i$ contains a $k$-term arithmetic progression, that is, there exists $e$, $f \in \bbN$ such that $\{e, e+f, \ldots, e+(k-1)f\} \subseteq E_i$. 
 
   Put $a = b+ec$ and $d = fc$, then by definition of $E_i$ we have that for every $j \in \{0, 1, \ldots, k-1\}$, $a + jd = b + ec + jfc = b+(e+jf)c \in C_i$.
   
@@ -448,7 +447,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Recall that the Ultrafilter Principle states that every filter can be extended to an ultrafilter.
 \end{rmk}
 
-We wish to translate statement Theorem \ref{thm:vdwEqSyn} (f) into the language of semigroups.
+We wish to translate statement Theorem \ref{thm:vdwEqSyn} \textsl{(f)} into the language of semigroups.
 Of course, given an arbitrary semigroup, there is no guarantee that the terms ``strictly increasing'' and ``distance between two elements'' makes sense.
 It is the goal of the next result to show that we can forgo these terms.
 
@@ -493,7 +492,7 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
 \end{defn}
 
 Even though we have successfully translated Theorem \ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact that the notion of a syndetic set is \emph{not} partition regular. 
-See the Introduction in \cite{Bergelson:2001ve} for an example in $\bbN$.
+See the introduction in \cite{Bergelson:2001ve} for an example in $\bbN$.
 (Although syndetic sets do intereact nicely with smallest ideal of $\beta S$; see \cite[Theorems 4.39 and 4.43]{Hindman:1998fk}.)
 In order to recover partition regularity, we weaken the definition of a syndetic set to obtain a piecewise syndetic set.
 
@@ -530,7 +529,8 @@ It's is the purpose of this next result to show that we can dispense with the po
   Let $f \in F$, then $f + x_1 \le \max F + x_1$. 
   Now $n \ge \max F + 2$ and so $f + x_1 \le (n-2) + x_1 < x_n$. 
   So pick $m \in \{1, 2, \ldots, n-1\}$ such that $x_m \le f+x_1  < x_{m+1}$. 
-  Put $t = x_{m+1} - x_1 - f_1$, then $t + f + x_1 = x_{m+1} \in B$ and $t \in G$ since $1 \le t = x_{m+1}- (f_1 + x_1) < x_{m+1} - x_m \le b$. 
+  (This last inequality is true since $n-2+1 = n-1 < n$, $1 \le x_1$, and $n \le x_n$.)
+  Put $t = x_{m+1} - x_1 - f$, then $t + f + x_1 = x_{m+1} \in B$ and $t \in G$ since $1 \le t = x_{m+1}- (f + x_1) < x_{m+1} - x_m \le b$. 
   This completes this direction of the proof.  
   
   \textsl{(b) $\implies$ (a).}
@@ -556,15 +556,17 @@ It's is the purpose of this next result to show that we can dispense with the po
   (For instance, $\{3+1, 2+2, 1+3\}$ have the same sum of 4.)
   Also observe that for each $i \in \{1, 2, \ldots, 2bN - 1\}$, $b + (i+1) - (1 +i) = b$ is the maximum distance between any two numbers from adjacent columns. 
   With our choice of $t_i$'s we pick exactly one number from each column of our array.
-  Hence it follows that $g(B) \ge b$.
+  Hence it follows that $g(B) \le b$.
+  Moreover $|B| \ge N$ since the array has at least $2N$ distinct sums. 
 
   We have that $|B| = 2N > N$.
 \end{proof}
 
 With this equivalence we now can define the notion of a piecewise
 syndetic set in a semigroup. 
+In the next chapter it will follow that piecewise syndetic sets in $\bbN$ are $AP$-sets.
 Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets are partition regular.%
-\endnote{
+ndnote{
   In \cite[Lemma 1]{Brown:1971bh}, proves that if the natural numbers are finitely partitioned, then at least one cell of the partition is piecewise syndetic.
   It's an interesting question as to whether, Brown's Lemma can be extended to prove Proposition \ref{prop:psReg}.
 }
@@ -601,7 +603,10 @@ Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets a
 
 \subsection{Central Sets}
 
-In contrast to our definition of a piecewise syndetic set trying to describe a central subset of a semigroup using only the algebraic structure of our semigroup is shockingly complicated. 
+Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk}, using notions from topological dynamics, defined the concept of a central subset of $\bbN$. 
+With this definition he was able to prove a powerful combinatorial statement called the Central Sets Theorem. 
+The definition of a central set and the Central Sets Theorem can both be generalized to a semigroup.
+However in contrast to our definition of a piecewise syndetic set, to describe a central subset of a semigroup using only its algebraic structure is shockingly complicated.
 (The curious reader can consult \cite[Section 14.5]{Hindman:1998fk} for the details.)
 By using the algebraic structure of the Stone-\v{C}ech compactification we can give a very simple definition of central sets.
 
@@ -610,8 +615,7 @@ By using the algebraic structure of the Stone-\v{C}ech compactification we can g
   We call $A$ \emph{central} if and only if there exists an idempotent $p = pp \in K(\beta S)$ such that $A \in p$.
 \end{defn}
 
-In the next chapter we shall prove that central sets do enjoy a powerful combinatorial structure embodied by the Central Sets Theorem.
-
+In the next chapter we shall prove the most general and powerful version of the Central Sets Theorem currently known.
 
 % Endnotes 
 \theendnotes
