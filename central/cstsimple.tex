@@ -298,6 +298,7 @@ However in this chapter, we choose to reprove these results primarily to show ho
 The first result we (re)prove is \cite[Lemma 2.4]{Hindman:2010fk} which shows that when the underlying semigroup is commutative the definition of a $J$-set is considerably simplified. 
 
 \begin{lem}
+  \label{lem:comm-jsets}
   Let $(S, +)$ be a commutative semigroup and let $A \subseteq S$. 
   Then $A$ is a $J$-set if and only if for every $F \in \calT$, there exist $a \in S$ and $H \in \Pf(\bbN)$ such that for all $f \in F$, $a + \sum_{t \in H} f(t) \in A$.
 \end{lem}
@@ -436,7 +437,7 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
   Pick $a \in \bigcap_{t=1}^l B_t$, then $(a, a, \ldots, a) \in U \cap E_i$ for all $i \in \bbN$. 
   Hence $\overline{p} \in E$ and moreover $\overline{p} \in K(Y) \cap E$.
 
-  Since $K(Y) \cap E \ne \emptyset$, we know that $K(E) = K(Y) \cap E$.
+  Since $K(Y) \cap E \ne \emptyset$, by Theorem \ref{thm:smallest-subsemigrp} we have $K(E) = K(Y) \cap E$.
   Therefore $\overline{p} \in K(E) \subseteq I$.
   Hence $I_i \cap \bigtimes_{i=1}^l A \ne \emptyset$ for all $i \in \bbN$ and so our conclusion follows.
 \end{proof}
@@ -450,6 +451,22 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
   Therefore $p \in J(S)$.
 \end{proof}
 
+\begin{cor}
+  If $A \subseteq \bbN$ be a piecewise syndetic set, then $A$ is also an $AP$-set. 
+\end{cor}
+\begin{proof}
+  Since $A$ is also a $J$-set, it suffices to show that all $J$-sets in $\bbN$ are $AP$-set. 
+  Let $k$ be a positive integer and let $\la x_n \ra_{n=1}^\infty$ be a sequence in $\bbN$. 
+  For each $i \in \{1, 2, \ldots, k\}$ put $f_i(t) = i \cdot x_t$.
+  Since $A$ is a $J$-set, pick $a \in \bbN$ and $H \in \Pf(\bbN$ such that for all $i \in \{1, 2, \ldots, k\}$, $a + \sum_{t \in H} f_i(t) \in A$. 
+  Put $d = \sum_{t \in H} x_t$ and observe that for all $i \in \{1, 2, \ldots, k\}$ we have
+  \begin{align*}
+    a+id &= \textstyle a+ i(\sum_{t \in H} x_t) = a + \sum_{t \in H} ix_t, \\
+    &= \textstyle a + \sum_{t \in H} f_i(t) \in A. 
+  \end{align*}
+  Hence $A$ is an $AP$-set.
+\end{proof}
+
 We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindman:1998fk}, proves that $J(S)$ is nonempty.
 
 \begin{lem}
@@ -458,7 +475,7 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
   If $A_1 \cup A_2$ is a $J$-set, then either $A_1$ is a $J$-set or $A_2$ is a $J$-set.
 \end{lem}
 \begin{proof}
-  Suppose, to the contrary, that both $A_1$ and $A_2$ are \textsl{not} $J$-sets.
+  Suppose, to the contrary, that both $A_1$ and $A_2$ are \emph{not} $J$-sets.
   Pick $F_1$ and $F_2$ in $\Pf(\calT)$ such that for all $m \in \bbN$, every $a \in S^{m+1}$, and every $t \in \calJ_m$, there exist $f \in F_1$ and $g \in F_2$ such that $x(m, a, t, f) \not\in A_1$ and $x(m, a, t, g) \not\in A_2$.
   Let $F = F_1 \cup F_2$, put $k = |F|$, and enumerate $F$ as $\{f_1, f_2, \ldots, f_k\}$.
 
@@ -479,7 +496,7 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
   Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply the Hales-Jewett Theorem to pick a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable letters, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is monochromatic. 
   Without loss of generality we may suppose that $\varphi \bigl( w(\ell) \bigr) = 1$ for every $\ell \in \{1, 2, \ldots, k\}$.
 
-  We claim that there exists $c \in S^{mr+1}$ and $s \in \calJ_{mr}$ such that for all $\ell \in \{1, 2, \ldots, k\}$ we have $x(mr, c, s, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
+  We claim that there exist $r \in \bbN$, $c \in S^{mr+1}$, and $s \in \calJ_{mr}$ such that for all $\ell \in \{1, 2, \ldots, k\}$ we have $x(mr, c, s, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
   Observe that if we prove our claim, then we will have arrived at a contradiction. 
   Therefore for the rest of the proof we focus only on rewriting $x(m, a, t, g_{w(\ell)})$ into the appropriate form.
 
@@ -492,9 +509,9 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
   Observe that $r \le n/2$, and since $t_1 < t_2 < \cdots < t_m$, it follows that $s = (s_1, s_2, \ldots, s_{mr}) \in \calJ_{mr}$.
 
   To define $c \in S^{mr+1}$ we will need to define some further helpful notation. 
-  Let $L = \bigl( L(1), L(2), \ldots, L(r+1) \bigr)$ be a partition of $\{1, 2, \ldots, n\} \setminus \{b_1, b_2, \ldots, b_r\}$ such that each $L(i)$ is nonempty and $\max L(i) < \min L(i+1)$ for every $i \in \{1, 2, \ldots, r\}$. 
+  Let $L = \bigl( L(1), L(2), \ldots, L(r+1) \bigr)$ be a partition of $\{1, 2, \ldots, n\} \setminus \{b_1, b_2, \ldots, b_0\}$ such that each $L(i)$ is nonempty and $\max L(i) < \min L(i+1)$ for every $i \in \{1, 2, \ldots, r\}$. 
   For arithmetical convenience put $L(0) = L(r)$. 
-  (For instance, if $k = 4$, $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $L(1) = \{1\}$, $L(2) = \{2\}$, $L(3) = \{6\}$, $L(4) = \{8, 9, 10\}$, and $L(0) = \{6\}$.)
+  (For instance, if $k = 4$, $n = 10$, $w(\star) = (1, \star, 1, 4, \star, 2, \star, 3, 3, 1)$, then $L(1) = \{1\}$, $L(2) = \{3,4\}$, $L(3) = \{6\}$, $L(4) = \{8, 9, 10\}$, and $L(0) = \{6\}$.)
 
   Now we define $c \in S^{mr+1}$ as follows:
   \[
@@ -514,6 +531,7 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
 With Lemma \ref{lem:pr-jsets} we prove a stronger relationship between $J$-sets and $J(S)$.
 
 \begin{thm}
+  \label{thm:jsets-ideal}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
   Then $J(S) \cap \overline{A} \ne \emptyset$ if and only if $A$ is a $J$-set.
 \end{thm}
@@ -534,7 +552,7 @@ With Lemma \ref{lem:pr-jsets} we prove a stronger relationship between $J$-sets 
 The final proof that $J(S)$ is nonempty follows from the Central Sets Theorem.
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
-  We call $A$ a \textsl{$C$-set} if and only if there exist $m \colon \Pf(\calT) \to \bbN$, $\alpha \colon \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ such that 
+  We call $A$ a \textsl{$C$-set} if and only if there exist $m \colon \Pf(\calT) \to \bbN$, $\alpha \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ such that 
   \begin{itemize}
     \item[(1)] if $F$, $G \in \Pf(\calT)$ with $F \subsetneq G$, then $\tau(F)\bigl( m(F) \bigr) < \tau(G)(1)$, and
     \item[(2)] whenever $n \in \bbN$, $G_1$,$G_2$, \dots, $G_n \in \Pf(\calT)$  with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n$, and for each $i \in \{1, 2, \ldots, n\}$, $f_i \in G_i$, then we have $\prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), f_i) \in A$.
@@ -549,7 +567,7 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
 \end{thm}
 \begin{proof}
   ($\Rightarrow$)
-  Pick $m \colon \Pf(\calT) \to \bbN$, $\alpha \colon \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as guaranteed by the definition of a $C$-set. 
+  Pick $m \colon \Pf(\calT) \to \bbN$, $\alpha \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as guaranteed by the definition of a $C$-set. 
   For each $F \in \Pf(\calT)$ define 
   \begin{align*}
     T(F) &= \bigl\{\, \textstyle \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i) : \mbox{$n \in \bbN$ with $n \ge |F|$, each $F_i \in \calT$,}\\
@@ -557,7 +575,7 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
  &\hspace{12em} \mbox{and $F \subseteq \{f_1, f_2, \ldots, f_n\}$} \,\bigr\}.
   \end{align*}
 
-  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has f.i.p. since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$.
+  Observe that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has the finite intersection property since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$.
   (In fact the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ is a filterbase on $S$.)
   Therefore $\mathbf{Q} = \bigcap_{F \in \Pf(\calT)} \overline{T(F)}$ is a closed nonempty subset of $\beta S$. 
   We show that $\mathbf{Q}$ is in fact a subsemigroup of $\beta S$.
@@ -622,7 +640,7 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
 
   For each $\emptyset \ne G \subsetneq F$, put $l(G) = \tau(G)\bigl( m(G) \bigr)$ and put $k = \max\{\, l(G) : \emptyset \ne G \subsetneq F \,\}$.
   By Lemma \ref{lem:jset-start}, pick $m(F) \in \bbN$, $\alpha(F) \in S^{m(F)+1}$, and $\tau(F) \in \calJ_{m(F)}$ such that $\tau(F)(1) > k$ and for every $f \in F$, $x(m(F), \alpha(F), \tau(F), f) \in B$.
-  Hypothesis (1) is satisfied, since $\tau(F)(1) > k \le \max l(G)$ for all $\emptyset \ne G \subsetneq F$.
+  Hypothesis (1) is satisfied, since $\tau(F)(1) > k \ge \max l(G)$ for all $\emptyset \ne G \subsetneq F$.
   We show that hypothesis (2) is also satisfied.
   Let $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_{n-1} \subsetneq G_n = F$, and $\la f_i \ra_{i=1}^n \bigtimes_{i=1}^n G_i$. 
   If $n = 1$, then $x(m(G_1), \alpha(G_1), \tau(G_1), f) \in B \subseteq A^\star$.
@@ -634,6 +652,9 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
   \]
   Hence hypotheses (1) and (2) are satisfied and this completes the proof for this direction.
 \end{proof}
+
+It's reasonably clear that any semigroup $S$ is a $C$-set in itself.
+Then Theorem \ref{thm:csets} shows that there is an idempotent in $J(S)$ and hence $J(S)$ is nonempty.
 
 \begin{cor}[Central Sets Theorem]
   Every central set in a semigroup is a $C$-set.
@@ -673,7 +694,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   Now assume that $|F| > 1$ and for all $\emptyset \ne G \subsetneq F$ we have defined $\alpha(G)$ and $H(G)$ so that hypotheses (i) and (ii) hold.
   Put
   \begin{align*}
-    M &= \bigl\{\, \sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in G_i} f_i(t) \bigr) : \mbox{$n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n \subsetneq F$,} \\
+    M &=\textstyle \bigl\{\, \sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in G_i} f_i(t) \bigr) : \mbox{$n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n \subsetneq F$,} \\
     &\hspace{12em} \mbox{and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$} \,\bigr\}.
   \end{align*}
   Since $F$ is finite, $M$ is also finite and by hypothesis (ii) we have that $M \subseteq A^\star$.
@@ -682,7 +703,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   Put $k = \max \bigl( \bigcup\{\, H(G) : \emptyset \ne G \subsetneq F\,\} \bigr)$.
   Since $B$ is a $J$-set, pick $\alpha(F) \in S$ and $H(F) \in \Pf(\bbN)$ with $\min H(F) > k$ such that for all $f \in F$, $\alpha(F) + \sum_{t \in H(F)} f(t) \in B$. 
 
-  Now hypothesis (i) is satisfied since $\min H(F) > k \ge \max H(G)$ for all $\emptyset G \subsetneq F$. 
+  Now hypothesis (i) is satisfied since $\min H(F) > k \ge \max H(G)$ for all $\emptyset \ne G \subsetneq F$. 
   We show that hypothesis (ii) is also satisfied.
   Let $n \in \bbN$, $\emptyset \ne G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n = F$, and $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$. 
   If $n = 1$, then $\sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr) = \alpha(F) + \sum_{t \in H(F)} f_1(t) \in B \subseteq A^\star$. 
@@ -691,6 +712,11 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   Hence $\sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t) \bigr) \in A^\star$.
 
   ($\Leftarrow$)
+  Pick $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ as guaranteed. 
+  Observe that $A$ satisfies the necessity condition of Lemma \ref{lem:comm-jsets} and hence that $A$ is a $J$-set in $S$. 
+  Therefore by Theorem \ref{thm:jsets-ideal} $\overline{A} \cap J(S) \ne \emptyset$.
+  % Still need to provide more details.  Will probably have to use the big Lemma.
+
   Clearly $A$ is a $J$-set in a commutative semigroup and so we can rewrite the terms $\alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)$ as $x(m(G_i), \beta(G_i), \tau(G_i), f_i)$. 
 \end{proof}
 
