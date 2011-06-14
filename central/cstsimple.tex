@@ -613,7 +613,7 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
   Now let $p \in K(\mathbf{Q})$ and $B \in p$.
   Using \cite[Lemma 14.9]{Hindman:1998fk} we shall show that $B$ is a $J$-set. 
   Let $F \in \Pf(\calT)$ and put $D = \{\, G \in \Pf(\calT) : F \subseteq G \,\}$. 
-  Observe that $(D, \subseteq)$ is a directed set and $\mathbf{Q} = \bigcup_{G \in D} c\ell_{\beta S} (T(G))$.
+  Observe that $(D, \subseteq)$ is a directed set and $\mathbf{Q} = \bigcap_{G \in D} c\ell_{\beta S} (T(G))$.
 
   For $G \in D$, define $I(G) \subseteq \bigtimes_{f \in F} S$ as follows: for $w \in \bigtimes_{f \in F} S$, $w \in I(G)$ if and only if there is some $n \in \bbN \setminus \{1\}$ such that 
   \begin{itemize}
@@ -644,26 +644,42 @@ then $w(f) = \prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), \gamma_f(i))$.
   Since $\bigtimes_{f \in F} c\ell_{\beta S} (B)$ is a neighborhood of $\overline{p}$ we can pick $w \in I(F) \cap \bigtimes_{f \in F} c\ell_{\beta S} (B)$. 
   Pick $n \in \bbN\setminus \{1\}$, $C_1$, $C_2$, $\la G_i \ra_{i=1}^n$, and $\sigma \in \bigtimes_{i \in C_1} G_i$ as guaranteed by the definition of $I(F)$. 
   Put $r = |C_2|$ and enumerate $C_2$ as a strictly increasing sequence $h_1$, $h_2$, \dots, $h_r$.
+  Put $u = \sum_{i=1}^r m(G_i)$.
+  We define $c \in S^{u+1}$ and $t \in \calJ_u$ such that for all $f \in F$, $x(u, c, t, f) \in B$.
 
-  Suppose to the contrary that there exists $B \in p$ such that $B$ is \textsl{not} a $J$-set. 
-  Pick $F \in \Pf(\calT)$ such that for all $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, there exists $f \in F$ such that $x(m, a, t, f) \not\in B$. 
-  Since $p \in \mathbf{Q}$ we have that $B \cap T(\{f\}) \in p$. 
-  
-  Let $y \in B \cap T(\{f\})$, then there exists $n \in \bbN$ with $n \ge 1$, each $F_i \in \calT$ and $\{f\} \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$, and $f \in \{f_1, f_2, \ldots, f_n\}$ with $y = \prod_{i=1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_i)$.
-  Suppose that $f = f_{i_0}$, then we show that there exist $p \in \bbN$, $a \in S^{p+1}$, and $t \in \calJ_p$ such that $x(p, a, t, f) \in B$, obviously a contradiction. 
-  Put $p = m(F_{i_0})$ and $t = \tau(F_{i_0})$. 
-  Define $a \in S^{p+1}$ as
+  Define $c \in S^{u+1}$ as follows:
   \[
-    a(j) =
+    c(1) = 
     \begin{cases}
-      \bigl( \prod_{i=1}^{i_0-1} x(m(F_i), \alpha(F_i), \tau(F_i), f_i) \bigr) \cdot \alpha(F_{i_0})(1) & \mbox{if $j = 1$,} \\
-      \alpha(F_{i_0})(j) & \mbox{if $j \in \{2, 3, \ldots, p\}$,} \\
-      \alpha(F_{i_0})(p+1) \cdot \bigl( \prod_{i=i_0+1}^n x(m(F_i), \alpha(F_i), \tau(F_i), f_n) \bigr) & \mbox{if $j = p+1$.}
+      \alpha(G_1)(1) & \mbox{if $h_1 = 1$,} \\
+      \bigl(\prod_{i=1}^{h_1-1} x(m(G_i), \alpha(G_i), \tau(G_i), \sigma(i))\bigr) \cdot \alpha(G_{h_1})(1) & \mbox{if $h_1 > 1$.}
     \end{cases}
   \]
-  Then $x(p, a, t, f) = y \in B$, a contradiction.
-  Hence $B$ is a $J$-set and so $p \in J(S)$.
+  For each positive integer $j$ with $1 < j < m(G_{h_1})$ put $c(j) = \alpha(G_{h_2})(j)$, and for each positive integer $j$ with $1 \le j \le m(G_{h_1})$ define $t_j = \tau(G_{h_1})(1)$. 
 
+  Now for each $s \in \{1, 2, \ldots, u-1\}$ put $v_s = \sum_{i=1}^s m(G_{h_i})$, and define
+  \[
+    c(v_s+1) = 
+    \begin{cases}
+      \alpha(G_{h_s})(m(G_{h_s}+1))\alpha(G_{h_{s+1}})(1) & \mbox{if $h_{s+1} = h_s + 1$,} \\
+
+      \alpha(G_{h_s})(m(G_{h_s}+1))\cdot & \\
+      \hspace{3.5em}\bigl(\prod_{i=h_{s+1}}^{h_{s+1}-1} x(m(G_i), \alpha(G_i), \tau(G_i), \sigma(i))\bigr)\alpha(G_{h_{s+1}})(1) & \mbox{if $h_{s+1} > h_s+1$.}
+    \end{cases}
+  \]
+  For each $s \in \{1, 2, \ldots, u-1\}$ and every positive integer $j$ with $v_s < j \le \sum_{i=1}^{s+1} m(G_{h_i})$ put $t_j = \tau(G_{h_{s+1}})(j-u)$. 
+  Finally, we define
+  \[
+    c(u+1) = 
+    \begin{cases}
+      \alpha(G_{h_r})(m(G_n) + 1) & \mbox{if $h_r = n$,} \\
+      \alpha(G_{h_r})(m(G_{h_r}+1)\prod_{i=h_r+1}^n x(m(G_i), \alpha(G_i), \tau(G_i), \sigma(i)) & \mbox{if $h_r < n$.}
+    \end{cases}
+  \]
+
+  Then for every $f \in F$, $x(u, c, t, f) \in B$, and so $B$ is a $J$-set.
+
+  % Put in proof of claim.
   ($\Leftarrow$)
   Let $p = p \cdot p \in \overline{A} \cap J(S)$.
   Since $A \in p$ and $p$ is an idempotent we have, by \cite[Lemma 4.14]{Hindman:1998fk}, that $x^{-1}A^\star \in p$ for all $x \in A^\star$ where $A^\star = \{\, x \in A : x^{-1}A \in p\}$. 
