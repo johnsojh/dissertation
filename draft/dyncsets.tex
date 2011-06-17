@@ -2,46 +2,7 @@
 % by: John H. Johnson
 % email: john.j.jr@gmail.com
 
-\documentclass[12pt]{article}
-
-% \usepackage[doublespacing]{setspace}
-\usepackage{amsthm, amssymb, amsmath}
-\usepackage[margin=1.5in]{geometry}
-\usepackage{endnotes}
-
-\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
-\theoremstyle{plain}
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{vdW}[thm]{Van der Waerden's Theorem}
-\newtheorem{FS}[thm]{Hindman's Theorem}
-\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
-\newtheorem{recur}[thm]{Recurrence Theorem}
-\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
-\newtheorem{cor}[thm]{Corollary}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{claim}[thm]{Claim}
-\newtheorem{ques}[thm]{Question}
-\newtheorem{conj}[thm]{Conjecture}
-\newtheorem{fact}[thm]{Fact}
-
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
-\newtheorem{example}[thm]{Example}
-\newtheorem{rmk}[thm]{Remark}
-
-\newcommand{\la}{\langle}
-\newcommand{\ra}{\rangle}
-\newcommand{\bbN}{\mathbb{N}}
-\newcommand{\ds}{(X, \la T_s \ra_{s\in S})}
-\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -3 pt #2$}}
-
-\font\bigmath=cmsy10 scaled \magstep 3
-\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
-
-\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
-
-\begin{document}
+\newcommand{\ds}{(X, \la T_s \ra_{s \in S})}
 \chapter{Dynamical Characterization of $C$-sets}
 \section{Dynamical Systems and $\beta S$}
 Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk} originally defined central sets and proved the original Central Sets Theorem using the notions of topological dynamics. 
@@ -286,8 +247,11 @@ dynamical characterization of $C$-sets.
         \,\}.
       \]
     By assumption each $B_U$ is a $J$-set. 
-    We now show that the collection $\{\, B_U : \hbox{$U$ is a
-      neighborhood of $y$} \,\}$ is closed under finite intersection
+    We now show that the collection 
+    \[
+      \{\, B_U : \hbox{$U$ is a neighborhood of $y$} \,\}
+    \] 
+    is closed under finite intersection
     by showing that, for all neighborhoods $U$ and $V$ of $y$ we have $B_{U
       \cap V} = B_U \cap B_V$.
     Let $s \in S$, then 
@@ -299,7 +263,7 @@ dynamical characterization of $C$-sets.
       &\iff s \in B_U \cap B_V.
       \end{align*}
     
-    By \ref{thm:input-correct}, we know that every $J$-set
+    By Lemma \ref{lem:pr-jsets}, we know that every $J$-set
     of $S$ is partition regular. 
     Therefore by \cite[Theorem 3.11 (b)]{Hindman:1998fk},  we can pick 
     $r \in J(S)$ such that $\{\, B_U : \hbox{$U$ is a neighborhood of
@@ -373,7 +337,7 @@ dynamical characterization of $C$-sets.
   \end{thm}
   \begin{proof}
     ($\Rightarrow$) Let $A \subseteq S$ be our $C$-set, and by
-    Theorem \ref{thm:insert-correct} pick an idempotent $r \in J(S)$ such that
+    Theorem \ref{thm:csets} pick an idempotent $r \in J(S)$ such that
     $A \in r$. 
     Let $R = S \cup \{e\}$ be the semigroup with an identity $e$
     adjoined to S. 
@@ -421,15 +385,10 @@ dynamical characterization of $C$-sets.
    
    ($\Leftarrow$) Let $\ds$ and let the points $x$, $y \in X$ be given as
    guaranteed.
-   By Theorem \ref{thm:csetid}, pick an idempotent $r \in J(S)$
+   By Theorem \ref{thm:csets}, pick an idempotent $r \in J(S)$
    such that $T_r(x) = y = T_r(y)$. 
    Since $U$ is a neighborhood of $y$ and $T_r(x) = y$, we have that
    $A \in r$ by Definition \ref{defn:plim} and Proposition \ref{prop:dsplim}. 
  \end{proof}
 
-
 \theendnotes
-
-\bibliographystyle{plain}
-\bibliography{../references}
-\end{document}
