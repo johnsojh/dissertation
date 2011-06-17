@@ -1,0 +1,435 @@
+% Draft of my Dynamical Characterization of C-sets Results
+% by: John H. Johnson
+% email: john.j.jr@gmail.com
+
+\documentclass[12pt]{article}
+
+% \usepackage[doublespacing]{setspace}
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage[margin=1.5in]{geometry}
+\usepackage{endnotes}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{vdW}[thm]{Van der Waerden's Theorem}
+\newtheorem{FS}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{rmk}[thm]{Remark}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\ds}{(X, \la T_s \ra_{s\in S})}
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -3 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+\begin{document}
+\chapter{Dynamical Characterization of $C$-sets}
+\section{Dynamical Systems and $\beta S$}
+Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk} originally defined central sets and proved the original Central Sets Theorem using the notions of topological dynamics. 
+It is a natural to investigate whether $C$-sets admit a dynamical characterization, and in this chapter we shall prove that such a characterization exists.
+Before we can begin we will need to define what we mean by a dynamical
+system and provide a connection to $\beta S$.
+  \begin{defn}
+    \label{defn:semiact}
+    Let $S$ be a set. 
+    A triple $(X, S, \pi)$ is a \textsl{semigroup action of $S$ on
+      $X$} (or more shortly, \textsl{$S$ acts on $X$}) if and only if 
+      \begin{itemize}
+        \item[(1)] $S$ is a semigroup; and
+        
+        \item[(2)] $\pi : S \times X \to X$ is a function such that
+          for all $s$, $t \in S$ and for every $x \in X$,
+          \[ \pi\bigl(s, \pi(t,x)\bigr) = \pi(st, x). \]
+      \end{itemize}
+  \end{defn}
+  
+  \begin{rmk}
+    The usual (and sometimes confusing) convention is to write the value
+    $\pi(s,x)$ as $s \cdot x$.
+    Following this convention the condition on $\pi$ becomes $s \cdot (t
+    \cdot x) = st \cdot x$.
+    We will not follow this convention since we will soon introduce
+    better notation that will suit our purposes.
+  \end{rmk}
+
+Eventually we will want to extend our action of $S$ on $X$ to an
+action of $\beta S$ on $X$.
+To produce this extension we will be using \cite[Lemma
+3.30]{Hindman:1998fk} (and also \cite[Corollary
+4.22]{Hindman:1998fk}). 
+Before we can use these results directly we will need to characterize
+semigroup actions into a more convenient form. 
+
+  \begin{prop} 
+    \label{prop:semiact}
+    Let $X$ be a set, $(S,\cdot)$ a semigroup and $\pi : S \times X \to X$.
+    The triple $(X, S, \pi)$ is a semigroup action if and only if
+    there exists a semigroup homomorphism $T : S \to \setfunc{X}{X}$ such
+    that for all $s \in S$ and every $x \in X$,
+      \[ T(s)(x) = \pi(s,x). \]
+  \end{prop}
+  \begin{proof}
+    First observe that $(\setfunc{X}{X}, \circ)$ is a semigroup.
+    Now assume that the triple $(X, S, \pi)$ is a semigroup action. 
+    Define the map $T : S \to \setfunc{X}{X}$ by $T(s)(x) =
+    \pi(s,x)$.
+    To see that $T$ is a semigroup homomorphism, let $s$, $t \in S$
+    and $x \in X$. 
+    Then 
+      \begin{align*}
+        T(st)(x) = \pi(st,x) &= \pi\bigl(s, \pi(t,x)\bigr), \\
+        &= \pi\bigl(s, T(t)(x)\bigr), \\
+        &= T(s)\bigl(T(t)(x)\bigr), \\
+        &= \bigl(T(s) \circ T(t)\bigr) (x).
+      \end{align*}
+    Hence $T(st) = T(s) \circ T(t)$.
+
+    Conversely, suppose $T$ is a semigroup homomorphism. 
+    Let $s$, $t \in S$ and $x \in X$.
+    Then 
+      \begin{align*}
+        \pi(st, x) &= T(st)(x), \\
+        &= \bigl(T(s) \circ T(t)\bigr) (x), \\
+        &= \pi\bigl(s, T(t)(x)\bigr), \\
+        &= \pi\bigl(s, \pi(t,x)\bigr).
+      \end{align*}
+    Hence $(X, S, \pi)$ is a semigroup action.
+  \end{proof}
+
+With this Proposition we can now effectively forgot about our original Definition \ref{defn:semiact} and simply consider semigroup actions as homomorphisms of $S$ into $\setfunc{X}{X}$. 
+
+However, in this chapter we are not just concerned with any type of semigroup action.
+After all we are taking $\beta S$ to be a compact right-topological semigroup, and so we would like to apply this topological algebra to our action in some way. 
+We shall soon see that the notion of a dynamical system is one way to accomplish this goal.
+
+  \begin{defn}
+    A pair $\ds$ is a \textsl{dynamical system} if and only if
+      \begin{itemize}
+        \item[(1)] $X$ is a compact Hausdorff space;
+        \item[(2)] $S$ is a semigroup;
+        \item[(3)] $T_s : X \to X$ is continuous for all $s \in S$;
+          and
+        \item[(4)] $T_s \circ T_t = T_{st}$ for all $s$, $t \in S$.%
+% I'm sure that there are dynamical systems where the phase space is
+% not compact Hausdorff. Would be nice to mention were the reader can
+% go to read about such dynamical systems. 
+      \end{itemize}
+  \end{defn}
+
+  \begin{rmk}
+    Let $\ds$ be a dynamical system and define $T : S \to
+    \setfunc{X}{X}$ by $T(s) = T_s$.
+    Then by Proposition \ref{prop:semiact} we are justified in saying
+    that \textsl{$S$ acts on $X$ via $\la T_s \ra_{s \in S}$}.
+  \end{rmk}
+
+Using this remark we can extend the action of the dynamical system to
+$\beta S$ as follows.
+Giving $\setfunc{X}{X}$ the product topology and taking $S$ to be 
+discrete, we have that the function $T :
+S \to \setfunc{X}{X}$ is a continuous semigroup
+homomorphism into a compact space.
+Therefore by \cite[Theorem 3.27]{Hindman:1998fk} we can produce a
+continuous extension $\widetilde{T}$ of $T$.
+(More directly, $\widetilde{T}$ is defined for each $p \in \beta S$ by
+$\widetilde{T}(p) \in \bigcap \{\, c\ell\bigl( T[A] \bigr) : A \in p \,\}$, where
+the closure is in $\setfunc{X}{X}$.)
+Now by \cite[Theorem 2.22(a)]{Hindman:1998fk} the space $\setfunc{X}{X}$ is
+a compact right-topological semigroup.
+In order to show that $\widetilde{T}$ is a semigroup homomorphism it
+suffices by, \cite[Corollary 4.22]{Hindman:1998fk}, to show that for all
+$s \in S$, the
+map $\lambda_{T(s)}$ is continuous.
+However by \cite[Theorem 2.2(b)]{Hindman:1998fk} we have that
+$\lambda_{T(s)}$ is continuous if and only if $T(s)$ is continuous. 
+Since $\ds$ is a dynamical system and $T(s) = T_s$ we know by
+definition that $T(s)$ is continuous. 
+Hence $\widetilde{T} : \beta S \to \setfunc{X}{X}$ is a continuous semigroup
+homomorphism.
+
+  \begin{rmk}
+    By using the map $\widetilde{T} : \beta S \to X$, we can define
+    $T_p : X \to X$, for $p \in \beta S$, as $T_p =
+    \widetilde{T}(p)$. 
+    Since $\widetilde{T}$ is a semigroup homomorphism we immediately
+    conclude that $T_p \circ T_q = T_{pq}$ for all $p$, $q \in \beta
+    S$.
+   \end{rmk}
+
+It's important to note that in general $(\beta S, \la T_p \ra_{p
+  \in \beta S})$ is not a dynamical system, and 
+the next example shows that $T_p$ may not be continuous for $p \in S^*$.
+ 
+
+  \begin{example}
+    We have that $(\beta\bbN, \la \lambda_s \ra_{s\in\bbN})$ is a
+    dynamical system, but if $p \in \bbN^*$, then $\lambda_p$ is not
+    continuous.
+    This is proved in \cite[Theorem 6.10 and Remark 6.11]{Hindman:1998fk}.
+   \end{example}
+
+This example is somewhat disappointing since we lose the ``dynamical
+part'' when extending the dynamical system to $\beta S$.
+However even with this lost we will be able to prove something
+intelligible about certain dynamical systems. 
+Intuitively, the points of $S^*$ can be thought of as points at
+infinity. 
+Since in dynamical systems we are often concerned with the
+``long-run'' behavior of our maps $T_s$ we will often be able to
+correspond any interesting long run behavior with a `point at infinity'
+in $S^*$.
+
+To make this idea precise, we will be using the notion of a limit
+along an ultrafilter. 
+
+  \begin{defn}
+    \label{defn:plim}
+    Let $S$ be a discrete space, $p \in \beta S$, $X$ a compact
+    Hausdorff topological space, $\la x_s : s \in S \ra$ a family
+    of points in $X$, and $y \in X$.
+    Then \hbox{$p$-$\displaystyle\lim_{s \in S} x_s = y$} if and only
+    if for every
+    neighborhood $U$ of $y$ we have $\{\, s \in S : x_s \in U \,\} \in p$.
+  \end{defn}
+
+  \begin{rmk}
+    Our definition of a \hbox{$p$-limit} is a bit more restrictive
+    then usual.
+    Normally the definition only takes $X$ be any topological space.
+    We placed these extra restrictions on $X$ to ensure that every
+    \hbox{$p$-limit} exists and is unique.
+  \end{rmk}
+
+  \begin{prop}
+    \label{prop:dsplim}
+    Let $\ds$ be a dynamical system.
+    Then for every $p \in \beta S$ and each $x \in X$ we have $T_p(x)
+    = \hbox{$p$--$\lim_{s \in S} T_s(x)$}$.
+  \end{prop}
+  \begin{proof}
+    By definition, we need to show that for all neighborhoods $U$ of
+    $T_p(x)$, we have $\{\, s \in S : T_s(x) \in U \,\} \in p$. 
+    Define $\pi_x : \setfunc{X}{X} \to X$ by $\pi_x(f) = f(x)$ and let
+    $U$ be a neighborhood of $T_p(x)$.
+    Note that $\pi_x^{-1}[U]$ is a neighborhood of $T_p$.
+    By definition of $T_p$, we have that for all $A \in p$,
+    $\pi_x^{-1}[U] \cap \{\, T_s : s \in A \,\} \ne \emptyset$. 
+    Hence for all $A \in p$, there exists $s \in A$ such that $T_s(x)
+    \in U$. 
+
+    Suppose there exists a neighborhood $U$ of $T_p(x)$ such that
+    $\{\, s \in S : T_s(x) \in U \,\} \not\in p$. 
+    Put $A = \{\, s \in S : T_s(x) \not\in U\,\}$.
+    Then $A \in p$.
+    Therefore there exists $s \in A$ such that $T_s(x) \in U$ (by our
+    first paragraph) and $T_s(x) \not\in U$ (by our definition of
+    $A$), a contradiction.
+  \end{proof}
+
+With these preliminaries out of the way, we can now provide a
+dynamical characterization of $C$-sets.
+
+\section{Dynamical Characterization of $C$-sets}
+\label{sec:dyncsets}
+ \begin{defn}
+    \label{defn:JSUR}
+    Let $\ds$ be a dynamical system, and let $x$, $y \in X$. 
+    The pair $(x,y)$ is \textsl{jointly sparsely uniformly recurrent}
+    (we'll abbreviate this to JSUR) if and only if $\{\, s \in S :
+    \hbox{$T_s(x) \in U$ and $T_s(y) \in U$} \,\}$ is a $J$-set for every
+    neighborhood $U$ of $y$.%
+    \endnote{
+      In this section Definition \ref{defn:JSUR}, Lemma \ref{lem:JSUR},
+      and Theorem \ref{thm:dyncsets} and their proofs are all, essentially,
+      minor modifications of \cite[Definition 3.1]{Burns:2007uq},
+      \cite[Lemma 3.3]{Burns:2007uq}, \cite[Theorem 3.4]{Burns:2007uq}
+      respectively. 
+    }
+  \end{defn}
+
+
+  \begin{lem}
+    \label{lem:JSUR}
+    Let $\ds$ be a dynamical system, and let $x$, $y \in X$.
+    The following statements are equivalent.
+    \begin{itemize}
+      \item[(a)] The pair $(x, y)$ is JSUR.
+      \item[(b)] There exists $r \in J(S)$ such that $T_r(x) = y = T_r(y)$.
+      \item[(c)] There exists an idempotent $r \in J(S)$ such that $T_r(x)
+        = y = T_r(y)$. 
+    \end{itemize}
+  \end{lem}
+  \begin{proof}
+    (a) $\Rightarrow$ (b). 
+    For each neighborhood $U$ of $y$, put 
+      \[  
+        B_U = \{\, s \in S : \hbox{$T_s(x) \in U$ and $T_s(y) \in U$}
+        \,\}.
+      \]
+    By assumption each $B_U$ is a $J$-set. 
+    We now show that the collection $\{\, B_U : \hbox{$U$ is a
+      neighborhood of $y$} \,\}$ is closed under finite intersection
+    by showing that, for all neighborhoods $U$ and $V$ of $y$ we have $B_{U
+      \cap V} = B_U \cap B_V$.
+    Let $s \in S$, then 
+      \begin{align*}
+        s \in B_{U \cap V} &\iff \hbox{$T_s(x) \in U \cap V$ and $T_s(y) \in U
+        \cap V$}, \\
+      &\iff \hbox{$T_s(x) \in U$, $T_s(x) \in V$, $T_s(y) \in U$, and
+        $T_s(y) \in V$}, \\
+      &\iff s \in B_U \cap B_V.
+      \end{align*}
+    
+    By \ref{thm:input-correct}, we know that every $J$-set
+    of $S$ is partition regular. 
+    Therefore by \cite[Theorem 3.11 (b)]{Hindman:1998fk},  we can pick 
+    $r \in J(S)$ such that $\{\, B_U : \hbox{$U$ is a neighborhood of
+      $y$}\,\} \subseteq r$. 
+    
+    Now for all neighborhoods $U$ of $y$, we have $B_U \subseteq \{\,
+    s \in S : T_s(x) \in U \,\}$ and $B_U \subseteq \{\, s \in S :
+    T_s(y) \in U \,\}$. 
+    Therefore $\{\, s \in S : T_s(x) \in U\,\} \in r$ and $\{\, s \in
+    S : T_s(y) \in U \,\} \in r$. 
+    By Definition \ref{defn:plim}, we can conclude that
+    $r$-$\displaystyle\lim_{s\in S} T_s(x) = y$ and
+    $r$-$\displaystyle\lim_{s \in S} T_s(y) = y$. 
+    Hence by Proposition \ref{prop:dsplim}, we have $T_r(x) =
+    r$-$\displaystyle\lim_{s \in S} T_s(x) = y = r$-$\displaystyle\lim_{s \in S}
+    T_s(y) = T_r(y)$.
+  
+    (b) $\Rightarrow$ (c).
+    Put $M  = \{\, r \in J(S) : T_r(x) = y = T_r(y) \,\}$. 
+    We'll show that $M$ is a nonempty compact subsemigroup of $J(S)$. 
+    If we can show this, then we can pick an idempotent in $M$ and our
+    result follows.
+    The fact that $M \ne \emptyset$ follows from our assumption. 
+    To see that $M$ is compact it suffices to show that $M$ is
+    closed. 
+    Let $r \not\in M$, then either $T_r(x) \ne y$ or $T_r(y) \ne y$. 
+    First, assume that $T_r(x) \ne y$. 
+    By Definition \ref{defn:plim} and Proposition \ref{prop:dsplim},
+    pick a
+    neighborhood $U$ of $y$ such that 
+    $\{\, s \in S : T_s(x) \in U \,\} \not\in r$.
+    Put $A = \{\, s \in S : T_s(x) \in U \,\}$ and note that $S
+    \setminus A \in r$ and $\overline{S \setminus A} \cap M =
+    \emptyset$.
+    [If $p \in \overline{S \setminus A} \cap M$, then $A = \{\, s \in
+    S : T_s(x) \in U \,\} \in p$ by Definition \ref{defn:plim} and
+    Proposition \ref{prop:dsplim}.
+    We have also have that $S \setminus A \in p$.
+    Hence $\emptyset = A \cap (S \setminus A) \in p$, a
+    contradiction.]
+    Now assume that $T_r(y) \ne y$. 
+    By Definition \ref{defn:plim} and \ref{prop:dsplim}, pick a
+    neighborhood $U$ of $y$ such that
+    $\{\, s \in S : T_s(y) \in U \,\} \not\in r$.
+    Put $A = \{\, s \in S : T_s(y) \in U \,\}$ and note that $S
+    \setminus A \in r$ and $\overline{S \setminus A} \cap M =
+    \emptyset$.
+    Hence $M$ is a nonempty closed subset of $J(S)$.
+
+    To see that $M$ is a subsemigroup, let $q$, $r \in M$.
+    Then $T_{qr}(x) = T_q\bigl(T_r(x)\bigr) = T_q(y) =
+    T_q\bigl(T_r(y)\bigr) = T_{qr}(y)$ and $T_q(y) = y$. 
+    Hence $qr \in M$. 
+    
+    (c) $\Rightarrow$ (a).
+    Pick $r$ as guaranteed in (c). 
+    Let $U$ be a neighborhood of $y$. 
+    Then $\{\, s \in S : T_s(x) \in U \,\} \in r$ and $\{\,  s \in S :
+    T_s(y) \in U \,\} \in r$.
+    Hence $\{\, s \in S : \hbox{$T_s(x) \in U$ and $T_s(y) \in U$}
+    \,\} \in r$.  
+  \end{proof}
+
+  \begin{thm}
+    \label{thm:dyncsets}
+    Let $(S,\cdot)$ be a semigroup and $A \subseteq S$. 
+    Then $A$ is a $C$-set if and only if there exist a dynamical
+    system $\ds$ with points $x$, $y \in X$ where $(x,y)$ is JSUR, and
+    a neighborhood $U$ of $y$ such that $A = \{\, s \in S : T_s(x) \in
+    U \,\}$.
+  \end{thm}
+  \begin{proof}
+    ($\Rightarrow$) Let $A \subseteq S$ be our $C$-set, and by
+    Theorem \ref{thm:insert-correct} pick an idempotent $r \in J(S)$ such that
+    $A \in r$. 
+    Let $R = S \cup \{e\}$ be the semigroup with an identity $e$
+    adjoined to S. 
+    (For expository convenience, we still add this new identity even
+    if $S$ already contains an identity.)
+    Give $\{0,1\}$ the discrete topology, and take
+    $\setfunc{R}{\{0,1\}}$ to have
+    the product topology, and put $X = \setfunc{R}{\{0,1\}}$.
+    Hence $X$ is a compact Hausdorff space.
+    For each $s \in S$, define $T_s : X \to X$ by $T_s(f) = f \circ
+    \rho_s$. 
+    % Perhaps I should sketch the argument here?
+    By \cite[Theorem 19.14]{Hindman:1998fk}, $\ds$ is a dynamical
+    system. 
+    
+    Now let $x = \cchi_A$ be the characteristic function of $A$, and
+    put $y = T_r(x)$.
+    % Perhaps I should provide a proof since there is not one
+    % explicitly given in the book?
+    Then by \cite[Remark 19.13]{Hindman:1998fk}, we have that $T_r(y)
+    = T_r\bigl(T_r(x)\bigr) = T_{rr}(x) = T_r(x) = y$.
+    Therefore by (c) in Lemma \ref{lem:JSUR}, the pair $(x, y)$ is JSUR.
+
+    Put $U = \{\, w \in X : w(e) = y(e) \,\}$, and note that $U =
+    \pi^{-1}\bigl[\{y(e)\}\bigr]$ and so $y \in U$. 
+    Hence $U$ is a (subbasic) open neighborhood of $y$.
+    To help us show that $U$ is the neighborhood of $y$ we are looking
+    for we will show that $y(e) = 1$.
+    Since $y = T_r(x)$ we have that $\{\, s \in S : T_s(x) \in U \,\}
+    \in r$ by Definition \ref{defn:plim} and Proposition \ref{prop:dsplim}.
+    Since $A \in r$, we can pick $s \in A$ such that $T_s(x) \in U$. 
+    Then by definition of $U$ and our choice of $T_s(x) \in U$, we
+    have $y(e) = T_s(x)(e) = x\bigl(\rho_s(e)\bigr) = x(es) = x(s) =
+    \chi_{A}(s) = 1$. 
+    Finally, given $s \in S$, we have
+      \begin{align*}
+        s \in A &\iff \chi_{A}(s) = 1, \\
+                &\iff x(s) = 1, \\
+                &\iff x(es) = 1, \\
+                &\iff (x \circ \rho_s)(e) = 1, \\
+                &\iff T_s(x)(e) = 1 = y(e), \\
+                &\iff T_s(x) \in U.
+      \end{align*}
+   Hence $A = \{\, s \in S : T_s(x) \in U \,\}$. 
+   
+   ($\Leftarrow$) Let $\ds$ and let the points $x$, $y \in X$ be given as
+   guaranteed.
+   By Theorem \ref{thm:csetid}, pick an idempotent $r \in J(S)$
+   such that $T_r(x) = y = T_r(y)$. 
+   Since $U$ is a neighborhood of $y$ and $T_r(x) = y$, we have that
+   $A \in r$ by Definition \ref{defn:plim} and Proposition \ref{prop:dsplim}. 
+ \end{proof}
+
+
+\theendnotes
+
+\bibliographystyle{plain}
+\bibliography{../references}
+\end{document}
