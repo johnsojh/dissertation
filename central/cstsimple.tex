@@ -830,8 +830,11 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   Hence $\sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t) \bigr) \in A^\star$.
 
   ($\Leftarrow$)
-  Pick $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ as guaranteed by assumption and fix $b \in S$. 
-  For each $f \in \calT$ define $g_f \in \calT$ by $g_f(t) = f(t) + b$. 
+  Pick $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ as guaranteed by assumption.
+  Fix $b \in S$ and for every $f \in \calT$ define $g_f \in \calT$ by $g_f(t) = f(t) + b$. 
+  For each $F \in \Pf(\calT)$ put $G(F) = \{\, g_f : f \in F \,\}$.
+
+, and observe that $A$ satisfies the sufficiency condition of Lemma \ref{lem:comm-jsets} and so for all $F \in \Pf(\calT)$, there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that $x(m, a, t, f) \in A$ for every $f \in F$.
   We shall recursively define, by the size of $F \in \Pf(\calT)$, $m \colon \Pf(\calT) \to \bbN$, $\beta \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ such that for $F \in \Pf(\calT)$ the following hypotheses are satisfied:
   \begin{itemize}
     \item[(i)]
@@ -847,6 +850,13 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
 
   Let $F \in \Pf(\calT)$.
   First, assume that $|F| = 1$, that is, $F = \{f\}$ for some $f \in \calT$. 
+  Then since $A$ suffices the sufficiency condition of Lemma \ref{lem:comm-jsets} we have that $A$ is a $J$-set, and so we may pick $m(F) \in \bbN$, $\beta(F) \in S^{m(F)+1}$, and $\tau(F) \in \calJ_{m(F)}$ such that $x(m(F), \beta(F), \tau(F), f) \in A$. 
+  With our choices, hypothesis (i) and (ii) are satisfied. 
+
+  Now assume that $|F| > 1$ and for all $\emptyset \ne G \subsetneq F$ we have defined $m(G)$, $\beta(G)$, and $\tau(G)$ so that hypotheses (i) and (ii) hold.
+  Fix $b \in S$ and for each $f \in F$ define $g_f \in \calT$ by $g_f(t) = f(t) + b$. 
+  Put $G' = \{\, g_f : f \in F \,\}$
+
   
   Observe that $A$ satisfies the necessity condition of Lemma \ref{lem:comm-jsets} and hence that $A$ is a $J$-set in $S$. 
   Therefore by Theorem \ref{thm:jsets-ideal} $\overline{A} \cap J(S) \ne \emptyset$.
