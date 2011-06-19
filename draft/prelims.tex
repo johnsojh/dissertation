@@ -217,7 +217,7 @@ While $\AL(S)$ and $\AP$ are both closed left ideals of $\beta S$ and $\beta \bb
 \begin{proof}
   To see that $\AL(S)$ is not a right ideal of $\beta S$ we show that there exists $p \in \AL(S)$ such that $pa \not\in \AL(S)$. 
   Put $B = \{\, b^n : n \in \bbN \,\}$. and pick $p \in \AL(S)$ with $B \in p$. 
-  (Such a $p$ exists since $B$ is a $AL$-set and by \cite[Theorem 3.11]{Hindman:1998fk}.)
+  (By \cite[Theorem 3.11]{Hindman:1998fk} and Theorem \ref{thm:al-partition-reg} since $B$ is an $AL$-set such a $p$ exists.)
   By \cite[Exercise 4.1.8(b)]{Hindman:1998fk}, $Ba \in pa$. 
 
   We show that $Ba$ is not an $AL$-set by showing that $Ba$ doesn't contain even a 2-term algebraic line. 
@@ -269,7 +269,13 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   \end{itemize}
 \end{thm}
 \begin{proof}
-  \textsl{(a) $\implies$ (b).}
+  \textsl{(a) $\Rightarrow$ (b).}%
+  \endnote{
+    The technique used to prove the implication \textsl{(a) $\Rightarrow$ (b)} is commonly called a `compactness argument'. 
+  This particular name comes from the Compactness Theorem in first-order logic which states that any set of first-order sentences has a model if and only if every finite subset has a model. 
+  The Compactness Theorem itself is closely related to the Ultrafilter Principle. 
+  Recall that the Ultrafilter Principle states that every filter can be extended to an ultrafilter.
+  }
   Suppose that the statement \textsl{(b)} is false, that is, suppose there exists a positive integer $k$ such that for every $N \in \bbN$ there exist sets $C_{1,N}$ and $C_{2,N}$ with $\{1, 2, \ldots, N\} = C_{1, N} \cup C_{2, N}$ but neither $C_{1,N}$ or $C_{2,N}$ contains a $k$-term arithmetic progression. 
 
   We shall recursively construct sequences $\la r_i \ra_{i=1}^\infty$ and $\la \bbN_i \ra_{i=0}^\infty$ satisfying the following hypotheses:
@@ -306,7 +312,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   However, by choice $C_{1,N}$ doesn't contain any $k$-term arithmetic progressions. 
   Hence $C_1$ doesn't contain a $k$-term arithmetic progression and similarly we can show that $C_2$ doesn't contain a $k$-term arithmetic progression either. 
 
-  \textsl{(b) $\implies$ (c).}
+  \textsl{(b) $\Rightarrow$ (c).}
   We start by introducing some temporary notation.
   For all positive integers $k$ and $r$ we let $W(k,r)$ be the least positive integer such that if $\{1, 2, \ldots, W(k,r)\} = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
 
@@ -325,15 +331,15 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Put $a = b+ec$ and $d = fc$, then by definition of $E_i$ we have that for every $j \in \{0, 1, \ldots, k-1\}$, $a + jd = b + ec + jfc = b+(e+jf)c \in C_i$.
   
   
-  \textsl{(c) $\implies$ (d).}
+  \textsl{(c) $\Rightarrow$ (d).}
   This assertion is trivially true.
 
-  \textsl{(d) $\implies$ (e).}
+  \textsl{(d) $\Rightarrow$ (e).}
   For each $k \in \bbN$ pick $i_k \in \{1, 2, \ldots, r\}$ such that $C_{i_k}$ contains a $k$-term arithmetic progression. 
   By the pigeonhole principle, there exists $i \in \{1, 2, \ldots, r\}$ such that $\{\,k \in \bbN : i_k = i\,\}$ is infinite.
   Therefore it follows that $C_i$ is an $AP$-set.
 
-  \textsl{(e) $\implies$ (f).}
+  \textsl{(e) $\Rightarrow$ (f).}
   Let $\la x_n \ra_{n=1}^\infty$ be a strictly increasing sequence in $\bbN$ with $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ finite. 
   Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
   We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
@@ -350,21 +356,15 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Moreover, since $x_{n+1} - x_n \le b$, we can pick $t \in \{1, 2, \ldots, b\}$ such that $t + x = x_{n+1}$, that is, $x \in -t + A$. 
   This completes the proof for this direction. 
 
-  \textsl{(f) $\implies$ (a).}
+  \textsl{(f) $\Rightarrow$ (a).}
   Without loss of generality suppose that $C_1$ is infinite.
   Enumerate $C_1$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$. 
   If $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is finite, then we are done. 
   Hence suppose instead that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\}$ is infinite, that is, for all $k \in \bbN$, there exists $n \in \bbN$ with $x_{n+1} - x_n \ge k + 2$. 
   Therefore, for all $k \in \bbN$, there exists $n \in \bbN$ such that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (k + 1) \,\} \subseteq \bbN \setminus C_1 = C_2$, that is, $C_2$ is an $AP$-set.
 \end{proof}
-\begin{rmk}
-  The technique used to prove the implication \textsl{(a) $\implies$ (b)} is commonly called a `compactness argument'. 
-  This particular name comes from the Compactness Theorem in first-order logic which states that any set of first-order sentences has a model if and only if every finite subset has a model. 
-  The Compactness Theorem itself is closely related to the Ultrafilter Principle. 
-  Recall that the Ultrafilter Principle states that every filter can be extended to an ultrafilter.
-\end{rmk}
 
-We wish to translate statement Theorem \ref{thm:vdwEqSyn} \textsl{(f)} into the language of semigroups.
+We wish to translate statement Theorem \ref{thm:vdwEqSyn} (f) into the language of semigroups.
 Of course, given an arbitrary semigroup, there is no guarantee that the terms ``strictly increasing'' and ``distance between two elements'' makes sense.
 It is the goal of the next result to show that we can forgo these terms.
 
@@ -382,7 +382,7 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
   \end{itemize}
 \end{prop}
 \begin{proof}
-  \textsl{(a) $\implies$ (b).}
+  \textsl{(a) $\Rightarrow$ (b).}
   Let $b = \max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and put $G = \{1, 2, \ldots, b\}$. 
   Clearly, $\bigcup_{t \in G} -t + A \subseteq \bbN$ so let $x \in \bbN$. 
   First, assume that $x < x_1$, then since $x_1 \le b$, we can pick $t \in G$ such that $t + x = x_1$, that is $x \in -t + A$.
@@ -391,7 +391,7 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
   Then $1 \le x_{n+1} - x \le x_{n+1} - x_n \le b$, that is, $x_{n+1} - x \in G$.
   Hence $(x_{n+1} - x) + x = x_{n+1} \in A$, and this completes the forward direction of the proof.
 
-  \textsl{(b) $\implies$ (a).}
+  \textsl{(b) $\Rightarrow$ (a).}
   Enumerate $A$ a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$. 
   Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$.
   We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le b$. 
@@ -433,7 +433,7 @@ It's is the purpose of this next result to show that we can dispense with the po
   \end{itemize}
 \end{prop}
 \begin{proof}
-  \textsl{(a) $\implies$ (b).}
+  \textsl{(a) $\Rightarrow$ (b).}
   Pick $b \in \bbN$ as guaranteed by the definition. 
   Put $G = \{1, 2, \ldots, b\}$.
   We show that for all $F \in \Pf(\bbN)$, there exists $x \in \bbN$ such that $F+x \subseteq \bigcup_{t \in G} -t + A$.
@@ -442,7 +442,7 @@ It's is the purpose of this next result to show that we can dispense with the po
   Pick $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$. 
   Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots  < x_n$.
   It suffices to show that $F + x_1 \subseteq \bigcup_{t \in G} -t + B$.
-  (Observe that $B \subseteq A$ implies $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
+  (Observe that $B \subseteq A$ Rightarrow $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
   Let $f \in F$, then $f + x_1 \le \max F + x_1$. 
   Now $n \ge \max F + 2$ and so $f + x_1 \le (n-2) + x_1 < x_n$. 
   So pick $m \in \{1, 2, \ldots, n-1\}$ such that $x_m \le f+x_1  < x_{m+1}$. 
@@ -450,7 +450,7 @@ It's is the purpose of this next result to show that we can dispense with the po
   Put $t = x_{m+1} - x_1 - f$, then $t + f + x_1 = x_{m+1} \in B$ and $t \in G$ since $1 \le t = x_{m+1}- (f + x_1) < x_{m+1} - x_m \le b$. 
   This completes this direction of the proof.  
   
-  \textsl{(b) $\implies$ (a).}
+  \textsl{(b) $\Rightarrow$ (a).}
   Pick $G \in \Pf(\bbN)$ as guaranteed, and pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$. 
   Let $N \in \bbN$ and put $F = \{1, 2, \ldots, 2bN\}$. 
   Pick $x \in \bbN$ such that $F + x \subseteq \bigcup_{t \in G} -t+A$. 
@@ -483,9 +483,9 @@ With this equivalence we now can define the notion of a piecewise
 syndetic set in a semigroup. 
 In the next chapter it will follow that piecewise syndetic sets in $\bbN$ are $AP$-sets.
 Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets are partition regular.%
-ndnote{
+endnote{
   In \cite[Lemma 1]{Brown:1971bh}, proves that if the natural numbers are finitely partitioned, then at least one cell of the partition is piecewise syndetic.
-  It's an interesting question as to whether, Brown's Lemma can be extended to prove Proposition \ref{prop:psReg}.
+  It's an interesting question as to whether, Brown's Lemma can be extended to prove Proposition \ref{prop:psReg} directly.
 }
 
 \begin{defn}
@@ -523,7 +523,10 @@ ndnote{
 Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk}, using notions from topological dynamics, defined the concept of a central subset of $\bbN$. 
 With this definition he was able to prove a powerful combinatorial statement called the Central Sets Theorem. 
 The definition of a central set and the Central Sets Theorem can both be generalized to a semigroup.
-However in contrast to our definition of a piecewise syndetic set, to describe a central subset of a semigroup using only its algebraic structure is shockingly complicated.
+However in contrast to our definition of a piecewise syndetic set, to describe a central subset of a semigroup using only its combinatorial and algebraic structure is shockingly complicated.%
+\endnote{
+  The Central Sets Theorem is often used as a convienent combinatorial substitute when applying central sets.
+}
 (The curious reader can consult \cite[Section 14.5]{Hindman:1998fk} for the details.)
 By using the algebraic structure of the Stone-\v{C}ech compactification we can give a very simple definition of central sets.
 
@@ -532,7 +535,7 @@ By using the algebraic structure of the Stone-\v{C}ech compactification we can g
   We call $A$ \emph{central} if and only if there exists an idempotent $p = pp \in K(\beta S)$ such that $A \in p$.
 \end{defn}
 
-In the next chapter we shall prove the most general and powerful version of the Central Sets Theorem currently known.
+In the next chapter we shall prove the newest version of the Central Sets Theorem currently known via another specialization of $AP$-sets.
 
 % Endnotes 
 \theendnotes

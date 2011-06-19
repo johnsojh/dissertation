@@ -1,9 +1,3 @@
-% Author: John H. Johnson
-% email: john.j.jr@gmail.com
-%
-% Brief description of file
-% -------------------------
-%
 % This is a chapter in my dissertation tentatively entitled "A New and
 % Simpler Central Sets Theorem".  The new and simpler part is due to a
 % different definition of J-sets, which in turns leads to a different
@@ -14,7 +8,7 @@
 %
 % N.B. The new definition of J-sets essentially first appears in an
 % article, "Ramsey Theory in Noncommutative Semigroups", by Bergelson
-% and Hindman in their Theorem 2.6.
+% and Hindman in their Theorem 2.6. [6/19/2011 John]
 
 \chapter{Central Sets Theorem}
 
@@ -120,7 +114,7 @@ However before proving this result we introduce some notation that is analogous 
   \end{align*}
 \end{defn}
 
-Given a $A$ a subset of some semigroup $S$, in \cite[Definition 2.2(a)]{Hindman:2009vn} $A$ is considered a $J$-set if and only if for every $F \in \calT$, there exists $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$, $\prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) a(m+1) \in A$.
+Given a $A$ a subset of some semigroup $S$, in \cite[Definition 2.2(a)]{Hindman:2009vn} $A$ is considered a $J$-set if and only if for every $F \in \Pf(\calT)$, there exists $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$, $\Bigl( \prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) \Bigr) a(m+1) \in A$.
 To show that our definition of a $J$-set is equivalent to \cite[Definition 2.2(a)]{Hindman:2009vn} we will use the following technical `rewriting' lemma.
 
 \begin{lem}
@@ -243,7 +237,7 @@ We next show that $J$-sets satisfy a superficially stronger condition.
 \begin{lem}
   \label{lem:jset-start}
   Let $(S, \cdot)$ be a semigroup and $A$ a $J$-set in $S$.
-  Then for every $F \in \Pf(\calT)$ and each $n \in \bbN$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, with $t_1 > n$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
+  Then for every $F \in \Pf(\calT)$ and each positive integer $n$ there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$, with $t_1 > n$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
 \end{lem}
 \begin{proof}
   For each $f \in F$ define $g_f \in \calT$ by $g_f(t) = f(n+t)$.
@@ -308,7 +302,12 @@ To state this result we introduce the following notation.
 \end{proof}
 
 It is clear that every semigroup $S$ is a $J$-set in itself, but this easy fact doesn't necessarily imply that $J(S) \ne \emptyset$.
-It's true that $J(S)$ \emph{is} nonempty but this nontrivial fact follows either from the fact that piecewise syndetic sets are $J$-sets, Lemma \ref{lem:pr-jsets} and \cite[Theorem 3.11]{Hindman:1998fk}, or the Central Sets Theorem. 
+It's true that $J(S)$ \emph{is} nonempty but this nontrivial fact follows either from the fact that piecewise syndetic sets are $J$-sets, Lemma \ref{lem:pr-jsets} and \cite[Theorem 3.11]{Hindman:1998fk}, or the Central Sets Theorem.%
+\endnote{
+  The fact that $J(S)$ is nonempty was first proven via the Central Sets Theorem in \cite[Theorem 3.8]{De:2008uq}.
+  The proof that $J$-sets are partition regular was first proved in \cite[Theorem 2.14]{Hindman:2010fk}. 
+  The proof that piecewise syndetic sets are $J$-sets is new.
+}
 
 We start by proving that piecewise syndetic sets are $J$-sets.
 The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998fk}. 
@@ -518,7 +517,11 @@ We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
       g_{i-n} & \mbox{if $i \in \{n+1, n+2, \ldots, n+m\}$.}
     \end{cases}
   \]
-  Then $F \subsetneq H_1 \subsetneq H_2 \subsetneq \cdots \subsetneq H_{n+m}$, $\la h_i \ra_{i=1}^{n+m} \in \bigtimes_{i=1}^{n+m} H_i$, and $yz = \prod_{i=1}^{n+m} x(m(H_i), \alpha(H_i), \tau(H_i), h_i) \in T(F)$. 
+  Then $F \subsetneq H_1 \subsetneq H_2 \subsetneq \cdots \subsetneq H_{n+m}$, $\la h_i \ra_{i=1}^{n+m} \in \bigtimes_{i=1}^{n+m} H_i$, and 
+  \[
+    \textstyle
+    yz = \prod_{i=1}^{n+m} x(m(H_i), \alpha(H_i), \tau(H_i), h_i) \in T(F)
+  \]
   Hence $\mathbf{Q}$ is a subsemigroup of $\beta S$. 
 
   We now claim that $K(\mathbf{Q}) \subseteq \overline{A} \cap J(S)$. 
@@ -692,8 +695,10 @@ then $w(f) = \prod_{i=1}^n x(m(G_i), \alpha(G_i), \tau(G_i), \gamma_f(i))$.
 
 It's reasonably clear that any semigroup $S$ is a $C$-set in itself.
 Then Theorem \ref{thm:csets} shows that there is an idempotent in $J(S)$ and hence $J(S)$ is nonempty.
+The Central Sets Theorem is simply the assertion that central sets are $C$-sets. 
 
 \begin{cor}[Central Sets Theorem]
+  \label{cor:cst}
   Every central set in a semigroup is a $C$-set.
 \end{cor}
 \begin{proof}
@@ -701,10 +706,14 @@ Then Theorem \ref{thm:csets} shows that there is an idempotent in $J(S)$ and hen
   Since $A$ is a central set, there exists an idempotent $p \in K(\beta S)$ with $A \in p$.
   Since $K(S) \subseteq J(S)$, we have that $A$ is also a $C$-set.
 \end{proof}
+\begin{rmk}
+  Unfortunately, despite its the Central Sets Theorem does not characterize central sets. 
+  See \cite{Hindman:2007fk} for an example of a $C$-set in $\bbN$ which is not a central set.   
+\end{rmk}
 
 Similar to how the definition of a $J$-set is simpler when the underlying semigroup is commutative we have the following result which shows that $C$-sets also have a simpler characterization when the underlying semigroup is commutative. 
 
-\begin{lem}
+\begin{thm}
   Let $(S, +)$ be a commutative semigroup and $A \subseteq S$.
   Then $A$ is a $C$-set if and only if there exist functions $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ such that
   \begin{itemize}
@@ -712,7 +721,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
     
     \item[(2)] whenever $m \in \bbN$, $G_1$, $G_2$, \dots, $G_m \in \Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$, and for each $i \in \{1, 2, \ldots, m\}$, $f_i \in G_i$, we have $\sum_{i=1}^m\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr) \in A$.
   \end{itemize}
-\end{lem}
+\end{thm}
 \begin{proof}
   ($\Rightarrow$)
   Since $A$ is a $C$-set, we also have that $A$ is a $J$-set in a commutative semigroup.
@@ -757,7 +766,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   \end{align*}
 
   Observe that for every $F \in \Pf(\calT)$, $T(F)$ is a nonempty subset of $A$ and that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has the finite intersection property since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$.
-  Therefore $\mathbf{Q} = \bigcup_{F \in \Pf(\calT)} c\ell_{\beta S}\bigl(T(F)\bigr)$ is a closed nonempty subset of $\beta S$ contained in $c\ell_{\beta S}(A)$. 
+  Therefore $\mathbf{Q} = \bigcap_{F \in \Pf(\calT)} c\ell_{\beta S}\bigl(T(F)\bigr)$ is a closed nonempty subset of $\beta S$ contained in $c\ell_{\beta S}(A)$. 
   We show that $\mathbf{Q}$ is, in fact, a subsemigroup of $\beta S$. 
   To see that $\mathbf{Q}$ is a subsemigroup it suffices, by \cite[Theorem 4.20]{Hindman:1998fk}, to show that for all $F \in \Pf(\calT)$ and for every $y \in T(F)$, there exists $G \in \Pf(\calT)$ such that $yT(G) \subseteq T(F)$. 
   Let $F \in \Pf(\calT)$ and $y \in T(F)$. 
@@ -884,7 +893,4 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   This finishes this direction of our proof. 
 \end{proof}
 
-% Endnotes 
-% \theendnotes
-
-
+ \theendnotes

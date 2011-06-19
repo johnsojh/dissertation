@@ -1,11 +1,15 @@
-% Draft of my Dynamical Characterization of C-sets Results
-% by: John H. Johnson
-% email: john.j.jr@gmail.com
+% This chapter proves a combinatorial characterization of
+% $C$-sets. [6/19/2011 John]
 
 \newcommand{\ds}{(X, \la T_s \ra_{s \in S})}
 \chapter{Dynamical Characterization of $C$-sets}
 \section{Dynamical Systems and $\beta S$}
-Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk} originally defined central sets and proved the original Central Sets Theorem using the notions of topological dynamics. 
+Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk} originally defined central sets and proved the original Central Sets Theorem using the notions of topological dynamics.%
+\endnote{
+  Depending on the enumeration, there are around five different versions of `the' Central Sets Theorem.
+  Furstenberg's version \cite[Proposition 8.21]{Furstenberg:1981fk}, Bergelson's and Hindman's `pre-natural semigroup' version \cite[Theorem 4.11]{Bergelson:1990kx} and noncommutative version \cite[Theorem 2.8]{Bergelson:1992fk}, and the De, Hindman, and Strauss version \cite[Corollary 3.10]{De:2008uq}, and finally our version Corollary \ref{cor:cst}.  
+  We must note however, that our Corollary \ref{cor:cst} is equivalent to \cite[Corollary 3.10]{De:2008uq}.
+}
 It is a natural to investigate whether $C$-sets admit a dynamical characterization, and in this chapter we shall prove that such a characterization exists.
 Before we can begin we will need to define what we mean by a dynamical
 system and provide a connection to $\beta S$.
@@ -17,20 +21,22 @@ system and provide a connection to $\beta S$.
       \begin{itemize}
         \item[(1)] $S$ is a semigroup; and
         
-        \item[(2)] $\pi : S \times X \to X$ is a function such that
-          for all $s$, $t \in S$ and for every $x \in X$,
-          \[ \pi\bigl(s, \pi(t,x)\bigr) = \pi(st, x). \]
-      \end{itemize}
-  \end{defn}
-  
-  \begin{rmk}
-    The usual (and sometimes confusing) convention is to write the value
+        \item[(2)] $\pi : S \times X \to X$ is a function%
+          \endnote{
+            The usual (and sometimes confusing) convention is to write the value
     $\pi(s,x)$ as $s \cdot x$.
     Following this convention the condition on $\pi$ becomes $s \cdot (t
     \cdot x) = st \cdot x$.
     We will not follow this convention since we will soon introduce
     better notation that will suit our purposes.
-  \end{rmk}
+          }
+ such that
+          for all $s$, $t \in S$ and for every $x \in X$,
+          \[ \pi\bigl(s, \pi(t,x)\bigr) = \pi(st, x). \]
+          
+      \end{itemize}
+  \end{defn}
+  
 
 Eventually we will want to extend our action of $S$ on $X$ to an
 action of $\beta S$ on $X$.
@@ -49,7 +55,7 @@ semigroup actions into a more convenient form.
       \[ T(s)(x) = \pi(s,x). \]
   \end{prop}
   \begin{proof}
-    First observe that $(\setfunc{X}{X}, \circ)$ is a semigroup.
+    First observe that $\setfunc{X}{X}$ is a semigroup under function composition.
     Now assume that the triple $(X, S, \pi)$ is a semigroup action. 
     Define the map $T : S \to \setfunc{X}{X}$ by $T(s)(x) =
     \pi(s,x)$.
@@ -78,26 +84,23 @@ semigroup actions into a more convenient form.
 
 With this Proposition we can now effectively forgot about our original Definition \ref{defn:semiact} and simply consider semigroup actions as homomorphisms of $S$ into $\setfunc{X}{X}$. 
 
-However, in this chapter we are not just concerned with any type of semigroup action.
-After all we are taking $\beta S$ to be a compact right-topological semigroup, and so we would like to apply this topological algebra to our action in some way. 
-We shall soon see that the notion of a dynamical system is one way to accomplish this goal.
+% However, in we are not just concerned with any type of semigroup action. 
+% After all we are taking $\beta S$ to be a compact right-topological semigroup, and so we would like to apply this topological algebra to our action in some way. 
+% We shall soon see that the notion of a dynamical system is one way to accomplish this goal.
 
   \begin{defn}
-    A pair $\ds$ is a \textsl{dynamical system} if and only if
+    A pair $(X, \la T_s \ra_{s \in S})$ is a \textsl{dynamical system} if and only if
       \begin{itemize}
         \item[(1)] $X$ is a compact Hausdorff space;
         \item[(2)] $S$ is a semigroup;
         \item[(3)] $T_s : X \to X$ is continuous for all $s \in S$;
           and
-        \item[(4)] $T_s \circ T_t = T_{st}$ for all $s$, $t \in S$.%
-% I'm sure that there are dynamical systems where the phase space is
-% not compact Hausdorff. Would be nice to mention were the reader can
-% go to read about such dynamical systems. 
+        \item[(4)] $T_s \circ T_t = T_{st}$ for all $s$, $t \in S$.
       \end{itemize}
   \end{defn}
 
   \begin{rmk}
-    Let $\ds$ be a dynamical system and define $T : S \to
+    Let $(X, \la T_s \ra_{s \in S})$ be a dynamical system and define $T : S \to
     \setfunc{X}{X}$ by $T(s) = T_s$.
     Then by Proposition \ref{prop:semiact} we are justified in saying
     that \textsl{$S$ acts on $X$ via $\la T_s \ra_{s \in S}$}.
@@ -122,7 +125,7 @@ $s \in S$, the
 map $\lambda_{T(s)}$ is continuous.
 However by \cite[Theorem 2.2(b)]{Hindman:1998fk} we have that
 $\lambda_{T(s)}$ is continuous if and only if $T(s)$ is continuous. 
-Since $\ds$ is a dynamical system and $T(s) = T_s$ we know by
+Since $(X, \la T_s \ra_{s \in S})$ is a dynamical system and $T(s) = T_s$ we know by
 definition that $T(s)$ is continuous. 
 Hence $\widetilde{T} : \beta S \to \setfunc{X}{X}$ is a continuous semigroup
 homomorphism.
@@ -165,24 +168,24 @@ along an ultrafilter.
   \begin{defn}
     \label{defn:plim}
     Let $S$ be a discrete space, $p \in \beta S$, $X$ a compact
-    Hausdorff topological space, $\la x_s : s \in S \ra$ a family
-    of points in $X$, and $y \in X$.
-    Then \hbox{$p$-$\displaystyle\lim_{s \in S} x_s = y$} if and only
-    if for every
-    neighborhood $U$ of $y$ we have $\{\, s \in S : x_s \in U \,\} \in p$.
-  \end{defn}
-
-  \begin{rmk}
-    Our definition of a \hbox{$p$-limit} is a bit more restrictive
+    Hausdorff%
+    \endnote{
+      Our definition of a \hbox{$p$-limit} is a bit more restrictive
     then usual.
     Normally the definition only takes $X$ be any topological space.
     We placed these extra restrictions on $X$ to ensure that every
     \hbox{$p$-limit} exists and is unique.
-  \end{rmk}
+    }
+ topological space, $\la x_s : s \in S \ra$ a family
+    of points in $X$, and $y \in X$.
+    Then \hbox{$p$--$\displaystyle\lim_{s \in S} x_s = y$} if and only
+    if for every
+    neighborhood $U$ of $y$ we have $\{\, s \in S : x_s \in U \,\} \in p$.
+  \end{defn}
 
   \begin{prop}
     \label{prop:dsplim}
-    Let $\ds$ be a dynamical system.
+    Let $(X, \la T_s \ra_{s \in S})$ be a dynamical system.
     Then for every $p \in \beta S$ and each $x \in X$ we have $T_p(x)
     = \hbox{$p$--$\lim_{s \in S} T_s(x)$}$.
   \end{prop}
@@ -213,7 +216,7 @@ dynamical characterization of $C$-sets.
 \label{sec:dyncsets}
  \begin{defn}
     \label{defn:JSUR}
-    Let $\ds$ be a dynamical system, and let $x$, $y \in X$. 
+    Let $(X, \la T_s \ra_{s \in S})$ be a dynamical system, and let $x$, $y \in X$. 
     The pair $(x,y)$ is \textsl{jointly sparsely uniformly recurrent}
     (we'll abbreviate this to JSUR) if and only if $\{\, s \in S :
     \hbox{$T_s(x) \in U$ and $T_s(y) \in U$} \,\}$ is a $J$-set for every
@@ -230,7 +233,7 @@ dynamical characterization of $C$-sets.
 
   \begin{lem}
     \label{lem:JSUR}
-    Let $\ds$ be a dynamical system, and let $x$, $y \in X$.
+    Let $(X, \la T_s \ra_{s \in S})$ be a dynamical system, and let $x$, $y \in X$.
     The following statements are equivalent.
     \begin{itemize}
       \item[(a)] The pair $(x, y)$ is JSUR.
@@ -331,7 +334,7 @@ dynamical characterization of $C$-sets.
     \label{thm:dyncsets}
     Let $(S,\cdot)$ be a semigroup and $A \subseteq S$. 
     Then $A$ is a $C$-set if and only if there exist a dynamical
-    system $\ds$ with points $x$, $y \in X$ where $(x,y)$ is JSUR, and
+    system $(X, \la T_s \ra_{s \in S})$ with points $x$, $y \in X$ where $(x,y)$ is JSUR, and
     a neighborhood $U$ of $y$ such that $A = \{\, s \in S : T_s(x) \in
     U \,\}$.
   \end{thm}
@@ -350,7 +353,7 @@ dynamical characterization of $C$-sets.
     For each $s \in S$, define $T_s : X \to X$ by $T_s(f) = f \circ
     \rho_s$. 
     % Perhaps I should sketch the argument here?
-    By \cite[Theorem 19.14]{Hindman:1998fk}, $\ds$ is a dynamical
+    By \cite[Theorem 19.14]{Hindman:1998fk}, $(X, \la T_s \ra_{s \in S})$ is a dynamical
     system. 
     
     Now let $x = \cchi_A$ be the characteristic function of $A$, and
@@ -383,7 +386,7 @@ dynamical characterization of $C$-sets.
       \end{align*}
    Hence $A = \{\, s \in S : T_s(x) \in U \,\}$. 
    
-   ($\Leftarrow$) Let $\ds$ and let the points $x$, $y \in X$ be given as
+   ($\Leftarrow$) Let $(X, \la T_s \ra_{s \in S})$ and let the points $x$, $y \in X$ be given as
    guaranteed.
    By Theorem \ref{thm:csets}, pick an idempotent $r \in J(S)$
    such that $T_r(x) = y = T_r(y)$. 
