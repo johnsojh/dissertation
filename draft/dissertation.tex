@@ -1,36 +1,38 @@
-% The following is a dissertation template that meets the Howard
-% University specifications.
+% This document mostly contains pointers to the various dissertation
+% chapters and has very little text that is formated.  It mostly
+% contains the document class specification, various packages, and
+% macros.  To produce the proper dvi for this document run the
+% following series of commands on the commend line:
+%
+%   $ latex dissertation
+%   $ bibtex dissertation
+%   $ latex dissertation
+%   $ latex dissertation
+% [6/19/2011 John]
 
-% Howard University requires a 12 point type Times New Roman (or
-% Helvetica) font. Before submitting a final draft, change the DRAFT
-% option to FINAL and remove the SHOWTRIMS option.
 
+% The draft option marks any overfull lines with a black bar.  Change
+% 'draft' to 'final' for the "final copy".  [6/19/2011 John]
 \documentclass[letterpaper, 12pt, oneside, draft]{memoir}
 
-% Top, right, bottom, and left margins must be 1 inch each from the
-% edge. Using the geometry package with the options 'margin=1in' is a
-% convenient way to accomplish this.
 \usepackage[margin=1in]{geometry}  
 
-\usepackage{endnotes}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsfonts}
-
-
-% The amsthm package is used to provide the theorem-type and proof
-% environments that make typesetting theorems and definitions easy.
 \usepackage{amsthm}
+\usepackage{endnotes}
 
 % This modification of the plain theorem style template uses slanted
 % fonts instead of italic fonts in the theorem statement. I prefer
 % this style since in the older style you can confuse the variables
-% with the "regular" text.
+% with the "regular" text. [6/19/2011 John]
 \newtheoremstyle{plain}
   {3mm}                         % Space above theorem and previous line.
   {3mm}                         % Space below theorem box and next line.
   {\slshape}                    % Use slanted font in body of theorem.
-  {}                            % Indent amount from margin. (Here no indent.)
+  {}                            % Indent amount from margin. (Here no
+                                % indent.)
   {\bfseries}                   % Theorem head font.
   {.}                           % Punctation after theorem head.
   {.5em}                        % Space after theorem head.
@@ -92,14 +94,24 @@
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\calU}{\mathcal{U}}
 
+% Short name for collection of all finite nonempty subsets of a set.
 \newcommand{\Pf}{\mathcal{P}_f}
 
-
+% This command is an alternative to the usual LaTeX command to write
+% the collection of all functions from some set into another set.
+% Since the domain is often as important as the codomain, this little
+% bit of code increases the size of the domain to the usual 12pt font
+% size.  [6/19/2011 John]
 \newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
 
+% Create a 'bigtimes' symbol for cartesian product.  We don't use the
+% usual product symbol because that symbol will be used in the
+% statements of algebraic results.  [6/19/2011 John]
 \font\bigmath=cmsy10 scaled \magstep 3
 \newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
 
+% Create a raised lowercase greek chi.  The standard symbol deeps to
+% far off the line.  [6/19/2011 John]
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
 
@@ -109,29 +121,32 @@
 % (La)TeX this looks bad and wastes paper. The following spacing using
 % a baselineskip value of 1.7pt is a good compromise. 
 \addtolength{\baselineskip}{1.7pt}
+
 \pagenumbering{roman}
 \pagestyle{plain}
 
 % Includes title page and committee approval form.
 \include{frontmatter}
 
-\include{dedication}
-\include{acknowledgments}
-\include{abstract}
+%\include{dedication}
+%\include{acknowledgments}
+%\include{abstract}
 
 % Include table of contents
-\include{toc}
+%\include{toc}
 
 % Include list of figures.
-\include{lofig}
+%\include{lofig}
 
 % Include list of abbreviations.
-\include{loabbr}
+%\include{loabbr}
 
 % Include list of symbols.
-\include{losym}
+%\include{losym}
 
+\savepagenumber
 \pagenumbering{arabic}
+\restorepagenumber
 
 \include{prelims}
 
