@@ -38,6 +38,7 @@
 \newcommand{\calF}{\mathcal{F}}
 \newcommand{\calH}{\mathcal{H}}
 \newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
 \newcommand{\calP}{\mathcal{P}}
 \newcommand{\calT}{\mathcal{T}}
 \newcommand{\Pf}{\mathcal{P}_f}
@@ -54,16 +55,14 @@
 
 \begin{document}
 \section{Introduction}
-Our main motivating factor has been to find certain analogues of
-theorems that involve the smallest ideal.
-The reason for this line of research is that there are many nice
-algebraic and combinatorial results that utilize the smallest ideal. 
+One of our main motivating factor has been to find certain analogues between theorems involving piecewise syndetic sets and $J$-sets. 
+The reason for this line of research is that there are many nice algebraic and combinatorial results that utilize the smallest ideal. 
 (Arguably, through these results, the smallest ideal is perhaps the
 best understood ideal in the Stone-\v{C}ech compactification.)
 It is then natural to wonder how much of this ``niceness'' can be
 imported to other ideals.
 
-In particular, we shall prove an analogue to the following theorem. 
+In particular, in this chapter we shall prove an analogue to the following theorem. 
 \begin{thm}
   Let $(S,\cdot)$ be a semigroup and let $T \subseteq S$ be a
   subsemigroup. 
@@ -81,53 +80,55 @@ In particular, we shall prove an analogue to the following theorem.
 
 In this chapter we shall prove the following two analogue theorems.
 \begin{thm}
+  \label{thm:comm-subsemi}
   Let $(S, +)$ be a commutative semigroup and let $T \subseteq S$ be a
   subsemigroup. 
   The following statements are equivalent.
   \begin{itemize}
-    \item[(a)] $J(\beta T) = \beta T \cap J(\beta S)$.
-    \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
+    \item[(a)] $J(T) = \beta T \cap J(S)$.
+    \item[(b)] $\beta T \cap J(S)$ is nonempty.
     \item[(c)] $T$ is a $J$-set in $S$.
   \end{itemize}
 \end{thm}
 
 \begin{thm}
-  Let $(S, \cdot)$ be a commutative semigroup and let $T \subseteq S$ be a
-  subsemigroup. 
+  Let $(S, \cdot)$ be a commutative semigroup and let $T \subseteq S$ be a  subsemigroup. 
   The following statements are equivalent.
   \begin{itemize}
-    \item[(a)] $J(\beta T) \subseteq \beta T \cap J(\beta S)$.
+    \item[(a)] $J(T) \subseteq \beta T \cap J(S)$.
     \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
     \item[(c)] $T$ is a $J$-set in $S$.
   \end{itemize}
 \end{thm}
 
-We shall also show that statement (a) in this theorem cannot be
-strengthen to ``$J(T) = \beta T \cap J(S)$'' without some additional
-assumptions on $S$. 
+Finally we  shall also show that statement (a) in this theorem cannot be strengthen to ``$J(T) = \beta T \cap J(S)$'' without some additional assumptions on $S$. 
 
 \section{Commutative Semigroups}
+
+We shall prove three propositions that will aid us in proving Theorem \ref{thm:comm-subsemi}.
+
 \begin{prop}
+  \label{prop:trans-inside}
   Let $(S, +)$ be a commutative semigroup and $A \subseteq S$. 
-  Then $A$ is a $J$-set in $S$ if and only if for every $F \in
-  \Pf(\calT)$, there exist $a \in A$ and $H \in \Pf(\bbN)$ such that
-  for all $f \in F$, $x(a, H, f) \in A$. 
+  Then $A$ is a $J$-set in $S$ if and only if for every $F \in \Pf(\calT)$, there exist $a \in A$ and $H \in \Pf(\bbN)$ such that for all $f \in F$, $a + \sum_{t \in H} f(t) \in A$. 
 \end{prop}
 \begin{proof}
   ($\Rightarrow$)
   Let $F \in \Pf(\calT)$ and let $\overline{c} \in \calT$ be a
   constant sequence.
   Put $G = (F + \{\overline{c}\}) \cup \{\overline{c}\} $ and pick $b
-  \in S$ and $H \in \Pf(\bbN)$ such that for all $g \in G$, $x(b,H,g)
-  \in A$.
-  Put $a = x(b, H, \overline{c})$, then $a \in A$ and for all $f \in
-  F$, we have $a + \sum_{t \in H}f(t) = b + \sum_{t \in H} (f(t) +
-  \overline{c}(t)) \in A$.
+  \in S$ and $H \in \Pf(\bbN)$ such that for all $g \in G$, $b+\sum_{t \in H} g(t) \in A$.
+  Put $a = b + \sum_{t \in H} \overline{c}(t)$, then $a \in A$ and for all $f \in
+  F$, we have $a + \sum_{t \in H}f(t) = b + \sum_{t \in H} 
+\bigl(f(t) +
+  \overline{c}(t)\bigr) \in A$.
 
-  ($\Leftarrow$) Obvious.
+  ($\Leftarrow$) By assumption $A$ satisfies the sufficiency condition of Lemma \ref{thm:insert-correct}.
+  Therefore $A$ is a $J$-set.
 \end{proof}
 
 \begin{prop}
+  \label{prop:many-translates}
   Let $(S, +)$ be a commutative semigroup and $A \subseteq S$.
   Then $A$ is a $J$-set in $S$ if and only if for every $F \in
   \Pf(\calT)$ there exist a sequence $\la a_n \ra_{n=1}^\infty$ in $S$
@@ -136,8 +137,7 @@ assumptions on $S$.
   \begin{itemize}
     \item[(1)] For all $n \in \bbN$, $\max H_n < \min H_{n+1}$. 
 
-    \item[(2)] For all $f \in F$ and for every $n \in \bbN$, $x(a_n,
-      H_n, f) \in A$.
+    \item[(2)] For all $f \in F$ and for every $n \in \bbN$, $a_n + \sum_{t \in H_n} f(t) \in A$.
   \end{itemize}
 \end{prop}
 \begin{proof}
@@ -147,27 +147,27 @@ assumptions on $S$.
   \ra_{n=1}^\infty$ and $\la H_n \ra_{n=1}^\infty$ such that following
   hypotheses are satisfied for $m\in \bbN$.
   \begin{itemize}
-    \item[(i)] For all $k < m$, $\max H_k < \min_{k+1}$.
-    \item[(ii)] For all $f \in F$ and for all $k \le n$, $x(a_k, H_k,
-    f) \in A$.
+    \item[(i)] For all $k < m$, $\max H_k < \min H_{k+1}$.
+    \item[(ii)] For all $f \in F$ and for all $k \le m$, $a_k + \sum_{t \in  H_k} f(t) \in A$.
   \end{itemize}
-  
-  Since $A$ is a $J$-set, pick $a_1 \in S$ and $H_1 \in \Pf(\bbN)$
-  such that for all $f \in F$, $x(a_1, H_1, f) \in A$. 
-  Clearly our hypotheses (i) and (ii) are satisfied for this choice.
+
+  Let $m \in \bbN$.
+  First assume that $m = 1$.
+  Since $A$ is a $J$-set by the necessity condition of Lemma \ref{thm:insert-correct} pick $a_1 \in S$ and $H_1 \in \Pf(\bbN)$ such that for all $f \in F$, $a_1 + \sum_{t \in H_1} f(t) \in A$. 
+  Clearly our hypotheses (i) and (ii) are satisfied for these choices.
   Now let $m > 1$ and assume $\la a_n \ra_{n=1}^{m-1}$ and $\la H_n
   \ra_{n=1}^{m-1}$ have been chosen to satisfy hypotheses (i) and
   (ii).
   Put $L = \max H_{m-1} + 1$. 
-  Pick $a_m \in S$, and $H_m \in \Pf(\bbN)$ such that $\min H_m \ge L$
-  and for all $f \in F$, $x(a_m, H_m, f) \in A$.
+  Again, by the necessity condition of Lemma \ref{thm:insert-correct} and Lemma \ref{thm:insert-correct} pick $a_m \in S$, and $H_m \in \Pf(\bbN)$ such that $\min H_m \ge L$ and for all $f \in F$, $a_m + \sum_{t \in H_m} f(t) \in A$.
   Again, a simple check shows that these choices are consistent with
   our hypotheses (i) and (ii).
 
-  ($\Leftarrow$) Obvious.
+  ($\Leftarrow$) Since $A$ satisfies the sufficiency condition of Lemma \ref{thm:insert-correct}, we have that $A$ is a $J$-set. 
 \end{proof}
 
 \begin{prop}
+  \label{prop:jsets-lift}
   Let $(S, +)$ be a commutative semigroup, and let $T \subseteq S$
   be a subsemigroup which is also a $J$-set in $S$. 
   If $A \subseteq T$ is a $J$-set in $T$, then $A$ is a $J$-set in $S$.
@@ -176,21 +176,20 @@ assumptions on $S$.
   Let $F \in \Pf\bigl(\calT(S)\bigr)$.
   Since $T$ is a $J$-set in $S$, pick sequences $\la a_n
   \ra_{n=1}^\infty$ in $S$ and $\la H_n \ra_{n=1}^\infty$ in
-  $\Pf(\bbN)$ as guaranteed by the above Proposition such that for
-  all $f \in F$ and $n \in \bbN$, $x(a_n, H_n, f) \in T$.
-  For each $f \in F$, define $g_f \in \calT(T)$ by $g_f(n) = x(a_n,
-  H_n, f)$. 
-  Since $A$ is a $J$-set in $T$, pick $a \in T$, and $H \in
-  \Pf(\bbN)$ such that for all $f \in F$, $x(a, H, g_f) \in A$. 
+  $\Pf(\bbN)$ as guaranteed by Proposition \ref{prop:many-translates}.
+
+  For each $f \in F$, define $g_f \in \calT(T)$ by $g_f(n) = a_n + \sum_{t \in H_n} f(t)$. 
+  Since $A$ is a $J$-set in $T$ by the necessity condition of Lemma \ref{thm:insert-correct}, pick $a \in T$, and $H \in
+  \Pf(\bbN)$ such that for all $f \in F$, $a + \sum_{t \in H} g_f(t) \in A$. 
   Put $G = \bigcup_{t \in H} H_t$ and $b = a + \sum_{t \in H} a_t$. 
   Then for all $f \in F$ we have
   \begin{align*}
     b + \sum_{t \in G} f(t) &= a + \sum_{t \in H} a_t + \sum_{s \in
       \bigcup_{t \in H} H_t} f(s), \\
     &= a + \sum_{s \in H}(a_s + \sum_{t \in H_s} f(t)), \\
-    &= a + \sum_{s \in H} g_f(s) = x(a, H, g_f).
+    &= a + \sum_{s \in H} g_f(s) \in A.
   \end{align*}
-  Hence it follows that $A$ is a $J$-set in $S$. 
+  Hence by the sufficiency condition of Lemma \ref{thm:insert-correct} it follows that $A$ is a $J$-set in $S$. 
 \end{proof}
 
 \begin{thm}
@@ -198,47 +197,53 @@ assumptions on $S$.
   subsemigroup.
   The following statements are equivalent. 
   \begin{itemize}
-    \item[(a)] $J(\beta T) = \beta T \cap J(\beta S)$.
-    \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
+    \item[(a)] $J(T) = \beta T \cap J(S)$.
+    \item[(b)] $\beta T \cap J(S)$ is nonempty.
     \item[(c)] $T$ is a $J$-set in $S$.
   \end{itemize}
 \end{thm}
 \begin{proof}
-  (\mbox{a $\Rightarrow$ b})
-  $J(T) \ne \emptyset$ by \mbox{$\la$citation$\ra$}.
+  \textsl{(a) $\Rightarrow$ (b)}.
+  $J(T) \ne \emptyset$ by Theorem \ref{thm:insert-correct}
 
-  (\mbox{b $\Rightarrow$ c})
-  Since $J(S)$ is closed by \mbox{$\la$citation$\ra$} and by the
-  definition of $J(S)$ \mbox{$\la$citation$\ra$}, this follows.
+  \textsl{(b) $\Rightarrow$ (c)}.
+  Since $J(S)$ is closed by \ref{thm:insert-correct} and by \ref{thm:insert-correct}. 
 
-  (\mbox{c $\Rightarrow$ a})
-  ($\subseteq$) 
+  \textsl{(c) $\Rightarrow$ (a)}.
   Let $p \in J(T)$.
   Let $A \in p$ and $F \in \Pf\bigl(\calT(S)\bigr)$.
-  Since $A$ is a $J$-set in $T$ and $T$ is a $J$-set in $S$, from our
-  above proposition, we have that $A$ is a $J$-set in $T$. 
-  Hence $p \in \beta T \cap J(\beta S)$.
+  Since $A$ is a $J$-set in $T$ and $T$ is a $J$-set in $S$, by 
+  Proposition \ref{prop:jsets-lift}, we have that $A$ is a $J$-set in $S$. 
+  Hence $p \in \beta T \cap J(S)$.
 
-  ($\supseteq$)
-  Let $p \in \beta T \cap J(S)$ and $A \in p$. 
+
+  Now let $p \in \beta T \cap J(S)$ and $A \in p$. 
   Since $T \in p$, we have $A \cap T \in p$.
   Therefore we may assume that $A \subseteq T$.
   Let $F \in \Pf\bigl(\calT(T)\bigr)$.
   Since $F \in \Pf\bigl(\calT(S)\bigr)$ and $A$ is a $J$-set in $S$,
-  by the above proposition we may pick $a \in A$ and $H \in \Pf(\bbN)$
-  such that for all $f \in F$, $x(a, H, f) \in A$. 
+  by Proposition \ref{prop:trans-inside} we may pick $a \in A$ and $H \in \Pf(\bbN)$
+  such that for all $f \in F$, $a + \sum_{t \in H} f(t) \in A$. 
   Since $a \in A \subseteq T$, we have shown that $A$ is a $J$-set in
   $T$, hence $p \in J(T)$. 
 \end{proof}
 
 \section{Arbitrary Semigroups}
-Our first goal shall be to develop a generalization of the above
-Proposition. 
-However, given the definition of a $J$-set we will need the following
-technical lemmas.
+Our first goal shall be to develop a generalization of
+Proposition \ref{prop:many-translates}. 
+However, given the added complexity of the definition of a $J$-set in general semigroups we will need the following technical rewriting type  lemmas.
 
 \begin{lem}
   \label{lem:prodrewrt}
+  Let $(S, \cdot)$ be a semigroup, $F \in \Pf(\calT)$, $\la m_k \ra_{k=1}^\infty$ a sequence in $\bbN$, $\la a_k \ra_{k=1}^\infty \in \bigtimes_{k=1}^\infty S^{m(k)+1}$, and $\tau \in \bigtimes_{k=1}^\infty \calJ_{m_k}$ with $\tau(k)(m_k) < \tau(k+1)(1)$ for every positive integer $k$.
+  For each $f \in F$ define $g_f \in \calT$ by $g_f(k) = x(m_k, a_k, \tau(k), f)$.
+
+  If $G \in \Pf(\bbN)$ and $n = \sum_{k \in G} m_k$, then there exists $c \in S^{n+1}$ and $t \in \calJ_n$ such that $t(n) = \tau(\max G)\bigl( m_{\max G}\bigr)$ and such that for every $f \in F$, 
+  \[
+    \textstyle
+    \prod_{k \in G} g_f(k) = x(n, c, t, f).
+  \]
+  
   Let $(S, \cdot)$ be  a semigroup, $F \in \Pf(\calT)$, $\la m(k)
   \ra_{k=1}^\infty$ a sequence in $\bbN$, $\la a_k \ra_{k=1}^\infty
   \in \bigtimes_{k=1}^\infty S^{m(k)+1}$, and $\la H_k
@@ -423,6 +428,28 @@ technical lemmas.
     \Bigr) e(m+1)b(l+1), \\
     &= x(p, d, D, f) b(l) x(m, e, E, f) b(l+1) = x(l, b, G, g_f).
   \end{align*}
+\end{proof}
+\begin{thm}
+  Let $(S, \cdot)$ be a commutative semigroup and let $T \subseteq S$ be a  subsemigroup. 
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $J(T) \subseteq \beta T \cap J(S)$.
+    \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
+    \item[(c)] $T$ is a $J$-set in $S$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  \textsl{(a) $\Rightarrow$ (b)}.
+  By Theorem \ref{thm:insert-correct}, $J(T)$ is nonempty.
+
+  \textsl{(b) $\Rightarrow$ (c)}.
+  Let $p \in \beta T \cap J(S)$, then $T \in p$ and so $T$ is a $J$-set in $S$. 
+  
+  \textsl{(c) $\Rightarrow$ (a)}.
+  Let $p \in J(T)$, $A \in p$, and let $F \in \Pf\bigl(\calT(S) \bigr)$. 
+  
+\end{proof}
+
 
 \section{An Example}
  \begin{defn}
@@ -638,8 +665,6 @@ Theorem will follow directly.
 From this result we immediately get Theorem \ref{thm:main} 
 as a corollary. 
 
-
-\end{proof}
 
 \begin{lem}
   Let $(S, \cdot)$ be a semigroup, $A \subseteq S$ a $J$-set, and $F
