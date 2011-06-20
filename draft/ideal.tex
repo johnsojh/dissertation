@@ -182,7 +182,7 @@ Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to b
 \end{proof}
 
 \begin{thm}
-  Let $(S,+)$ be a commutative semigroup, and let $T \subseteq S$ be a semigroup.
+  Let $(S,+)$ be a commutative semigroup, and let $T \subseteq S$ be a subsemigroup.
   If $T$ is a $J$-set in $S$, then $J(T) = \beta T \cap J(S)$.
 \end{thm}
 \begin{proof}
@@ -199,7 +199,248 @@ Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to b
   Since $a \in A \subseteq T$, it follows from the necessity condition of Lemma \ref{lem:comm-jsets} that $A$ is a $J$-set in $T$.
   Hence $p \in J(T)$.
 \end{proof}
+
 \section{General Semigroup Case}
+To handle the general semigroup case we will prove versions of Lemma \ref{lem:comm-many} and \ref{lem:comm-lift} that use the usual definition of a $J$-set. 
+Unfortunately, in the next section we shall see that Lemma \ref{lem:comm-trans} is not valid in every noncommutative semigroup. 
+In order to prove a `general' version of Lemma \ref{lem:comm-many} we shall use the following technical `rewriting' type lemma.
+
+Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$, and $f \in \calT$, we put $x(n, a, t, f) = \Bigl( \prod_{i=1}^n \bigl( a(i) f(t_i) \bigr) \Bigr) a(n+1)$. 
+
+\begin{lem}
+  Let $(S, \cdot)$ be a semigroup, $F \in \Pf(\calT)$, $\la m_k \ra_{k=1}^\infty$ a sequence of positive integers, $\la a_k \ra_{k=1}^\infty \in \bigtimes_{k=1}^\infty S^{m_k + 1}$, and $\tau \in \bigtimes_{k=1}^\infty \calJ_{m_k}$ with $\tau(k)(m_k) < \tau(k+1)(1)$ for every positive integer $k$.
+  For each $f \in F$ define $g_f \in \calT$ by $g_f(k) = x(m_k, a_k, \tau(k), f)$.
+
+  If $G \in \Pf(\bbN)$ and $n = \sum_{k \in G} m_k$, then there exist $c \in S^{n+1}$ and $t \in \calJ_n$ such that $t(n) = \tau(\max G)(m_{\max G})$ and $\prod_{k \in G} g_f(k) = x(n, c, t, f)$ for every $f \in F$.
+\end{lem}
+\begin{proof}
+  We prove this result by induction on the size of $G$.
+  First suppose $|G| = 1$, then $G = \{k\}$ for some positive integer $k$.
+  For $f \in F$, by definition of $g_f$ we directly have that $\prod_{k \in G} g_f(k) = x(m_k, a_k, \tau(k), f) = x(n, a, t, f)$ with $a = a_k$ and $t = \tau(k)$.
+
+  Now assume that $|G| > 1$ and suppose that our implication is true for all nonempty finite subsets of $\bbN$ with size less than $|G|$.
+  Put $K = G \setminus \{\max G\}$, and for notational convenience, put $s = \max G$.
+  By our induction hypothesis, with $\ell = \sum_{k \in K} m_k$, pick $d \in S^{\ell+1}$ and $u \in \calJ_\ell$ as guaranteed.
+  Then for $f \in F$
+  \begin{align*}
+    \textstyle
+    \prod_{k \in G} g_f(k) &= \textstyle \prod_{k \in K} g_f(k) g_f(s), \\
+                         &= x(\ell, d, u, f) g_f(s), \\
+                         &= x(\ell, d, u, f) x(m_s, a_s, \tau(s), f).
+  \end{align*}
+  Put $n = \sum_{k \in G} m_k$ and define $c \in S^{n+1}$ by 
+  \[
+    c(j) =
+    \begin{cases}
+      d(j) & \mbox{if $j \in \{1, 2, \ldots, \ell\}$,} \\
+      d(\ell+1)a_s(1) & \mbox{if $j = \ell+1$,} \\
+      a_s(j - \ell) & \mbox{if $j \in \{\ell+2, \ell+3, \ldots, \ell+m_s+1\}$.}
+    \end{cases}
+  \]
+  
+  By assumption on $\tau$ and our induction hypothesis, $\tau(\max K)(m_{\max G}) < \tau(s)(1)$ and $u(\ell) = \tau(\max K)(m_{\max G})$
+  Therefore we can define $t \in \calJ_n$ by
+  \[
+    t_j =
+    \begin{cases}
+      u(j) & \mbox{if $j \in \{1, 2, \ldots, \ell\}$,} \\
+      \tau(s)(j-\ell) & \mbox{if $j \in \{\ell+1, \ell+2, \ldots, n\}$.}
+    \end{cases}
+  \]
+  Hence it follows that $\prod_{k \in G} g_f(k) = x(n, c, t, f)$ for all $f \in F$.
+\end{proof}
+
+\begin{lem}
+  \label{lem:many}
+  Let $(S, \cdot)$ be a semigroup and let $A \subseteq S$.
+  Then $A$ is a $J$-set in $S$ if and only if for every $F \in \Pf(\calT)$, there exist $\la m_k \ra_{k=1}^\infty$ a sequence of positive integers, $\la a_k \ra_{k=1}^\infty \in \bigtimes_{k=1}^\infty S^{m_k+1}$, and $\tau \in \bigtimes_{k=1}^\infty \calJ_{m_k}$ with $\tau(k)(m_k) < \tau(k+1)(1)$ for every positive integer $k$ such that for every positive integer $k$ and for all $f \in F$, $x(m_k, a_k, \tau(k), f) \in A$.
+\end{lem}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $F \in \Pf(\calT)$.
+  We shall recursively construct our sequences $\la a_k \ra_{k=1}^\infty$, $\la m_k \ra_{k=1}^\infty$, and $\tau$ such that the following hypotheses are satisfied for all positive integers $n$. 
+  \begin{itemize}
+    \item[(i)]
+      $\tau(k)(m_k) < \tau(k+1)(1)$ for every $k \in \{1, 2, \ldots, n-1\}$.
+
+    \item[(ii)]
+      For every $k \in \{1, 2, \ldots, n\}$ and all $f \in F$, $x(m_k, a_k, \tau(k), f) \in A$.
+  \end{itemize}
+  
+  Let $n$ be a positive integer.
+  First suppose that $n = 1$. 
+  Since $A$ is a $J$-set, pick $m_1 \in \bbN$, $a_1 \in S^{m_1+1}$, and $\tau(1) \in \calJ_{m_1}$ such that for all $f \in F$, $x(m_1, a_1, \tau(1), f) \in A$. 
+  Hypothesis (i) is satisfied vacuously, and hypothesis (ii) is satisfied by our choices of $m_1$, $a_1$, and $\tau(1)$. 
+
+  Now assume that $n > 1$ and that we have pick our sequences $\la m_k \ra_{k=1}^{n-1}$, $\la a_k \ra_{k=1}^{n-1}$, and $\tau \in \bigtimes_{i=1}^{n-1} \calJ_{m_k}$ to satisfy hypotheses (i) and (ii). 
+  By Lemma \ref{lem:jset-start} pick $m_n \in \bbN$, $a_n \in S^{m_n+1}$, and $\tau(n) \in \calJ_{m_n}$ with $\tau(n)(1) > \tau(n-1)(m_{n-1})$ and $x(m_n, a_n, \tau(n), f) \in A$ for all $f \in F$. 
+  Then by construction of $\tau(n)$ hypothesis (i) is satisfied, and by our choice of $m_n$, $a_n$, and $\tau(n)$, hypothesis (ii) is satisfied. 
+
+  Hence the conclusion follows. 
+
+  ($\Leftarrow$)
+  $A$ satisfies the definition of a $J$-set.
+\end{proof}
+
+\begin{lem}
+  \label{lem:lift}
+  Let $(S, \cdot)$ be a semigroup, and let $T \subseteq S$ be a subsemigroup which is also a $J$-set in $S$.
+  If $A \subseteq T$ is a $J$-set in $T$, then $A$ is a $J$-set in $S$.
+\end{lem}
+\begin{proof}
+  Let $F \in \Pf\bigl( \calT(S) \bigr)$.
+  Since $T$ is a $J$-set in $S$, we may pick sequences $\la m_k \ra_{k=1}^\infty$, $\la a_k \ra_{k=1}^\infty$, and $\tau$ as guaranteed by Lemma \ref{lem:many}.
+
+  For each $f \in F$ define $g_f \in \calT(T)$ by $g_f(k) = x(m_k, a_k, \tau(k), f)$. 
+  Since $A$ is a $J$-set in $T$, we may pick a positive integer $n$, $b \in T^{n+1}$, and $u \in \calJ_n$ such that for all $f \in F$, $x(n, b, u, g_f) \in A$.
+  We claim that there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
+
+  Put $m = \sum_{i=1}^n m_{u_i}$. 
+  Define $a \in S^{m+1}$ by
+  \[
+    a(j) = 
+    \begin{cases}
+      b(1)a_{u_1}(1) & \mbox{if $j = 1$,} 
+      % Modify the first lemma in this section to work out this case.
+    \end{cases}
+  \]
+\end{proof}
+
+\begin{thm}
+  \label{thm:comb-ideal}
+  Let $(S, +)$ be a semigroup, and let $T \subseteq S$ be a subsemigroup.
+  If $T$ is a $J$-set in $S$, then $J(T) \subseteq \beta T \cap J(S)$.
+\end{thm}
+\begin{proof}
+  Let $p \in J(T)$.
+  Then $T \in p$ since $T$ is a $J$-set in itself.
+  If $A \in p$, then since $A$ is a $J$-set in $T$ and $T$ is a $J$-set in $S$, we have, by Lemma \ref{lem:lift}, that $A$ is a $J$-set in $S$ too.
+  Hence $p \in \beta T \cap J(S)$. 
+\end{proof}
 
 \section{A Free Semigroup Example}
 \label{sec:example}
+
+We now produce an example showing that the conclusion of Theorem \ref{thm:comb-ideal} cannot be improved to $J(T) = \beta T \cap J(S)$.
+In this section we let $S$ be the free semigroup on two generators $a$ and $b$.
+
+\begin{lem}
+  \label{lem:seqs}
+  Enumerate $\Pf(S)$ as $\la A_n \ra_{n=1}^\infty$.
+  There exist two sequences $\la v_n \ra_{n=1}^\infty$ and $\la w_n \ra_{n=1}^\infty$ in $S$ satisfying the following three conditions.
+  \begin{itemize}
+    \item[(1)]
+      $\{\, v_n : n \in \bbN \,\} \subseteq \{\, (ab)^t : t \in \bbN \,\}$ and $\{\, w_n : n \in \bbN \,\} \subseteq \{\, b^t : t \in \bbN \,\}$.
+
+    \item[(2)]
+      For each positive integer $n$, the length $v_n$ and $w_n$ is longer than every word in $A_n$.
+
+    \item[(3)]
+      For each positive integer $n > 1$, for every $k \in \{1, 2, \ldots, n-1\}$, and for all $x \in A_k$, the length of $v_n$ and $w_n$ is longer than the length of $v_kxw_k$.
+  \end{itemize}
+\end{lem}
+\begin{proof}
+  % INSERT PROOF
+\end{proof}
+
+\begin{defn}
+  Pick $\la v_n \ra_{n=1}^\infty$ and $\la v_n \ra_{n=1}^\infty$ as guaranteed by Lemma \ref{lem:seqs}.
+  Put $A = \bigcup_{n=1}^\infty v_nA_nw_n$.
+\end{defn}
+
+\begin{lem}
+  $A$ is a $J$-set in $S$. 
+\end{lem}
+\begin{proof}
+  Let $F \in \Pf(\calT)$.
+  Pick $t \in \bbN$ such that $\{\, f(t) : f \in F\,\} \in \Pf(S)$.
+  Pick $n \in \bbN$ such that $A_n = \{\, f(t) : f \in F\,\}$. 
+  Then for every $f \in F$, $v_nf(t)w_n \in A$. 
+\end{proof}
+
+Now that we have our $J$-set, we will use it form our required subsemigroup of $S$.
+
+\begin{defn}
+  Put 
+  \[
+    T = \bigr\{\, u_1u_2\cdots u_s : \mbox{$s \in \bbN$ and for every $i \in \{1, 2, \ldots, s\}$, $u_i \in A \cup\{a\}$} \,\bigr\}.
+  \]
+\end{defn}
+
+\begin{lem}
+  $T$ is a proper subsemigroup of $S$ which is also a $J$-set in $S$ and with $A \subseteq T$.
+\end{lem}
+\begin{proof}
+  The fact that $T$ is a subsemigroup of $S$ with $A \subseteq T$ follows directly from the definition of $T$.
+  Since $A \subseteq T$ and $A$ is a $J$-set in $S$, we have that $T$ is a $J$-set in $S$ too.
+  To see that $T \subsetneq S$ it suffices to show that $b \not\in T$.
+  Let $\ell(x)$, for $x \in S$, denote the length of the word $x$.
+  Observe that $\ell(x) \ge 3$ for every $x \in A$ and so $b \not\in A$.
+  It follows that if $x \in T$ with $\ell(x) = 1$, then $x = a$.
+  Therefore $b \not\in T$. 
+\end{proof}
+
+\begin{thm}
+  $A$ is a $J$-set in $S$ with the property that there exists $F \in \Pf\bigl( \calT(T) \bigr)$ such that for all $m \in \bbN$, for each $c \in S^{m+1}$, and for any $t \in \calJ_m$, there exists $f \in F$ such that if $c(1) \in T$, then $x(m, c, t, f) \not\in A$.
+\end{thm}
+\begin{proof}
+  Put $F = \{\overline{a}\}$, and let $m \in \bbN$, $c \in S^{m+1}$, and $t \in \calJ_m$. 
+  Then
+  \begin{align*}
+    x(m, c, t, \overline{a}) &= c(1)\overline{a}(t_1)c(2) \overline{a}(t_2)c(3) \cdots c(m) \overline{a}(t_m)c(m+1), \\
+                  &= c(1)ac(2)ac(3) \cdots c(m)ac(m+1).
+  \end{align*}
+  
+  Suppose $c(1) \in T$ and $x(m, c, t, \overline{a}) \in A$. 
+  Since $c(1) \in T$ there exists a positive integer $s$ such that $c(1) = u_1u_2 \cdots u_s$ with $u_i \in A \cup \{a\}$ for all $i \in \{1, 2, \ldots, s\}$.
+  Since $x(m, c, t, \overline{a}) \in A$, pick a positive integer $k$ such that $x(m, c, t, \overline{a}) \in v_kA_kw_k$.
+  Pick $y \in A_k$ such that $x(m, c, t, \overline{a}) = v_kyw_k$.
+  We shall consider two cases and three sub-cases. 
+  
+  \textbf{Case 1 ($u_1 = a$).}
+  Observe that by condition (1) of Lemma \ref{lem:seqs} the word $v_kyw_k$ starts with the substring $ab$.
+
+  If $s = 1$, then the word $x(m, c, t, \overline{a})$ starts with the substring $aa$, a contradiction.
+
+  If $s > 1$, then regardless of whether $u_2 \in A$ or $u_2 = a$, the word $x(m, c, t, \overline{a})$ stills starts with the string $aa$, a contradiction.
+  (By construction, that is, by condition (1) of Lemma \ref{lem:seqs} words in $A$ start with the letter $a$.)
+
+  \textbf{Case 2 ($u_1 \in A$).}
+  For this case, we consider three sub-cases. 
+  Pick a positive integer $n$ such that $u_1 \in v_n A_n w_n$ and pick $x \in A_n$ such that $u_1 = v_n x w_n$. 
+  Let $\ell(w)$ denote the length of a word $w$ in $S$.
+
+  \textbf{Sub-case I ($k < n$).}
+  Since $k < n$, by condition (3) of Lemma \ref{lem:seqs} $v_n$ is longer than $v_kxw_k$.
+  Then $\ell\bigl( c(1) \bigr) \ge \ell(u_1) > \ell(v_kyw_k)$, but this is a contradiction since $c(1)$ is a substring of $v_kyw_k$.
+
+  \textbf{Sub-case II ($k = n$).}
+  We have that
+  \begin{align*}
+    x(m, c, t, \overline{a}) &= c(1)ac(2)ac(3) \cdots c(m)ac(m+1), \\
+                             &= v_kxw_ku_2 \cdots u_sac(2)ac(3) \cdots c(m)ac(m+1).
+  \end{align*}
+  Therefore $yw = xw_ku_2 \cdots u_sac(2)ac(3) \cdots c(m)ac(m+1)$. 
+  The substring $ac(m+1)$ starts with the letter $a$ and so it follows from condition (1) of Lemma \ref{lem:seqs} that $w_k$ is a substring of $c(m+1)$.
+  Pick $v \in S \cup \{\emptyset\}$ such that $c(m+1) = vw_k$. 
+  Therefore 
+  \[
+    y = xw_ku_2 \cdots u_sac(2)ac(3) \cdots c(m)av.
+  \]
+  Since $w_k$ is a proper substring of $y$ we have that $\ell(y) > \ell(w_k)$.
+  However, by condition (2) of Lemma \ref{lem:seqs} we have that $\ell(w_k) > \ell(y)$, a contradiction. 
+
+  \textbf{Sub-case III ($k > n$).}
+  Put $t = \ell(v_nx)$.
+  By condition (3) of Lemma \ref{lem:seqs}, $\ell(v_k) > t + \ell(w_n) \ge t+1$.
+  In fact, by condition (2) of Lemma \ref{lem:seqs} we can sharpen this last inequality to $t + \ell(w_n) \ge t+2$.
+  (Every word in $A_n$ has length at least one and by condition (2) of Lemma \ref{lem:seqs}, $w_n$ is longer than every word in $A_n$.)
+  Therefore the letter in position $t+1$ and $t+2$ of $v_nxw_n$ is $b$. 
+
+  Now by condition (3) of Lemma \ref{lem:seqs}, $\ell(v_k) > \ell(v_nxw_n)$, and by condition (1) of Lemma \ref{lem:seqs} we have that the $t+1$th and $t+2$th letter of $v_k$ is $a$. 
+  Since $x(m, c, t, \overline{a}) = v_kyw_k = v_nxw_nu_2\cdots u_sc(2)ac(3)\cdots c(m)ac(m+1)$, this is a contradiction.
+
+Since we have exhausted all of our cases and sub-cases, the conclusion follows.
+\end{proof}
+
+It follows from this theorem that we have a $A$ $J$-set in $S$ contained $T$, a subsemigroup of $S$, that is also a $J$-set in $S$, such that $A$ is not a $J$-set in $T$.
