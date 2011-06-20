@@ -1,0 +1,675 @@
+% Draft of Ideals and Subsemigroup chapter
+
+\documentclass[12pt]{article}
+
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{endnotes}
+% \usepackage[doublespacing]{setspace}
+
+\newtheoremstyle{plain}{3mm}{3mm}{\slshape}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{CSTv1}{Original Central Sets Theorem}
+\newtheorem{vdw}[thm]{Van der Waerden's Theorem}
+\newtheorem{FST}[thm]{Hindman's Theorem}
+\newtheorem{MBR}[thm]{Multiple Birkhoff Recurrence Theorem}
+\newtheorem{recur}[thm]{Recurrence Theorem}
+\newtheorem{OCST}[thm]{Furstenburg's Original Central Sets Theorem}
+\newtheorem{cst}[thm]{Central Sets Theorem}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem{ques}[thm]{Question}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{fact}[thm]{Fact}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{example}[thm]{Example}
+\newtheorem{rmk}[thm]{Remark}
+
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\newcommand{\dom}{\mathrm{dom}}
+
+\newcommand{\setfunc}[2]{\hbox{${}^{\hbox{$#1$}}\hskip -1 pt #2$}}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+\newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
+
+
+\begin{document}
+\section{Introduction}
+Our main motivating factor has been to find certain analogues of
+theorems that involve the smallest ideal.
+The reason for this line of research is that there are many nice
+algebraic and combinatorial results that utilize the smallest ideal. 
+(Arguably, through these results, the smallest ideal is perhaps the
+best understood ideal in the Stone-\v{C}ech compactification.)
+It is then natural to wonder how much of this ``niceness'' can be
+imported to other ideals.
+
+In particular, we shall prove an analogue to the following theorem. 
+\begin{thm}
+  Let $(S,\cdot)$ be a semigroup and let $T \subseteq S$ be a
+  subsemigroup. 
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $K(\beta T) = \beta T \cap K(\beta S)$.
+    \item[(b)] $\beta T \cap K(\beta S)$ is nonempty.
+    \item[(c)] $T$ is piecewise syndetic in $S$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  Using \cite[Theorems 1.65 and 4.40]{Hindman:1998fk}, we have that
+  \mbox{(a) $\iff$ (b)} and \mbox{(b) $\iff$ (c)}, respectively. 
+\end{proof}
+
+In this chapter we shall prove the following two analogue theorems.
+\begin{thm}
+  Let $(S, +)$ be a commutative semigroup and let $T \subseteq S$ be a
+  subsemigroup. 
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $J(\beta T) = \beta T \cap J(\beta S)$.
+    \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
+    \item[(c)] $T$ is a $J$-set in $S$.
+  \end{itemize}
+\end{thm}
+
+\begin{thm}
+  Let $(S, \cdot)$ be a commutative semigroup and let $T \subseteq S$ be a
+  subsemigroup. 
+  The following statements are equivalent.
+  \begin{itemize}
+    \item[(a)] $J(\beta T) \subseteq \beta T \cap J(\beta S)$.
+    \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
+    \item[(c)] $T$ is a $J$-set in $S$.
+  \end{itemize}
+\end{thm}
+
+We shall also show that statement (a) in this theorem cannot be
+strengthen to ``$J(T) = \beta T \cap J(S)$'' without some additional
+assumptions on $S$. 
+
+\section{Commutative Semigroups}
+\begin{prop}
+  Let $(S, +)$ be a commutative semigroup and $A \subseteq S$. 
+  Then $A$ is a $J$-set in $S$ if and only if for every $F \in
+  \Pf(\calT)$, there exist $a \in A$ and $H \in \Pf(\bbN)$ such that
+  for all $f \in F$, $x(a, H, f) \in A$. 
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $F \in \Pf(\calT)$ and let $\overline{c} \in \calT$ be a
+  constant sequence.
+  Put $G = (F + \{\overline{c}\}) \cup \{\overline{c}\} $ and pick $b
+  \in S$ and $H \in \Pf(\bbN)$ such that for all $g \in G$, $x(b,H,g)
+  \in A$.
+  Put $a = x(b, H, \overline{c})$, then $a \in A$ and for all $f \in
+  F$, we have $a + \sum_{t \in H}f(t) = b + \sum_{t \in H} (f(t) +
+  \overline{c}(t)) \in A$.
+
+  ($\Leftarrow$) Obvious.
+\end{proof}
+
+\begin{prop}
+  Let $(S, +)$ be a commutative semigroup and $A \subseteq S$.
+  Then $A$ is a $J$-set in $S$ if and only if for every $F \in
+  \Pf(\calT)$ there exist a sequence $\la a_n \ra_{n=1}^\infty$ in $S$
+  and a sequence $\la H_n \ra_{n=1}^\infty$ in $\Pf(\bbN)$ with the
+  following properties:
+  \begin{itemize}
+    \item[(1)] For all $n \in \bbN$, $\max H_n < \min H_{n+1}$. 
+
+    \item[(2)] For all $f \in F$ and for every $n \in \bbN$, $x(a_n,
+      H_n, f) \in A$.
+  \end{itemize}
+\end{prop}
+\begin{proof}
+  ($\Rightarrow$)
+  Let $F \in \Pf(\calT)$.
+  We shall recursively construct our sequences $\la a_n
+  \ra_{n=1}^\infty$ and $\la H_n \ra_{n=1}^\infty$ such that following
+  hypotheses are satisfied for $m\in \bbN$.
+  \begin{itemize}
+    \item[(i)] For all $k < m$, $\max H_k < \min_{k+1}$.
+    \item[(ii)] For all $f \in F$ and for all $k \le n$, $x(a_k, H_k,
+    f) \in A$.
+  \end{itemize}
+  
+  Since $A$ is a $J$-set, pick $a_1 \in S$ and $H_1 \in \Pf(\bbN)$
+  such that for all $f \in F$, $x(a_1, H_1, f) \in A$. 
+  Clearly our hypotheses (i) and (ii) are satisfied for this choice.
+  Now let $m > 1$ and assume $\la a_n \ra_{n=1}^{m-1}$ and $\la H_n
+  \ra_{n=1}^{m-1}$ have been chosen to satisfy hypotheses (i) and
+  (ii).
+  Put $L = \max H_{m-1} + 1$. 
+  Pick $a_m \in S$, and $H_m \in \Pf(\bbN)$ such that $\min H_m \ge L$
+  and for all $f \in F$, $x(a_m, H_m, f) \in A$.
+  Again, a simple check shows that these choices are consistent with
+  our hypotheses (i) and (ii).
+
+  ($\Leftarrow$) Obvious.
+\end{proof}
+
+\begin{prop}
+  Let $(S, +)$ be a commutative semigroup, and let $T \subseteq S$
+  be a subsemigroup which is also a $J$-set in $S$. 
+  If $A \subseteq T$ is a $J$-set in $T$, then $A$ is a $J$-set in $S$.
+\end{prop}
+\begin{proof}
+  Let $F \in \Pf\bigl(\calT(S)\bigr)$.
+  Since $T$ is a $J$-set in $S$, pick sequences $\la a_n
+  \ra_{n=1}^\infty$ in $S$ and $\la H_n \ra_{n=1}^\infty$ in
+  $\Pf(\bbN)$ as guaranteed by the above Proposition such that for
+  all $f \in F$ and $n \in \bbN$, $x(a_n, H_n, f) \in T$.
+  For each $f \in F$, define $g_f \in \calT(T)$ by $g_f(n) = x(a_n,
+  H_n, f)$. 
+  Since $A$ is a $J$-set in $T$, pick $a \in T$, and $H \in
+  \Pf(\bbN)$ such that for all $f \in F$, $x(a, H, g_f) \in A$. 
+  Put $G = \bigcup_{t \in H} H_t$ and $b = a + \sum_{t \in H} a_t$. 
+  Then for all $f \in F$ we have
+  \begin{align*}
+    b + \sum_{t \in G} f(t) &= a + \sum_{t \in H} a_t + \sum_{s \in
+      \bigcup_{t \in H} H_t} f(s), \\
+    &= a + \sum_{s \in H}(a_s + \sum_{t \in H_s} f(t)), \\
+    &= a + \sum_{s \in H} g_f(s) = x(a, H, g_f).
+  \end{align*}
+  Hence it follows that $A$ is a $J$-set in $S$. 
+\end{proof}
+
+\begin{thm}
+  Let $(S, +)$ be a commutative semigroup and let $T \subseteq S$ be a
+  subsemigroup.
+  The following statements are equivalent. 
+  \begin{itemize}
+    \item[(a)] $J(\beta T) = \beta T \cap J(\beta S)$.
+    \item[(b)] $\beta T \cap J(\beta S)$ is nonempty.
+    \item[(c)] $T$ is a $J$-set in $S$.
+  \end{itemize}
+\end{thm}
+\begin{proof}
+  (\mbox{a $\Rightarrow$ b})
+  $J(T) \ne \emptyset$ by \mbox{$\la$citation$\ra$}.
+
+  (\mbox{b $\Rightarrow$ c})
+  Since $J(S)$ is closed by \mbox{$\la$citation$\ra$} and by the
+  definition of $J(S)$ \mbox{$\la$citation$\ra$}, this follows.
+
+  (\mbox{c $\Rightarrow$ a})
+  ($\subseteq$) 
+  Let $p \in J(T)$.
+  Let $A \in p$ and $F \in \Pf\bigl(\calT(S)\bigr)$.
+  Since $A$ is a $J$-set in $T$ and $T$ is a $J$-set in $S$, from our
+  above proposition, we have that $A$ is a $J$-set in $T$. 
+  Hence $p \in \beta T \cap J(\beta S)$.
+
+  ($\supseteq$)
+  Let $p \in \beta T \cap J(S)$ and $A \in p$. 
+  Since $T \in p$, we have $A \cap T \in p$.
+  Therefore we may assume that $A \subseteq T$.
+  Let $F \in \Pf\bigl(\calT(T)\bigr)$.
+  Since $F \in \Pf\bigl(\calT(S)\bigr)$ and $A$ is a $J$-set in $S$,
+  by the above proposition we may pick $a \in A$ and $H \in \Pf(\bbN)$
+  such that for all $f \in F$, $x(a, H, f) \in A$. 
+  Since $a \in A \subseteq T$, we have shown that $A$ is a $J$-set in
+  $T$, hence $p \in J(T)$. 
+\end{proof}
+
+\section{Arbitrary Semigroups}
+Our first goal shall be to develop a generalization of the above
+Proposition. 
+However, given the definition of a $J$-set we will need the following
+technical lemmas.
+
+\begin{lem}
+  \label{lem:prodrewrt}
+  Let $(S, \cdot)$ be  a semigroup, $F \in \Pf(\calT)$, $\la m(k)
+  \ra_{k=1}^\infty$ a sequence in $\bbN$, $\la a_k \ra_{k=1}^\infty
+  \in \bigtimes_{k=1}^\infty S^{m(k)+1}$, and $\la H_k
+  \ra_{k=1}^\infty \in \bigtimes_{k=1}^\infty \calI_{m(k)}$ with $\max
+  H_k\bigl(m(k)\bigr) < \min H_{k+1}(1)$ for every $k \in \bbN$.
+  For each $f \in F$ define $g_f \in \calT$ by $g_f(k) = x(m(k), a_k,
+  H_k, f)$. 
+
+  If $G \in \Pf(\bbN)$, then, with $n = \sum_{k \in G} m(k)$, there
+  exists $c \in S^{n+1}$ and $D \in \calI_n$ such that $\max D(n) =
+  \max H_{\max G}\bigl(m(\max G)\bigr)$ and for all $f \in F$, 
+  \[
+    \prod_{k \in G} g_f(k) = x(n, c, D, f).
+  \]
+\end{lem}
+\begin{proof}
+  We prove our implication by induction on the size of $G$. 
+  If $|G| = 1$, then $G = \{k\}$ for some $k \in \bbN$.
+  Therefore by definition of $g_f$,
+  \[
+    \prod_{k \in G} g_f(k) = g_f(k) = x(m(k), a_k, H_k, f).
+  \]
+  Hence we may put $c = a_k$ and $D = H_k$.
+
+  Now assume that $|G| > 1$ and our implication is true for all
+  nonempty finite subsets of $\bbN$ with size less than $|G|$. 
+  Put $K = G \setminus \{\max G\}$, and for notation convenience, put $s
+  = \max G$. 
+  By our induction hypothesis, with $l = \sum_{k \in K} m(k)$, pick $d
+  \in S^{l+1}$ and $E \in \calI_l$ as guaranteed. 
+  Then 
+  \begin{align*}
+    \prod_{k \in G} g_f(k) &= \prod_{k \in K} g_f(k) g_f(s), \\
+    &= x(l, d, E, f) g_f(s) \\
+    &= x(l, d, E,f) x(m(s), a_s, H_s, f).
+  \end{align*}
+  Put $n = \sum_{k \in G} m(k)$ and define $c \in S^{n+1}$ by 
+  \[
+    c(j) = 
+    \begin{cases}
+      d(j) & \mbox{if $j \in \{1, 2, \ldots, l\}$,} \\
+      d(l+1)a_s(1) & \mbox{if $j = l+1$,} \\
+      a_s(j-l) & \mbox{if $j \in \{l+2, l+3, \ldots, l+m(s)+ 1\}$.}
+    \end{cases}
+  \]
+  By our induction hypothesis, $\max E(l) = \max H_{\max
+    K}\bigl(m(\max K)\bigr)$.
+  Moreover by definition of $\la H_k \ra_{k=1}^\infty$, $\max H_{\max
+    K}\bigl(m(\max K)\bigr) < \min H_s(1)$. 
+  Therefore we can define $D \in \calI_n$ by
+  \[
+    D(j) = 
+    \begin{cases}
+      E(j) & \mbox{if $j \in \{1, 2, \ldots, l\}$,} \\
+      H_s(j-l) & \mbox{if $j \in \{l+1, l+2, \ldots, l+m(s) \}$.}
+    \end{cases}
+  \]
+  We'll show that $\prod_{k \in G} g_f(k) = x(n, c, D, f)$. 
+  
+  We have that
+  \begin{align*}
+    x(n, c, D, f) &= \prod_{j=1}^n\Bigl( c(j) \prod_{t \in D(J)} f(t)
+  \Bigr) c(n+1), \\
+  &= \prod_{j=1}^l\Bigl( c(j) \prod_{t \in D(J)} f(t) \Bigr) c(l+1)
+  \prod_{t \in D(l+1)} f(t) \Bigl( \prod_{j=l+2}^n c(j) \prod_{t \in D(J)}
+  f(t) \Bigr) c(n+1), \\
+  &= \prod_{j=1}^l\Bigl( c(j) \prod_{t \in D(J)} f(t) \Bigr)
+  d(l+1)a_s(1) \cdot \\
+  &\hspace{5em} \prod_{t \in H_s(1)} f(t) \Bigl( \prod_{j=l+2}^n
+  a_s(j-l) \prod_{t \in H_s(j-l)} f(t) \Bigr) a_s(n+1-l), \\
+  &= x(l, d, E, f) a_s(1) \prod_{t \in H_s(1)} f(t) \Bigl(
+  \prod_{j=l+2}^{l+m(s)} a_s(j-l) \prod_{t \in H_s(j-l)} f(t) \Bigr) a_s(n+1-l), \\
+  &= x(l, d, E, f) \prod_{j=1}^{m(s)}\Bigl( a_s(j) \prod_{t \in H_s(j)} f(t)
+  \Bigr) a_s(m(s)+1), \\
+  &= x(l, d, E, f) x(m(s), a_s, H_s, f) = \prod_{k \in G} g_f(k).
+  \end{align*}
+\end{proof}
+
+\begin{lem}
+  Let $(S, \cdot)$ be  a semigroup, $F \in \Pf(\calT)$, $\la m(k)
+  \ra_{k=1}^\infty$ a sequence in $\bbN$, $\la a_k \ra_{k=1}^\infty
+  \in \bigtimes_{k=1}^\infty S^{m(k)+1}$, and $\la H_k
+  \ra_{k=1}^\infty \in \bigtimes_{k=1}^\infty \calI_{m(k)}$ with $\max
+  H_k\bigl(m(k)\bigr) < \min H_{k+1}(1)$ for every $k \in \bbN$.
+  For each $f \in F$ define $g_f \in \calT$ by $g_f(k) = x(m(k), a_k,
+  H_k, f)$. 
+  
+  If $l \in \bbN$, $b \in S^{l+1}$, and $G \in \calI_l$, then there
+  exist $n \in \bbN$, $c \in S^{n+1}$, and $D \in \calI_n$ such that
+  for all $f \in F$, 
+  \[
+    x(l, b, G, g_f) = x(n, c, D, f).
+  \]
+\end{lem}
+\begin{proof}
+  We prove our implication by induction on $l$.
+  Let $l = 1$, $b \in S^{2}$, and $G \in \calI_1$, then
+  \[
+    x(1, b, G, g_f) = b(1) \prod_{t \in G(1)} g_f(t) b(2).
+  \]
+  Apply Lemma \ref{lem:prodrewrt} to pick $n \in \bbN$, $d \in
+  S^{n+1}$, and $D \in \calI_n$ such that $\prod_{t \in G(1)} g_f(t) =
+  x(n, d, D, f)$.
+  Define $c \in S^{n+1}$ by
+  \[
+    c(i) =
+    \begin{cases}
+      b(1)d(1) & \mbox{if $i = 1$,} \\
+      d(i) & \mbox{if $i \in \{2, 3, \ldots, n \}$,} \\
+      d(n+1)b(2) & \mbox{if $i = n+1$.}
+    \end{cases}
+  \]
+  We show that $x(1, b, G, g_f) = x(n, c, D, f)$.
+  We have that
+  \begin{align*}
+    x(n, c, D, f) &= \prod_{i=1}^n\Bigl(c(i) \prod_{t \in D(i)} f(t)
+    \Bigr)c(n+1), \\
+    &= c(1)\prod_{t \in D(1)} f(t) \prod_{i=2}^n\Bigl(c(i) \prod_{t
+      \in D(i)} f(t) \Bigr) c(n+1), \\
+    &= b(1)d(1) \prod_{t \in D(1)} f(t)
+    \prod_{i=2}^n\Bigl(d(i)\prod_{t \in D(i)} f(t) \Bigr) d(n+1)b(2),
+    \\
+    &= b(1) \prod_{i=1}^n\Bigl(d(i) \prod_{t \in D(i)} f(t) \Bigr)
+    d(n+1) b(2), \\
+    &= b(1) x(n, d, D, f)b(2) = b(1) \prod_{t \in G(1)} g_f(t) b(2),
+    \\
+    &= x(1, b, G, g_f).
+  \end{align*}
+
+  Now let $l > 1$ and assume our implication is true for $l-1$ with
+  \mbox{$\la$more conditions$\ra$}. 
+  Let $b \in S^{l+1}$ and $G \in \calI_l$.
+  Then 
+  \[
+    x(l, b, G, g_f) = \prod_{i=1}^{l-1}\Bigl(b(i) \prod_{t \in G(i)}
+    g_f(t) \Bigr) b(l) \cdot \prod_{t \in G(l)} g_f(t) b(l+1).
+  \]
+  By our induction hypothesis pick $p \in \bbN$, $d \in S^{p+1}$, and
+  $D \in \calI_p$ such that $\prod_{i=1}^{l-1}\bigl(b(i) \prod_{t \in
+    G(i)} g_f(t)\bigr)b(l) = x(p, d, D, f)$.
+  By Lemma \ref{lem:prodrewrt}, pick $m \in \bbN$, $e \in S^{m+1}$,
+  and $E \in \calI_m$ such that $\prod_{t \in G(l)} g_f(t) = x(m, e,
+  E, f)$ and $\max E(m) = \max H_{\max G(m(\max G))}$.
+  Hence
+  \[
+    x(l, b, G, g_f) = x(p, d, D, f)x(m,e,E,f)b(l+1).
+  \]
+  Put $n = p+m$. 
+  Define $c \in S^{n+1}$ by
+  \[
+    c(i) = 
+    \begin{cases}
+      d(i) & \mbox{if $i \in \{1, 2, \ldots, p\}$,} \\
+      d(p+1)b(l)e(1) & \mbox{if $i=p+1$,} \\
+      e(i-p) & \mbox{if $i \in \{p+2, P+3, \ldots, p+m\}$,} \\
+      e(m+1)b(l+1) & \mbox{if $i = p + m + 1$.}
+    \end{cases}
+  \]
+  Define $L \in \calI_n$ by
+  \[
+    L(i) = 
+    \begin{cases}
+      D(i) & \mbox{if $i \in \{1, 2, \ldots, p\}$}, \\
+      E(i-p) & \mbox{if $i \in \{p+1, p+2, \ldots, p+m \}$}.
+    \end{cases}
+  \]
+  [Need to show $\max D(p) < \min E(1)$ by weaken my induction
+  hypothesis.] 
+  We show that $x(l, b, G, g_f) = x(n, c, L, f)$.
+  We have that
+  \begin{align*}
+    x(n, c, L, f) &= \prod_{i=1}^n\Bigl( c(i) \prod_{t \in L(i)} f(t)
+    \Bigr) c(n+1), \\
+    &= \prod_{i=1}^p\Bigl( c(i) \prod_{t \in L(i)} f(t) \Bigr) c(p+1)
+    \prod_{t \in L(p+1))} f(t) \prod_{i=p+2}^{p+m}\Bigl( c(i) \prod_{t \in L(i)} f(t)
+    \Bigr) c(p+m+1),
+    &= \prod_{i=1}^p\Bigl( d(i) \prod_{t \in D(i)} f(t) \Bigr) d(p+1)b(l)e(1)
+    \prod_{t \in E(1)} f(t) \prod_{i=p+2}^{p+m}\Bigl( e(i-p) \prod_{t \in E(i-p)} f(t)
+    \Bigr) e(m+1)b(l+1), \\
+    &= x(p, d, D, f) b(l) e(1)
+    \prod_{t \in E(1)} f(t) \prod_{i=2}^{m}\Bigl( e(i) \prod_{t \in E(i)} f(t)
+    \Bigr) e(m+1)b(l+1), \\
+    &= x(p, d, D, f) b(l) x(m, e, E, f) b(l+1) = x(l, b, G, g_f).
+  \end{align*}
+
+\section{An Example}
+ \begin{defn}
+  Let $(S,\cdot)$ be a semigroup.
+    \begin{itemize}
+    \item[(a)] For each $m \in \mathbb{N}$,
+      \begin{align*}
+      \mathcal{I}_m = \bigl\{\,\bigl(H(1) &, H(2), \ldots, 
+      H(m)\bigr) : \hbox{ each $H(i) \in 
+      \mathcal{P}_f(\mathbb{N})$} \\ 
+      & \hbox{ and for any $i \in \{1, 2,\ldots, m-1\}$, 
+      $\max H(i) < \min H(i+1)$} \,\}.
+      \end{align*}
+
+    \item[(b)] Let $A \subseteq S$.
+      We say that $A$ is a \textbf{$J$-set in $S$} if and only if
+      for all $F \in \mathcal{P}_f(^{\mathbb{N}}{\!S})$, there exist
+      $m \in \mathbb{N}$, $c \in S^{m+1}$, and $H \in \mathcal{I}_m$
+      such that for every $f \in F$,
+      \[
+      \prod_{i=1}^m\bigl(c(1) \prod_{t \in H(i)} f(t)\bigr)c(m+1) \in
+      A.
+      \]
+
+    \item[(c)] $J(S) = \{\, p \in \beta S : \hbox{$A$ is a 
+      $J$-set in $S$ for every $A \in p$} \,\}$.
+    \end{itemize}
+  \end{defn}
+
+  \begin{thm}
+  Let $S$ be a semigroup.
+  Then $J(S)$ is a closed ideal of $\beta S$, and if $A$ is 
+  a $J$-set in $S$, then there exists $p \in J(S)$ such that
+  $A \in p$
+  \end{thm}
+  \begin{proof}[Proof Outline]
+  The fact that $J(S)$ is a closed ideal follows from 
+  \cite[Theorem 3.5]{NewCST}.
+  The second assertion follows from \cite[Theorem 2.14]{CarProdCST}.
+  \end{proof}
+
+The following result should be clear after a moment's thought.
+
+  \begin{lem}\label{lem:seqs}
+  Let $S$ be the free semigroup on two generators $a$ and $b$.
+  Enumerate $\mathcal{P}_f(S)$ as $\la A_n \ra_{n=1}^\infty$. 
+   Then there exist two sequences $\la v_n \ra_{n=1}^\infty$ and 
+  $\la w_n \ra_{n=1}^\infty$ in $S$ satisfying the following 
+  three conditions:
+    \begin{itemize}
+    \item[(1)] $\{\, v_n : n \in \mathbb{N} \,\} \subseteq
+      \{\, (ab)^t : t \in \mathbb{N} \,\}$ and $\{\, w_n :
+      n \in \mathbb{N} \,\} \subseteq \{\, b^t : t \in \mathbb{N} 
+      \,\}$.
+
+    \item[(2)] For each $n$, the length of each of the words $v_n$ 
+      and $w_n$ is longer than the length of every word in $B_n$.
+
+    \item[(3)] For each $n > 1$, for every $k \in \{1, 2, \ldots,
+      n-1\}$, and for all $x \in B_k$, the length of each of the 
+      words $v_n$ and $w_n$ is longer than the length of 
+      $v_kxw_k$.
+    \end{itemize}
+  \end{lem}
+
+  \begin{defn}\label{jset}
+  Pick Pick $\la v_n \ra_{n=1}^\infty$ and $\la w_n \ra_{n=1}^\infty$ as
+  guaranteed by the above lemma. 
+  Let
+  \[ A = \bigcup_{n=1}^\infty v_nA_nw_n. \]
+  \end{defn}
+
+  \begin{prop}\label{prop:jset}
+  $A$ is a $J$-set in the free semigroup on two generators.
+  \end{prop}
+  \begin{proof}
+  Let $F \in \mathcal{P}_f(^{\mathbb{N}}{\!S})$.
+  Pick $H \in \mathcal{I}_1$, then $\{\, \prod_{t \in H(1)} f(t) :
+  f \in F \,\} \in \mathcal{P}_f(S)$.
+  Therefore pick $n \in \mathbb{N}$ such that $A_n = \{\,
+  \prod_{t \in H(1)} f(t) : f \in F \,\}$.
+  Then for every $f \in F$,
+  \[
+  v_n\prod_{t \in H(1)} f(t)w_n \in A.
+  \]
+  \end{proof}
+
+Now that we have our $J$-set, we will use it to form our 
+required subsemigroup of the free semigroup on two generators 
+$a$ and $b$.
+
+  \begin{defn}\label{subsgrp}
+  \[
+  T = \bigl\la A \cup \{a\} \bigr\ra = \bigl\{\,u_1u_2 \cdots u_s : 
+  \hbox{$s \in \mathbb{N}$ and for every $i \in \{1, 2, \ldots, s\}$,
+  $u_i \in A \cup \{a\}$}\,\bigr\}
+  \]
+  \end{defn}
+
+  \begin{prop}\label{prop:subsgrp}
+  $T$ is a proper subsemigroup of $S$, the free semigroup on two 
+  generators, with $A \subseteq T$.
+  \end{prop}
+  \begin{proof}
+  The fact that $T$ is a subsemigroup of $S$ with $A \subseteq T$
+  follows directly from the definition of $T$.
+  To see that $T \subsetneq S$ it suffices to show that $b \not\in
+  T$.
+  First, note that $(\forall x \in A)(\ell(x) \ge 3)$ and so
+  $b \not\in A$.
+  It follows that if $x \in T$ and $\ell(x) = 1$, then $x=a$. 
+  Hence $b \not\in T$.
+  \end{proof}
+
+\section{Main Result}
+We are now ready to prove our main result.
+Instead of proving Theorem \ref{thm:main} directly, we will
+prove the following slightly stronger result from which this  
+Theorem will follow directly.
+
+  \begin{thm}
+  There exists a noncommutative semigroup $S$, a subsemigroup
+  $T$, and a subset $A \subseteq T$ such that $A$ is a $J$-set
+  in $S$ but there exists $F \in \mathcal{P}_f(^{\mathbb{N}}{T})$
+  such that for all $m \in \mathbb{N}$, for each $c \in S^{m+1}$,
+  and for any $H \in \mathcal{I}_m$, there exists $f \in F$ such
+  that if $c(1) \in T$, then $\prod_{i=1}(c(i)\prod_{t \in H(i)} f(t))
+  c(m+1) \not\in A.$
+  \end{thm}
+  \begin{proof}
+  Let $S$ be the free semigroup on two generators $a$ and $b$,
+  Let $A$ and $T$  be as in Definitions \ref{jset} and 
+  \ref{subsgrp}, respectively. 
+  The fact that $A$ is a $J$-set in $S$ is Proposition 
+  \ref{prop:jset}, and the fact that $T$ is a subsemigroup of $S$
+  with $A \subseteq T$ is Proposition \ref{prop:subsgrp}.
+
+  Put $F = \{\overline{a}\}$, and let $m \in \mathbb{N}$, $c \in
+  S^{m+1}$, and $H \in \mathcal{I}_m$. 
+  For each $j \in \{1, 2, \ldots, m\}$ put $n_j = |H(j)|$. 
+  Then
+  \[
+  \prod_{i=1}^m\Bigl(c(i) \prod_{t \in H(i)} f(t)\Bigr)c(m+1) =
+  c(1)a^{n_1}c(2)a^{n_2} \cdots c(m)a^{n_m}c(m+1).
+  \]
+  Suppose that $c(1) \in T$ and $c(1)a^{n_1}c(2)a^{n_2} \cdots 
+  c(m)a^{n_m}c(m+1) \in A$. 
+  Since $c(1) \in T$, there exists $s \in \mathbb{N}$ such that
+  $c(1) = u_1u_2 \cdots u_s$ and for all $i \in \{1, 2, \ldots, s\}$,
+  $u_i \in A \cup \{a\}$. 
+  Since $c(1)a^{n_1}c(2)a^{n_2} \cdots c(m)a^{n_m}c(m+1) \in A$, pick
+  $k \in \mathbb{N}$ such that $c(1)a^{n_1}c(2)a^{n_2} \cdots 
+  c(m)a^{n_m}c(m+1) \in v_kA_kw_k$, and pick $y \in A_k$ such that
+  $c(1)a^{n_1}c(2)a^{n_2} \cdots c(m)a^{n_m}c(m+1) = v_kyw_k$. 
+  We have two cases and three sub-cases to consider. 
+  
+  \textsl{Case 1 ($u_1=a$).} 
+  First, note that by condition (1) of Lemma \ref{lem:seqs} the
+  word $v_kyw_k$ starts with the substring ``$ab$''.
+  If $s=1$, then the word $c(1)a^{n_1}c(2) \allowbreak a^{n_2} \cdots 
+  c(m) a^{n_m} c(m+1)$ starts with the substring ``$aa$'', a
+  contradiction.
+  If $s>1$, then regardless of whether $u_2 \in A$ or $u_2 = a$,
+  we still have that the word $c(1)a^{n_1}c(2) \allowbreak a^{n_2}
+  \cdots c(m) a^{n_m} c(m+1)$ starts with the substring ``$aa$'',
+  a contradiction.
+
+  \textsl{Case 2 ($u_1 \in A$)}. 
+  In this case, we have three sub-cases to consider. 
+  Pick $n \in \mathbb{N}$ such that $u_1 \in v_nA_nw_n$, and pick
+  $x \in A_n$ such that $u_1 = v_nxw_n$.
+  
+  \textsl{Sub-case I ($k<n$)}. 
+  It follows from condition (3) of Lemma \ref{lem:seqs} that
+  $\ell\bigl(c(1)\bigr) \ge \ell(u_1) > \ell(v_kyw_k)$.
+  However, since $c(1)$ is a substring of $v_kyw_k$, this is a
+  contradiction. 
+
+  \textsl{Sub-case II ($k=n$)}.
+  We have that 
+    \begin{align*}
+    v_kyw_k &= c(1)a^{n_1}c(2)a^{n_2} \cdots c(m)a^{n_m}c(m_1), \\
+           &= v_kxw_ku_2 \cdots u_sa^{n_1}c(2)a^{n_2} \cdots 
+           c(m)a^{n_m}c(m_1).
+    \end{align*}
+  Therefore $yw_k = xw_ku_2 \cdots u_sa^{n_1}c(2)a^{n_2} \cdots 
+  c(m)a^{n_m}c(m+1)$.
+  By condition (1) of Lemma \ref{lem:seqs} and the form of the 
+  word $a^{n_m}c(m+1)$ it follows that $w_k$ is a substring of
+  $c(m+1)$.
+  So pick $v \in S\cup\{\emptyset\}$ such that $c(m+1) = vw_k$.
+  Therefore $y = xw_ku_2 \cdots u_s a^{n_1}c(2)a^{n_2} \cdots 
+  c(m)a^{n_m}v$, and so $w_k$ is a substring of $y$.
+  In particular, $\ell(y) > \ell(w_k)$.
+  However, by condition (2) of Lemma \ref{lem:seqs}, 
+  $\ell(w_k) > \ell(y)$ also, a contradiction. 
+
+  \textsl{Sub-case III ($k>n$)}. 
+  Put $t = \ell(v_nx)$. 
+  By condition (3) of Lemma \ref{lem:seqs}, $\ell(v_k) > t + 
+  \ell(w_n) \ge t+1$. 
+  In fact, by condition (2) we can sharpen this last inequality
+  to $t + \ell(w_n) \ge t+2$. 
+  Therefore the letter in position $t+1$ and $t+2$ of the word
+  $v_nxw_nu_2 \cdots u_sa^{n_1}c(2)a^{n_2} \cdots c(m)a^{n_m}c(m+1)$
+  is ``$b$''. 
+  If $t+1$ is odd, then the letter in position $t+1$ of 
+  $v_kyw_k$ is ``$a$'', a contradiction.
+  If $t+1$ is even, then the letter in position $t+2$ of 
+  $v_kyw_k$ is ``$a$'', a contradiction.
+  \end{proof}
+
+From this result we immediately get Theorem \ref{thm:main} 
+as a corollary. 
+
+
+\end{proof}
+
+\begin{lem}
+  Let $(S, \cdot)$ be a semigroup, $A \subseteq S$ a $J$-set, and $F
+  \in \Pf(\calT)$.
+  Then there exist a sequence on natura numbers $\la m(k)
+  \ra_{k=1}^\infty$, $\la a_k \ra_{k=1}^\infty \in
+  \bigtimes_{k=1}^\infty S^{m(k)+1}$, and $\la H_k \ra_{k=1}^\infty
+  \in \bigtimes_{k=1}^\infty \calI_{m(k)}$ such that
+  \begin{itemize}
+    \item[(1)] for all $k \in \bbN$, $\max H_k\bigl(m(k)\bigr) < \min
+      H_{k+1}(1)$; and,
+
+    \item[(2)] for all $k \in \bbN$ and $f \in F$, $x(m(k), a_k, H_k,
+      f) \in A$.
+  \end{itemize}
+\end{lem}
+
+\begin{prop}
+  Let $(S, \cdot)$ be  semigroup, and let $T \subseteq S$ be a
+  subsemigroup which is also a $J$-set in $S$.
+
+  If $A \subseteq T$ is a $J$-set in $T$, then $A$ is also a $J$-set
+  in $S$.
+\end{prop}
+
+% Notes section produced by the 'endnotes' package
+%\theendnotes
+
+% Things referenced in the introduction. Eventually this will placed
+% in a separate file so the References appear at the end.
+\bibliographystyle{amsplain}
+\bibliography{../references}
+\end{document}
