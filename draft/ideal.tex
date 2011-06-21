@@ -296,13 +296,23 @@ Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \c
   We claim that there exist $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $f \in F$, $x(m, a, t, f) \in A$.
 
   Put $m = \sum_{i=1}^n m_{u_i}$. 
-  Define $a \in S^{m+1}$ by
+  For each $s \in \{1, 2, \ldots, n\}$ put $h_s = \sum_{i=1}^s m_{u_i}$ and let $h_0 = 1$. 
+
+  For each $s \in \{1, 2, \ldots, n\}$ put $h_s = \sum_{i=1}^s m_{u_i}$, put $h_0 = 0$, and put $m = h_n$ .
+  We define $a \in S^{m+1}$ as follows:
   \[
-    a(j) = 
+    a(j) =
     \begin{cases}
-      b(1)a_{u_1}(1) & \mbox{if $j = 1$,} 
-      % Modify the first lemma in this section to work out this case.
+      b(1)a_{u_1}(1) & \mbox{if $j=1$,} \\
+      a_{u_s}(j-h_{s-1}) & \mbox{if $s \in \{1, 2, \ldots, n\}$ and $h_{s-1} + 1 < j \le h_s$,} \\
+      a_{u_s}(m_{u_s}+1)b(s+1)a_{u_{s+1}}(1) & \mbox{if $s \in \{1, 2, \ldots, n-1\}$ and $j = h_s + 1$,} \\
+      a_{u_n}(m_{u_n}+1)b(n+1) & \mbox{if $j = m+1$.}
     \end{cases}
+  \]
+  And, we define $t \in \calJ_m$ as follows:
+  \[
+    t_j = 
+      \mbox{$\tau(u_s)(j- h_s)$ if $s \in \{1, 2, \ldots, s\}$ and $h_{s-1} < j \le h_s$.}
   \]
 \end{proof}
 
