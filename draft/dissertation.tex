@@ -114,13 +114,13 @@
 % far off the line.  [6/19/2011 John]
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
-
 \begin{document}
 
 % Howard University requires dissertations to be double-spaced. In
 % (La)TeX this looks bad and wastes paper. The following spacing using
 % a baselineskip value of 1.7pt is a good compromise. 
 \addtolength{\baselineskip}{1.7pt}
+
 
 \pagenumbering{roman}
 \pagestyle{plain}
@@ -133,7 +133,7 @@
 %\include{abstract}
 
 % Include table of contents
-%\include{toc}
+\tableofcontents
 
 % Include list of figures.
 %\include{lofig}
@@ -169,6 +169,6 @@
 
 
 \bibliographystyle{amsplain}
-\bibliography{/references}
+\bibliography{references}
 \end{document}
 

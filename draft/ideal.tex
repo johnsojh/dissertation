@@ -1,7 +1,7 @@
 % This chapter provides an analogue statement about the ideal J(S) and
 % subsemigroups of $\beta S$. [6/20/2011/ John]
 
-\chapter{Subsemigroups of $S$ and $J(S)$}
+\chapter{$J(S)$ and Subsemigroups of $S$}
 \section{Introduction}
 In this chapter we prove that Theorem \ref{thm:smallest-subsemigrp} has an analogue statement in $J(S)$. 
 The reason why this analogue is interesting is that there are many nice algebraic and combinatorial results that utilize the smallest ideal.%
@@ -28,8 +28,7 @@ More precisely, in this chapter we shall prove an analogue to the following theo
 \end{thm}
 \begin{proof}
   It follows from Theorem \ref{thm:smallest-subsemigrp} that statement \textsl{(a)} is equivalent to statement \textsl{(b)}.
-  
- From \cite[Theorem 4.40]{Hindman:1998fk}, we have that statement \textsl{(b)} is equivalent to statement \textsl{(c)}.
+  From \cite[Theorem 4.40]{Hindman:1998fk}, we have that statement \textsl{(b)} is equivalent to statement \textsl{(c)}.
 \end{proof}
 \begin{rmk}
   We can, and do, identify the set $c \ell_{\beta S}(T)$ with $\beta T$. 
@@ -96,11 +95,11 @@ We are in a position to already prove parts of these theorems.
   Identifying $c \ell_{\beta S}(T)$ with $\beta T$ completes the proof.
 \end{proof}
 
-With this theorem in hand, in the next few sections we need only consider the case when statement (c) implies statement (a).
+With this theorem in hand in the next few sections we need only consider the case when statement (c) implies statement (a).
 
 \section{Commutative Semigroup Case}
 We first focus on the case when the underlying semigroup is commutative. 
-In this case we obtain a stronger result, and via Lemma \ref{lem:comm-jsets} we have a simply characterization of a $J$-set in a commutative semigroup.
+In this case we obtain a stronger result because of Lemma \ref{lem:comm-jsets} simple characterization of a $J$-set in a commutative semigroup.
 (Recall that Lemma \ref{lem:comm-jsets} states that a set $A$ is a $J$-set in a commutative semigroup if and only if for every $F \in \Pf(\calT)$ there exist $a \in S$ and $H \in \Pf(\bbN)$ such that $a + \sum_{t \in H} f(t) \in A$ for every $f \in F$.
 Also recall that if $S$ is a semigroup, then $\calT(S)$ is the set of all sequences on $S$.)
 
@@ -115,7 +114,7 @@ The following lemma shows that, in a commutative semigroup, we may pick our `tra
   ($\Rightarrow$)
   Let $F \in \Pf(\calT)$ and let $\overline{c} \in \calT$ be some constant sequence.
   Put $G = (F + \{\overline{c}\}) \cup \{\overline{c}\}$. 
-  Since $A$ is a $J$-set, by the necessity of Lemma \ref{lem:comm-jsets}, pick $b \in S$ and $H \in \Pf(\bbN)$ such that for all $g \in G$, $b + \sum_{t \in H} g(t) \in A$. 
+  Since $A$ is a $J$-set, by the necessity condition of Lemma \ref{lem:comm-jsets}, pick $b \in S$ and $H \in \Pf(\bbN)$ such that for all $g \in G$, $b + \sum_{t \in H} g(t) \in A$. 
 
   Put $a = b + \sum_{t \in H} \overline{c}(t)$, then for every $f \in F$, we have $a + \sum_{t \in H} f(t) = b + \sum_{t \in H}\bigl( \overline{c}(t) + f(t) \bigr) \in A$. 
   
@@ -142,7 +141,7 @@ Our next lemma show that a $J$-set contains `many' translates of sum of sequence
   We shall recursively construct our sequences $\la a_n \ra_{n=1}^\infty$ and $\la H_n \ra_{n=1}^\infty$ such that the following hypotheses are satisfied for every positive integer $m$. 
   \begin{itemize}
     \item[(i)]
-      $\max H_k < \max H_{k+1}$ for all $k \in \{1, 2, \ldots, m-1\}$.
+      $\max H_k < \min H_{k+1}$ for all $k \in \{1, 2, \ldots, m-1\}$.
 
     \item[(ii)]
       For every $k \in \{1, 2, \ldots, m\}$ and all $f \in F$, $a_k + \sum_{t \in H_k} f(t) \in A$.
@@ -203,52 +202,8 @@ Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to b
 \section{General Semigroup Case}
 To handle the general semigroup case we will prove versions of Lemma \ref{lem:comm-many} and \ref{lem:comm-lift} that use the usual definition of a $J$-set. 
 Unfortunately, in the next section we shall see that Lemma \ref{lem:comm-trans} is not valid in every noncommutative semigroup. 
-In order to prove a `general' version of Lemma \ref{lem:comm-many} we shall use the following technical `rewriting' type lemma.
 
 Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$, and $f \in \calT$, we put $x(n, a, t, f) = \Bigl( \prod_{i=1}^n \bigl( a(i) f(t_i) \bigr) \Bigr) a(n+1)$. 
-
-\begin{lem}
-  Let $(S, \cdot)$ be a semigroup, $F \in \Pf(\calT)$, $\la m_k \ra_{k=1}^\infty$ a sequence of positive integers, $\la a_k \ra_{k=1}^\infty \in \bigtimes_{k=1}^\infty S^{m_k + 1}$, and $\tau \in \bigtimes_{k=1}^\infty \calJ_{m_k}$ with $\tau(k)(m_k) < \tau(k+1)(1)$ for every positive integer $k$.
-  For each $f \in F$ define $g_f \in \calT$ by $g_f(k) = x(m_k, a_k, \tau(k), f)$.
-
-  If $G \in \Pf(\bbN)$ and $n = \sum_{k \in G} m_k$, then there exist $c \in S^{n+1}$ and $t \in \calJ_n$ such that $t(n) = \tau(\max G)(m_{\max G})$ and $\prod_{k \in G} g_f(k) = x(n, c, t, f)$ for every $f \in F$.
-\end{lem}
-\begin{proof}
-  We prove this result by induction on the size of $G$.
-  First suppose $|G| = 1$, then $G = \{k\}$ for some positive integer $k$.
-  For $f \in F$, by definition of $g_f$ we directly have that $\prod_{k \in G} g_f(k) = x(m_k, a_k, \tau(k), f) = x(n, a, t, f)$ with $a = a_k$ and $t = \tau(k)$.
-
-  Now assume that $|G| > 1$ and suppose that our implication is true for all nonempty finite subsets of $\bbN$ with size less than $|G|$.
-  Put $K = G \setminus \{\max G\}$, and for notational convenience, put $s = \max G$.
-  By our induction hypothesis, with $\ell = \sum_{k \in K} m_k$, pick $d \in S^{\ell+1}$ and $u \in \calJ_\ell$ as guaranteed.
-  Then for $f \in F$
-  \begin{align*}
-    \textstyle
-    \prod_{k \in G} g_f(k) &= \textstyle \prod_{k \in K} g_f(k) g_f(s), \\
-                         &= x(\ell, d, u, f) g_f(s), \\
-                         &= x(\ell, d, u, f) x(m_s, a_s, \tau(s), f).
-  \end{align*}
-  Put $n = \sum_{k \in G} m_k$ and define $c \in S^{n+1}$ by 
-  \[
-    c(j) =
-    \begin{cases}
-      d(j) & \mbox{if $j \in \{1, 2, \ldots, \ell\}$,} \\
-      d(\ell+1)a_s(1) & \mbox{if $j = \ell+1$,} \\
-      a_s(j - \ell) & \mbox{if $j \in \{\ell+2, \ell+3, \ldots, \ell+m_s+1\}$.}
-    \end{cases}
-  \]
-  
-  By assumption on $\tau$ and our induction hypothesis, $\tau(\max K)(m_{\max G}) < \tau(s)(1)$ and $u(\ell) = \tau(\max K)(m_{\max G})$
-  Therefore we can define $t \in \calJ_n$ by
-  \[
-    t_j =
-    \begin{cases}
-      u(j) & \mbox{if $j \in \{1, 2, \ldots, \ell\}$,} \\
-      \tau(s)(j-\ell) & \mbox{if $j \in \{\ell+1, \ell+2, \ldots, n\}$.}
-    \end{cases}
-  \]
-  Hence it follows that $\prod_{k \in G} g_f(k) = x(n, c, t, f)$ for all $f \in F$.
-\end{proof}
 
 \begin{lem}
   \label{lem:many}
@@ -314,11 +269,12 @@ Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \c
     t_j = 
       \mbox{$\tau(u_s)(j- h_s)$ if $s \in \{1, 2, \ldots, s\}$ and $h_{s-1} < j \le h_s$.}
   \]
+  Then for every $f \in F$, $x(m, a, t, f) \in A$.
 \end{proof}
 
 \begin{thm}
   \label{thm:comb-ideal}
-  Let $(S, +)$ be a semigroup, and let $T \subseteq S$ be a subsemigroup.
+  Let $(S, \cdot)$ be a semigroup, and let $T \subseteq S$ be a subsemigroup.
   If $T$ is a $J$-set in $S$, then $J(T) \subseteq \beta T \cap J(S)$.
 \end{thm}
 \begin{proof}
@@ -350,7 +306,26 @@ In this section we let $S$ be the free semigroup on two generators $a$ and $b$.
   \end{itemize}
 \end{lem}
 \begin{proof}
-  % INSERT PROOF
+  We shall construct the sequences $\la v_n \ra_{n=1}^\infty$ and $\la w_n \ra_{n=1}^\infty$ recursively. 
+  Let $m$ be a positive integer and let $\ell(x)$ denote the length of word $x$.
+  First assume that $m = 1$. 
+  Pick $v_1 \in \{\, (ab)^t : t \in \bbN \,\}$ and $w_1 \in \{\, b^t : t \in \bbN \,\}$ such that for every $x \in A_1$, $\ell(v_1) > \ell(x)$ and $\ell(w_1) > \ell(x)$. 
+
+  Now let $m > 1$ and assume that we have chosen sequences $\la v_n \ra_{n=1}^{m-1}$ and $\la w_n \ra_{n=1}^{m-1}$ such that the following hypotheses hold:
+  \begin{itemize}
+    \item[(i)]
+      $\{v_1, v_2, \ldots, v_{m-1}\} \subseteq \{\, (ab)^t : t \in \bbN \,\}$ and $\{w_1, w_2, \ldots, w_{m-1}\} \subseteq \{\, b^t : t \in \bbN \,\}$.
+
+    \item[(ii)]
+      For every $k \in \{1, 2, \ldots, m-1\}$ and for all $x \in A_k$, $\ell(v_k) > \ell(x)$ and $\ell(w_k) > \ell(x)$. 
+
+    \item[(iii)]
+      For every $k \in \{1, 2, \ldots, m-2\}$ and all $x \in A_k$, $\ell(v_{m-1}) > \ell(v_kxw_k)$ and $\ell(w_{m-1}) > \ell(v_kxw_k)$.
+  \end{itemize}
+  Put $B = A_m \cup \{\, v_kxw_k : \mbox{$k \in \{1, 2, \ldots, m-1\}$ and $x \in A_k$} \,\}$.
+  Pick $v_m \in \{\, (ab)^t : t \in \bbN \,\}$ and $w_m \in \{\, b^t : t \in \bbN \,\}$ such that $\ell(v_m) > \max\{\, \ell(u) : u \in B \,\}$ and $\ell(w_m) > \max\{\, \ell(u) : u \in B \,\}$. 
+  Then our sequences $\la v_n \ra_{n=1}^{m}$ and $\la w_n \ra_{n=1}^{m}$ satisfy hypotheses (i)--(ii), where `$m-1$' is replaced by `$m$' throughout.
+  Hence our conclusion follows.
 \end{proof}
 
 \begin{defn}
@@ -368,7 +343,7 @@ In this section we let $S$ be the free semigroup on two generators $a$ and $b$.
   Then for every $f \in F$, $v_nf(t)w_n \in A$. 
 \end{proof}
 
-Now that we have our $J$-set, we will use it form our required subsemigroup of $S$.
+Now that we have our $J$-set, we will use it to generate our required subsemigroup of $S$.
 
 \begin{defn}
   Put 
@@ -430,7 +405,7 @@ Now that we have our $J$-set, we will use it form our required subsemigroup of $
     x(m, c, t, \overline{a}) &= c(1)ac(2)ac(3) \cdots c(m)ac(m+1), \\
                              &= v_kxw_ku_2 \cdots u_sac(2)ac(3) \cdots c(m)ac(m+1).
   \end{align*}
-  Therefore $yw = xw_ku_2 \cdots u_sac(2)ac(3) \cdots c(m)ac(m+1)$. 
+  Therefore $yw_k = xw_ku_2 \cdots u_sac(2)ac(3) \cdots c(m)ac(m+1)$. 
   The substring $ac(m+1)$ starts with the letter $a$ and so it follows from condition (1) of Lemma \ref{lem:seqs} that $w_k$ is a substring of $c(m+1)$.
   Pick $v \in S \cup \{\emptyset\}$ such that $c(m+1) = vw_k$. 
   Therefore 
@@ -447,10 +422,11 @@ Now that we have our $J$-set, we will use it form our required subsemigroup of $
   (Every word in $A_n$ has length at least one and by condition (2) of Lemma \ref{lem:seqs}, $w_n$ is longer than every word in $A_n$.)
   Therefore the letter in position $t+1$ and $t+2$ of $v_nxw_n$ is $b$. 
 
-  Now by condition (3) of Lemma \ref{lem:seqs}, $\ell(v_k) > \ell(v_nxw_n)$, and by condition (1) of Lemma \ref{lem:seqs} we have that the $t+1$th and $t+2$th letter of $v_k$ is $a$. 
-  Since $x(m, c, t, \overline{a}) = v_kyw_k = v_nxw_nu_2\cdots u_sc(2)ac(3)\cdots c(m)ac(m+1)$, this is a contradiction.
+  By condition (1) of Lemma \ref{lem:seqs}, we have that $v_k$ has no two adjacent $b$'s. 
+  By condition (3) of Lemma \ref{lem:seqs}, $\ell(v_k) > \ell(v_nxw_n)$. 
+  Since $x(m, c, t, \overline{a}) = v_kyw_k = v_nxw_nu_2 \cdots u_sc(2) ac(3)\cdots c(m)ac(m+1)$, we arrive at a contradiction.
 
-Since we have exhausted all of our cases and sub-cases, the conclusion follows.
+  Since we have exhausted all of our cases and sub-cases, the conclusion follows.
 \end{proof}
 
 It follows from this theorem that we have a $A$ $J$-set in $S$ contained $T$, a subsemigroup of $S$, that is also a $J$-set in $S$, such that $A$ is not a $J$-set in $T$.
