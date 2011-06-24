@@ -114,15 +114,15 @@
 % far off the line.  [6/19/2011 John]
 \newcommand{\cchi}{\raise 2 pt \hbox{$\chi$}}
 
-\addtoendnotes{\ }
-
 \begin{document}
+
 
 % Howard University requires dissertations to be double-spaced. In
 % (La)TeX this looks bad and wastes paper. The following spacing using
-% a baselineskip value of 1.7pt is a good compromise. 
-\addtolength{\baselineskip}{1.7pt}
+% a baselineskip value of 6pt is a good compromise. 
+\addtolength{\baselineskip}{6pt}
 
+\addtoendnotes{\ }
 
 \pagenumbering{roman}
 \pagestyle{plain}
@@ -153,14 +153,17 @@
 \include{prelims}
 
 \setcounter{endnote}{0}
+\addtoendnotes{\ }
 
 \include{newcst}
 
 \setcounter{endnote}{0}
+\addtoendnotes{\ }
 
 \include{dyncsets}
 
 \setcounter{endnote}{0}
+\addtoendnotes{\ }
 \include{ideal}
 
 \setcounter{endnote}{0}
