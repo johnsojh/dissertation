@@ -16,7 +16,7 @@ Van der Waerden's proof of this theorem uses a complicated, but elementary, comb
   I'm not sure of the exact form of van der Waerden's argument since I have never read the paper \cite{Van-der-Waerden:1927fk}. 
   This statement is based on my opinion that all known combinatorial proofs of van der Waerden's Theorem are not simple, Khinchin's opinion on the difficulty of the original proof \cite[expressed in Section 1, pages 11--12]{Khinchin:1998fk}, and van der Waerden's description on how he found his proof in \cite{Van-der-Waerden:1971fk}. 
   (Van der Waerden's description in \cite{Van-der-Waerden:1971fk} seems to imply that his proof is similar to the one in \cite[Chapter 1]{Khinchin:1998fk}.)
-  The interested reader can find a combinatorial proof of van der Waerden's Theorem in Section 2 of \cite{Hindman:1979fk} or \cite[Chapter 1]{Khinchin:1998fk}.
+  The interested reader can find a combinatorial proof of van der Waerden's Theorem in Section 2 of \cite{Hindman:1979fk}, \cite[Chapter 1]{Khinchin:1998fk}, or \cite[Chapter 2, pages 33--34]{Graham:1990fk}.
 }
 Despite being such an old result, van der Waerden's Theorem still forms the basis for much of the contemporary research in the field of Ramsey Theory%
 \endnote{
@@ -53,7 +53,7 @@ While we get Theorem \ref{thm:semigrp-vdw} for free from van der Waerden's Theor
 Our increment $d$ may be a right identity in our underlying semigroup, and, even if $d$ is not a right identity there is no guarantee that all the elements in $\{a, ad, \ldots, ad^{k-1}\}$ are distinct.
 (The introduction of \cite{Bergelson:1992fk} contains an example for both of these problems.)
 The last potential problem is more subtle and can only occur when the underlying semigroup is noncommutative.
-To precisely formulate this obscure problem we make a brief detour to quickly review some needed algebraic definitions and results.
+To precisely formulate this subtle problem we make a brief detour to quickly review some needed algebraic definitions and results.
 
 \subsection{Semigroup Theory}
 We give a laconic review of the basic definitions and results of semigroup theory.
@@ -98,7 +98,7 @@ Using this boundedness condition we have the following important result.
 
 The final boundedness condition that we shall be interested in occurs when $S$ has a compact Hausdorff topology that interacts appropriately with the algebraic structure of $S$.
 
-We call $S$ a \emph{compact right-topological semigroup} if and only if $S$ is a compact Hausdorff topological space and a semigroup such that the map $\rho_x$ is continuous for every $x \in S$,
+We call $S$ a \emph{compact right-topological semigroup} if and only if $S$ is a compact Hausdorff topological space and a semigroup such that the map $\rho_x$ is continuous for every $x \in S$.
 Every compact right-topological semigroup contains an idempotent and the smallest ideal.
 (The existence of an idempotent is proved in \cite[Theorem 2.5]{Hindman:1998fk}, while the existence of the smallest ideal is proved in \cite[Theorem 2.8]{Hindman:1998fk}.)
 
@@ -118,7 +118,8 @@ Therefore $\beta S$ has at least one idempotent (it typically has many more) and
 The arithmetic progressions of positive integers interact nicely with the algebraic structure of $(\beta \bbN, +)$ (and also, $(\beta \bbN, \cdot)$). 
 To see this interaction we define a special subset of $\bbN$ and prove, via Theorem \ref{thm:semigrp-vdw}, that this special subset is `partition regular'.%
 \endnote{
-  The close connection between partition regularity (although not using this terminology) and ultrafilters was first noticed by Choquet in \cite{Choquet:1947uq}. 
+  The close connection between partition regularity (although not using this terminology) and filters was first noticed by Choquet in \cite{Choquet:1947uq}.
+  Choquet contribution can be roughly stated as saying that studying partition regular sets is equivalent to studying filters. 
 }
 
 \begin{defn}
@@ -140,6 +141,11 @@ To see this interaction we define a special subset of $\bbN$ and prove, via Theo
 \end{thm}
 \begin{proof}
   Observe that it suffices to show that for each positive integer $k$, there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
+  (Suppose that this particular claim is true, then for very positive integer $k$, there exists $i_k \in \{1, 2, \ldots, r\}$ such that $C_{i_k}$ contains a $k$-term arithmetic progression. 
+  By the pigeonhole principle there exists $i' \in \{1, 2, \ldots, r\}$ such that $\{\, k \in \bbN : i' = i_k \,\}$ is infinite.
+  Hence $C_{i'}$ contains a $k$-term arithmetic progression for infinitely many $k$'s. 
+  Finally, note that if $k$ is a positive integer with $k > 1$, and a subset of $\bbN$ has a $k$-term arithmetic progression, then it also has a $(k-1)$-term arithmetic progression.
+  Hence $C_{i'}$ is an $AP$-set.)
 
   So let $k \in \bbN$ and pick a positive integer $N$ as guaranteed by Theorem \ref{thm:semigrp-vdw} for $k$ and $r$.
   Since $A$ is an $AP$-set, pick positive integers $b$ and $c$ with $\{b+c, b+2c, \ldots, b+Nc\} \subseteq A$. 
@@ -216,7 +222,7 @@ While $\AL(S)$ and $\AP$ are both closed left ideals of $\beta S$ and $\beta \bb
 \end{thm}
 \begin{proof}
   To see that $\AL(S)$ is not a right ideal of $\beta S$ we show that there exists $p \in \AL(S)$ such that $pa \not\in \AL(S)$. 
-  Put $B = \{\, b^n : n \in \bbN \,\}$. and pick $p \in \AL(S)$ with $B \in p$. 
+  Put $B = \{\, b^n : n \in \bbN \,\}$ and pick $p \in \AL(S)$ with $B \in p$. 
   (By \cite[Theorem 3.11]{Hindman:1998fk} and Theorem \ref{thm:al-partition-reg} since $B$ is an $AL$-set such a $p$ exists.)
   By \cite[Exercise 4.1.8(b)]{Hindman:1998fk}, $Ba \in pa$. 
 
@@ -273,42 +279,45 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   \endnote{
     The technique used to prove the implication \textsl{(a) $\Rightarrow$ (b)} is commonly called a `compactness argument'. 
   This particular name comes from the Compactness Theorem in first-order logic which states that any set of first-order sentences has a model if and only if every finite subset has a model. 
+  Also, topological compactness can be used to establish this `finitary' result. 
   The Compactness Theorem itself is closely related to the Ultrafilter Principle. 
+  (Moreover, depending on how the Compactness Theorem is stated, it is actually equivalent to the Ultrafilter Principle.)
   Recall that the Ultrafilter Principle states that every filter can be extended to an ultrafilter.
+  Also, the Ultrafilter Principle is equivalent to the statement that the product of compact Hausdorff topological spaces is compact. 
   }
   Suppose that the statement \textsl{(b)} is false, that is, suppose there exists a positive integer $k$ such that for every $N \in \bbN$ there exist sets $C_{1,N}$ and $C_{2,N}$ with $\{1, 2, \ldots, N\} = C_{1, N} \cup C_{2, N}$ but neither $C_{1,N}$ or $C_{2,N}$ contains a $k$-term arithmetic progression. 
 
-  We shall recursively construct sequences $\la r_i \ra_{i=1}^\infty$ and $\la \bbN_i \ra_{i=0}^\infty$ satisfying the following hypotheses:
+  We shall recursively construct sequences $\la r_i \ra_{i=1}^\infty$ and $\la \mathbf{N}_i \ra_{i=0}^\infty$ satisfying the following hypotheses:
   \begin{itemize}
     \item[(1)]
-      $\bbN_0 = \bbN$.
+      $\mathbf{N}_0 = \bbN$.
 
     \item[(2)]
-      For all positive integers $i$, $\bbN_i = \{\, N \in \bbN_{i-1} : i \in C_{r_i, N} \,\}$.
+      For all positive integers $i$, $\mathbf{N}_i = \{\, N \in \mathbf{N}_{i-1} : i \in C_{r_i, N} \,\}$.
 
     \item[(3)]
-      For all positive integers $i$, $\bbN_i$ is infinite.
+      For all positive integers $i$, $\mathbf{N}_i$ is infinite.
 
     \item[(4)] 
-      For all nonnegative integers $i$, $\bbN_{i+1} \subseteq \bbN_i$.
+      For all nonnegative integers $i$, $\mathbf{N}_{i+1} \subseteq \mathbf{N}_i$.
   \end{itemize}
 
-  Put $\bbN_0 = \bbN$ and by the pigeonhole principle, pick $r_1 \in \{1, 2 \}$ such that $\{\, N \in \bbN_0 : 1 \in C_{r_1, N} \,\}$ is infinite, and put $\bbN_1 = \{\, N \in \bbN_0 : 1 \in C_{r_1, N} \,\}$.
-  Then hypotheses (1) through (4) are satisfied by $\la r_i \ra_{i=1}^1$ and $\la \bbN_i \ra_{i=0}^1$.
-  Now let $m > 1$, and assume that the sequences $\la r_i \ra_{i=1}^{m-1}$ and $\la \bbN_i \ra_{i=0}^{m-1}$ have been chosen to satisfy hypotheses (1) through (4).
+  Put $\mathbf{N}_0 = \bbN$ and by the pigeonhole principle, pick $r_1 \in \{1, 2 \}$ such that $\{\, N \in \mathbf{N}_0 : 1 \in C_{r_1, N} \,\}$ is infinite, and put $\mathbf{N}_1 = \{\, N \in \mathbf{N}_0 : 1 \in C_{r_1, N} \,\}$.
+  Then hypotheses (1) through (4) are satisfied by $\la r_i \ra_{i=1}^1$ and $\la \mathbf{N}_i \ra_{i=0}^1$.
+  Now let $m > 1$, and assume that the sequences $\la r_i \ra_{i=1}^{m-1}$ and $\la \mathbf{N}_i \ra_{i=0}^{m-1}$ have been chosen to satisfy hypotheses (1) through (4).
   
-  Since $\bbN_{m-1}$ is infinite, by the pigeonhole principle we may pick $r_m \in \{1, 2\}$ such that $\{\, N \in \bbN_{m-1} : m \in C_{r_m, N} \,\}$ is infinite. 
-  Put $\bbN_m = \{\, N \in \bbN_{m-1} : m \in C_{r_m, N} \,\}$.
-  Then it is routine to verify that the sequences $\la r_i \ra_{i=1}^m$ and $\la \bbN_i \ra_{i=0}^m$ satisfy hypotheses (1) through (4).
+  Since $\mathbf{N}_{m-1}$ is infinite, by the pigeonhole principle we may pick $r_m \in \{1, 2\}$ such that $\{\, N \in \mathbf{N}_{m-1} : m \in C_{r_m, N} \,\}$ is infinite. 
+  Put $\mathbf{N}_m = \{\, N \in \mathbf{N}_{m-1} : m \in C_{r_m, N} \,\}$.
+  Then it is routine to verify that the sequences $\la r_i \ra_{i=1}^m$ and $\la \mathbf{N}_i \ra_{i=0}^m$ satisfy hypotheses (1) through (4).
 
-  Observe that, by hypothesis (2), for each $i \in \bbN$, $i \in C_{r_i, N}$ for every $N \in \bbN_i$.
-  Therefore for each $j \in \{1, 2\}$ we define $C_j = \{\, i \in \bbN : \mbox{$i \in C_{r_i, N}$ where $r_i = j$ and $N \in \bbN_i$} \,\}$.
+  Observe that, by hypothesis (2), for each $i \in \bbN$, $i \in C_{r_i, N}$ for every $N \in \mathbf{N}_i$.
+  Therefore for each $j \in \{1, 2\}$ we define $C_j = \{\, i \in \bbN : \mbox{$i \in C_{r_i, N}$ where $r_i = j$ and $N \in \mathbf{N}_i$} \,\}$.
   By hypothesis (4), this definition is well-defined.
   We have that $\bbN = C_1 \cup C_2$, but we claim that $C_1$ and $C_2$ does not contain a $k$-term arithmetic progression. 
   If this claim is true, then we have reached a contradiction that proves our implication.
 
   Suppose that there exist positive integers $a$ and $d$ with $\{a, a+d, \ldots, a+(k-1)d \,\} \subseteq C_1$. 
-  Pick $N \in \bbN_{a+(k-1)d}$, and observe by hypothesis (4) and the definition of $C_1$, we have that $\{a, a+d, \ldots, a+(k-1)d\} \subseteq C_{1,N}$. 
+  Pick $N \in \mathbf{N}_{a+(k-1)d}$, and observe by hypothesis (4) and the definition of $C_1$, we have that $\{a, a+d, \ldots, a+(k-1)d\} \subseteq C_{1,N}$. 
   However, by choice $C_{1,N}$ doesn't contain any $k$-term arithmetic progressions. 
   Hence $C_1$ doesn't contain a $k$-term arithmetic progression and similarly we can show that $C_2$ doesn't contain a $k$-term arithmetic progression either. 
 
@@ -364,7 +373,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Therefore, for all $k \in \bbN$, there exists $n \in \bbN$ such that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (k + 1) \,\} \subseteq \bbN \setminus C_1 = C_2$, that is, $C_2$ is an $AP$-set.
 \end{proof}
 
-We wish to translate statement Theorem \ref{thm:vdwEqSyn} (f) into the language of semigroups.
+We wish to translate statement Theorem \ref{thm:vdwEqSyn}(f) into the language of semigroups.
 Of course, given an arbitrary semigroup, there is no guarantee that the terms ``strictly increasing'' and ``distance between two elements'' makes sense.
 It is the goal of the next result to show that we can forgo these terms.
 
@@ -409,7 +418,7 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
 \end{defn}
 
 Even though we have successfully translated Theorem \ref{thm:vdwEqSyn}(b) into algebraic terms it's an unfortunate fact that the notion of a syndetic set is \emph{not} partition regular. 
-See the introduction in \cite{Bergelson:2001ve} for an example in $\bbN$.
+(For instance, put $A = \bigcup_{i=1}^\infty \{2^n, 2^n+1, 2^n+2, \ldots, 2^n+n\}$ and put $B = \bbN \setminus A$, then $\bbN = A \cup B$ but neither $A$ nor $B$ is syndetic.)
 (Although syndetic sets do intereact nicely with smallest ideal of $\beta S$; see \cite[Theorems 4.39 and 4.43]{Hindman:1998fk}.)
 In order to recover partition regularity, we weaken the definition of a syndetic set to obtain a piecewise syndetic set.
 
@@ -442,12 +451,11 @@ It's is the purpose of this next result to show that we can dispense with the po
   Pick $B \in \Pf(A)$ with $|B| \ge N$ and $g(B) \le b$. 
   Put $n = |B|$ and enumerate $B$ as a strictly increasing sequence $x_1 < x_2 < \cdots  < x_n$.
   It suffices to show that $F + x_1 \subseteq \bigcup_{t \in G} -t + B$.
-  (Observe that $B \subseteq A$ Rightarrow $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
+  (Observe that $B \subseteq A$ implies $\bigcup_{t \in G} -t + B \subseteq \bigcup_{t \in G} -t + A$.)
   Let $f \in F$, then $f + x_1 \le \max F + x_1$. 
   Now $n \ge \max F + 2$ and so $f + x_1 \le (n-2) + x_1 < x_n$. 
   So pick $m \in \{1, 2, \ldots, n-1\}$ such that $x_m \le f+x_1  < x_{m+1}$. 
-  (This last inequality is true since $n-2+1 = n-1 < n$, $1 \le x_1$, and $n \le x_n$.)
-  Put $t = x_{m+1} - x_1 - f$, then $t + f + x_1 = x_{m+1} \in B$ and $t \in G$ since $1 \le t = x_{m+1}- (f + x_1) < x_{m+1} - x_m \le b$. 
+  Put $t = x_{m+1} - x_1 - f$, then $t + f + x_1 = x_{m+1} \in B$ and $t \in G$ since $1 \le t = x_{m+1}- (f + x_1) \le x_{m+1} - x_m \le b$. 
   This completes this direction of the proof.  
   
   \textsl{(b) $\Rightarrow$ (a).}
@@ -469,27 +477,25 @@ It's is the purpose of this next result to show that we can dispense with the po
     \end{array}
   \]
 % The following bits are not completely rigorous, but I think the reasoning is sound. 
-  Observe that numbers along a diagonal in the array share the same sum. 
+  Observe that numbers along an upward diagonal in the array share the same sum. 
   (For instance, $\{3+1, 2+2, 1+3\}$ have the same sum of 4.)
   Also observe that for each $i \in \{1, 2, \ldots, 2bN - 1\}$, $b + (i+1) - (1 +i) = b$ is the maximum distance between any two numbers from adjacent columns. 
   With our choice of $t_i$'s we pick exactly one number from each column of our array.
   Hence it follows that $g(B) \le b$.
   Moreover $|B| \ge N$ since the array has at least $2N$ distinct sums. 
-
-  We have that $|B| = 2N > N$.
 \end{proof}
 
 With this equivalence we now can define the notion of a piecewise
 syndetic set in a semigroup. 
 In the next chapter it will follow that piecewise syndetic sets in $\bbN$ are $AP$-sets.
 Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets are partition regular.%
-endnote{
+\endnote{
   In \cite[Lemma 1]{Brown:1971bh}, proves that if the natural numbers are finitely partitioned, then at least one cell of the partition is piecewise syndetic.
   It's an interesting question as to whether, Brown's Lemma can be extended to prove Proposition \ref{prop:psReg} directly.
 }
 
 \begin{defn}
-  Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
+  Let $(S, \cdot)$ be a semigroup and let $A \subseteq S$.
   We say $A$ is \emph{piecewise syndetic (set in S)} if and only if there exists $G \in \Pf(S)$ such that for all $F \in \Pf(S)$ there exists $x \in S$ with $Fx \subseteq \bigcup_{t \in G} t^{-1}A$.
 \end{defn}
 
@@ -502,13 +508,13 @@ endnote{
   Pick $G \in \Pf(S)$ such that for all $F \in \Pf(S)$, there exists $x \in S$ such that $Fx \subseteq \bigcup_{t \in G} t^{-1}A$. 
   Suppose, to the contrary, that $C_1$ is not piecewise syndetic and $C_2$ is not piecewise syndetic. 
   Since $C_1$ is not piecewise syndetic, we can pick $F \in \Pf(S)$ such that for all $x \in S$, $Fx \setminus (\bigcup_{t \in G} t^{-1}C_1) \ne \emptyset$. 
-  Since $C_2$ is not piecewise syndetic, we can pick $H \in \Pf(S)$ such that for all $x \in S$, $Hx \setminus (\bigcup_{t \in GF} t^{-1}C_1) \ne \emptyset$.
+  Since $C_2$ is not piecewise syndetic, we can pick $H \in \Pf(S)$ such that for all $x \in S$, $Hx \setminus (\bigcup_{t \in GF} t^{-1}C_2) \ne \emptyset$.
   Since $FH \in \Pf(S)$ pick $x \in S$ such that 
   \[
     FHx \subseteq \bigcup_{t \in G} t^{-1}(C_1 \cup C_2). 
   \]
   
-  Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}C_1$. 
+  Pick $y \in H$ such that $yx \not\in \bigcup_{t \in GF} t^{-1}C_2$. 
   Pick $z \in F$ such that $zyx \not\in \bigcup_{t \in G} t^{-1}C_1$. 
   Now $zyx \in \bigcup_{t \in G} t^{-1}(C_1 \cup C_2)$, so pick $t \in G$ such that $tzyx \in C_1 \cup C_2$. 
   If $tzyx \in C_1$, then $zyx \in t^{-1}C_1$, a contradiction.
@@ -516,17 +522,15 @@ endnote{
   Hence we conclude that either $C_1$ is piecewise syndetic or $C_2$ is piecewise syndetic.
 \end{proof}
 
-  Piecewise syndetic sets interact nicely with the smallest ideal of $\beta S$ \cite[Theorem 4.40]{Hindman:1998fk} and moreover $c\ell\bigl(K(\beta S)\bigr) = \{\, p \in \beta S : \mbox{for every $A \in p$, $A$ is piecewise syndetic} \,\}$ is a closed ideal of $\beta S$ \cite[Corollary 4.41 and Theorem 4.44]{Hindman:1998fk}. 
+  Piecewise syndetic sets interact nicely with the smallest ideal of $\beta S$ \cite[Theorem 4.40]{Hindman:1998fk} and moreover $c\ell\bigl(K(\beta S)\bigr) = \{\, p \in \beta S : \mbox{for every $A \in p$, $A$ is piecewise syndetic} \,\}$ is a closed ideal of $\beta S$ \cite[Corollary 4.41 and Theorem 4.44]{Hindman:1998fk} necessarily contained in every closed ideal of $\beta S$. 
 
 \subsection{Central Sets}
 
 Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk}, using notions from topological dynamics, defined the concept of a central subset of $\bbN$. 
-With this definition he was able to prove a powerful combinatorial statement called the Central Sets Theorem. 
+With this definition he was able to prove a powerful combinatorial statement called the Central Sets Theorem.
+(Which can be thought of as a simultaneous generalization of both van der Waerden's Theorem and Hindman's Theorem.)
 The definition of a central set and the Central Sets Theorem can both be generalized to a semigroup.
 However in contrast to our definition of a piecewise syndetic set, to describe a central subset of a semigroup using only its combinatorial and algebraic structure is shockingly complicated.%
-\endnote{
-  The Central Sets Theorem is often used as a convienent combinatorial substitute when applying central sets.
-}
 (The curious reader can consult \cite[Section 14.5]{Hindman:1998fk} for the details.)
 By using the algebraic structure of the Stone-\v{C}ech compactification we can give a very simple definition of central sets.
 
@@ -534,7 +538,12 @@ By using the algebraic structure of the Stone-\v{C}ech compactification we can g
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
   We call $A$ \emph{central} if and only if there exists an idempotent $p = pp \in K(\beta S)$ such that $A \in p$.
 \end{defn}
+\begin{rmk}
+  This definition automatically implies (by \cite[Theorem 3.6(d)]{Hindman:1998fk}) that central sets are partition regular.   
+\end{rmk}
 
+Since central sets are combinatorial complicated, the Central Sets Theorem is often used as a convienent combinatorial substitute when applying central sets.
+Hence much of the information known about centrals sets is derived from extending and studying the Central Sets Theorem.
 In the next chapter we shall prove the newest version of the Central Sets Theorem currently known via another specialization of $AP$-sets.
 
 % Endnotes 
