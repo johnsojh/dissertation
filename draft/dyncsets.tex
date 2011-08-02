@@ -4,13 +4,23 @@
 \newcommand{\ds}{(X, \la T_s \ra_{s \in S})}
 \chapter{Dynamical Characterization of $C$-sets}
 \section{Dynamical Systems and $\beta S$}
-Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk} originally defined central sets and proved the original Central Sets Theorem using the notions of topological dynamics.%
-\endnote{
-  Depending on the enumeration, there are around five different versions of `the' Central Sets Theorem.
-  Furstenberg's version \cite[Proposition 8.21]{Furstenberg:1981fk}, Bergelson's and Hindman's `pre-natural semigroup' version \cite[Theorem 4.11]{Bergelson:1990kx} and noncommutative version \cite[Theorem 2.8]{Bergelson:1992fk}, and the De, Hindman, and Strauss version \cite[Corollary 3.10]{De:2008uq}, and finally our version Corollary \ref{cor:cst}.  
-  We must note however, that our Corollary \ref{cor:cst} is equivalent to \cite[Corollary 3.10]{De:2008uq}.
-}
-It is a natural to investigate whether $C$-sets admit a dynamical characterization, and in this chapter we shall prove that such a characterization exists.
+Furstenburg in \cite[Chapter 8]{Furstenberg:1981fk}, using notions of topological dynamics, originally defined a central subset of positive integers as follows. 
+We call $A \subseteq \bbN$ a \emph{central set} if and only if there exist a compact metric space $(X, d)$, a continuous function $T \colon X \to X$, points $x$, $y \in X$, and a neighborhood $U$ of $y$ such that
+\begin{itemize}
+  \item[(a)]
+    $\{\, n \in \bbN : T^n(y) \in U \,\}$ is syndetic;
+
+  \item[(b)]
+    $\displaystyle\lim_{n\to\infty} d\bigl(T^n(x), T^n(y) \bigr) = 0$; and
+
+  \item[(c)]
+    $A = \{\, n \in \bbN : T^n(x) \in U \,\}$. 
+\end{itemize}
+Where for each $n \in \bbN$, $T^n$ is the composition of $T$ with itself $n$-times.
+
+The dynamical definition for central sets is simpler than the combinatorial definition but it is still nontrivial. 
+(For instance, it is not obvious that central sets are partition regular with the dynamical definition.)
+However since central sets originated in this topological dynamics context, it is natural to investigate whether $C$-sets admit a dynamical characterization; and, in this chapter we prove that such a characterization exists. 
 Before we can begin we will need to define what we mean by a dynamical
 system and provide a connection to $\beta S$.
   \begin{defn}
@@ -301,12 +311,6 @@ dynamical characterization of $C$-sets.
     Put $A = \{\, s \in S : T_s(x) \in U \,\}$ and note that $S
     \setminus A \in r$ and $\overline{S \setminus A} \cap M =
     \emptyset$.
-    [If $p \in \overline{S \setminus A} \cap M$, then $A = \{\, s \in
-    S : T_s(x) \in U \,\} \in p$ by Definition \ref{defn:plim} and
-    Proposition \ref{prop:dsplim}.
-    We have also have that $S \setminus A \in p$.
-    Hence $\emptyset = A \cap (S \setminus A) \in p$, a
-    contradiction.]
     Now assume that $T_r(y) \ne y$. 
     By Definition \ref{defn:plim} and \ref{prop:dsplim}, pick a
     neighborhood $U$ of $y$ such that

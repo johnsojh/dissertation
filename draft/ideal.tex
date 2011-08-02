@@ -3,7 +3,7 @@
 
 \chapter{$J(S)$ and Subsemigroups of $S$}
 \section{Introduction}
-In this chapter we prove that Theorem \ref{thm:smallest-subsemigrp} has an analogue statement in $J(S)$. 
+In this chapter we prove that Theorem \ref{thm:smallest-subsemigrp} has an analogous statement in $J(S)$. 
 The reason why this analogue is interesting is that there are many nice algebraic and combinatorial results that utilize the smallest ideal.%
 \endnote{
   It can be argued that the smallest ideal in the Stone-\v{C}ech compactification is the best understood ideal.
@@ -38,6 +38,7 @@ We shall see that the form of the analogue depends on whether the underlying sem
 In particular, we shall prove the following two theorems.
 
 \begin{thm}
+  \label{thm:comm-case}
   Let $(S, +)$ be a commutative semigroup, and let $T \subseteq S$ be a subsemigroup.
   The following statements are equivalent.
   \begin{itemize}
@@ -68,7 +69,7 @@ In particular, we shall prove the following two theorems.
   \end{itemize}
 \end{thm}
 
-In Section \ref{sec:example} we prove that statement (a) in Theorem \ref{thm:ideal} cannot be strengthen to $J(T) = \beta T \cap J(S)$. 
+In Section \ref{sec:example} we prove that statement (a) in Theorem \ref{thm:ideal} cannot be strengthened to $J(T) = \beta T \cap J(S)$. 
 We are in a position to already prove parts of these theorems.
 
 \begin{thm}
@@ -99,7 +100,7 @@ With this theorem in hand in the next few sections we need only consider the cas
 
 \section{Commutative Semigroup Case}
 We first focus on the case when the underlying semigroup is commutative. 
-In this case we obtain a stronger result because of Lemma \ref{lem:comm-jsets} simple characterization of a $J$-set in a commutative semigroup.
+In this case, we are able to obtain a stronger result because of the simple characterization of a $J$-set proved in Lemma \ref{lem:comm-jsets}.
 (Recall that Lemma \ref{lem:comm-jsets} states that a set $A$ is a $J$-set in a commutative semigroup if and only if for every $F \in \Pf(\calT)$ there exist $a \in S$ and $H \in \Pf(\bbN)$ such that $a + \sum_{t \in H} f(t) \in A$ for every $f \in F$.
 Also recall that if $S$ is a semigroup, then $\calT(S)$ is the set of all sequences on $S$.)
 
@@ -122,7 +123,7 @@ The following lemma shows that, in a commutative semigroup, we may pick our `tra
   By assumption, $A$ satisfies the sufficiency condition of Lemma \ref{lem:comm-jsets}, and hence $A$ is a $J$-set.
 \end{proof}
 
-Our next lemma show that a $J$-set contains `many' translates of sum of sequences. 
+Our next lemma show that a $J$-set contains `many' translates of sums of sequences. 
 \begin{lem}
   \label{lem:comm-many}
   Let $(S, +)$ be a commutative semigroup and $A \subseteq S$.
@@ -162,7 +163,7 @@ Our next lemma show that a $J$-set contains `many' translates of sum of sequence
   Since $A$ satisfies the sufficiency condition of Lemma \ref{lem:comm-jsets}, we have that $A$ is a $J$-set.
 \end{proof}
 
-Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to be $J$-sets in the containing semigroup if the subsemigroup itself is a $J$-set in the containing semigroup.
+Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to be $J$-sets in the containing commutative semigroup if the subsemigroup itself is a $J$-set in the containing semigroup.
 
 \begin{lem}
   \label{lem:comm-lift}
@@ -181,6 +182,7 @@ Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to b
 \end{proof}
 
 \begin{thm}
+  \label{thm:comm-main}
   Let $(S,+)$ be a commutative semigroup, and let $T \subseteq S$ be a subsemigroup.
   If $T$ is a $J$-set in $S$, then $J(T) = \beta T \cap J(S)$.
 \end{thm}
@@ -198,6 +200,8 @@ Our final lemma in this section shows that $J$-sets in subsemigroups `lift' to b
   Since $a \in A \subseteq T$, it follows from the necessity condition of Lemma \ref{lem:comm-jsets} that $A$ is a $J$-set in $T$.
   Hence $p \in J(T)$.
 \end{proof}
+
+We now simply observe that Theorem \ref{thm:comm-main} proves that statement (c) implies statement (a) in Theorem \ref{thm:comm-case}, completing the proof of Theorem \ref{thm:comm-case}.
 
 \section{General Semigroup Case}
 To handle the general semigroup case we will prove versions of Lemma \ref{lem:comm-many} and \ref{lem:comm-lift} that use the usual definition of a $J$-set. 
@@ -227,7 +231,7 @@ Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \c
   Since $A$ is a $J$-set, pick $m_1 \in \bbN$, $a_1 \in S^{m_1+1}$, and $\tau(1) \in \calJ_{m_1}$ such that for all $f \in F$, $x(m_1, a_1, \tau(1), f) \in A$. 
   Hypothesis (i) is satisfied vacuously, and hypothesis (ii) is satisfied by our choices of $m_1$, $a_1$, and $\tau(1)$. 
 
-  Now assume that $n > 1$ and that we have pick our sequences $\la m_k \ra_{k=1}^{n-1}$, $\la a_k \ra_{k=1}^{n-1}$, and $\tau \in \bigtimes_{i=1}^{n-1} \calJ_{m_k}$ to satisfy hypotheses (i) and (ii). 
+  Now assume that $n > 1$ and that we have picked our sequences $\la m_k \ra_{k=1}^{n-1}$, $\la a_k \ra_{k=1}^{n-1}$, and $\tau \in \bigtimes_{i=1}^{n-1} \calJ_{m_k}$ to satisfy hypotheses (i) and (ii). 
   By Lemma \ref{lem:jset-start} pick $m_n \in \bbN$, $a_n \in S^{m_n+1}$, and $\tau(n) \in \calJ_{m_n}$ with $\tau(n)(1) > \tau(n-1)(m_{n-1})$ and $x(m_n, a_n, \tau(n), f) \in A$ for all $f \in F$. 
   Then by construction of $\tau(n)$ hypothesis (i) is satisfied, and by our choice of $m_n$, $a_n$, and $\tau(n)$, hypothesis (ii) is satisfied. 
 
@@ -284,6 +288,7 @@ Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \c
   Hence $p \in \beta T \cap J(S)$. 
 \end{proof}
 
+Finally we observe that Theorem \ref{thm:comb-ideal} proves that statement (c) implies statement (a) in Theorem \ref{thm:ideal}, completing the proof of this theorem. 
 \section{A Free Semigroup Example}
 \label{sec:example}
 

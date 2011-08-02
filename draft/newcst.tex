@@ -304,7 +304,7 @@ To state this result we introduce the following notation.
 It is clear that every semigroup $S$ is a $J$-set in itself, but this easy fact doesn't necessarily imply that $J(S) \ne \emptyset$.
 It's true that $J(S)$ \emph{is} nonempty but this nontrivial fact follows either from the fact that piecewise syndetic sets are $J$-sets, Lemma \ref{lem:pr-jsets} and \cite[Theorem 3.11]{Hindman:1998fk}, or the Central Sets Theorem.%
 \endnote{
-  The fact that $J(S)$ is nonempty was first proven via the Central Sets Theorem in \cite[Theorem 3.8]{De:2008uq}.
+  The fact that $J(S)$ is nonempty was first proved via the Central Sets Theorem in \cite[Theorem 3.8]{De:2008uq}.
   The proof that $J$-sets are partition regular was first proved in \cite[Theorem 2.14]{Hindman:2010fk}. 
   The proof that piecewise syndetic sets are $J$-sets is new.
 }
@@ -469,6 +469,7 @@ With Lemma \ref{lem:pr-jsets} we can prove a stronger relationship between $J$-s
 \section{Central Sets Theorem}
 The final proof that $J(S)$ is nonempty follows from the Central Sets Theorem.
 \begin{defn}
+  \label{defn:csets}
   Let $(S, \cdot)$ be a semigroup and $A \subseteq S$.
   We call $A$ a \textsl{$C$-set} if and only if there exist $m \colon \Pf(\calT) \to \bbN$, $\alpha \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ such that 
   \begin{itemize}
@@ -791,139 +792,70 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   Hence $\sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t) \bigr) \in A^\star$.
 
   ($\Leftarrow$)
-  Pick $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ as guaranteed by assumption.
-  For all $F \in \Pf(\calT)$ put
-  \begin{align*}
-    T(F) &= \bigl\{\, \textstyle \sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr) : \mbox{$n \in \bbN$, for each $i \in \{1, 2, \ldots, n\}$, $F_i \in \Pf(\calT)$,}\\
- &\hspace{12em}\mbox{$F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$} \,\bigr\}.
-  \end{align*}
-
-  Observe that for every $F \in \Pf(\calT)$, $T(F)$ is a nonempty subset of $A$ and that the collection $\{\, T(F) : F \in \Pf(\calT) \,\}$ has the finite intersection property since $T(F \cup G) \subseteq T(F) \cap T(G)$ for all $F$, $G \in \Pf(\calT)$.
-  Therefore $\mathbf{Q} = \bigcap_{F \in \Pf(\calT)} c\ell_{\beta S}\bigl(T(F)\bigr)$ is a closed nonempty subset of $\beta S$ contained in $c\ell_{\beta S}(A)$. 
-  We show that $\mathbf{Q}$ is, in fact, a subsemigroup of $\beta S$. 
-  To see that $\mathbf{Q}$ is a subsemigroup it suffices, by \cite[Theorem 4.20]{Hindman:1998fk}, to show that for all $F \in \Pf(\calT)$ and for every $y \in T(F)$, there exists $G \in \Pf(\calT)$ such that $yT(G) \subseteq T(F)$. 
-  Let $F \in \Pf(\calT)$ and $y \in T(F)$. 
-  Pick $n \in \bbN$, for every $i \in \{1, 2, \ldots, n\}$ pick $F_i \in \Pf(\calT)$ with $F \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and pick $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$ such that $y = \sum_{i=1}^n \bigl( \alpha(F_i) + \sum_{t \in H(F_i)} f_i(t) \bigr)$.
-  We show that $yT(F_n) \subseteq T_(F)$. 
-  Let $z \in T(F_n)$ and pick $m \in \bbN$, for every $i \in \{1, 2, \ldots, m\}$ pick $G_i \in \Pf(\calT)$ with $F_n \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_m$, and pick $\la g_i \ra_{i=1}^m \in \bigtimes_{i=1}^m G_i$ such that $z = \sum_{i=1}^m \bigl( \alpha(G_i) + \sum_{t \in H(G_i)} g_i(t) \bigr)$.
-
-  For each $i \in \{1, 2, \ldots, n+m\}$ define
-  \[
-    K_i =
-    \begin{cases}
-      F_i & \mbox{if $i \in \{1, 2, \ldots, n\}$,} \\
-      G_{i-n} & \mbox{if $i \in \{n+1, n+2, \ldots, n+m\}$,}
-    \end{cases}
-  \]
-  and define the sequence
-  \[
-    k_i =
-    \begin{cases}
-      f_i & \mbox{if $i \in \{1, 2, \ldots, n\}$,} \\
-      g_{i-n} & \mbox{if $i \in \{n+1, n+2, \ldots, n+m\}$,}
-    \end{cases}
-  \]
-  Then $F \subsetneq K_1 \subsetneq K_2 \subsetneq \cdots \subsetneq K_{n+m}$, $\la k_i \ra_{i=1}^{n+m} \in \bigtimes_{i=1}^{n+m} K_i$, and so $yz = \sum_{i=1}^{n+m}\bigl( \alpha(K_i) + \sum_{t \in H(K_i)} k_i(t) \bigr) \in T(F)$.
-  Hence $\mathbf{Q}$ is a subsemigroup of $\beta S$.
-
-  We now claim that $K(\mathbf{Q}) \subseteq c\ell_{\beta S}(A) \cap J(S)$. 
-  If this claim is true, then we can pick any idempotent in $K(\mathbf{Q})$ to satisfy the sufficiency condition of Theorem \ref{thm:csets} and conclude that $A$ is a $J$-set.
-  Since $\mathbf{Q} \subseteq c\ell_{\beta S}(A)$, it's evident that $K(\mathbf{Q}) \subseteq c\ell_{\beta S}(A)$. 
-
-  Now let $p \in K(\mathbf{Q})$ and $B \in p$.
-  Using \cite[Lemma 14.9]{Hindman:1998fk} we shall show that $B$ is a $J$-set.
-  Let $F \in \Pf(\calT)$ and put $D = \{\, G \in \Pf(\calT) : F \subseteq G \,\}$. 
-  Observe that $\mathbf{Q} = \bigcap_{G \in D} c\ell_{\beta S} (T(G))$.
-
-  For each $G \in D$ define $I(G) \subseteq \bigtimes_{f \in F} S$ as follows: for $w \in \bigtimes_{f \in F} S$, $w \in I(G)$ if and only if there is some $n \in \bbN \setminus \{1\}$ such that
+  If $|S| = 1$, then $|\calT| = 1$ and the implication trivially follows. 
+  Therefore we may assume that $|S| \ge 2$ and hence $\calT$ is uncountable. 
+  Fix $b \in S$, and for each $f \in \calT$ define $g_f \in \calT$ as $g_f(t) = f(t) + b$. 
+  We shall recursively define a family $\la G(F) \ra_{F \in \Pf(\calT)}$ in $\Pf(\calT)$ such that for all $F \in \Pf(\calT)$ the following hypotheses are satisfied: 
   \begin{itemize}
     \item[(i)]
-      there exist disjoint nonempty sets $C_1$ and $C_2$ with $\{1, 2, \ldots, n\} = C_1 \cup C_2$,
+      $\{\, g_f : f \in F \,\} \subseteq G(F)$.
 
     \item[(ii)]
-      there exists a strictly increasing sequence $\la G_i \ra_{i=1}^n$ in $\Pf(\calT)$ with $G \subsetneq G_1$, and
-
-    \item[(iii)]
-      there exists $\sigma \in \bigtimes_{i \in C_1} G_i$,
+      For all $F' \in \Pf(\calT)$, if $F' \subsetneq F$, then $G(F') \subsetneq G(F)$. 
   \end{itemize}
-  such that for every $f \in F$, if $\gamma_f \in \bigtimes_{i=1}^n G_i$ is defined by
+
+  Let $F \in \Pf(\calT)$. 
+  First suppose that $|F| = 1$, then $F = \{f\}$ for some $f \in \calT$.
+  Put $G(F) = \{g_f\}$, and observe that $G(F)$ clearly satisfies hypothesis (i) and vacuously satisfies hypothesis (ii). 
+
+  Now suppose $|F| > 1$ and that for all $F' \in \Pf(\calT)$ with $|F'| < |F|$ we have defined $G(F')$ such that hypotheses (i) and (ii) are satisfied. 
+  In particular for all nonempty $F' \subsetneq F$, the set $G(F')$ is properly defined. 
+  Put $\calH = \bigcup\{\, G(F') : \emptyset \ne F' \subsetneq \,\} \cup \{\, g_f : f \in F \,\}$, and observe that $\calH$ is finite. 
+  Hence we can pick $h \in \calT \setminus \calH$ and define $G(F) = \calH \cup \{\, g_f : f \in F \,\} \cup \{h\}$. 
+  That $G(F)$ satisfies hypothesis (i) is clear. 
+  To see that hypothesis (ii) is satisfied, let $F' \in \Pf(\calT)$ with $F' \subsetneq F$.
+  Then $G(F') \subseteq \calH$ and $h \not\in \calH$, and so $G(F') \subsetneq G(F)$.   
+  
+  Pick $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ as guaranteed by assumption.
+  We shall use the family $\la G(F) \ra_{F \in \Pf(\calT)}$ to construct the functions $p \colon \Pf(\calT) \to \bbN$, $\beta \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as required by Definition \ref{defn:csets}.
+
+  Define $p \colon \Pf(\calT) \to \bbN$ by $p(F) = |H\bigl( G(F) \bigr)|$. 
+  Define $\beta \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$ as follows:
+  For $F \in \Pf(\calT)$ and $i \in \{1, 2, \ldots, p(F)+1\}$
   \[
-    \gamma_f(i) =
+    \beta(F)(i) =
     \begin{cases}
-      \sigma(i) & \mbox{if $i \in C_1$,} \\
-      f & \mbox{if $i \in C_2$.}
+      \alpha \bigl( G(F) \bigr) & \mbox{if $i=1$,} \\
+      b & \mbox{if $i > 2$}.
     \end{cases}
   \]
-  then $w(f) = \sum_{i=1}^n\bigl( \alpha(G_i) + \sum_{t \in H(G_i)} \gamma_f(i) \bigr)$.
-  For each $G \in D$, define $E(G) = I(G) \cup \{\, \overline{b} : b \in T(G) \,\}$.
+  Define $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as follows:
+  For $F \in \Pf(\calT)$ enumerate $H \bigl( G(F) \bigr)$ as a strictly increasing sequence $t_1 < t_2 < \cdots < t_{p(F)}$, and for each $i \in \{1, 2, \ldots, p(F)\}$ put $\tau(F)(i) = t_i$.
+  
+  Let $F$, $F' \in \Pf(\calT)$ with $F' \subsetneq F$. 
+  By construction of the family $\la G(F) \ra_{F \in \Pf(\calT)}$ we have that $G(F') \subsetneq G(F)$.
+  then $\tau(F')\bigl( m(F') \bigr) = \max H \bigl( G(F') \bigr) < \min H \bigl( G(F) \bigr) = \tau(F)(1)$
 
-  We claim that $\la E(G) \ra_{G \in D}$ and $\la I(G) \ra_{G \in D}$ satisfy statements (a), (b), (c), and (e) of \cite[Lemma 14.9]{Hindman:1998fk}.
+  Let $n \in \bbN$, and let $F_1$, $F_2$, \ldots, $F_n$ be elements of $\Pf(\calT)$ with $F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$. 
+  If $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$, then 
+  \begin{align*}
+    \textstyle
+    \sum_{i=1}^n x(p(F_i), \beta(F_i), \tau(F_i), f_i) 
+    &= \textstyle \sum_{i=1}^n \biggl( \sum_{j=1}^{p(F_i)} \Bigl( \beta(F_i)(j) + f_i\bigl(\tau(F_i)(j)\bigr)\Bigr) \\
+    &\hspace{2em} + \beta(F_i)(m(F_i)+1) \biggr),  \\
+    &= \textstyle \sum_{i=1}^n \biggl( \beta(F_i)(1) + f_i\bigl( \tau(F_i)(1)\bigr) \\ 
+    &\hspace{2em} \textstyle + \sum_{j=2}^{p(F_i)} \Bigl( \beta(F_i)(j) + f_i\bigl(\tau(F_i)(j)\bigr)\Bigr) + \beta(F_i)(m(F_i)+1) \biggr), \\
+    &= \textstyle \sum_{i=1}^n \biggl( \alpha\bigl( G(F_i) \bigr) + f_i\bigl( \tau(F_i)(1)\bigr) + \\
+    &\hspace{2em} \textstyle \sum_{j=2}^{p(F_i)} \Bigl( b + f_i\bigl(\tau(F_i)(j)\bigr)\Bigr) + b \biggr), \\
+    &= \textstyle \sum_{i=1}^n \biggl( \alpha\bigl( G(F_i) \bigr) +
+    \textstyle \sum_{j=1}^{p(F_i)} \Bigl( f_i\bigl(\tau(F_i)(j)\bigr) + b\Bigr) \biggr), \\
+    &= \textstyle \sum_{i=1}^n \Bigl( \alpha\bigl( G(F_i) \bigr) +
+    \textstyle \sum_{j=1}^{p(F_i)} g_{f_i}\bigl(\tau(F_i)(j)\bigr) \Bigr).
+  \end{align*}
 
-  Assume, temporarily, that our claim is true. 
-  Then by \cite[Lemma 14.9]{Hindman:1998fk} if $Y = \bigtimes_{f \in F} \beta S$, $E = \bigcap_{G \in D} c\ell_Y(E(G))$, and $I = \bigcap_{G \in D} c\ell_Y(I(G))$, then $E$ is a subsemigroup of $Y$, $I$ is an ideal of $E$, and for every $p \in K(\mathbf{Q})$, $\overline{p} = (p, p, \ldots, p) \in K(E) \subseteq I$. 
-  Since $\bigtimes_{f \in F} c\ell_{\beta S} (B)$ is a neighborhood of $\overline{p}$ we can pick $w \in I(F) \cap \bigtimes_{f \in F} c\ell_{\beta S} (B)$. 
-  Pick $n \in \bbN\setminus \{1\}$, $C_1$, $C_2$, $\la G_i \ra_{i=1}^n$, and $\sigma \in \bigtimes_{i \in C_1} G_i$ as guaranteed by the definition of $I(F)$. 
-  By Lemma \ref{lem:comm-jsets} it suffices to define $a \in S$ and $H \in \Pf(\bbN)$ such that $a + \sum_{t \in H} f(t) \in B$ for every $f \in F$. 
-  Put $a = \sum_{i=1}^n \alpha(G_i) + \sum_{i \in C_1} \sigma(i)$ and put $H = C_2$.
-  Then for every $f \in F$, $a + \sum_{t \in H} f(t) \in B$.
+  By our choice of $p$, $\beta$, and $\tau$ this last sum is an element of  $A$. 
+  Hence $A$ is a $C$-set.
 
-  We now prove our claim that the families $\la E(G) \ra_{G \in D}$ and $\la I(G) \ra_{G \in D}$ satisfy statements (a), (b), (c), and (e) of \cite[Lemma 14.9]{Hindman:1998fk}.
-
-  By definition of $\la E(G) \ra_{G \in D}$ and $\la I(G) \ra_{G \in D}$ it is immediate that statements (a) and (e) are satisfied. 
-
-  We now show statement (b) which states that for every $G \in D$ and each $w \in I(G)$ there exists $H \in D$ such that $w E(H) \subseteq I(G)$.
-  Let $G \in D$ and $w \in I(G)$. 
-  Pick $n \in \bbN$, $C_1$, $C_2$, $\la G_i \ra_{i=1}^n$, and $\sigma \in \bigtimes_{i \in C_1} G_i$ as guaranteed by the definition of $I(G)$.
-  We show that $w E(G_n) \subseteq I(G)$. 
-  Let $z \in E(G_n)$. 
-  First assume that $z = \overline{b}$ for some $b \in T(G_n)$. 
-  Pick $m \in \bbN$, for each $i \in \{1, 2, \ldots, m\}$ pick $F_i \in \Pf(\calT)$ with $G_n \subsetneq F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$, and pick $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$ such that $b = \sum_{i=1}^m \bigl( \alpha(F_i) + \sum_{t \in H(F_i)} f_i(t) \bigr)$. 
-  Put $D_1 = C_1 \cup \{n+1, n+2, \ldots, n+m\}$ and for each $i \in \{1, 2, \ldots, n+m\}$ put 
-  \[
-    K_i = 
-    \begin{cases}
-      G_i & \mbox{if $i \le n$,} \\
-      F_{i-n} & \mbox{if $i > n$.}
-    \end{cases}
-  \]
-  Define $\rho \in \bigtimes_{i \in D_1} H_i$ by 
-  \[
-    \rho(i) =
-    \begin{cases}
-      \sigma(i) & \mbox{if $i \le n$,} \\
-      f_{i-n} & \mbox{if $i > n$.}
-    \end{cases}
-  \]
-  Then with $n+m$, $D_1$, $C_2$, $\la K_i \ra_{i=1}^{n+m}$, and $\rho$ we have that $w \cdot z \in I(G)$. 
-
-  Now we assume that $z \in I(G_n)$. 
-  Pick $m \in \bbN$, $D_1$, $D_2$, $\la F_i \ra_{i=1}^m$, and $\rho$ as guaranteed by the definition of $I(G_n)$. 
-  Put $E_1 = C_1 \cup \{\,n + i : i \in D_1 \,\}$ and put $E_2 = C_2 \cup \{\, n + i : i \in D_2 \,\}$.
-  For each $i \in \{1, 2, \ldots, n+m\}$ put
-  \[
-    K_i = 
-    \begin{cases}
-      G_i & \mbox{if $i \le n$,} \\
-      F_{i-n} & \mbox{if $i > n$.}
-    \end{cases}
-  \]
-  Define $\mu \in \bigtimes_{i \in E_i} H_i$ by
-  \[
-    \mu(i) = 
-    \begin{cases}
-      \sigma(i) & \mbox{if $i \le n$,} \\
-      \rho(i) & \mbox{if $i > n$.}
-    \end{cases}
-  \]
-  Then with $n+m$, $E_1$, $E_2$, $\la K_i \ra_{i=1}^{n+m}$, and $\mu$ we have that $w \cdot z \in I(G)$.
-
-  We now verify statement (c) which states that for all $G \in D$ and every $w \in E(G) \setminus I(G)$, there exists $H \in D$ such that $wE(H) \subseteq E(G)$ and $wI(H) \subseteq I(G)$.
-  So let $G \in D$ and $w \in E(G) \setminus I(G)$. 
-  Pick $b \in T(G)$ such that $w = \overline{b}$. 
-  Pick $n \in \bbN$, for each $i \in \{1, 2, \ldots, n\}$ pick $G_i \in \Pf(\calT)$ with $G \subsetneq G_1 \subsetneq G_2 \subsetneq \cdots \subsetneq G_n$, and pick $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n G_i$ such that $b = \sum_{i=1}^n \bigl( \alpha(G_i) + \sum_{t \in H(G_i)} f_i(t)\bigr)$. 
-  Then similar to what we have done above, we have that $wE(G_n) \subseteq E(G)$ and $wI(G_n) \subseteq I(G)$.
-
-  This finishes this direction of our proof. 
 \end{proof}
 
  \theendnotes
