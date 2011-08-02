@@ -291,8 +291,7 @@ Recall that, given a semigroup $S$, for $n \in \bbN$, $a \in S^{m+1}$, $t \in \c
 Finally we observe that Theorem \ref{thm:comb-ideal} proves that statement (c) implies statement (a) in Theorem \ref{thm:ideal}, completing the proof of this theorem. 
 \section{A Free Semigroup Example}
 \label{sec:example}
-
-We now produce an example showing that the conclusion of Theorem \ref{thm:comb-ideal} cannot be improved to $J(T) = \beta T \cap J(S)$.
+As our final result, we produce an example showing that the conclusion of Theorem \ref{thm:comb-ideal} cannot be improved to $J(T) = \beta T \cap J(S)$.
 In this section we let $S$ be the free semigroup on two generators $a$ and $b$.
 
 \begin{lem}
@@ -429,9 +428,14 @@ Now that we have our $J$-set, we will use it to generate our required subsemigro
 
   By condition (1) of Lemma \ref{lem:seqs}, we have that $v_k$ has no two adjacent $b$'s. 
   By condition (3) of Lemma \ref{lem:seqs}, $\ell(v_k) > \ell(v_nxw_n)$. 
-  Since $x(m, c, t, \overline{a}) = v_kyw_k = v_nxw_nu_2 \cdots u_sc(2) ac(3)\cdots c(m)ac(m+1)$, we arrive at a contradiction.
+  Since 
+  \[
+    x(m, c, t, \overline{a}) = v_kyw_k = v_nxw_nu_2 \cdots u_sc(2) ac(3)\cdots c(m)ac(m+1),
+  \]
+  we arrive at a contradiction.
 
   Since we have exhausted all of our cases and sub-cases, the conclusion follows.
 \end{proof}
 
-It follows from this theorem that we have a $A$ $J$-set in $S$ contained $T$, a subsemigroup of $S$, that is also a $J$-set in $S$, such that $A$ is not a $J$-set in $T$.
+It follows from this theorem that we have a $A$, $J$-set in $S$ contained $T$, a subsemigroup of $S$, that is also a $J$-set in $S$, such that $A$ is not a $J$-set in $T$.
+Hence the statement (a) in Theorem \ref{thm:ideal} cannot be strengthened to $J(T) = \beta T \cap J(S)$ 
