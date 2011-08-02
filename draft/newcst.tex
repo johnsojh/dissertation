@@ -114,7 +114,7 @@ However before proving this result we introduce some notation that is analogous 
   \end{align*}
 \end{defn}
 
-Given a $A$ a subset of some semigroup $S$, in \cite[Definition 2.2(a)]{Hindman:2009vn} $A$ is considered a $J$-set if and only if for every $F \in \Pf(\calT)$, there exists $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$, $\Bigl( \prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) \Bigr) a(m+1) \in A$.
+Given a $A$, a subset of some semigroup $S$, in \cite[Definition 2.2(a)]{Hindman:2009vn} $A$ is considered a $J$-set if and only if for every $F \in \Pf(\calT)$, there exists $m \in \bbN$, $a \in S^{m+1}$, and $H \in \calI_m$ such that for all $f \in F$, $\Bigl( \prod_{i=1}^n\bigl( a(i) \prod_{t \in H(i)} f(t) \bigr) \Bigr) a(m+1) \in A$.
 To show that our definition of a $J$-set is equivalent to \cite[Definition 2.2(a)]{Hindman:2009vn} we will use the following technical `rewriting' lemma.
 
 \begin{lem}
@@ -328,7 +328,7 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
     \,\Bigr\},
   \end{align*}
   and put $E_i = I_i \cup \{\, (a, a, \ldots, a) : a \in S \,\}$.
-  Let $I = \bigcap_{i=1}^\infty \overline{I_i}$ and let $E = \bigcap_{i=1}^\infty \overline{E_i}$.
+  Let $I = \bigcap_{i=1}^\infty c\ell_Y(I_i)$ and let $E = \bigcap_{i=1}^\infty c\ell_Y(E_i)$.
 
   Observe that $I$ and $E$ are nonempty closed subsets of $Y$.
   (Since each $I_i \ne \emptyset$ and $I_{i+1} \subseteq I_i$.)
@@ -794,6 +794,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   ($\Leftarrow$)
   If $|S| = 1$, then $|\calT| = 1$ and the implication trivially follows. 
   Therefore we may assume that $|S| \ge 2$ and hence $\calT$ is uncountable. 
+
   Fix $b \in S$, and for each $f \in \calT$ define $g_f \in \calT$ as $g_f(t) = f(t) + b$. 
   We shall recursively define a family $\la G(F) \ra_{F \in \Pf(\calT)}$ in $\Pf(\calT)$ such that for all $F \in \Pf(\calT)$ the following hypotheses are satisfied: 
   \begin{itemize}
@@ -805,21 +806,21 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   \end{itemize}
 
   Let $F \in \Pf(\calT)$. 
-  First suppose that $|F| = 1$, then $F = \{f\}$ for some $f \in \calT$.
-  Put $G(F) = \{g_f\}$, and observe that $G(F)$ clearly satisfies hypothesis (i) and vacuously satisfies hypothesis (ii). 
+  If $|F| = 1$, then put $G(F) = \{\, g_f : f \in F \,\}$.
+  Observe that $G(F)$ satisfies hypothesis (i), and vacuously satisfies hypothesis (ii).
 
   Now suppose $|F| > 1$ and that for all $F' \in \Pf(\calT)$ with $|F'| < |F|$ we have defined $G(F')$ such that hypotheses (i) and (ii) are satisfied. 
   In particular for all nonempty $F' \subsetneq F$, the set $G(F')$ is properly defined. 
-  Put $\calH = \bigcup\{\, G(F') : \emptyset \ne F' \subsetneq \,\} \cup \{\, g_f : f \in F \,\}$, and observe that $\calH$ is finite. 
-  Hence we can pick $h \in \calT \setminus \calH$ and define $G(F) = \calH \cup \{\, g_f : f \in F \,\} \cup \{h\}$. 
+  Put $\calH = \bigcup\{\, G(F') : \emptyset \ne F' \subsetneq F \,\} \cup \{\, g_f : f \in F \,\}$, and observe that $\calH$ is finite. 
+  Hence we can pick $h \in \calT \setminus \calH$ and define $G(F) = \calH \cup \{h\}$. 
   That $G(F)$ satisfies hypothesis (i) is clear. 
   To see that hypothesis (ii) is satisfied, let $F' \in \Pf(\calT)$ with $F' \subsetneq F$.
-  Then $G(F') \subseteq \calH$ and $h \not\in \calH$, and so $G(F') \subsetneq G(F)$.   
+  Then since $G(F') \subseteq \calH$ and $h \not\in \calH$ we have $G(F') \subsetneq G(F)$.   
   
   Pick $\alpha \colon \Pf(\calT) \to S$ and $H \colon \Pf(\calT) \to \Pf(\bbN)$ as guaranteed by assumption.
   We shall use the family $\la G(F) \ra_{F \in \Pf(\calT)}$ to construct the functions $p \colon \Pf(\calT) \to \bbN$, $\beta \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$, and $\tau \in \bigtimes_{F \in \Pf(\calT)} \calJ_{m(F)}$ as required by Definition \ref{defn:csets}.
 
-  Define $p \colon \Pf(\calT) \to \bbN$ by $p(F) = |H\bigl( G(F) \bigr)|$. 
+  First define $p \colon \Pf(\calT) \to \bbN$ by $p(F) = |H\bigl( G(F) \bigr)|$ for all $F \in \Pf(\calT)$. 
   Define $\beta \in \bigtimes_{F \in \Pf(\calT)} S^{m(F)+1}$ as follows:
   For $F \in \Pf(\calT)$ and $i \in \{1, 2, \ldots, p(F)+1\}$
   \[
@@ -834,7 +835,7 @@ Similar to how the definition of a $J$-set is simpler when the underlying semigr
   
   Let $F$, $F' \in \Pf(\calT)$ with $F' \subsetneq F$. 
   By construction of the family $\la G(F) \ra_{F \in \Pf(\calT)}$ we have that $G(F') \subsetneq G(F)$.
-  then $\tau(F')\bigl( m(F') \bigr) = \max H \bigl( G(F') \bigr) < \min H \bigl( G(F) \bigr) = \tau(F)(1)$
+  Hence $\tau(F')\bigl( p(F') \bigr) = \max H \bigl( G(F') \bigr) < \min H \bigl( G(F) \bigr) = \tau(F)(1)$
 
   Let $n \in \bbN$, and let $F_1$, $F_2$, \ldots, $F_n$ be elements of $\Pf(\calT)$ with $F_1 \subsetneq F_2 \subsetneq \cdots \subsetneq F_n$. 
   If $\la f_i \ra_{i=1}^n \in \bigtimes_{i=1}^n F_i$, then 
