@@ -15,7 +15,6 @@
 \section{Hales-Jewett Theorem}
 In the article \cite{Hales:1963fk}, Alfred W.~Hales and Robert I.~Jewett abstracted van der Waerden's combinatorial argument into a powerful theorem which implies (among other things) van der Waerden's Theorem itself. 
 The vast applicability of the Hales-Jewett Theorem lies in the fact that it relates finite coloring of free semigroups and `combinatorial lines'. 
-(We shall soon give the precise definition of a combinatorial line, but presently it can be thought of as an abstraction of an arithmetic progression.)
 In this chapter, one of our first tasks shall be to import the notion of a special type of combinatorial line into other types of semigroups. 
 However before we can get started we must first state some terminology related to the Hales-Jewett Theorem itself.
 
@@ -39,7 +38,7 @@ However before we can get started we must first state some terminology related t
 \end{hj}
 
 To import the notion of a combinatorial line into other semigroups we shall specialize the notion of a combinatorial line to require that it begins and ends with a constant letter, and that there are no two adjacent variable letters.
-The following theorem shows that the conclusion of the Hales-Jewett Theorem may be strengthen to these specialize combinatorial lines.  
+The following theorem shows that the conclusion of the Hales-Jewett Theorem may be strengthened to these specialize combinatorial lines.  
 
 \begin{thm}
   \label{thm:special-hj}
@@ -50,7 +49,7 @@ The following theorem shows that the conclusion of the Hales-Jewett Theorem may 
   Define the function $\varphi \colon S \to \{1, 2, \ldots, r\}$ by $\varphi(w) = \min\{i : w \in C_i\}$. 
   Fix $b \in A$ and define $\psi \colon S \to S$ as follows: if $w \in S$ and $w = a_1a_2 \cdots a_n$ with each $a_i \in A$, then $\psi(w) = ba_1ba_2b\cdots a_nb$.
   We have that $\varphi \circ \psi \colon S \to \{1, 2, \ldots, r\}$.
-  By the Hales-Jewett Theorem, pick $i \in \{1, 2, \ldots, r\}$ and a variable word $w(\star)$ such that $\{\, w(a) : a \in A \,\} \subseteq (\varphi \circ \psi)^{-1}[i]$.
+  By the Hales-Jewett Theorem, pick $i \in \{1, 2, \ldots, r\}$ and a variable word $w(\star)$ such that $\{\, w(a) : a \in A \,\} \subseteq (\varphi \circ \psi)^{-1}[\{i\}]$.
   Observe that $\psi\bigl(w(\star)\bigr)$ is a variable word that begins and ends with a constant, doesn't have any adjacent variable letters, and $\{\, \psi\bigl(w(a)\bigr) : a \in A \} \subseteq C_i$.
 \end{proof}
 
@@ -72,6 +71,7 @@ The following theorem shows that the conclusion of the Hales-Jewett Theorem may 
 
 \section{$J$-sets}
 The way we shall import the notion of our specialized combinatorial line into other semigroups is by defining the concept of a $J$-set. 
+In what follows if $A$ and $B$ are sets, we let $\setfunc{A}{B}$ represent the collection of all functions with domain $A$ and codomain $B$.
 
 \begin{defn}
   Let $(S, \cdot)$ be a semigroup.
@@ -318,7 +318,8 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
 \end{thm}
 \begin{proof}
   Let $F \in \calT$, put $k = |F|$, and enumerate $F$ as $\{f_1, f_2, \ldots, f_k\}$.
-  Put $Y = \bigtimes_{t=1}^k \beta S$, then with the product topology $Y$ is a compact right-topological semigroup by \cite[Theorem 2.22]{Hindman:1998fk}
+  Put $Y = \bigtimes_{t=1}^k \beta S$. 
+  Then with the product topology $Y$ is a compact right-topological semigroup by \cite[Theorem 2.22]{Hindman:1998fk}
   For each $i \in \bbN$ define
   \begin{align*}
     I_i &= \Bigl\{\, \bigl( x(m, a, t, f_1), x(m, a, t, f_2), \ldots,
@@ -335,7 +336,7 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
   We claim that $E$ is a subsemigroup of $Y$ and $I$ is an ideal of $E$.
   Let $p$, $q \in E$, $U$ be an open neighborhood of $pq$, and let $i \in \bbN$. 
   Since $\rho_q$ is continuous, pick $V$ a neighborhood of $p$ such that $Vq \subseteq U$. 
-  If $p \in I$, then pick $\vec{x} \in I_i \cap V$ otherwise pick $\vec{x} \in E_i \cap V$.
+  If $p \in I$, then pick $\vec{x} \in I_i \cap V$; otherwise pick $\vec{x} \in E_i \cap V$.
   If $\vec{x} \in I_i$, then pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ with $t_1 > i$ such that
   \[
     \vec{x} = \bigl( x(m, a, t, f_1), x(m, a, t, f_2), \ldots, x(m,
@@ -373,7 +374,7 @@ The following result is modeled after \cite[Theorems 14.1 and 14.7]{Hindman:1998
   If $A \subseteq \bbN$ be a piecewise syndetic set, then $A$ is also an $AP$-set. 
 \end{cor}
 \begin{proof}
-  Since $A$ is also a $J$-set, it suffices to show that all $J$-sets in $\bbN$ are $AP$-set. 
+  Since $A$ is also a $J$-set, it suffices to show that all $J$-sets in $\bbN$ are $AP$-sets. 
   Let $k$ be a positive integer and let $\la x_n \ra_{n=1}^\infty$ be a sequence in $\bbN$. 
   For each $i \in \{1, 2, \ldots, k\}$ put $f_i(t) = i \cdot x_t$.
   Since $A$ is a $J$-set, pick $a \in \bbN$ and $H \in \Pf(\bbN$ such that for all $i \in \{1, 2, \ldots, k\}$, $a + \sum_{t \in H} f_i(t) \in A$. 
@@ -397,7 +398,7 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
   Pick $F_1$ and $F_2$ in $\Pf(\calT)$ such that for all $m \in \bbN$, every $a \in S^{m+1}$, and every $t \in \calJ_m$, there exist $f \in F_1$ and $g \in F_2$ such that $x(m, a, t, f) \not\in A_1$ and $x(m, a, t, g) \not\in A_2$.
   Let $F = F_1 \cup F_2$, put $k = |F|$, and enumerate $F$ as $\{f_1, f_2, \ldots, f_k\}$.
 
-  By Theorem \ref{thm:finitary-shj} pick $n \in \bbN$ such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable words, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \{1, 2, \ldots, k\} \,\bigr\}$ is constant under the mapping. 
+  By Theorem \ref{thm:finitary-shj} pick $n \in \bbN$ such that whenever $\{1, 2, \ldots, k\}^n$ is 2-colored there exists a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \{1, 2, \ldots, k\} \,\bigr\}$ is constant under the mapping. 
 
   Now for each $w = (x_1, x_2, \ldots, x_n) \in \{1, 2, \ldots, k\}^n$ define $g_w \in \calT$ by $g_w(t) = \prod_{i=1}^n f_{x_i}(nt + i)$.
   We have, by hypothesis, that $A_1 \cup A_2$ is a $J$-set and since $\{1, 2, \ldots, k\}^n$ is finite, we may pick $m \in \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all $w \in \{1, 2, \ldots, k\}^n$, $x(m, a, t, g_w) \in A$.
@@ -410,7 +411,7 @@ We now provide another proof, that when combined with \cite[Theorem 3.11]{Hindma
       2 & \mbox{otherwise.}
     \end{cases}
   \]
-  Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply Theorem \ref{thm:finitary-shj} to pick a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable letters, and for which the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$ is constant on $\varphi$. 
+  Since $\varphi$ is a 2-coloring of $\{1, 2, \ldots, k\}^n$ we may apply Theorem \ref{thm:finitary-shj} to pick a variable word $w(\star)$ which begins and ends with a constant letter, with no two adjacent variable letters, and for which the $varphi$ is constant on the combinatorial line $\bigl\{\, w(\ell) : \ell \in \{1, 2, \ldots, k\} \,\bigr\}$. 
   Without loss of generality we may suppose that $\varphi \bigl( w(\ell) \bigr) = 1$ for every $\ell \in \{1, 2, \ldots, k\}$.
 
   We claim that there exist $r \in \bbN$, $c \in S^{mr+1}$, and $s \in \calJ_{mr}$ such that for all $\ell \in \{1, 2, \ldots, k\}$ we have $x(mr, c, s, f_\ell) = x(m, a, t, g_{w(\ell)}) \in A_1$. 
@@ -477,6 +478,38 @@ The final proof that $J(S)$ is nonempty follows from the Central Sets Theorem.
 \end{defn}
 
 We now prove that $C$-sets and idempotents in $J(S)$ are closely related.
+This proof uses the powerful \cite[Lemma 14.9]{Hindman:1998fk} which we now state.
+
+\begin{lem}[{\cite[Lemma 14.9]{Hindman:1998fk}}]
+  Let $F$ be a set, $(D, \le)$ a directed set, and let $(S, \cdot)$ be a semigroup.
+  Let $\la T_i \ra_{i \in D}$ be a decreasing family of subsets of $S$ such that for each $i \in D$ and $x \in T_i$, there exists $j \in D$ with $xT_j \subseteq T_i$.
+  Put $\mathbf{Q} = \bigcap_{i \in D} c\ell_{\beta S}(T_i)$.
+  Then $\mathbf{Q}$ is a compact subsemigroup of $\beta S$.
+  Let $\la E_i \ra_{i \in D}$ and $\la I_i \ra_{i \in D}$ be decreasing families of nonempty subsets of $\bigtimes_{f \in F} S$ with the following properties:
+  \begin{itemize}
+    \item[(a)]
+      For each $i \in D$, $I_i \subseteq E_i$. 
+
+    \item[(b)]
+      For each $i \in D$ and every $\vec{x} \in I_i$, there exists $j \in D$ such that $\vec{x}E_j \subseteq I_i$.
+
+    \item[(c)]
+      For each $i \in D$ and every $\vec{x} \in E_i \setminus I_i$, there exists $j \in D$ such that $\vec{x} E_j \subseteq E_i$ and $\vec{x}I_j \subseteq I_i$.
+  \end{itemize}
+
+  Let $Y = \bigtimes_{f \in F} \beta S$, let $E = \bigcap_{i \in D} c\ell_{Y}(E_i)$, and let $I = \bigcap_{i \in D} c\ell_Y(I_i)$.
+  Then $E$ is a subsemigroup of $\bigtimes_{f \in F} \mathbf{Q}$ and $I$ is an ideal of $E$. 
+  Additionally, if either 
+  \begin{itemize}
+    \item[(d)]
+      for each $i \in D$, $T_i = S$ and $\{\, a \in S : \overline{a} \not\in E_i \,\}$ is \emph{not} piecewise syndetic, or
+
+    \item[(e)]
+      for each $i \in D$ and each $a \in T_i$, $\overline{a} \in E_i$,
+  \end{itemize}
+then given any $p \in K(\mathbf{Q})$, we have $\overline{p} \in E \cap K(\bigtimes_{f \in F} \mathbf{Q}) = K(E) \subseteq I$. 
+\end{lem}
+
 \begin{thm}
   \label{thm:csets}
   Let $(S, \cdot)$ be a semigroup and let $A \subseteq S$. 
@@ -707,7 +740,7 @@ The Central Sets Theorem is simply the assertion that central sets are $C$-sets.
   Since $K(S) \subseteq J(S)$, we have that $A$ is also a $C$-set.
 \end{proof}
 \begin{rmk}
-  Unfortunately, despite its the Central Sets Theorem does not characterize central sets. 
+  Unfortunately, despite its name the Central Sets Theorem does not characterize central sets. 
   See \cite{Hindman:2007fk} for an example of a $C$-set in $\bbN$ which is not a central set.   
 \end{rmk}
 
