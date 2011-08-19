@@ -143,7 +143,7 @@ To see this interaction we define a special subset of $\bbN$ and prove, via Theo
 \end{thm}
 \begin{proof}
   Observe that it suffices to show that for each positive integer $k$, there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a $k$-term arithmetic progression.
-  (Suppose that this particular claim is true, then for very positive integer $k$, there exists $i_k \in \{1, 2, \ldots, r\}$ such that $C_{i_k}$ contains a $k$-term arithmetic progression. 
+  (Suppose that this particular claim is true, then for every positive integer $k$, there exists $i_k \in \{1, 2, \ldots, r\}$ such that $C_{i_k}$ contains a $k$-term arithmetic progression. 
   By the pigeonhole principle there exists $i' \in \{1, 2, \ldots, r\}$ such that $\{\, k \in \bbN : i' = i_k \,\}$ is infinite.
   Hence $C_{i'}$ contains a $k$-term arithmetic progression for infinitely many $k$'s. 
   Finally, note that if $k$ is a positive integer with $k > 1$, and a subset of $\bbN$ has a $k$-term arithmetic progression, then it also has a $(k-1)$-term arithmetic progression.
@@ -228,7 +228,7 @@ While $\AL(S)$ and $\AP$ are both closed left ideals of $\beta S$ and $\beta \bb
   (By \cite[Theorem 3.11]{Hindman:1998fk} and Theorem \ref{thm:al-partition-reg} since $B$ is an $AL$-set such a $p$ exists.)
   By \cite[Exercise 4.1.8(b)]{Hindman:1998fk}, $Ba \in pa$. 
 
-  We show that $Ba$ is not an $AL$-set by showing that $Ba$ doesn't contain even a 2-term algebraic line. 
+  We show that $Ba$ is not an $AL$-set by showing that $Ba$ doesn't contain a 2-term algebraic line. 
   Suppose there exists $c$, $d \in S$ with $\{c, cd\} \subseteq Ba$. 
   Pick positive integers $i$ and $j$ such that $c = b^ia$ and $cd = b^ja$.
   Then $b^ja = cd = b^iad$.
@@ -331,11 +331,10 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Let $r > 2$ and assume that for all $k \in \bbN$, $W(k, r-1)$ exists. 
   Put $N = W\bigl( W(k, r-1)+1, 2 \bigr)$ and let $\{1, 2, \ldots, N\} = \bigcup_{i=1}^r C_i$. 
   Put $D_1 = \bigcup_{i=1}^{r-1} C_i$ and $D_2 = C_r$.
-  Then by assumption either $D_1$ or $D_2$ contains a $W(k,r-1)+1$-term arithmetic progression.
-  If $D_2$ contains a $W(k,r-1)+1$ term arithmetic progression, then we're done. 
-  (Observe that $W(k,r-1) \ge k$.)
+  Then by assumption either $D_1$ or $D_2$ contains a $\bigl(W(k,r-1)+1\bigr)$-term arithmetic progression.
+  If $D_2$ contains a $\bigl(W(k,r-1)+1\bigr)$-term arithmetic progression, then, by observing that $W(k,r-1) \ge k$, we're done. 
 
-  Suppose that $D_1$ contains a $W(k,r-1)$-term arithmetic progression, that is, pick positive integers $b$ and $c$ such that $\{b, b+c, \ldots, b+W(k,r-1)c\} \subseteq \bigcup_{i=1}^{r-1} C_i$. 
+  Suppose that $D_1$ contains a $\bigl(W(k,r-1) + 1\bigr)$-term arithmetic progression, that is, pick positive integers $b$ and $c$ such that $\{b, b+c, \ldots, b+W(k,r-1)c\} \subseteq \bigcup_{i=1}^{r-1} C_i$. 
   For each $i \in \{1, 2, \ldots, r-1\}$ define $E_i = \bigl\{\, j \in \{1, 2, \ldots, W(k,r-1) \} : b+jc \in C_i \,\bigr\}$.
   Then $\{1, 2, \ldots, W(k, r-1)\} = \bigcup_{i=1}^{r-1} E_i$ and by our inductive hypothesis there exists $i \in \{1, 2, \ldots, r-1\}$ such that $E_i$ contains a $k$-term arithmetic progression, that is, there exists $e$, $f \in \bbN$ such that $\{e, e+f, \ldots, e+(k-1)f\} \subseteq E_i$. 
 
@@ -355,8 +354,8 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Put $b =\max\bigl(\{\, x_{n+1} - x_n : n \in \bbN \,\} \cup \{x_1\}\bigr)$ and $A = \{\, x_n : n \in \bbN \,\}$. 
   We claim that $\bbN = \bigcup_{t=1}^b -t+A$. 
   Suppose temporarily that this claim is true.
-  We can then apply \textsl{(a)} to pick $i \in \{1, 2, \ldots, b\}$ such that the set $-i + A$ is an $AP$-set. 
-  From this situation it follows that $A$ contains a $k$-term arithmetic progression for every $k \in \bbN$. 
+  We can then apply \textsl{(e)} to pick $i \in \{1, 2, \ldots, b\}$ such that the set $-i + A$ is an $AP$-set. 
+  From this choice, it follows that $A$ contains a $k$-term arithmetic progression for every $k \in \bbN$. 
   We now prove our claim.
   
   Clearly, $\bigcup_{t=1}^b -t+A \subseteq \bbN$.
@@ -375,7 +374,7 @@ We start by proving that a certain statement is equivalent to van der Waerden's 
   Therefore, for all $k \in \bbN$, there exists $n \in \bbN$ such that $\{\, x_n + 1, x_n + 2, \ldots, x_n + (k + 1) \,\} \subseteq \bbN \setminus C_1 = C_2$, that is, $C_2$ is an $AP$-set.
 \end{proof}
 
-We wish to translate statement Theorem \ref{thm:vdwEqSyn}(f) into the language of semigroups.
+We wish to translate statement (f) of Theorem \ref{thm:vdwEqSyn} into the language of semigroups.
 Of course, given an arbitrary semigroup, there is no guarantee that the terms ``strictly increasing'' and ``distance between two elements'' makes sense.
 It is the goal of the next result to show that we can forgo these terms.
 
@@ -403,7 +402,7 @@ In what follows, if $X$ is a set, we let $\Pf(X)$ denote the set of all nonempty
   Hence $(x_{n+1} - x) + x = x_{n+1} \in A$, and this completes the forward direction of the proof.
 
   \textsl{(b) $\Rightarrow$ (a).}
-  Enumerate $A$ a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$. 
+  Enumerate $A$ as a strictly increasing sequence $\la x_n \ra_{n=1}^\infty$. 
   Pick $b \in \bbN$ such that $G \subseteq \{1, 2, \ldots, b\}$.
   We will show that $\max\{\, x_{n+1} - x_n : n \in \bbN \,\} \le b$. 
 
@@ -478,7 +477,6 @@ It's is the purpose of this next result to show that we can dispense with the po
       b+1 & b+2 & b+3 & \cdots & b+2bN 
     \end{array}
   \]
-% The following bits are not completely rigorous, but I think the reasoning is sound. 
   Observe that numbers along an upward diagonal in the array share the same sum. 
   (For instance, $\{3+1, 2+2, 1+3\}$ have the same sum of 4.)
   Also observe that for each $i \in \{1, 2, \ldots, 2bN - 1\}$, $b + (i+1) - (1 +i) = b$ is the maximum distance between any two numbers from adjacent columns. 
@@ -490,6 +488,8 @@ It's is the purpose of this next result to show that we can dispense with the po
 With this equivalence we now can define the notion of a piecewise
 syndetic set in a semigroup. 
 In the next chapter it will follow that piecewise syndetic sets in $\bbN$ are $AP$-sets.
+In particular, syndetic sets are $AP$-sets.
+(Hence by Theorem \ref{thm:vdwEqSyn} van der Waerden's Theorem follows.)
 Moreover, unlike syndetic sets, we shall soon see that piecewise syndetic sets are partition regular.%
 \endnote{
   In \cite[Lemma 1]{Brown:1971bh}, proves that if the natural numbers are finitely partitioned, then at least one cell of the partition is piecewise syndetic.
@@ -534,7 +534,7 @@ With this definition he was able to prove a powerful combinatorial statement cal
 (Which can be thought of as a simultaneous generalization of both van der Waerden's Theorem and Hindman's Theorem.)
 The definition of a central set and the Central Sets Theorem can both be generalized to a semigroup.
 However in contrast to our definition of a piecewise syndetic set, to describe a central subset of a semigroup using only its combinatorial and algebraic structure is shockingly complicated.%
-(The curious reader can consult \cite[Section 14.5]{Hindman:1998fk} for the details.)
+  (The curious reader can consult \cite[Section 14.5]{Hindman:1998fk} for the details.)
 By using the algebraic structure of the Stone-\v{C}ech compactification we can give a very simple definition of central sets.
 
 \begin{defn}
