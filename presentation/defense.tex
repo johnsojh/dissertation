@@ -1,0 +1,358 @@
+% Presentation for dissertation defense on October 4, 2011 at Howard
+% University
+% author: John H. Johnson
+% email: john.j.jr.gmail.com
+% started: September 29, 2011
+
+\documentclass{beamer}
+
+\mode<presentation>{
+    \usetheme{Warsaw}
+    \setbeamercovered{transparent}
+}
+
+\title{Some Differences Between an Ideal in the Stone-\v{C}ech Compactification of Commutative and Noncommutative Semigroups}
+\author{John H.~Johnson}
+\institute{
+  Howard University\\
+  Washington, DC
+}
+
+\date{
+  Dissertation Defense\\
+  October 4, 2011
+}
+
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\Pf}{\mathcal{P}_f}
+
+\font\bigmath=cmsy10 scaled \magstep 3
+\newcommand{\bigtimes}{\hbox{\bigmath \char'2}}
+
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\section{Precursors to CST}
+\begin{frame}
+  \begin{theorem}[Single Cell, $\sim 3.5$ billion BCE]
+    If there are 3 cells and 2 pieces of food, then at least one cell
+    will go hungry. 
+  \end{theorem}
+
+  \pause
+
+  \begin{theorem}[Pigeonhole Principle]
+    Let $r \in \bbN$ and let $S$ be an infinite set.
+    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+    \ldots, r\}$ such that $C_i$ is infinite.
+  \end{theorem}
+
+  \pause
+  
+  \begin{block}{Van der Waerden's Theorem}
+    \textsl{Let $r \in \bbN$.
+    If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+    \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
+    $d \in \bbN$ with $\{\, a, a+d, \ldots, a + \ell d \,\} \subseteq
+    C_i$.} 
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Prototypical Statement}
+    Let $r \in \bbN$ and let $S$ be a set with property $P$.
+    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+    \ldots, r\}$ such that $C_i$ contains a set with property $P$. 
+  \end{block}
+
+  \pause
+
+  \begin{block}{Rough Statement}
+    Studying such ``partition regular'' sets is equivalent to studying
+    certain ultrafilters. 
+  \end{block}
+
+  \pause
+
+  \begin{block}{Algebra in the Stone-\v{C}ech Compactification}
+    Given a discrete semigroup $S$, we let $\beta S$ be the collection
+    of all ultrafilters on $S$.
+    We can extend the semigroup operation on $S$ to turn $\beta S$
+    into a compact Hausdorff right-topological semigroup. 
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Van der Waerden's Theorem}
+    \textsl{Let $r \in \bbN$.
+    If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+    \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
+    $d \in \bbN$ with $\{\, a, a+d, \ldots, a + \ell d \,\} \subseteq
+    C_i$.} 
+  \end{block}
+
+  \pause
+
+  \begin{definition}
+    \vspace{-1em}
+    \begin{align*}
+      \mathcal{AP} &= \{\, p \in \beta \bbN : \mbox{for all $A \in
+        p$, $A$ contains an} \\
+      &\hspace{5em}\mbox{ $\ell$-term arithmetic
+        progression for every $\ell \in \bbN$} \,\}.
+    \end{align*}
+  \end{definition}
+
+  \pause
+
+  \begin{block}{General Facts}
+    \begin{itemize}
+      \item Van der Waerden's Theorem implies that $\mathcal{AP} \ne
+        \emptyset$. 
+        \pause
+
+      \item $\mathcal{AP}$ is closed in $\beta\bbN$. 
+        \pause
+
+      \item $\mathcal{AP}$ is a two-sided ideal, that is, $\beta\bbN +
+        \mathcal{AP} \subseteq \mathcal{AP}$ and $\mathcal{AP} +
+        \beta\bbN \subseteq \mathcal{AP}$.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{VDW in Semigroups}
+\begin{frame}
+  \begin{theorem}
+    Let $r \in \bbN$ and $S$ a semigroup.
+    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+    \ldots, r \}$ such that for all $\ell \in \bbN$, there exist $a$,
+    $d \in S$ with $\{\, a, ad, \ldots, ad^\ell \,\} \subseteq C_i$. 
+  \end{theorem}
+
+  \pause
+
+  \begin{proof}[Proof Outline]
+    Fix $x \in S$ and consider the set $\{\, x^n : n \in \bbN \,\}$.
+    For each $i \in \{1, 2, \ldots, r\}$ and define $C'_i = \{\, n \in
+    \bbN : x^n \in C_i \,\}$. 
+    Apply van der Waerden's Theorem with $\bbN = \bigcup_{i=1}^r C'_i$.
+  \end{proof}
+
+  \pause
+
+  \begin{definition}
+    Let $S$ be a semigroup and $\ell \in \bbN$. 
+    If $a$, $d \in S$, we call the set $\{\, a, ad, \ldots, ad^\ell
+    \,\}$ an \textsl{\mbox{$\ell$-term} algebraic line}.
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}
+    Let $r \in \bbN$ and $S$ a semigroup.
+    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
+    \ldots, r \}$ such that for all $\ell \in \bbN$, there exist $a$,
+    $d \in S$ with $\{\, a, ad, \ldots, ad^\ell \,\} \subseteq C_i$. 
+  \end{theorem}
+
+  \pause
+
+  \begin{definition}
+    Let $S$ be a semigroup. 
+    Define
+    \vspace{-1em}
+    \begin{align*}
+      \mathcal{AL}(S) &= \{\, p \in \beta S : \mbox{for all $A \in
+        p$, $A$ contains an} \\
+      &\hspace{5em}\mbox{ $\ell$-term algebraic 
+        line for every $\ell \in \bbN$} \,\}.
+    \end{align*}
+  \end{definition}
+
+  \pause
+
+  \begin{block}{General Facts}
+    \begin{itemize}
+      \item The above theorem implies that $\mathcal{AL}(S) \ne
+        \emptyset$. 
+        \pause
+
+      \item  $\mathcal{AL}(S)$ is closed.
+        \pause
+
+      \item  $\mathcal{AL}(S)$ is a left ideal, that is, $\beta S \cdot
+        \mathcal{AL}(S) \subseteq \mathcal{AL}(S)$. 
+        \pause
+      \item \alert{$\mathcal{AL}(S)$ may not be a right ideal if $S$ is 
+          noncommutative.}
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Hales-Jewett Theorem and $J$-sets}
+\begin{frame}
+  \begin{definition}
+    Let $S$ be the free semigroup on the finite alphabet $A$, and let
+    $\star$ denote an element not in $A$.
+    \begin{itemize}
+      \item[(a)] A \textsl{variable word (on $A$)} $w(\star)$ is a word in the
+      free semigroup on the alphabet $A \cup \{\star\}$ in which
+      $\star$ occurs.
+
+      \item[(b)] Given a variable word $w(\star)$ on $A$ and $a \in A$,
+      we let $w(a)$ denote the word in $S$ where each occurrence of
+      $\star$ in $w(\star)$ is replaced by $a$.
+
+      \item[(c)] Given a variable word $w(\star)$ on $A$ we call the set
+      $\{\, w(a) : a \in A \,\}$ a \textsl{combinatorial line}.
+    \end{itemize}
+  \end{definition}
+  
+  \pause
+
+  \begin{example}
+    Let $A = \{a, b, c\}$ and $w(\star) = aa\star bc \star \star ca$.
+    Then $\{aa a bc aa ca, aa b bc bb ca, aa c bc cc ca\}$ is a
+    combinatorial line. 
+  \end{example}
+\end{frame}
+
+\begin{frame}
+  \begin{block}{Hales-Jewett Theorem}
+    \textsl{Let $S$ be the free semigroup on the finite alphabet $A$
+      and let $r \in \bbN$.
+      If $S = \bigcup_{i=1}^r C_i$, then there exist $i \in \{1, 2,
+      \ldots, r\}$ and a variable word $w(\star)$ such that $\{\, w(a)
+      : a \in A \,\} \subseteq C_i$.
+    }
+  \end{block}
+
+  \pause
+
+  \begin{block}{Goal}
+    We will define a special type of ``combinatorial line'' in a
+    semigroup.
+    \pause
+    \alert{$J$-sets are one way to define such an object.}
+  \end{block}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    Let $S$ be a semigroup.
+    \begin{itemize}
+      \item For each $m \in \bbN$ define
+        \[
+          \calJ_m = \{\, (t_1, t_2, \ldots, t_m) \in \bbN^m : t_1 <
+          t_2 < \cdots < t_m \,\}.
+        \]
+        \pause
+
+      \item For each $m \in \bbN$, $a \in S^{m+1}$, $t \in \calJ_m$,
+        and $f$ a sequence in $S$, define
+        \vspace{-1em}
+        \[
+          x(m, a, t, f) = \biggl( \prod_{i=1}^m \bigl( a(i) f(t_j)
+          \bigr) \biggr) a(m+1).
+        \]
+        \pause
+
+      \item We call $A \subseteq S$ a \textsl{$J$-set} if and only if
+        for every $F \subseteq \mbox{$^{\bbN}{S}$}$ finite, there exists $m \in
+        \bbN$, $a \in S^{m+1}$, and $t \in \calJ_m$ such that for all
+        $f \in F$, $x(m, a, t, f) \in A$.      
+    \end{itemize}
+  \end{definition}
+\end{frame}
+
+\begin{frame}
+  \begin{definition}
+    Let $S$ be a semigroup and define 
+    \[
+      J(S) = \{\, p \in \beta S : \mbox{for all $A \in p$, $A$ is a
+        $J$-set} \,\}.
+    \]
+  \end{definition}
+
+  \pause
+
+  \begin{block}{General Facts}
+    \begin{itemize}
+      \item The Hales-Jewett theorem implies that $J(S) \ne
+        \emptyset$. 
+        \pause
+
+      \item  $J(S)$ is closed.
+        \pause
+
+      \item  $J(S)$ is an ideal.
+        \pause
+
+      \item $J(S)$ contains idempotents, that is, there exists $p \in
+        J(S)$ such that $p \cdot p = p$.
+    \end{itemize}
+  \end{block}
+\end{frame}
+
+\section{Central Sets Theorem}
+\begin{frame}
+  \begin{definition}
+    Members of idempotents in $J(S)$ are called \textsl{$C$-sets}.
+  \end{definition}
+  
+  \pause
+
+  \begin{theorem}
+    Let $S$ be a semigroup.
+    Then $C \subseteq S$ is a $C$-set if and only if there exist
+    functions $m \colon \Pf(\mbox{$^{\bbN}{S}$}) \to \bbN$, $\alpha
+    \in \bigtimes_{F \in \Pf(\mbox{$^{\bbN}{S}$})} S^{m(F) + 1}$, and
+    $t \in \bigtimes_{\mbox{$^{\bbN}{S}$}} \calJ_m$ such that 
+    \pause
+    \begin{enumerate}
+      \item if $F$, $G \in \Pf(\mbox{$^{\bbN}{S}$})$ with $F \subsetneq
+        G$, then $t(F)\bigl( m(F) \bigr) < t(G)(1)$; and,
+        \pause
+      
+      \item whenever $n \in \bbN$, $G_1$, $G_2$, \ldots, $G_n
+          \in \Pf(\calT)$ with $G_1 \subsetneq G_2 \subsetneq \cdots
+          \subsetneq G_n$, and $\la f_i \ra_{i=1}^n \in
+          \bigtimes_{i=1}^n G_i$, we have
+          $\prod_{i=1}^n x(m(G_i), \alpha(G_i), t(G_i), f_i) \in C$. 
+    \end{enumerate}
+  \end{theorem}
+\end{frame}
+
+\begin{frame}
+  \begin{theorem}[Central Sets Theorem]
+    Let $S$ be a semigroup.
+    If $C \subseteq S$ is a central set, then $C$ is a $C$-set. 
+  \end{theorem}
+
+  \pause
+
+  \begin{definition}
+    Central sets are members of minimal idempotents.
+  \end{definition}
+\end{frame}
+
+\section{Questions}
+\begin{frame}
+  \begin{block}{Questions?}
+    Thank you for listening! \\
+    Are there any questions?
+  \end{block}
+\end{frame}
+\end{document}

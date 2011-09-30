@@ -1,0 +1,8 @@
+* Outline for Defense for Presentation
+** Title Card
+** Introduction to central subsets of natural numbers and central sets theorem
+** New Central Sets Theorem
+*** Commutative and Noncommutative versions
+*** J sets
+*** 
+
