@@ -39,48 +39,49 @@
 
 
 \begin{document}
+
 \begin{frame}
   \titlepage
 \end{frame}
 
-\section{Precursors to CST}
+\section{Basic Semigroup Theory and Ramsey Theory}
 \begin{frame}
-  \begin{theorem}[Single Cell, $\sim 3.5$ billion BCE]
-    If there are 3 cells and 2 pieces of food, then at least one cell
-    will go hungry. 
-  \end{theorem}
-
+  \begin{definition}
+    A pair $(S, \cdot)$ is a \alert{semigroup} iff $S$ is a nonempty set and $\cdot$ is a binary operation on $S$ such that for all $x$, $y$, and $z \in S$, 
+    \[
+      x\cdot ( y \cdot z) = (x \cdot y) \cdot z.
+    \]
+  \end{definition}
+  
   \pause
 
-  \begin{theorem}[Pigeonhole Principle]
-    Let $r \in \bbN$ and let $S$ be an infinite set.
-    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
-    \ldots, r\}$ such that $C_i$ is infinite.
-  \end{theorem}
+  \begin{definition}
+    A semigroup $S$ is \alert{commutative} iff for all $x$ and $y \in S$, $x \cdot y = y \cdot x$. 
+  \end{definition}
 
   \pause
   
-  \begin{block}{Van der Waerden's Theorem}
-    \textsl{Let $r \in \bbN$.
-    If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
-    \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
-    $d \in \bbN$ with $\{\, a, a+d, \ldots, a + \ell d \,\} \subseteq
-    C_i$.} 
-  \end{block}
+  \begin{definition}
+    Let $\emptyset \ne J \subseteq S$. 
+    We say $J$ is a \alert{left ideal of $S$} iff $S\cdot J \subseteq J$.
+    \pause
+    We say $J$ is a \alert{right ideal of $S$} iff $J\cdot S \subseteq J$.
+    \pause
+    We say $J$ is a \alert{(two-sided) ideal of $S$} iff $J$ both a left and right ideal. 
+  \end{definition}  
 \end{frame}
 
 \begin{frame}
   \begin{block}{Prototypical Statement}
-    Let $r \in \bbN$ and let $S$ be a set with property $P$.
-    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
-    \ldots, r\}$ such that $C_i$ contains a set with property $P$. 
+    Let $(S, \cdot)$ be a semigroup with property $P$ and let $r$ be a positive integer.
+    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that $C_i$ contains a set with property $P$. 
   \end{block}
 
   \pause
 
   \begin{block}{Rough Statement}
     Studying such ``partition regular'' sets is equivalent to studying
-    certain ultrafilters. 
+    certain ultrafilters on $S$. 
   \end{block}
 
   \pause
@@ -93,12 +94,11 @@
   \end{block}
 \end{frame}
 
+\section{Van der Waerden's Theorem}
 \begin{frame}
   \begin{block}{Van der Waerden's Theorem}
-    \textsl{Let $r \in \bbN$.
-    If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
-    \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$,
-    $d \in \bbN$ with $\{\, a, a+d, \ldots, a + \ell d \,\} \subseteq
+    \textsl{Let $r$ be a positive integer.
+    If $\bbN = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2, \ldots, r\}$ such that for all $\ell \in \bbN$, there exist $a$, $d \in \bbN$ with $\{\, a, a+d, \ldots, a + \ell d \,\} \subseteq
     C_i$.} 
   \end{block}
 
@@ -107,10 +107,8 @@
   \begin{definition}
     \vspace{-1em}
     \begin{align*}
-      \mathcal{AP} &= \{\, p \in \beta \bbN : \mbox{for all $A \in
-        p$, $A$ contains an} \\
-      &\hspace{5em}\mbox{ $\ell$-term arithmetic
-        progression for every $\ell \in \bbN$} \,\}.
+      \mathcal{AP} &= \{\, p \in \beta \bbN : \mbox{for all $A \in p$, $A$ contains an} \\
+      &\hspace{5em}\mbox{ $\ell$-term arithmetic progression for every $\ell \in \bbN$} \,\}.
     \end{align*}
   \end{definition}
 
@@ -118,16 +116,13 @@
 
   \begin{block}{General Facts}
     \begin{itemize}
-      \item Van der Waerden's Theorem implies that $\mathcal{AP} \ne
-        \emptyset$. 
+      \item Van der Waerden's Theorem implies that $\mathcal{AP} \ne  \emptyset$. 
         \pause
 
       \item $\mathcal{AP}$ is closed in $\beta\bbN$. 
         \pause
 
-      \item $\mathcal{AP}$ is a two-sided ideal, that is, $\beta\bbN +
-        \mathcal{AP} \subseteq \mathcal{AP}$ and $\mathcal{AP} +
-        \beta\bbN \subseteq \mathcal{AP}$.
+      \item $\mathcal{AP}$ is a two-sided ideal, that is, $\beta\bbN +       \mathcal{AP} \subseteq \mathcal{AP}$ and $\mathcal{AP} + \beta\bbN \subseteq \mathcal{AP}$.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -143,15 +138,6 @@
 
   \pause
 
-  \begin{proof}[Proof Outline]
-    Fix $x \in S$ and consider the set $\{\, x^n : n \in \bbN \,\}$.
-    For each $i \in \{1, 2, \ldots, r\}$ and define $C'_i = \{\, n \in
-    \bbN : x^n \in C_i \,\}$. 
-    Apply van der Waerden's Theorem with $\bbN = \bigcup_{i=1}^r C'_i$.
-  \end{proof}
-
-  \pause
-
   \begin{definition}
     Let $S$ be a semigroup and $\ell \in \bbN$. 
     If $a$, $d \in S$, we call the set $\{\, a, ad, \ldots, ad^\ell
@@ -160,15 +146,12 @@
 \end{frame}
 
 \begin{frame}
-  \begin{theorem}
-    Let $r \in \bbN$ and $S$ a semigroup.
-    If $S = \bigcup_{i=1}^r C_i$, then there exists $i \in \{1, 2,
-    \ldots, r \}$ such that for all $\ell \in \bbN$, there exist $a$,
-    $d \in S$ with $\{\, a, ad, \ldots, ad^\ell \,\} \subseteq C_i$. 
-  \end{theorem}
-
-  \pause
-
+  \begin{definition}
+    Let $S$ be a semigroup and $\ell \in \bbN$. 
+    If $a$, $d \in S$, we call the set $\{\, a, ad, \ldots, ad^\ell
+    \,\}$ an \textsl{\mbox{$\ell$-term} algebraic line}.
+  \end{definition}
+\pause
   \begin{definition}
     Let $S$ be a semigroup. 
     Define
@@ -192,11 +175,10 @@
       \item  $\mathcal{AL}(S)$ is closed.
         \pause
 
-      \item  $\mathcal{AL}(S)$ is a left ideal, that is, $\beta S \cdot
-        \mathcal{AL}(S) \subseteq \mathcal{AL}(S)$. 
+      \item  $\mathcal{AL}(S)$ is a left ideal, that is, $\beta S \cdot       \mathcal{AL}(S) \subseteq \mathcal{AL}(S)$. 
         \pause
-      \item \alert{$\mathcal{AL}(S)$ may not be a right ideal if $S$ is 
-          noncommutative.}
+
+      \item \alert{$\mathcal{AL}(S)$ may not be a right ideal if $S$ is          noncommutative.}
     \end{itemize}
   \end{block}
 \end{frame}
@@ -306,6 +288,30 @@
   \end{block}
 \end{frame}
 
+\begin{frame}
+  \begin{theorem}[Dissertation result]
+    Let $S$ be a commutative semigroup and let $T \subseteq S$ be a subsemigroup. 
+    The following statements are equivalent.
+    \begin{itemize}
+      \item[(a)] $J(T) = \beta T \cap J(S)$.
+      \item[(b)] $\beta T \cap J(S) \ne \emptyset$.
+      \item[(c)] $T$ is a $J$-set in S.
+    \end{itemize}
+  \end{theorem}
+
+  \pause
+
+  \begin{theorem}[Dissertation result]
+    Let $S$ be a semigroup and let $T \subseteq S$ be a subsemigroup. 
+    The following statements are equivalent.
+    \begin{itemize}
+      \item[(a)] \alert{$J(T) \subseteq \beta T \cap J(S)$.}
+      \item[(b)] $\beta T \cap J(S) \ne \emptyset$.
+      \item[(c)] $T$ is a $J$-set in S.
+    \end{itemize}
+  \end{theorem}
+\end{frame}
+
 \section{Central Sets Theorem}
 \begin{frame}
   \begin{definition}
@@ -348,11 +354,10 @@
   \end{definition}
 \end{frame}
 
-\section{Questions}
+\section{Thank you}
 \begin{frame}
-  \begin{block}{Questions?}
+  \begin{block}{Thanks!}
     Thank you for listening! \\
-    Are there any questions?
   \end{block}
 \end{frame}
 \end{document}
